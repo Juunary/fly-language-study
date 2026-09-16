@@ -31,6 +31,8 @@ artifacts/power/*
 !artifacts/tokenizer-wordbound-v4.5.meta.json
 !artifacts/tokenizer-wordbound-v4.6.json
 !artifacts/tokenizer-wordbound-v4.6.meta.json
+!artifacts/tokenizer-wordbound-v4.7.json
+!artifacts/tokenizer-wordbound-v4.7.meta.json
 
 # Earlier drafts remain local. Only the reviewed-candidate version is published.
 data/*
@@ -38,6 +40,7 @@ data/*
 !data/draft-v4.4/
 !data/draft-v4.5/
 !data/draft-v4.6/
+!data/draft-v4.7/
 
 # Human review: blinded distribution packages are published; the review-id mapping,
 # reviewer registry and returned judgments never leave the operator.
@@ -48,3 +51,4 @@ review/ai/
 # Protocol v5 review workspace (private mapping, raw Claude responses, evidence) stays out of the repository.
 review/v5/
 review/v6/
+review/v7/

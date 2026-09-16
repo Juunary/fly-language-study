@@ -1,0 +1,95 @@
+{
+  "hypothesis_only/en/roles": {
+    "accuracy": 0.544,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/en/negation": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/en/space": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/en/quantity": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "grammar_cue/en/roles": {
+    "coverage": 1.0,
+    "accuracy": 1.0,
+    "audit_required": false,
+    "uses_scene_metadata": false,
+    "interpretation": "Legitimate order/case/passive and predicate binding; high accuracy is not an artifact failure."
+  },
+  "hypothesis_only/de/roles": {
+    "accuracy": 0.544,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/de/negation": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/de/space": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/de/quantity": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "grammar_cue/de/roles": {
+    "coverage": 1.0,
+    "accuracy": 1.0,
+    "audit_required": false,
+    "uses_scene_metadata": false,
+    "interpretation": "Legitimate order/case/passive and predicate binding; high accuracy is not an artifact failure."
+  },
+  "hypothesis_only/ko/roles": {
+    "accuracy": 0.544,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/ko/negation": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/ko/space": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "hypothesis_only/ko/quantity": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "optimizer_success": true,
+    "uses_sentence_a": false
+  },
+  "grammar_cue/ko/roles": {
+    "coverage": 1.0,
+    "accuracy": 1.0,
+    "audit_required": false,
+    "uses_scene_metadata": false,
+    "interpretation": "Legitimate order/case/passive and predicate binding; high accuracy is not an artifact failure."
+  }
+}

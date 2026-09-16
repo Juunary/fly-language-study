@@ -21,11 +21,12 @@ def corpus_files(tmp_path_factory):
 
 
 def test_primary_model_fixes_the_word_boundary_vocabulary():
-    # Protocol v5.1: the word-boundary tokenizer of data/draft-v4.6 has 832 actual tokens (v5.0 on draft-v4.5 had 841).
-    assert Protocol().version == "v5.1-wordbound" and Protocol().vocab_size == 832 and Protocol().validate_primary_model()
-    for stale in (4096, 841):
+    # Protocol v5.2: the word-boundary tokenizer of data/draft-v4.7 has 830 actual tokens (v5.1: 832 on v4.6; v5.0: 841 on v4.5).
+    assert Protocol().version == "v5.2-wordbound" and Protocol().vocab_size == 830 and Protocol().validate_primary_model()
+    for stale in (4096, 841, 832):
         with pytest.raises(ValueError, match="protocol v5"):
             Protocol(vocab_size=stale).validate_primary_model()
+    assert Protocol.load("configs/protocol-v5.2.json").vocab_size == 830
     assert Protocol.load("configs/protocol-v5.1.json").vocab_size == 832
     assert Protocol.load("configs/protocol-v5.json").vocab_size == 841  # historical configs keep their recorded hash
     assert Protocol.load("configs/protocol-v4-ai.json").vocab_size == 4096

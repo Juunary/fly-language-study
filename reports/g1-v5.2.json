@@ -1,0 +1,113 @@
+{
+  "gate": "G1",
+  "status": "passed",
+  "history": [
+    {
+      "update": 10,
+      "scores": {
+        "roles": 0.53125,
+        "negation": 0.4375,
+        "space": 0.5625,
+        "quantity": 0.625
+      },
+      "overall": 0.5390625
+    },
+    {
+      "update": 20,
+      "scores": {
+        "roles": 0.53125,
+        "negation": 0.5625,
+        "space": 0.59375,
+        "quantity": 0.75
+      },
+      "overall": 0.609375
+    },
+    {
+      "update": 30,
+      "scores": {
+        "roles": 0.53125,
+        "negation": 0.53125,
+        "space": 0.625,
+        "quantity": 0.71875
+      },
+      "overall": 0.6015625
+    },
+    {
+      "update": 40,
+      "scores": {
+        "roles": 0.625,
+        "negation": 0.6875,
+        "space": 0.65625,
+        "quantity": 0.75
+      },
+      "overall": 0.6796875
+    },
+    {
+      "update": 50,
+      "scores": {
+        "roles": 0.71875,
+        "negation": 0.75,
+        "space": 0.65625,
+        "quantity": 0.78125
+      },
+      "overall": 0.7265625
+    },
+    {
+      "update": 60,
+      "scores": {
+        "roles": 0.84375,
+        "negation": 0.84375,
+        "space": 0.71875,
+        "quantity": 0.8125
+      },
+      "overall": 0.8046875
+    },
+    {
+      "update": 70,
+      "scores": {
+        "roles": 0.96875,
+        "negation": 0.96875,
+        "space": 0.8125,
+        "quantity": 0.8125
+      },
+      "overall": 0.890625
+    },
+    {
+      "update": 80,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 0.96875,
+        "quantity": 0.875
+      },
+      "overall": 0.9609375
+    },
+    {
+      "update": 90,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 0.9375
+      },
+      "overall": 0.984375
+    },
+    {
+      "update": 100,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 1.0
+      },
+      "overall": 1.0
+    }
+  ],
+  "seed": 9001,
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "tokenizer_hash": "0abbaefba6dc729f4c0b2ace332d00c97f5e6ced8431b583b4f9764d73205678",
+  "protocol_hash": "c68aa35b2aca43d9f773f43a741f88f7deba6593c14290a229b6d42a328d2d68",
+  "training_hash": "31ec5d4eb3cdf9971011b72c8c9897e2ff7e8057618f9fc4f8d59709df59d197",
+  "code_hash": "c21642bf43982785d01ec3db4119ab06303a2bb92a030eeb4b89b3f5b70606c2",
+  "gpu_hours": 0.0030988475050415017
+}

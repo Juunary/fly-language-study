@@ -42,8 +42,8 @@ def write_json(path: str | Path, value):
 
 @dataclass(frozen=True)
 class Protocol:
-    version: str = "v5.1-wordbound"
-    vocab_size: int = 832  # shared word-boundary byte BPE, actual vocabulary of data/draft-v4.6 (protocol v5.1)
+    version: str = "v5.2-wordbound"
+    vocab_size: int = 830  # shared word-boundary byte BPE, actual vocabulary of data/draft-v4.7 (protocol v5.2)
     microsteps: int = 2
     embed_dim: int = 32
     effective_batch: int = 256
@@ -78,7 +78,7 @@ class Protocol:
         return self
 
     def validate_primary_model(self):
-        fixed = dict(vocab_size=832,microsteps=2,embed_dim=32,recurrent_lr=.0003,
+        fixed = dict(vocab_size=830,microsteps=2,embed_dim=32,recurrent_lr=.0003,
                      adapter_lr=.001,weight_decay=.01,grad_clip=1.)
         if any(getattr(self,key) != value for key,value in fixed.items()):
             raise ValueError('Primary/pilot model hyperparameters differ from protocol v5')

@@ -42,7 +42,7 @@ ATTRIBUTES = SIZES + AGES
 CASES = {"en": ("nom", "acc", "dat"), "de": ("nom", "acc", "dat"), "ko": ("nom", "acc", "gen")}
 VERBS = [("sees", "see", "seen", "sieht", "gesehen", "본다"),
          ("greets", "greet", "greeted", "grüßt", "gegrüßt", "반긴다"),
-         ("follows", "follow", "followed", "verfolgt", "verfolgt", "뒤따른다")]
+         ("chases", "chase", "chased", "jagt", "gejagt", "쫓는다")]
 NUMBERS = {"en": ("two", "three", "four", "five", "six", "seven", "eight"),
            "de": ("zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht"),
            "ko": ("두", "세", "네", "다섯", "여섯", "일곱", "여덟")}
@@ -56,7 +56,7 @@ PRIMARY_FAMILY = FAMILIES["train"]
 
 def coordinate_ko(sentence):
     for end, replacement in (("않는다", "않으며"), ("반긴다", "반기며"),
-                             ("뒤따른다", "뒤따르며"), ("본다", "보며"), ("있다", "있으며")):
+                             ("쫓는다", "쫓으며"), ("본다", "보며"), ("있다", "있으며")):
         if sentence.endswith(end):
             return sentence[:-len(end)] + replacement
     raise ValueError("Missing Korean coordination rule")
@@ -139,7 +139,7 @@ def clause(scene, lang, inverse=False, foil=False):
             return f"{subject} {verb[3]} {rest}", f"{subject} {rest} {verb[3]}"
         subject = particle(noun_phrase(a, lang), ("이", "가"))
         obj = particle(noun_phrase(b, lang), ("을", "를"))
-        ending = ("보지 않는다", "반기지 않는다", "뒤따르지 않는다")[scene["verb"]] if neg else verb[5]
+        ending = ("보지 않는다", "반기지 않는다", "쫓지 않는다")[scene["verb"]] if neg else verb[5]
         s = f"{obj} {subject} {ending}" if inverse else f"{subject} {obj} {ending}"
         return s, s
     if task == "space":
@@ -148,9 +148,11 @@ def clause(scene, lang, inverse=False, foil=False):
         if inverse:
             a, b = b, a
             direction = not direction
-        en = (("to the left of", "to the right of"), ("above", "below"), ("in front of", "behind"))[axis][int(direction)]
-        de = (("links von", "rechts von"), ("über", "unter"), ("vor", "hinter"))[axis][int(direction)]
-        ko = (("왼쪽", "오른쪽"), ("위", "아래"), ("앞", "뒤"))[axis][int(direction)]
+        # Horizontal axes use cardinal directions: their converses hold in every reference frame, unlike left/right and
+        # front/behind, which are ambiguous between viewer-relative and intrinsic readings (review of draft-v4.6).
+        en = (("west of", "east of"), ("above", "below"), ("north of", "south of"))[axis][int(direction)]
+        de = (("westlich von", "östlich von"), ("über", "unter"), ("nördlich von", "südlich von"))[axis][int(direction)]
+        ko = (("서쪽", "동쪽"), ("위", "아래"), ("북쪽", "남쪽"))[axis][int(direction)]
         if lang == "en":
             s = f"{noun_phrase(a, lang)} is {en} {noun_phrase(b, lang)}"
             return s, s

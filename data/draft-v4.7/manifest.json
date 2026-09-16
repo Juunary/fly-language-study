@@ -1,0 +1,126 @@
+{
+  "version": "draft-v4.7",
+  "seed": 1729,
+  "files": {
+    "train.jsonl": "157844206abcc0ea2adccec2a2241bfa23683e070409787bd0b39e9b277ff163",
+    "dev_a.jsonl": "782a3ad2c6d446a16ca6661d19f35b1ba62e881c59b70dd57e6bd5f192d2330c",
+    "dev_b.jsonl": "36132d145d6d470218ddeaace0a13a965d99348f184fe03311433a850dd79262",
+    "test.jsonl": "5bc71f65ad740207600c1aef8ff715d9306ba79c57ecd1d542a2ecee66021d33"
+  },
+  "train_per_task": 5000,
+  "panel_per_task": 1000,
+  "human_review": "pending",
+  "families": {
+    "train": "assertion",
+    "dev_a": "truth_question",
+    "dev_b": "reported_clause",
+    "test": "conditional"
+  },
+  "evaluation": {
+    "primary": {
+      "template_family": "assertion",
+      "fields": [
+        "sentence_a",
+        "sentence_b"
+      ],
+      "shared_with_training": true,
+      "purpose": "held-out meaning combinations rendered in the training (declarative) frame; scheduled panels, mastery and the independent test use this rendering"
+    },
+    "auxiliary": {
+      "field": "auxiliary",
+      "template_families": {
+        "dev_a": "truth_question",
+        "dev_b": "reported_clause",
+        "test": "conditional"
+      },
+      "same_items_as_primary": true,
+      "purpose": "the same held-out items rendered in a held-out outer frame; outer-frame transfer only, never mastery"
+    },
+    "note": "Primary and auxiliary are two renderings of one item: same id, meaning_id, scene and label."
+  },
+  "independent_test": {
+    "confirmatory": true,
+    "note": "Fresh test orbits unused by any listed dataset or exploratory run; apply once at a run's terminal state after the protocol freeze."
+  },
+  "note": "Semantic orbits, foils and translations are split-exclusive. Outer construction families are held out only in the auxiliary rendering; embedded grammar rules and the declarative frame are shared. Animal colors form a controlled fictional domain.",
+  "test_seed": 1731,
+  "overlap_check": {
+    "datasets_checked": [
+      {
+        "path": "data/draft-v4.7-base",
+        "dataset_hash": "b59935c1c8d7bfefa4cc7c867cf50418a189c71007f59d19a06f510e445bfd76"
+      },
+      {
+        "path": "data/draft-v4.3",
+        "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e"
+      },
+      {
+        "path": "data/draft-v4.4",
+        "dataset_hash": "488d8f22a4dfe1f19f00af90a31c6817c00efcaf9c15652736a772a5bf3193ac"
+      }
+    ],
+    "orbits_shared_with_source": 0,
+    "sentence_pairs_shared_with_source": 0,
+    "new_orbits": 2000
+  },
+  "derived_from": {
+    "version": "draft-v4.7-base",
+    "dataset_hash": "b59935c1c8d7bfefa4cc7c867cf50418a189c71007f59d19a06f510e445bfd76",
+    "files": {
+      "train.jsonl": "157844206abcc0ea2adccec2a2241bfa23683e070409787bd0b39e9b277ff163",
+      "dev_a.jsonl": "782a3ad2c6d446a16ca6661d19f35b1ba62e881c59b70dd57e6bd5f192d2330c",
+      "dev_b.jsonl": "36132d145d6d470218ddeaace0a13a965d99348f184fe03311433a850dd79262",
+      "test.jsonl": "b3a19109a469708f36656784622ef02d583d7714f11ad4f687e9af1a4be74cfc"
+    },
+    "training_split_identical": true,
+    "dev_splits_identical": true,
+    "replaced_split": "test"
+  },
+  "dataset_hash": "6aca06b2d3b9715896e282f6331be8e4c07c2e3f8d220ab195a857fd503d7ee8",
+  "template_revision": {
+    "reason": "Claude-only review of draft-v4.6 (review/v6, 2026-09-17) flagged two template issues; see reports/ai-review-v6-outcome.json",
+    "changes": [
+      "third verb 'follows/verfolgt/뒤따른다' → 'chases/jagt/쫓는다' (DE-R1: verfolgt means pursue, not neutral follow)",
+      "horizontal spatial axes use cardinal directions west/east and north/south (EN 'west of', DE 'westlich von' + dative, KO '서쪽에') whose converses hold in every reference frame (KO-R2: left/right and front/behind are frame-ambiguous); the vertical axis is unchanged"
+    ],
+    "comparison_with_reference": {
+      "reference": "data/draft-v4.6",
+      "reference_hash": "47368f15d5496aa14ba0d972ae716ecd348048cbba2de83da04029dcdf1afae9",
+      "splits": {
+        "train": {
+          "rows": 60000,
+          "semantic_identity_and_order": true,
+          "primary_pairs_changed": 25044,
+          "auxiliary_pairs_changed": 0
+        },
+        "dev_a": {
+          "rows": 12000,
+          "semantic_identity_and_order": true,
+          "primary_pairs_changed": 5094,
+          "auxiliary_pairs_changed": 5094
+        },
+        "dev_b": {
+          "rows": 12000,
+          "semantic_identity_and_order": true,
+          "primary_pairs_changed": 5262,
+          "auxiliary_pairs_changed": 5262
+        },
+        "test": {
+          "rows": 12000,
+          "semantic_identity_and_order": true,
+          "primary_pairs_changed": 5058,
+          "auxiliary_pairs_changed": 5058
+        }
+      }
+    },
+    "previous_revision": [
+      "KO spatial frame: embedded subject takes nominative 이/가 instead of topic 은/는",
+      "KO truth question: '…모두 사실이다' is questioned directly as '…모두 사실인가?' (no second 사실)",
+      "DE vertical relation: 'über/unter' + dative instead of 'oberhalb/unterhalb von' + dative",
+      "EN noun 'hen' → 'chicken' (matches Huhn/닭)",
+      "KO verb 맞이한다 → 반긴다 (greets)",
+      "KO colours all in the X색 form (빨간색 파란색 초록색 노란색 검은색 하얀색)",
+      "inventory lists sizes and ages separately; catalog labels forms with words and lists Korean cases nom/acc/gen"
+    ]
+  }
+}

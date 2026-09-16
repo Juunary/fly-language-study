@@ -99,5 +99,5 @@ def test_checklist_rows_follow_the_language_specific_case_inventory():
 def test_cue_baseline_recognises_the_revised_korean_verb_forms():
     from flystudy.cues import verb_matcher
     pattern, variants = verb_matcher("ko")
-    assert variants["반긴다"] == 1 and variants["반기지"] == 1 and "맞이하지" not in variants
+    assert variants["반긴다"] == 1 and variants["반기지"] == 1 and variants["쫓지"] == 2 and "맞이하지" not in variants
     assert pattern.search("작은 빨간색 개가 큰 파란색 여우를 반기지 않는다")

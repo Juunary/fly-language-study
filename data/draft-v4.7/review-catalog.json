@@ -1,0 +1,9 @@
+{
+  "status": "awaiting_review",
+  "files": {
+    "noun-forms.csv": "9167b6d7009535bd4073eaa643a3468affd6de77c2c3b9da315afb162be80503",
+    "construction-examples.csv": "3b163889ac1a2d042a218c30e0153019e4e26879d5efd6d974df58d0b4936aa7",
+    "template-inventory.json": "e30056382868be2de1588c337391fb55bd2a999bf269b486b5721b5837c65253"
+  },
+  "note": "All noun surface forms plus construction examples for both renderings (primary training frame and auxiliary outer frame); also inspect the renderer and verb table for full template review."
+}
