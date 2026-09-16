@@ -1,4 +1,4 @@
-"""Join blinded, independent reviewer submissions back to original IDs for `certify-review`.
+"""Join blinded reviewer submissions for human or explicitly identified Claude certification.
 
 Inputs (operator side only):
   <review>/private/mapping.csv            review_id -> reviewer_code, original_id
@@ -6,9 +6,9 @@ Inputs (operator side only):
   <review>/submissions/raw/<code>/*.csv   exactly one returned items CSV per reviewer code (never edited)
   <data>/audit-sample.csv                 original items with labels (for the certify schema and disagreement report)
 Outputs (<review>/submissions/merged/):
-  reviewed-audit-sample.csv   certify-review input: original IDs, reviewer codes, both original judgments preserved
+  reviewed-audit-sample.csv   certification input: original IDs, reviewer codes, both judgments preserved
   disagreements.csv           operator-only consensus worklist (includes the original label)
-  attestation-draft.json      reviewers per language and unresolved item keys; humans must complete every value
+  attestation-draft.json      mode, reviewers and unresolved keys; completion requires the selected review evidence
   receipt.json                hashes/counts/agreement of the raw submissions
 Before anything else the current originals are compared with the build manifest's source_hashes and
 dataset_hash; a changed original aborts the merge without writing any output.
@@ -76,7 +76,9 @@ def find_submission(folder: Path):
     return files
 
 
-def merge(review: Path, data: Path, output: Path | None = None):
+def merge(review: Path, data: Path, output: Path | None = None, review_mode="human"):
+    if review_mode not in ("human", "claude_only"):
+        raise ValueError("Unknown review mode")
     private = review / "private"
     manifest = json.loads((private / "build-manifest.json").read_text(encoding="utf-8"))
     verify_sources(manifest, data)
@@ -170,6 +172,10 @@ def merge(review: Path, data: Path, output: Path | None = None):
                        resolved_items={i: dict(label=None, fluent=None, rationale="") for i in sorted(unresolved)},
                        note="DRAFT written by the merge tool. Humans must set all_templates_and_forms_checked after the template review "
                             "and fill label/fluent/rationale for every resolved item from the consensus meeting. Null values fail certify-review.")
+    attestation["review_mode"] = review_mode
+    if review_mode == "claude_only":
+        attestation["note"] = ("AI review draft, not human evidence. Link template checks and every resolution to archived Claude outputs. "
+                               "Use certify-ai-review with a sealed evidence manifest; do not invent missing reasons or resolutions.")
     (output / "attestation-draft.json").write_text(json.dumps(attestation, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     receipt.update(items=len(originals), merged_rows=len(merged), unresolved_items=len(unresolved), agreement_by_language=agreement,
                    certify_thresholds=dict(items_per_language=200, min_agreement=.95, min_kappa=.8),
@@ -183,11 +189,14 @@ def main(argv=None):
     parser.add_argument("--review", default="review")
     parser.add_argument("--data", default="data/draft-v4.3")
     parser.add_argument("--output", default=None)
+    parser.add_argument("--review-mode", choices=("human", "claude_only"), default="human")
     args = parser.parse_args(argv)
-    receipt = merge(Path(args.review), Path(args.data), Path(args.output) if args.output else None)
+    receipt = merge(Path(args.review), Path(args.data), Path(args.output) if args.output else None, review_mode=args.review_mode)
     print(json.dumps(dict(status="merged", items=receipt["items"], unresolved_items=receipt["unresolved_items"],
                           agreement_by_language=receipt["agreement_by_language"],
-                          next="Hold the consensus meeting on disagreements.csv, complete attestation-draft.json, then run certify-review."),
+                          next=("Archive Claude provenance and adjudication, complete the AI attestation, then run certify-ai-review."
+                                if args.review_mode == "claude_only" else
+                                "Hold the consensus meeting on disagreements.csv, complete attestation-draft.json, then run certify-review.")),
                      ensure_ascii=False, indent=2))
 
 

@@ -118,7 +118,7 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
         reservation = Ledger(ledger_path).reservation(reservation_id or run_id)
     elif not smoke:
         if not launch or not ledger_path:
-            raise ValueError("Pilots need a readiness manifest (G0 + human review) and a reservation")
+            raise ValueError("Pilots need a readiness manifest (G0 + certified data review) and a reservation")
         readiness = json.loads(Path(launch).read_text(encoding="utf-8"))
         if readiness.get("status") != "pilot_ready" or readiness.get("dataset_hash") != data_meta["dataset_hash"] or readiness.get("graph_hash") != graph.hash or readiness.get("code_hash") != code_hash():
             raise ValueError("Pilot readiness has not been established for these artifacts")
@@ -136,6 +136,8 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
                     physical_microbatch=microbatch, review_samples=review_samples,
                     environment=environment(), paths=dict(graph=str(Path(graph_path).resolve()),
                         dataset=str(Path(dataset).resolve()), tokenizer=str(Path(tokenizer_path).resolve())))
+    review_record = json.loads(Path(launch).read_text(encoding="utf-8")) if launch and not smoke else {}
+    metadata.update({k: review_record.get(k) for k in ("review_mode", "human_reviewed", "review_limitations", "protocol_amendment")})
     started = time.perf_counter()
     tokenizer = Tokenizer.from_file(str(tokenizer_path))
     if not smoke and tokenizer.get_vocab_size() != protocol.vocab_size:

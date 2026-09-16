@@ -109,7 +109,7 @@ def g0(graph, output):
     return report
 
 
-def certify_review(dataset, reviewed_csv, template_attestation, output):
+def certify_review(dataset, reviewed_csv, template_attestation, output, ai_evidence=None):
     from .data import audit
     dataset = Path(dataset)
     audit_report = audit(dataset)
@@ -119,13 +119,19 @@ def certify_review(dataset, reviewed_csv, template_attestation, output):
     item_languages = {r["id"]: r["language"] for r in expected}
     rows = list(csv.DictReader(Path(reviewed_csv).open(encoding="utf-8-sig")))
     attest = json.loads(Path(template_attestation).read_text(encoding="utf-8"))
+    provenance = dict(review_mode="human", human_reviewed=True)
+    if ai_evidence is None and attest.get("review_mode", "human") != "human":
+        raise ValueError("AI judgments require certify-ai-review, not human certification")
+    if ai_evidence is not None:
+        from .ai_review import validate_ai_evidence
+        provenance = validate_ai_evidence(dataset, reviewed_csv, attest, ai_evidence)
     groups = defaultdict(dict)
     for row in rows:
         reviewer = row["reviewer"].strip()
         if not reviewer or reviewer.startswith("reviewer_") or row["id"] not in expected_ids or reviewer in groups[row["id"]]:
             raise ValueError("Missing/duplicate reviewer identity or changed audit sample")
         if row["judged_label"] not in ("0", "1") or row["fluent"].lower() not in ("yes", "true", "1", "no", "false", "0"):
-            raise ValueError("Incomplete or unresolved human review")
+            raise ValueError("Incomplete or unresolved review")
         groups[row["id"]][reviewer] = int(row["judged_label"])
     reviewers, agreements = {}, {}
     if set(groups) != expected_ids:
@@ -134,7 +140,7 @@ def certify_review(dataset, reviewed_csv, template_attestation, output):
         items=sorted(item for item in groups if item_languages[item] == language)
         people=sorted({name for item in items for name in groups[item]})
         if len(people) != 2 or any(set(groups[item]) != set(people) for item in items):
-            raise ValueError("Each language needs two independent named reviewers on every sampled item")
+            raise ValueError("Each language needs two distinct reviewer codes on every sampled item")
         reviewers[language]=people
         labels=np.array([[groups[item][r] for r in people] for item in items])
         agreement=float((labels[:,0] == labels[:,1]).mean())
@@ -153,10 +159,12 @@ def certify_review(dataset, reviewed_csv, template_attestation, output):
         raise ValueError("Template/form review is incomplete")
     if attest.get("inventory_hash") != file_hash(dataset / "template-inventory.json"):
         raise ValueError("Template attestation belongs to a different version")
-    report = dict(gate="human_review", status="passed" if audit_report["passed"] else "failed",
+    report = dict(gate="ai_review" if ai_evidence is not None else "human_review", status="passed" if audit_report["passed"] else "failed",
                   dataset_hash=audit_report["dataset_hash"], reviewers=reviewers,
                   sample_items=len(groups), agreement_by_language=agreements,
-                  reviewed_csv_hash=file_hash(reviewed_csv), attestation_hash=file_hash(template_attestation))
+                  reviewed_csv_hash=file_hash(reviewed_csv), attestation_hash=file_hash(template_attestation), **provenance)
+    report.setdefault("evidence_files", {}).update({str(Path(p).resolve()): file_hash(p)
+                                                   for p in (reviewed_csv, template_attestation)})
     if report["sample_items"] != 600:
         raise ValueError("Production review requires 200 items per language")
     write_json(output, report)

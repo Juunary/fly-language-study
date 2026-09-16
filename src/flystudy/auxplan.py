@@ -65,5 +65,6 @@ def reserve_auxiliary(main_manifest, category, graph_path, other_path, tokenizer
     manifest=dict(status='auxiliary_reserved',category=category,code_hash=code_hash(),runs=runs,
                   seeds=list(seeds),evidence_files=evidence,selection_uses_outcomes=False,
                   interpretation='Exploratory paired bundle; one graph shuffle realization does not estimate topology-population variance.')
+    manifest.update({k: main.get(k) for k in ('review_mode', 'human_reviewed', 'review_limitations', 'protocol_amendment')})
     write_json(root/'bundle.json',manifest)
     return manifest

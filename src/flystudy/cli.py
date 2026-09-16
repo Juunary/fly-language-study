@@ -25,7 +25,11 @@ def parser():
     g0.add_argument("--ledger"); g0.add_argument("--reservation-id")
     smoke = commands.add_parser("smoke"); smoke.add_argument("--output", required=True)
     review = commands.add_parser("certify-review"); review.add_argument("--data", required=True); review.add_argument("--csv", required=True); review.add_argument("--templates", required=True); review.add_argument("--output", required=True)
+    ai_review = commands.add_parser("certify-ai-review")
+    for arg in ("data", "csv", "templates", "evidence", "output"):
+        ai_review.add_argument("--"+arg, required=True)
     ready = commands.add_parser("pilot-ready")
+    ready.add_argument("--review-mode", choices=("claude_only", "human"), default="claude_only")
     for arg in ("g0", "review", "data", "graph", "tokenizer", "output"):
         ready.add_argument("--"+arg, required=True)
     plan = commands.add_parser("reserve-pilots"); plan.add_argument("--protocol", required=True); plan.add_argument("--output", required=True); plan.add_argument("--ledger", required=True)
@@ -161,9 +165,12 @@ def dispatch(a):
     if a.command == "certify-review":
         from .gates import certify_review
         return certify_review(a.data, a.csv, a.templates, a.output)
+    if a.command == "certify-ai-review":
+        from .gates import certify_review
+        return certify_review(a.data, a.csv, a.templates, a.output, ai_evidence=a.evidence)
     if a.command == "pilot-ready":
         from .workflow import pilot_ready
-        return pilot_ready(a.g0,a.review,a.data,a.graph,a.tokenizer,a.output)
+        return pilot_ready(a.g0,a.review,a.data,a.graph,a.tokenizer,a.output, review_mode=a.review_mode)
     if a.command == "reserve-pilots":
         from .workflow import reserve_pilots
         return reserve_pilots(Protocol.load(a.protocol), a.output, a.ledger,

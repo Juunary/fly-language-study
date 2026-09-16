@@ -26,9 +26,21 @@ def verified_evidence(*reports):
     return evidence
 
 
-def pilot_ready(g0_path, review_path, dataset, graph, tokenizer, output):
+def review_provenance(review, review_mode):
+    expected_gate = {"claude_only": "ai_review", "human": "human_review"}.get(review_mode)
+    if not expected_gate or review.get("gate") != expected_gate or review.get("review_mode") != review_mode:
+        raise ValueError("Review mode does not match the requested certification")
+    if review_mode == "claude_only" and (review.get("human_reviewed") is not False or
+            review.get("protocol_amendment") != "v4-ai-review-1" or not review.get("ai_runs") or
+            not review.get("limitations") or not review.get("evidence_files")):
+        raise ValueError("Claude review provenance is incomplete")
+    return verified_evidence(review)
+
+
+def pilot_ready(g0_path, review_path, dataset, graph, tokenizer, output, review_mode="claude_only"):
     from .graph import Graph
     g0, review = read(g0_path), read(review_path)
+    review_evidence = review_provenance(review, review_mode)
     checked = audit(dataset)
     baseline_path = Path(dataset)/"nuisance-baselines.json"
     baseline = read(baseline_path)
@@ -46,7 +58,7 @@ def pilot_ready(g0_path, review_path, dataset, graph, tokenizer, output):
     if g0.get("status") != "passed" or g0.get("graph_hash") != gh or g0["environment"]["code_hash"] != code_hash():
         raise ValueError("Current G0 evidence is missing")
     if not checked["passed"] or review.get("status") != "passed" or review.get("dataset_hash") != checked["dataset_hash"]:
-        raise ValueError("Current human/data review is missing")
+        raise ValueError("Current certified data review is missing")
     if any(r["audit_required"] for r in baseline.values()):
         raise ValueError("Unresolved nuisance-feature shortcut audit")
     if any(r["audit_required"] for r in cues.values()):
@@ -58,6 +70,10 @@ def pilot_ready(g0_path, review_path, dataset, graph, tokenizer, output):
     result = dict(status="pilot_ready", dataset_hash=checked["dataset_hash"], graph_hash=gh,
                   tokenizer_hash=file_hash(tokenizer), code_hash=code_hash(),
                   evidence_files={str(Path(p).resolve()): file_hash(p) for p in evidence})
+    result["evidence_files"].update(review_evidence)
+    result.update(review_mode=review_mode, human_reviewed=review.get("human_reviewed"),
+                  review_limitations=review.get("limitations", []),
+                  protocol_amendment=review.get("protocol_amendment"))
     write_json(output, result)
     return result
 
@@ -168,6 +184,7 @@ def freeze(protocol, readiness_path, g1_path, pilot_path, design_path, output, l
                   tokenizer_hash=ready["tokenizer_hash"], evidence_files=evidence, runs=runs,
                   fixed_review_seeds=[1,2], auxiliary_training_mandatory=False,
                   budgets=current_allocations, decision=chosen)
+    result.update({k: ready.get(k) for k in ("review_mode", "human_reviewed", "review_limitations", "protocol_amendment")})
     write_json(output, result)
     return result
 

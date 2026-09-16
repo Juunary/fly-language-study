@@ -1,0 +1,14 @@
+{
+  "protocol_amendment": "v4-ai-review-1",
+  "review_mode": "claude_only",
+  "status": "implemented_pending_server_review_evidence_and_cuda_revalidation",
+  "human_reviewed": false,
+  "code_hash": "6df7331008bb4b206dbd538e1389ac386656f5582103559adb8fbb8e3cf686a8",
+  "cpu_tests": {"passed": 67, "failed": 0, "skipped": 0},
+  "historical_g0_g1_code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4",
+  "cuda_revalidation_required": true,
+  "data_and_distribution_modified": false,
+  "actual_claude_calls_made_in_this_implementation": 0,
+  "server_input_status": "User reports six real separate AI assessments; KO 100 rows lack fluent=no comments. Responses are not available on this PC.",
+  "next": "Preserve originals; obtain Claude supplementary reasons; archive provenance; certify-ai-review; current G0/G1; pilot-ready. No gate has been marked passed by this implementation."
+}

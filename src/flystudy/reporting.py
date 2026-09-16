@@ -21,8 +21,8 @@ def analyze(run_root, output):
         report = dict(status="no_primary_evidence", reason="Only smoke/pilot/interrupted runs present", observed_runs=len(records))
         write_json(output/"analysis.json", report)
         return report
-    for key in ("protocol_hash", "dataset_hash", "graph_hash", "tokenizer_hash", "code_hash"):
-        if len({r[key] for r in eligible}) != 1:
+    for key in ("protocol_hash", "dataset_hash", "graph_hash", "tokenizer_hash", "code_hash", "review_mode", "protocol_amendment"):
+        if len({r.get(key) for r in eligible}) != 1:
             raise ValueError(f"Incompatible main-study records: {key}")
     sequential = [r for r in eligible if r["mode"] == "sequential"]
     by_seed = defaultdict(dict)
@@ -40,6 +40,7 @@ def analyze(run_root, output):
     values = np.array([[by_seed[s][o]["first_global"] or by_seed[s][o]["cap"] for o in ORDERS] for s in sorted(by_seed)])
     report = summarize(values)
     report["status"] = "analyzed"
+    report.update({k: eligible[0].get(k) for k in ("review_mode", "human_reviewed", "review_limitations", "protocol_amendment")})
     report['mixed'] = dict(rmst=float(np.mean([r['first_global'] or r['cap'] for r in mixed])),
                            events=sum(r['stop_reason'] == 'mastered' for r in mixed))
     report["events_by_order"] = {"-".join(o): sum(by_seed[s][o]["stop_reason"] == "mastered" for s in by_seed) for o in ORDERS}

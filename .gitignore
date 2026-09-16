@@ -30,3 +30,4 @@ data/*
 # reviewer registry and returned judgments never leave the operator.
 review/private/
 review/submissions/
+review/ai/
