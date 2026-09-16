@@ -122,6 +122,55 @@
       "used": 0.0073081129185933,
       "status": "completed",
       "exceeded_reservation": false
+    },
+    "explore-v2-mono-en": {
+      "category": "reserve",
+      "reserved": 0.3,
+      "used": 0.01777982688250227,
+      "status": "technical_failure",
+      "exceeded_reservation": false
+    },
+    "explore-v2-mono-de": {
+      "category": "reserve",
+      "reserved": 0.3,
+      "used": 0.02029070574473331,
+      "status": "technical_failure",
+      "exceeded_reservation": false
+    },
+    "explore-v2-mono-ko": {
+      "category": "reserve",
+      "reserved": 0.3,
+      "used": 0.020013565660273243,
+      "status": "technical_failure",
+      "exceeded_reservation": false
+    },
+    "explore-v2-checkpoint-eval-1": {
+      "category": "reserve",
+      "reserved": 0.1,
+      "used": 0.014065641975289004,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v2-mono-en-r2": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.05528482215278523,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v2-mono-de-r2": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.07808546429189543,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v2-mono-ko-r2": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.06279901389446524,
+      "status": "completed",
+      "exceeded_reservation": false
     }
   },
   "transfers": []

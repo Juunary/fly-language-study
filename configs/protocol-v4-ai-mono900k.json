@@ -1,0 +1,7 @@
+{
+  "version": "v4.1-ai-review+explore-mono900k",
+  "eval_interval": 10240,
+  "mono_cap": 900000,
+  "main_seeds": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+  "pilot_seeds": [10001,10002]
+}
