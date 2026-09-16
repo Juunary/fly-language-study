@@ -177,3 +177,22 @@ def test_cli_revise_evaluation_writes_new_version(corpus_files, tmp_path, capsys
     manifest = json.loads((tmp_path/"v2"/"manifest.json").read_text(encoding="utf-8"))
     assert manifest["derived_from"]["version"] == "old" and manifest["independent_test"]["confirmatory"] is False
     assert json.loads(capsys.readouterr().out)["passed"] is True
+
+
+def test_smoke_run_can_skip_independent_test_and_auxiliary_panels(corpus_files, tmp_path):
+    p = Protocol(vocab_size=320, embed_dim=8, effective_batch=4, eval_interval=8, mono_cap=12, total_cap=32, panel_per_task=2)
+    summary = run(p, corpus_files/"graph.npz", corpus_files/"data", corpus_files/"tokenizer.json", tmp_path/"run",
+                  "mono", ("en",), 7, cohort="smoke", device="cpu", backend="dense", microbatch=3, smoke=True,
+                  independent_test=False, auxiliary_panels=False)
+    assert summary["stop_reason"] == "administrative_cap" and summary["independent_test"] == "skipped_exploratory"
+    assert (tmp_path/"run"/"primary.pt").exists() and not (tmp_path/"run"/"independent-test.json").exists()
+    events = [json.loads(l) for l in (tmp_path/"run"/"events.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert any(e["kind"] == "scheduled" for e in events) and not any(e["kind"] == "auxiliary" for e in events)
+    assert summary["clocks_seconds"]["auxiliary"] == 0 and summary["clocks_seconds"]["test"] == 0
+
+
+def test_study_cohorts_cannot_skip_independent_test_or_auxiliary_panels(corpus_files, tmp_path):
+    for kwargs in (dict(independent_test=False), dict(auxiliary_panels=False)):
+        with pytest.raises(ValueError, match="Study cohorts"):
+            run(Protocol(), corpus_files/"graph.npz", corpus_files/"data", corpus_files/"tokenizer.json", tmp_path/"pilot",
+                "mono", ("en",), 10001, cohort="pilot", device="cpu", backend="dense", **kwargs)

@@ -1,0 +1,965 @@
+{
+  "definition": "Drop from best previous scheduled full-panel accuracy; A/B sampling noise remains.",
+  "points": [
+    {
+      "seen": 5120,
+      "cell": "de/roles",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 5120,
+      "cell": "de/negation",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 5120,
+      "cell": "de/space",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 5120,
+      "cell": "de/quantity",
+      "accuracy": 0.517,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 10240,
+      "cell": "de/roles",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 10240,
+      "cell": "de/negation",
+      "accuracy": 0.501,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 10240,
+      "cell": "de/space",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 10240,
+      "cell": "de/quantity",
+      "accuracy": 0.501,
+      "drop_from_observed_peak": 0.016000000000000014
+    },
+    {
+      "seen": 15360,
+      "cell": "de/roles",
+      "accuracy": 0.507,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 15360,
+      "cell": "de/negation",
+      "accuracy": 0.499,
+      "drop_from_observed_peak": 0.0020000000000000018
+    },
+    {
+      "seen": 15360,
+      "cell": "de/space",
+      "accuracy": 0.499,
+      "drop_from_observed_peak": 0.0010000000000000009
+    },
+    {
+      "seen": 15360,
+      "cell": "de/quantity",
+      "accuracy": 0.508,
+      "drop_from_observed_peak": 0.009000000000000008
+    },
+    {
+      "seen": 20480,
+      "cell": "de/roles",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.007000000000000006
+    },
+    {
+      "seen": 20480,
+      "cell": "de/negation",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.0010000000000000009
+    },
+    {
+      "seen": 20480,
+      "cell": "de/space",
+      "accuracy": 0.502,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 20480,
+      "cell": "de/quantity",
+      "accuracy": 0.495,
+      "drop_from_observed_peak": 0.02200000000000002
+    },
+    {
+      "seen": 25600,
+      "cell": "de/roles",
+      "accuracy": 0.527,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 25600,
+      "cell": "de/negation",
+      "accuracy": 0.501,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 25600,
+      "cell": "de/space",
+      "accuracy": 0.499,
+      "drop_from_observed_peak": 0.0030000000000000027
+    },
+    {
+      "seen": 25600,
+      "cell": "de/quantity",
+      "accuracy": 0.49,
+      "drop_from_observed_peak": 0.027000000000000024
+    },
+    {
+      "seen": 30720,
+      "cell": "de/roles",
+      "accuracy": 0.504,
+      "drop_from_observed_peak": 0.02300000000000002
+    },
+    {
+      "seen": 30720,
+      "cell": "de/negation",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.0010000000000000009
+    },
+    {
+      "seen": 30720,
+      "cell": "de/space",
+      "accuracy": 0.496,
+      "drop_from_observed_peak": 0.006000000000000005
+    },
+    {
+      "seen": 30720,
+      "cell": "de/quantity",
+      "accuracy": 0.501,
+      "drop_from_observed_peak": 0.016000000000000014
+    },
+    {
+      "seen": 35840,
+      "cell": "de/roles",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.027000000000000024
+    },
+    {
+      "seen": 35840,
+      "cell": "de/negation",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.0010000000000000009
+    },
+    {
+      "seen": 35840,
+      "cell": "de/space",
+      "accuracy": 0.499,
+      "drop_from_observed_peak": 0.0030000000000000027
+    },
+    {
+      "seen": 35840,
+      "cell": "de/quantity",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.017000000000000015
+    },
+    {
+      "seen": 40960,
+      "cell": "de/roles",
+      "accuracy": 0.502,
+      "drop_from_observed_peak": 0.025000000000000022
+    },
+    {
+      "seen": 40960,
+      "cell": "de/negation",
+      "accuracy": 0.496,
+      "drop_from_observed_peak": 0.0050000000000000044
+    },
+    {
+      "seen": 40960,
+      "cell": "de/space",
+      "accuracy": 0.489,
+      "drop_from_observed_peak": 0.013000000000000012
+    },
+    {
+      "seen": 40960,
+      "cell": "de/quantity",
+      "accuracy": 0.505,
+      "drop_from_observed_peak": 0.01200000000000001
+    },
+    {
+      "seen": 46080,
+      "cell": "de/roles",
+      "accuracy": 0.516,
+      "drop_from_observed_peak": 0.01100000000000001
+    },
+    {
+      "seen": 46080,
+      "cell": "de/negation",
+      "accuracy": 0.504,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 46080,
+      "cell": "de/space",
+      "accuracy": 0.505,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 46080,
+      "cell": "de/quantity",
+      "accuracy": 0.504,
+      "drop_from_observed_peak": 0.013000000000000012
+    },
+    {
+      "seen": 51200,
+      "cell": "de/roles",
+      "accuracy": 0.495,
+      "drop_from_observed_peak": 0.03200000000000003
+    },
+    {
+      "seen": 51200,
+      "cell": "de/negation",
+      "accuracy": 0.502,
+      "drop_from_observed_peak": 0.0020000000000000018
+    },
+    {
+      "seen": 51200,
+      "cell": "de/space",
+      "accuracy": 0.51,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 51200,
+      "cell": "de/quantity",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.017000000000000015
+    },
+    {
+      "seen": 56320,
+      "cell": "de/roles",
+      "accuracy": 0.513,
+      "drop_from_observed_peak": 0.014000000000000012
+    },
+    {
+      "seen": 56320,
+      "cell": "de/negation",
+      "accuracy": 0.509,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 56320,
+      "cell": "de/space",
+      "accuracy": 0.512,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 56320,
+      "cell": "de/quantity",
+      "accuracy": 0.512,
+      "drop_from_observed_peak": 0.0050000000000000044
+    },
+    {
+      "seen": 61440,
+      "cell": "de/roles",
+      "accuracy": 0.497,
+      "drop_from_observed_peak": 0.030000000000000027
+    },
+    {
+      "seen": 61440,
+      "cell": "de/negation",
+      "accuracy": 0.502,
+      "drop_from_observed_peak": 0.007000000000000006
+    },
+    {
+      "seen": 61440,
+      "cell": "de/space",
+      "accuracy": 0.494,
+      "drop_from_observed_peak": 0.018000000000000016
+    },
+    {
+      "seen": 61440,
+      "cell": "de/quantity",
+      "accuracy": 0.494,
+      "drop_from_observed_peak": 0.02300000000000002
+    },
+    {
+      "seen": 66560,
+      "cell": "de/roles",
+      "accuracy": 0.527,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 66560,
+      "cell": "de/negation",
+      "accuracy": 0.496,
+      "drop_from_observed_peak": 0.013000000000000012
+    },
+    {
+      "seen": 66560,
+      "cell": "de/space",
+      "accuracy": 0.514,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 66560,
+      "cell": "de/quantity",
+      "accuracy": 0.501,
+      "drop_from_observed_peak": 0.016000000000000014
+    },
+    {
+      "seen": 71680,
+      "cell": "de/roles",
+      "accuracy": 0.49,
+      "drop_from_observed_peak": 0.03700000000000003
+    },
+    {
+      "seen": 71680,
+      "cell": "de/negation",
+      "accuracy": 0.507,
+      "drop_from_observed_peak": 0.0020000000000000018
+    },
+    {
+      "seen": 71680,
+      "cell": "de/space",
+      "accuracy": 0.502,
+      "drop_from_observed_peak": 0.01200000000000001
+    },
+    {
+      "seen": 71680,
+      "cell": "de/quantity",
+      "accuracy": 0.463,
+      "drop_from_observed_peak": 0.05399999999999999
+    },
+    {
+      "seen": 76800,
+      "cell": "de/roles",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.027000000000000024
+    },
+    {
+      "seen": 76800,
+      "cell": "de/negation",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.009000000000000008
+    },
+    {
+      "seen": 76800,
+      "cell": "de/space",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.014000000000000012
+    },
+    {
+      "seen": 76800,
+      "cell": "de/quantity",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.017000000000000015
+    },
+    {
+      "seen": 81920,
+      "cell": "de/roles",
+      "accuracy": 0.505,
+      "drop_from_observed_peak": 0.02200000000000002
+    },
+    {
+      "seen": 81920,
+      "cell": "de/negation",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.009000000000000008
+    },
+    {
+      "seen": 81920,
+      "cell": "de/space",
+      "accuracy": 0.498,
+      "drop_from_observed_peak": 0.016000000000000014
+    },
+    {
+      "seen": 81920,
+      "cell": "de/quantity",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.017000000000000015
+    },
+    {
+      "seen": 87040,
+      "cell": "de/roles",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.027000000000000024
+    },
+    {
+      "seen": 87040,
+      "cell": "de/negation",
+      "accuracy": 0.498,
+      "drop_from_observed_peak": 0.01100000000000001
+    },
+    {
+      "seen": 87040,
+      "cell": "de/space",
+      "accuracy": 0.518,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 87040,
+      "cell": "de/quantity",
+      "accuracy": 0.505,
+      "drop_from_observed_peak": 0.01200000000000001
+    },
+    {
+      "seen": 92160,
+      "cell": "de/roles",
+      "accuracy": 0.515,
+      "drop_from_observed_peak": 0.01200000000000001
+    },
+    {
+      "seen": 92160,
+      "cell": "de/negation",
+      "accuracy": 0.522,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 92160,
+      "cell": "de/space",
+      "accuracy": 0.514,
+      "drop_from_observed_peak": 0.0040000000000000036
+    },
+    {
+      "seen": 92160,
+      "cell": "de/quantity",
+      "accuracy": 0.494,
+      "drop_from_observed_peak": 0.02300000000000002
+    },
+    {
+      "seen": 97280,
+      "cell": "de/roles",
+      "accuracy": 0.538,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 97280,
+      "cell": "de/negation",
+      "accuracy": 0.499,
+      "drop_from_observed_peak": 0.02300000000000002
+    },
+    {
+      "seen": 97280,
+      "cell": "de/space",
+      "accuracy": 0.492,
+      "drop_from_observed_peak": 0.026000000000000023
+    },
+    {
+      "seen": 97280,
+      "cell": "de/quantity",
+      "accuracy": 0.547,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 102400,
+      "cell": "de/roles",
+      "accuracy": 0.488,
+      "drop_from_observed_peak": 0.050000000000000044
+    },
+    {
+      "seen": 102400,
+      "cell": "de/negation",
+      "accuracy": 0.577,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 102400,
+      "cell": "de/space",
+      "accuracy": 0.512,
+      "drop_from_observed_peak": 0.006000000000000005
+    },
+    {
+      "seen": 102400,
+      "cell": "de/quantity",
+      "accuracy": 0.49,
+      "drop_from_observed_peak": 0.05700000000000005
+    },
+    {
+      "seen": 107520,
+      "cell": "de/roles",
+      "accuracy": 0.5,
+      "drop_from_observed_peak": 0.038000000000000034
+    },
+    {
+      "seen": 107520,
+      "cell": "de/negation",
+      "accuracy": 0.502,
+      "drop_from_observed_peak": 0.07499999999999996
+    },
+    {
+      "seen": 107520,
+      "cell": "de/space",
+      "accuracy": 0.507,
+      "drop_from_observed_peak": 0.01100000000000001
+    },
+    {
+      "seen": 107520,
+      "cell": "de/quantity",
+      "accuracy": 0.501,
+      "drop_from_observed_peak": 0.04600000000000004
+    },
+    {
+      "seen": 112640,
+      "cell": "de/roles",
+      "accuracy": 0.492,
+      "drop_from_observed_peak": 0.04600000000000004
+    },
+    {
+      "seen": 112640,
+      "cell": "de/negation",
+      "accuracy": 0.658,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 112640,
+      "cell": "de/space",
+      "accuracy": 0.503,
+      "drop_from_observed_peak": 0.015000000000000013
+    },
+    {
+      "seen": 112640,
+      "cell": "de/quantity",
+      "accuracy": 0.491,
+      "drop_from_observed_peak": 0.05600000000000005
+    },
+    {
+      "seen": 117760,
+      "cell": "de/roles",
+      "accuracy": 0.496,
+      "drop_from_observed_peak": 0.04200000000000004
+    },
+    {
+      "seen": 117760,
+      "cell": "de/negation",
+      "accuracy": 0.736,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 117760,
+      "cell": "de/space",
+      "accuracy": 0.48,
+      "drop_from_observed_peak": 0.038000000000000034
+    },
+    {
+      "seen": 117760,
+      "cell": "de/quantity",
+      "accuracy": 0.505,
+      "drop_from_observed_peak": 0.04200000000000004
+    },
+    {
+      "seen": 122880,
+      "cell": "de/roles",
+      "accuracy": 0.523,
+      "drop_from_observed_peak": 0.015000000000000013
+    },
+    {
+      "seen": 122880,
+      "cell": "de/negation",
+      "accuracy": 0.757,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 122880,
+      "cell": "de/space",
+      "accuracy": 0.495,
+      "drop_from_observed_peak": 0.02300000000000002
+    },
+    {
+      "seen": 122880,
+      "cell": "de/quantity",
+      "accuracy": 0.488,
+      "drop_from_observed_peak": 0.05900000000000005
+    },
+    {
+      "seen": 128000,
+      "cell": "de/roles",
+      "accuracy": 0.627,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 128000,
+      "cell": "de/negation",
+      "accuracy": 0.901,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 128000,
+      "cell": "de/space",
+      "accuracy": 0.523,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 128000,
+      "cell": "de/quantity",
+      "accuracy": 0.518,
+      "drop_from_observed_peak": 0.029000000000000026
+    },
+    {
+      "seen": 133120,
+      "cell": "de/roles",
+      "accuracy": 0.69,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 133120,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 133120,
+      "cell": "de/space",
+      "accuracy": 0.513,
+      "drop_from_observed_peak": 0.010000000000000009
+    },
+    {
+      "seen": 133120,
+      "cell": "de/quantity",
+      "accuracy": 0.518,
+      "drop_from_observed_peak": 0.029000000000000026
+    },
+    {
+      "seen": 138240,
+      "cell": "de/roles",
+      "accuracy": 0.814,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 138240,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 138240,
+      "cell": "de/space",
+      "accuracy": 0.501,
+      "drop_from_observed_peak": 0.02200000000000002
+    },
+    {
+      "seen": 138240,
+      "cell": "de/quantity",
+      "accuracy": 0.498,
+      "drop_from_observed_peak": 0.049000000000000044
+    },
+    {
+      "seen": 143360,
+      "cell": "de/roles",
+      "accuracy": 0.918,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 143360,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 143360,
+      "cell": "de/space",
+      "accuracy": 0.521,
+      "drop_from_observed_peak": 0.0020000000000000018
+    },
+    {
+      "seen": 143360,
+      "cell": "de/quantity",
+      "accuracy": 0.488,
+      "drop_from_observed_peak": 0.05900000000000005
+    },
+    {
+      "seen": 148480,
+      "cell": "de/roles",
+      "accuracy": 0.976,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 148480,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 148480,
+      "cell": "de/space",
+      "accuracy": 0.56,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 148480,
+      "cell": "de/quantity",
+      "accuracy": 0.537,
+      "drop_from_observed_peak": 0.010000000000000009
+    },
+    {
+      "seen": 153600,
+      "cell": "de/roles",
+      "accuracy": 0.945,
+      "drop_from_observed_peak": 0.031000000000000028
+    },
+    {
+      "seen": 153600,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 153600,
+      "cell": "de/space",
+      "accuracy": 0.687,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 153600,
+      "cell": "de/quantity",
+      "accuracy": 0.525,
+      "drop_from_observed_peak": 0.02200000000000002
+    },
+    {
+      "seen": 158720,
+      "cell": "de/roles",
+      "accuracy": 0.987,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 158720,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 158720,
+      "cell": "de/space",
+      "accuracy": 0.812,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 158720,
+      "cell": "de/quantity",
+      "accuracy": 0.511,
+      "drop_from_observed_peak": 0.03600000000000003
+    },
+    {
+      "seen": 163840,
+      "cell": "de/roles",
+      "accuracy": 0.986,
+      "drop_from_observed_peak": 0.0010000000000000009
+    },
+    {
+      "seen": 163840,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 163840,
+      "cell": "de/space",
+      "accuracy": 0.855,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 163840,
+      "cell": "de/quantity",
+      "accuracy": 0.518,
+      "drop_from_observed_peak": 0.029000000000000026
+    },
+    {
+      "seen": 168960,
+      "cell": "de/roles",
+      "accuracy": 0.997,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 168960,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 168960,
+      "cell": "de/space",
+      "accuracy": 0.934,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 168960,
+      "cell": "de/quantity",
+      "accuracy": 0.531,
+      "drop_from_observed_peak": 0.016000000000000014
+    },
+    {
+      "seen": 174080,
+      "cell": "de/roles",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 174080,
+      "cell": "de/negation",
+      "accuracy": 0.999,
+      "drop_from_observed_peak": 0.0010000000000000009
+    },
+    {
+      "seen": 174080,
+      "cell": "de/space",
+      "accuracy": 0.999,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 174080,
+      "cell": "de/quantity",
+      "accuracy": 0.536,
+      "drop_from_observed_peak": 0.01100000000000001
+    },
+    {
+      "seen": 179200,
+      "cell": "de/roles",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 179200,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 179200,
+      "cell": "de/space",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 179200,
+      "cell": "de/quantity",
+      "accuracy": 0.524,
+      "drop_from_observed_peak": 0.02300000000000002
+    },
+    {
+      "seen": 184320,
+      "cell": "de/roles",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 184320,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 184320,
+      "cell": "de/space",
+      "accuracy": 0.999,
+      "drop_from_observed_peak": 0.0010000000000000009
+    },
+    {
+      "seen": 184320,
+      "cell": "de/quantity",
+      "accuracy": 0.568,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 189440,
+      "cell": "de/roles",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 189440,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 189440,
+      "cell": "de/space",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 189440,
+      "cell": "de/quantity",
+      "accuracy": 0.587,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 194560,
+      "cell": "de/roles",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 194560,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 194560,
+      "cell": "de/space",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 194560,
+      "cell": "de/quantity",
+      "accuracy": 0.592,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 199680,
+      "cell": "de/roles",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 199680,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 199680,
+      "cell": "de/space",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 199680,
+      "cell": "de/quantity",
+      "accuracy": 0.697,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 200000,
+      "cell": "de/roles",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 200000,
+      "cell": "de/negation",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 200000,
+      "cell": "de/space",
+      "accuracy": 1.0,
+      "drop_from_observed_peak": 0.0
+    },
+    {
+      "seen": 200000,
+      "cell": "de/quantity",
+      "accuracy": 0.659,
+      "drop_from_observed_peak": 0.03799999999999992
+    }
+  ]
+}

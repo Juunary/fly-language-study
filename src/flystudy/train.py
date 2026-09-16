@@ -64,8 +64,11 @@ def account_attempt(function):
 def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed,
         cohort="pilot", device="cuda:0", backend="cuda", microbatch=32,
         launch=None, ledger_path=None, run_id=None, resume=None, smoke=False,
-        max_updates=None, review_samples=False, reservation_id=None):
-    """One bounded run. Technical/budget interruption never becomes a censored success."""
+        max_updates=None, review_samples=False, reservation_id=None,
+        independent_test=True, auxiliary_panels=True):
+    """One bounded run. Technical/budget interruption never becomes a censored success.
+    Smoke (exploratory) runs may skip the terminal independent test and the per-panel auxiliary
+    evaluation; study cohorts always perform both."""
     protocol.validate(production=not smoke)
     if cohort in ('main','pilot'): protocol.validate_primary_model()
     if microbatch < 1 or microbatch > protocol.effective_batch:
@@ -76,6 +79,8 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
         raise ValueError("Invalid cohort")
     if smoke != (cohort == "smoke"):
         raise ValueError("Smoke experiments require an explicit smoke cohort")
+    if not smoke and not (independent_test and auxiliary_panels):
+        raise ValueError("Study cohorts always run the independent test and the auxiliary panels")
     data_meta = json.loads((Path(dataset)/"manifest.json").read_text(encoding="utf-8"))
     if not smoke:
         require_confirmatory_test(data_meta)
@@ -137,6 +142,7 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
                     code_hash=code_hash(), synthetic=graph.provenance.get("condition") == "synthetic",
                     backend=backend, device=device, graph_condition=graph.provenance.get("condition"),
                     physical_microbatch=microbatch, review_samples=review_samples,
+                    independent_test=independent_test, auxiliary_panels=auxiliary_panels,
                     environment=environment(), paths=dict(graph=str(Path(graph_path).resolve()),
                         dataset=str(Path(dataset).resolve()), tokenizer=str(Path(tokenizer_path).resolve())))
     review_record = json.loads(Path(launch).read_text(encoding="utf-8")) if launch and not smoke else {}
@@ -207,7 +213,7 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
                 scores, strata = evaluate(model, corpus, panel, curriculum.languages, microbatch, optimizer, sampler)
                 sync(device); clocks["eval"] += time.perf_counter()-begin
                 counters["evaluation_examples"] += sum(v[1] for v in scores.values())
-                if corpus.has_auxiliary(panel):
+                if auxiliary_panels and corpus.has_auxiliary(panel):
                     # Outer-frame transfer on the same items; recorded only, never a mastery observation.
                     sync(device); begin = time.perf_counter()
                     aux_scores, aux_strata = evaluate(model, corpus, panel, curriculum.languages, microbatch, optimizer, sampler, view="auxiliary")
@@ -250,7 +256,7 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
         checkpoint("primary.pt" if status in ("mastered", "administrative_cap") else "latest.pt")
         tests, test_strata = None, None
         test_path = output / "independent-test.json"
-        if status in ("mastered", "administrative_cap"):
+        if status in ("mastered", "administrative_cap") and independent_test:
             if test_path.exists():
                 saved = json.loads(test_path.read_text())
                 if saved["checkpoint_hash"] != file_hash(output / "primary.pt"):
@@ -276,6 +282,7 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
     finally:
         elapsed = elapsed_before+time.perf_counter()-started
         summary = {**metadata, "seen": curriculum.seen, "stop_reason": status,
+                   "independent_test": "recorded" if tests is not None else ("skipped_exploratory" if not independent_test else None),
                    "first_global": curriculum.first_global, "first_task": curriculum.first_task,
                    "first_language": curriculum.first_language, "stages": curriculum.stages,
                    "review_start": curriculum.review_start, "clocks_seconds": clocks,

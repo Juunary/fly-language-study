@@ -1,0 +1,3267 @@
+{
+  "kind": "exploratory_v4_wordbound_attainment_report",
+  "cohort_label": "exploratory",
+  "study_evidence": false,
+  "review_status": "incomplete_ai_review_not_certified",
+  "question": "attainment cost and seed reproducibility of the word-boundary BPE input on the primary evaluation",
+  "note": "Runs are labelled cohort='smoke' by the training code because that is its only non-gated cohort; they use the REAL graph and CUDA backend. Mastery here is the exploratory attainment rule on the draft-v4.4 primary rendering; it is not a study result. No independent test; auxiliary evaluation only at the terminal checkpoint.",
+  "created_at_utc": "2026-09-16T20:14:13.136155+00:00",
+  "manifest": "runs/exploratory-v4-wordbound-attainment/exploratory-manifest.json",
+  "code_hash": "7e43d57ca2296797df04b8486861c098e23a98823ffbe72b7a1dbfdc2f1caa46",
+  "script_hash": "1e626e41fc1c8e14cdc9c55b72af04084410a67ee7dba2e83c30acf6b19d7f66",
+  "protocol": {
+    "path": "configs/protocol-v4-ai-wordbound-5120.json",
+    "hash": "01822d7177d2de908a90bb4510877e37f239d6abb61515450786f8a5b5bc59ef",
+    "eval_interval": 5120,
+    "mono_cap": 200000,
+    "threshold": 0.8,
+    "vocab_size": 841
+  },
+  "tokenizer": {
+    "path": "artifacts/tokenizer-wordbound-v4.4.json",
+    "hash": "24589e33b428a52fcf3a44d3480f663d8c24c6803dbd5116dabcb23de838c2f3",
+    "identical_to_wordbound_v1": true,
+    "vocab": 841
+  },
+  "trainable_parameters": 570710,
+  "data": {
+    "path": "data/draft-v4.4",
+    "hash": "488d8f22a4dfe1f19f00af90a31c6817c00efcaf9c15652736a772a5bf3193ac"
+  },
+  "gpu_used_for_report": false,
+  "test_split_used": false,
+  "runs": [
+    {
+      "run_id": "explore-v4-wb-20002-mono-en",
+      "seed": 20002,
+      "language": "en",
+      "status": "completed",
+      "stop_reason": "mastered",
+      "seen": 200000,
+      "updates": 782,
+      "attainment": {
+        "all_tasks": 200000,
+        "per_task": {
+          "roles": 117760,
+          "negation": 122880,
+          "space": 117760,
+          "quantity": 200000
+        }
+      },
+      "counters": {
+        "updates": 782,
+        "tokens": 8618080,
+        "padded_tokens": 11600000,
+        "recurrent_updates": 23200000,
+        "evaluation_examples": 160000
+      },
+      "clocks_seconds": {
+        "train": 102.0243480456993,
+        "eval": 27.361907919635996,
+        "auxiliary": 0.0,
+        "checkpoint": 10.253929540747777,
+        "test": 0.0,
+        "review_eval": 0.0
+      },
+      "gpu_hours": 0.04389511121417551,
+      "summary_gpu_hours": 0.040998549420878085,
+      "attempts": [
+        {
+          "reservation_id": "explore-v4-wb-20002-mono-en",
+          "reserved_hours": 0.25,
+          "device": "cuda:0",
+          "wall_hours": 0.04389511121417551,
+          "exit_code": 0,
+          "status": "completed",
+          "started_at_utc": "2026-09-16T20:05:03.136859+00:00",
+          "ended_at_utc": "2026-09-16T20:07:41.317594+00:00",
+          "interrupted": null,
+          "concurrent_with": [
+            "explore-v4-wb-20003-mono-en"
+          ],
+          "console_log": "runs/exploratory-v4-wordbound-attainment/explore-v4-wb-20002-mono-en.console.log",
+          "error": null
+        }
+      ],
+      "seconds_per_update": 0.1304659182170068,
+      "seconds_per_update_alone_v3_profile": 0.13460908464451388,
+      "slowdown_vs_alone": 0.9692207517906486,
+      "loss_first_last_min": [
+        0.6985295414924622,
+        0.10148539394140244,
+        0.07652647793292999
+      ],
+      "scheduled_panels": 40,
+      "curve": [
+        {
+          "seen": 5120,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.499,
+            "en/negation": 0.5,
+            "en/space": 0.5,
+            "en/quantity": 0.503
+          }
+        },
+        {
+          "seen": 10240,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.501,
+            "en/negation": 0.5,
+            "en/space": 0.5,
+            "en/quantity": 0.499
+          }
+        },
+        {
+          "seen": 15360,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.499,
+            "en/negation": 0.5,
+            "en/space": 0.506,
+            "en/quantity": 0.499
+          }
+        },
+        {
+          "seen": 20480,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.492,
+            "en/negation": 0.501,
+            "en/space": 0.504,
+            "en/quantity": 0.492
+          }
+        },
+        {
+          "seen": 25600,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.516,
+            "en/negation": 0.509,
+            "en/space": 0.52,
+            "en/quantity": 0.498
+          }
+        },
+        {
+          "seen": 30720,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.501,
+            "en/negation": 0.499,
+            "en/space": 0.497,
+            "en/quantity": 0.492
+          }
+        },
+        {
+          "seen": 35840,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.504,
+            "en/negation": 0.499,
+            "en/space": 0.498,
+            "en/quantity": 0.495
+          }
+        },
+        {
+          "seen": 40960,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.506,
+            "en/negation": 0.505,
+            "en/space": 0.505,
+            "en/quantity": 0.484
+          }
+        },
+        {
+          "seen": 46080,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.529,
+            "en/negation": 0.503,
+            "en/space": 0.516,
+            "en/quantity": 0.498
+          }
+        },
+        {
+          "seen": 51200,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.465,
+            "en/negation": 0.506,
+            "en/space": 0.49,
+            "en/quantity": 0.498
+          }
+        },
+        {
+          "seen": 56320,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.496,
+            "en/negation": 0.5,
+            "en/space": 0.514,
+            "en/quantity": 0.52
+          }
+        },
+        {
+          "seen": 61440,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.478,
+            "en/negation": 0.503,
+            "en/space": 0.497,
+            "en/quantity": 0.486
+          }
+        },
+        {
+          "seen": 66560,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.54,
+            "en/negation": 0.508,
+            "en/space": 0.508,
+            "en/quantity": 0.508
+          }
+        },
+        {
+          "seen": 71680,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.523,
+            "en/negation": 0.495,
+            "en/space": 0.51,
+            "en/quantity": 0.483
+          }
+        },
+        {
+          "seen": 76800,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.5,
+            "en/negation": 0.5,
+            "en/space": 0.499,
+            "en/quantity": 0.5
+          }
+        },
+        {
+          "seen": 81920,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.535,
+            "en/negation": 0.5,
+            "en/space": 0.499,
+            "en/quantity": 0.501
+          }
+        },
+        {
+          "seen": 87040,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.452,
+            "en/negation": 0.495,
+            "en/space": 0.529,
+            "en/quantity": 0.493
+          }
+        },
+        {
+          "seen": 92160,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.452,
+            "en/negation": 0.448,
+            "en/space": 0.518,
+            "en/quantity": 0.494
+          }
+        },
+        {
+          "seen": 97280,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.571,
+            "en/negation": 0.472,
+            "en/space": 0.504,
+            "en/quantity": 0.502
+          }
+        },
+        {
+          "seen": 102400,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.669,
+            "en/negation": 0.74,
+            "en/space": 0.56,
+            "en/quantity": 0.496
+          }
+        },
+        {
+          "seen": 107520,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.725,
+            "en/negation": 0.752,
+            "en/space": 0.688,
+            "en/quantity": 0.514
+          }
+        },
+        {
+          "seen": 112640,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.801,
+            "en/negation": 0.74,
+            "en/space": 0.916,
+            "en/quantity": 0.479
+          }
+        },
+        {
+          "seen": 117760,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 0.991,
+            "en/space": 0.996,
+            "en/quantity": 0.514
+          }
+        },
+        {
+          "seen": 122880,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.507
+          }
+        },
+        {
+          "seen": 128000,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.999,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.534
+          }
+        },
+        {
+          "seen": 133120,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.547
+          }
+        },
+        {
+          "seen": 138240,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.502
+          }
+        },
+        {
+          "seen": 143360,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.538
+          }
+        },
+        {
+          "seen": 148480,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.537
+          }
+        },
+        {
+          "seen": 153600,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.584
+          }
+        },
+        {
+          "seen": 158720,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.602
+          }
+        },
+        {
+          "seen": 163840,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.646
+          }
+        },
+        {
+          "seen": 168960,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.597
+          }
+        },
+        {
+          "seen": 174080,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.71
+          }
+        },
+        {
+          "seen": 179200,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.714
+          }
+        },
+        {
+          "seen": 184320,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.76
+          }
+        },
+        {
+          "seen": 189440,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.999,
+            "en/negation": 0.998,
+            "en/space": 1.0,
+            "en/quantity": 0.65
+          }
+        },
+        {
+          "seen": 194560,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.742
+          }
+        },
+        {
+          "seen": 199680,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.848
+          }
+        },
+        {
+          "seen": 200000,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.834
+          }
+        }
+      ],
+      "terminal_evaluation": {
+        "checkpoint_hash": "afd4642cf9589b98e505ab572d13746c504fc6fb84d60d9714dab16676c29a93",
+        "seen": 200000,
+        "updates": 782,
+        "scores": {
+          "dev_a/primary": {
+            "en/roles": [
+              1000,
+              1000
+            ],
+            "en/negation": [
+              1000,
+              1000
+            ],
+            "en/space": [
+              1000,
+              1000
+            ],
+            "en/quantity": [
+              836,
+              1000
+            ]
+          },
+          "dev_a/auxiliary": {
+            "en/roles": [
+              558,
+              1000
+            ],
+            "en/negation": [
+              581,
+              1000
+            ],
+            "en/space": [
+              535,
+              1000
+            ],
+            "en/quantity": [
+              538,
+              1000
+            ]
+          },
+          "dev_b/primary": {
+            "en/roles": [
+              1000,
+              1000
+            ],
+            "en/negation": [
+              1000,
+              1000
+            ],
+            "en/space": [
+              1000,
+              1000
+            ],
+            "en/quantity": [
+              834,
+              1000
+            ]
+          },
+          "dev_b/auxiliary": {
+            "en/roles": [
+              500,
+              1000
+            ],
+            "en/negation": [
+              500,
+              1000
+            ],
+            "en/space": [
+              366,
+              1000
+            ],
+            "en/quantity": [
+              500,
+              1000
+            ]
+          }
+        },
+        "seconds": 6.399241083068773
+      },
+      "independent_test": "skipped_exploratory",
+      "independent_test_written": false
+    },
+    {
+      "run_id": "explore-v4-wb-20003-mono-en",
+      "seed": 20003,
+      "language": "en",
+      "status": "completed",
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "updates": 782,
+      "attainment": {
+        "all_tasks": null,
+        "per_task": {
+          "roles": 112640,
+          "negation": 143360,
+          "space": 112640,
+          "quantity": null
+        }
+      },
+      "counters": {
+        "updates": 782,
+        "tokens": 8618080,
+        "padded_tokens": 11600000,
+        "recurrent_updates": 23200000,
+        "evaluation_examples": 160000
+      },
+      "clocks_seconds": {
+        "train": 109.98941327724606,
+        "eval": 28.654752203496173,
+        "auxiliary": 0.0,
+        "checkpoint": 10.493347098352388,
+        "test": 0.0,
+        "review_eval": 0.0
+      },
+      "gpu_hours": 0.04644833849943502,
+      "summary_gpu_hours": 0.04345967107413647,
+      "attempts": [
+        {
+          "reservation_id": "explore-v4-wb-20003-mono-en",
+          "reserved_hours": 0.25,
+          "device": "cuda:1",
+          "wall_hours": 0.04644833849943502,
+          "exit_code": 0,
+          "status": "completed",
+          "started_at_utc": "2026-09-16T20:05:03.141254+00:00",
+          "ended_at_utc": "2026-09-16T20:07:50.393349+00:00",
+          "interrupted": null,
+          "concurrent_with": [
+            "explore-v4-wb-20002-mono-de"
+          ],
+          "console_log": "runs/exploratory-v4-wordbound-attainment/explore-v4-wb-20003-mono-en.console.log",
+          "error": null
+        }
+      ],
+      "seconds_per_update": 0.14065142362819189,
+      "seconds_per_update_alone_v3_profile": 0.13460908464451388,
+      "slowdown_vs_alone": 1.044888047486803,
+      "loss_first_last_min": [
+        0.7127158045768738,
+        0.18125689029693604,
+        0.13480328023433685
+      ],
+      "scheduled_panels": 40,
+      "curve": [
+        {
+          "seen": 5120,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.502,
+            "en/negation": 0.5,
+            "en/space": 0.498,
+            "en/quantity": 0.499
+          }
+        },
+        {
+          "seen": 10240,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.509,
+            "en/negation": 0.5,
+            "en/space": 0.511,
+            "en/quantity": 0.521
+          }
+        },
+        {
+          "seen": 15360,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.491,
+            "en/negation": 0.506,
+            "en/space": 0.517,
+            "en/quantity": 0.5
+          }
+        },
+        {
+          "seen": 20480,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.48,
+            "en/negation": 0.488,
+            "en/space": 0.495,
+            "en/quantity": 0.491
+          }
+        },
+        {
+          "seen": 25600,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.517,
+            "en/negation": 0.504,
+            "en/space": 0.522,
+            "en/quantity": 0.507
+          }
+        },
+        {
+          "seen": 30720,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.476,
+            "en/negation": 0.496,
+            "en/space": 0.505,
+            "en/quantity": 0.501
+          }
+        },
+        {
+          "seen": 35840,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.502,
+            "en/negation": 0.498,
+            "en/space": 0.509,
+            "en/quantity": 0.516
+          }
+        },
+        {
+          "seen": 40960,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.498,
+            "en/negation": 0.498,
+            "en/space": 0.495,
+            "en/quantity": 0.502
+          }
+        },
+        {
+          "seen": 46080,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.5,
+            "en/negation": 0.501,
+            "en/space": 0.497,
+            "en/quantity": 0.497
+          }
+        },
+        {
+          "seen": 51200,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.5,
+            "en/negation": 0.5,
+            "en/space": 0.504,
+            "en/quantity": 0.5
+          }
+        },
+        {
+          "seen": 56320,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.5,
+            "en/negation": 0.5,
+            "en/space": 0.5,
+            "en/quantity": 0.5
+          }
+        },
+        {
+          "seen": 61440,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.522,
+            "en/negation": 0.498,
+            "en/space": 0.497,
+            "en/quantity": 0.502
+          }
+        },
+        {
+          "seen": 66560,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.531,
+            "en/negation": 0.492,
+            "en/space": 0.527,
+            "en/quantity": 0.502
+          }
+        },
+        {
+          "seen": 71680,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.503,
+            "en/negation": 0.509,
+            "en/space": 0.485,
+            "en/quantity": 0.505
+          }
+        },
+        {
+          "seen": 76800,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.521,
+            "en/negation": 0.502,
+            "en/space": 0.511,
+            "en/quantity": 0.505
+          }
+        },
+        {
+          "seen": 81920,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.515,
+            "en/negation": 0.499,
+            "en/space": 0.479,
+            "en/quantity": 0.487
+          }
+        },
+        {
+          "seen": 87040,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.515,
+            "en/negation": 0.503,
+            "en/space": 0.582,
+            "en/quantity": 0.497
+          }
+        },
+        {
+          "seen": 92160,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.533,
+            "en/negation": 0.507,
+            "en/space": 0.649,
+            "en/quantity": 0.497
+          }
+        },
+        {
+          "seen": 97280,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.595,
+            "en/negation": 0.521,
+            "en/space": 0.719,
+            "en/quantity": 0.503
+          }
+        },
+        {
+          "seen": 102400,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.667,
+            "en/negation": 0.576,
+            "en/space": 0.734,
+            "en/quantity": 0.478
+          }
+        },
+        {
+          "seen": 107520,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.827,
+            "en/negation": 0.595,
+            "en/space": 0.896,
+            "en/quantity": 0.49
+          }
+        },
+        {
+          "seen": 112640,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.824,
+            "en/negation": 0.685,
+            "en/space": 1.0,
+            "en/quantity": 0.488
+          }
+        },
+        {
+          "seen": 117760,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.829,
+            "en/negation": 0.697,
+            "en/space": 1.0,
+            "en/quantity": 0.504
+          }
+        },
+        {
+          "seen": 122880,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.851,
+            "en/negation": 0.659,
+            "en/space": 1.0,
+            "en/quantity": 0.507
+          }
+        },
+        {
+          "seen": 128000,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.874,
+            "en/negation": 0.788,
+            "en/space": 0.997,
+            "en/quantity": 0.532
+          }
+        },
+        {
+          "seen": 133120,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.947,
+            "en/negation": 0.776,
+            "en/space": 1.0,
+            "en/quantity": 0.509
+          }
+        },
+        {
+          "seen": 138240,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.997,
+            "en/negation": 0.845,
+            "en/space": 0.999,
+            "en/quantity": 0.53
+          }
+        },
+        {
+          "seen": 143360,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.995,
+            "en/negation": 0.859,
+            "en/space": 0.99,
+            "en/quantity": 0.529
+          }
+        },
+        {
+          "seen": 148480,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.999,
+            "en/negation": 0.888,
+            "en/space": 1.0,
+            "en/quantity": 0.52
+          }
+        },
+        {
+          "seen": 153600,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 0.867,
+            "en/space": 1.0,
+            "en/quantity": 0.512
+          }
+        },
+        {
+          "seen": 158720,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 0.839,
+            "en/space": 1.0,
+            "en/quantity": 0.533
+          }
+        },
+        {
+          "seen": 163840,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 0.916,
+            "en/space": 1.0,
+            "en/quantity": 0.541
+          }
+        },
+        {
+          "seen": 168960,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 0.999,
+            "en/negation": 0.908,
+            "en/space": 1.0,
+            "en/quantity": 0.486
+          }
+        },
+        {
+          "seen": 174080,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 0.999,
+            "en/negation": 0.93,
+            "en/space": 1.0,
+            "en/quantity": 0.484
+          }
+        },
+        {
+          "seen": 179200,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 0.989,
+            "en/space": 1.0,
+            "en/quantity": 0.541
+          }
+        },
+        {
+          "seen": 184320,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 0.998,
+            "en/space": 1.0,
+            "en/quantity": 0.499
+          }
+        },
+        {
+          "seen": 189440,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.555
+          }
+        },
+        {
+          "seen": 194560,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.494
+          }
+        },
+        {
+          "seen": 199680,
+          "panel": "dev_a",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.643
+          }
+        },
+        {
+          "seen": 200000,
+          "panel": "dev_b",
+          "accuracy": {
+            "en/roles": 1.0,
+            "en/negation": 1.0,
+            "en/space": 1.0,
+            "en/quantity": 0.606
+          }
+        }
+      ],
+      "terminal_evaluation": {
+        "checkpoint_hash": "29b8b3eef753811d53ba6885736d1360c7a3b1f8e8b36274c7f3517918fdfd57",
+        "seen": 200000,
+        "updates": 782,
+        "scores": {
+          "dev_a/primary": {
+            "en/roles": [
+              1000,
+              1000
+            ],
+            "en/negation": [
+              1000,
+              1000
+            ],
+            "en/space": [
+              1000,
+              1000
+            ],
+            "en/quantity": [
+              606,
+              1000
+            ]
+          },
+          "dev_a/auxiliary": {
+            "en/roles": [
+              269,
+              1000
+            ],
+            "en/negation": [
+              420,
+              1000
+            ],
+            "en/space": [
+              256,
+              1000
+            ],
+            "en/quantity": [
+              505,
+              1000
+            ]
+          },
+          "dev_b/primary": {
+            "en/roles": [
+              1000,
+              1000
+            ],
+            "en/negation": [
+              1000,
+              1000
+            ],
+            "en/space": [
+              1000,
+              1000
+            ],
+            "en/quantity": [
+              606,
+              1000
+            ]
+          },
+          "dev_b/auxiliary": {
+            "en/roles": [
+              311,
+              1000
+            ],
+            "en/negation": [
+              302,
+              1000
+            ],
+            "en/space": [
+              393,
+              1000
+            ],
+            "en/quantity": [
+              494,
+              1000
+            ]
+          }
+        },
+        "seconds": 6.604966874001548
+      },
+      "independent_test": "skipped_exploratory",
+      "independent_test_written": false
+    },
+    {
+      "run_id": "explore-v4-wb-20002-mono-de",
+      "seed": 20002,
+      "language": "de",
+      "status": "completed",
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "updates": 782,
+      "attainment": {
+        "all_tasks": null,
+        "per_task": {
+          "roles": 143360,
+          "negation": 133120,
+          "space": 163840,
+          "quantity": null
+        }
+      },
+      "counters": {
+        "updates": 782,
+        "tokens": 8434720,
+        "padded_tokens": 10000000,
+        "recurrent_updates": 20000000,
+        "evaluation_examples": 160000
+      },
+      "clocks_seconds": {
+        "train": 89.36557011399418,
+        "eval": 26.39890771615319,
+        "auxiliary": 0.0,
+        "checkpoint": 10.262071360135451,
+        "test": 0.0,
+        "review_eval": 0.0
+      },
+      "gpu_hours": 0.03973917613497987,
+      "summary_gpu_hours": 0.03700452003970794,
+      "attempts": [
+        {
+          "reservation_id": "explore-v4-wb-20002-mono-de",
+          "reserved_hours": 0.25,
+          "device": "cuda:0",
+          "wall_hours": 0.03973917613497987,
+          "exit_code": 0,
+          "status": "completed",
+          "started_at_utc": "2026-09-16T20:07:42.354416+00:00",
+          "ended_at_utc": "2026-09-16T20:10:05.551772+00:00",
+          "interrupted": null,
+          "concurrent_with": [
+            "explore-v4-wb-20003-mono-de"
+          ],
+          "console_log": "runs/exploratory-v4-wordbound-attainment/explore-v4-wb-20002-mono-de.console.log",
+          "error": null
+        }
+      ],
+      "seconds_per_update": 0.11427822265216647,
+      "seconds_per_update_alone_v3_profile": 0.11184830677968155,
+      "slowdown_vs_alone": 1.0217251019925708,
+      "loss_first_last_min": [
+        0.6979649662971497,
+        0.18857762217521667,
+        0.12240318208932877
+      ],
+      "scheduled_panels": 40,
+      "curve": [
+        {
+          "seen": 5120,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.5,
+            "de/space": 0.5,
+            "de/quantity": 0.517
+          }
+        },
+        {
+          "seen": 10240,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.501,
+            "de/space": 0.5,
+            "de/quantity": 0.501
+          }
+        },
+        {
+          "seen": 15360,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.507,
+            "de/negation": 0.499,
+            "de/space": 0.499,
+            "de/quantity": 0.508
+          }
+        },
+        {
+          "seen": 20480,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.5,
+            "de/space": 0.502,
+            "de/quantity": 0.495
+          }
+        },
+        {
+          "seen": 25600,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.527,
+            "de/negation": 0.501,
+            "de/space": 0.499,
+            "de/quantity": 0.49
+          }
+        },
+        {
+          "seen": 30720,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.504,
+            "de/negation": 0.5,
+            "de/space": 0.496,
+            "de/quantity": 0.501
+          }
+        },
+        {
+          "seen": 35840,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.5,
+            "de/space": 0.499,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 40960,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.502,
+            "de/negation": 0.496,
+            "de/space": 0.489,
+            "de/quantity": 0.505
+          }
+        },
+        {
+          "seen": 46080,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.516,
+            "de/negation": 0.504,
+            "de/space": 0.505,
+            "de/quantity": 0.504
+          }
+        },
+        {
+          "seen": 51200,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.495,
+            "de/negation": 0.502,
+            "de/space": 0.51,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 56320,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.513,
+            "de/negation": 0.509,
+            "de/space": 0.512,
+            "de/quantity": 0.512
+          }
+        },
+        {
+          "seen": 61440,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.497,
+            "de/negation": 0.502,
+            "de/space": 0.494,
+            "de/quantity": 0.494
+          }
+        },
+        {
+          "seen": 66560,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.527,
+            "de/negation": 0.496,
+            "de/space": 0.514,
+            "de/quantity": 0.501
+          }
+        },
+        {
+          "seen": 71680,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.49,
+            "de/negation": 0.507,
+            "de/space": 0.502,
+            "de/quantity": 0.463
+          }
+        },
+        {
+          "seen": 76800,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.5,
+            "de/space": 0.5,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 81920,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.505,
+            "de/negation": 0.5,
+            "de/space": 0.498,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 87040,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.498,
+            "de/space": 0.518,
+            "de/quantity": 0.505
+          }
+        },
+        {
+          "seen": 92160,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.515,
+            "de/negation": 0.522,
+            "de/space": 0.514,
+            "de/quantity": 0.494
+          }
+        },
+        {
+          "seen": 97280,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.538,
+            "de/negation": 0.499,
+            "de/space": 0.492,
+            "de/quantity": 0.547
+          }
+        },
+        {
+          "seen": 102400,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.488,
+            "de/negation": 0.577,
+            "de/space": 0.512,
+            "de/quantity": 0.49
+          }
+        },
+        {
+          "seen": 107520,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.502,
+            "de/space": 0.507,
+            "de/quantity": 0.501
+          }
+        },
+        {
+          "seen": 112640,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.492,
+            "de/negation": 0.658,
+            "de/space": 0.503,
+            "de/quantity": 0.491
+          }
+        },
+        {
+          "seen": 117760,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.496,
+            "de/negation": 0.736,
+            "de/space": 0.48,
+            "de/quantity": 0.505
+          }
+        },
+        {
+          "seen": 122880,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.523,
+            "de/negation": 0.757,
+            "de/space": 0.495,
+            "de/quantity": 0.488
+          }
+        },
+        {
+          "seen": 128000,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.627,
+            "de/negation": 0.901,
+            "de/space": 0.523,
+            "de/quantity": 0.518
+          }
+        },
+        {
+          "seen": 133120,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.69,
+            "de/negation": 1.0,
+            "de/space": 0.513,
+            "de/quantity": 0.518
+          }
+        },
+        {
+          "seen": 138240,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.814,
+            "de/negation": 1.0,
+            "de/space": 0.501,
+            "de/quantity": 0.498
+          }
+        },
+        {
+          "seen": 143360,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.918,
+            "de/negation": 1.0,
+            "de/space": 0.521,
+            "de/quantity": 0.488
+          }
+        },
+        {
+          "seen": 148480,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.976,
+            "de/negation": 1.0,
+            "de/space": 0.56,
+            "de/quantity": 0.537
+          }
+        },
+        {
+          "seen": 153600,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.945,
+            "de/negation": 1.0,
+            "de/space": 0.687,
+            "de/quantity": 0.525
+          }
+        },
+        {
+          "seen": 158720,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.987,
+            "de/negation": 1.0,
+            "de/space": 0.812,
+            "de/quantity": 0.511
+          }
+        },
+        {
+          "seen": 163840,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.986,
+            "de/negation": 1.0,
+            "de/space": 0.855,
+            "de/quantity": 0.518
+          }
+        },
+        {
+          "seen": 168960,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.997,
+            "de/negation": 1.0,
+            "de/space": 0.934,
+            "de/quantity": 0.531
+          }
+        },
+        {
+          "seen": 174080,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 1.0,
+            "de/negation": 0.999,
+            "de/space": 0.999,
+            "de/quantity": 0.536
+          }
+        },
+        {
+          "seen": 179200,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 1.0,
+            "de/negation": 1.0,
+            "de/space": 1.0,
+            "de/quantity": 0.524
+          }
+        },
+        {
+          "seen": 184320,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 1.0,
+            "de/negation": 1.0,
+            "de/space": 0.999,
+            "de/quantity": 0.568
+          }
+        },
+        {
+          "seen": 189440,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 1.0,
+            "de/negation": 1.0,
+            "de/space": 1.0,
+            "de/quantity": 0.587
+          }
+        },
+        {
+          "seen": 194560,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 1.0,
+            "de/negation": 1.0,
+            "de/space": 1.0,
+            "de/quantity": 0.592
+          }
+        },
+        {
+          "seen": 199680,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 1.0,
+            "de/negation": 1.0,
+            "de/space": 1.0,
+            "de/quantity": 0.697
+          }
+        },
+        {
+          "seen": 200000,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 1.0,
+            "de/negation": 1.0,
+            "de/space": 1.0,
+            "de/quantity": 0.659
+          }
+        }
+      ],
+      "terminal_evaluation": {
+        "checkpoint_hash": "08e847681cb21f54442ae2f5201a0b823653e56243f5f3bb08d6ab0773e5007f",
+        "seen": 200000,
+        "updates": 782,
+        "scores": {
+          "dev_a/primary": {
+            "de/roles": [
+              1000,
+              1000
+            ],
+            "de/negation": [
+              1000,
+              1000
+            ],
+            "de/space": [
+              1000,
+              1000
+            ],
+            "de/quantity": [
+              688,
+              1000
+            ]
+          },
+          "dev_a/auxiliary": {
+            "de/roles": [
+              663,
+              1000
+            ],
+            "de/negation": [
+              290,
+              1000
+            ],
+            "de/space": [
+              415,
+              1000
+            ],
+            "de/quantity": [
+              500,
+              1000
+            ]
+          },
+          "dev_b/primary": {
+            "de/roles": [
+              1000,
+              1000
+            ],
+            "de/negation": [
+              1000,
+              1000
+            ],
+            "de/space": [
+              1000,
+              1000
+            ],
+            "de/quantity": [
+              659,
+              1000
+            ]
+          },
+          "dev_b/auxiliary": {
+            "de/roles": [
+              404,
+              1000
+            ],
+            "de/negation": [
+              443,
+              1000
+            ],
+            "de/space": [
+              628,
+              1000
+            ],
+            "de/quantity": [
+              514,
+              1000
+            ]
+          }
+        },
+        "seconds": 6.294800727861002
+      },
+      "independent_test": "skipped_exploratory",
+      "independent_test_written": false
+    },
+    {
+      "run_id": "explore-v4-wb-20003-mono-de",
+      "seed": 20003,
+      "language": "de",
+      "status": "completed",
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "updates": 782,
+      "attainment": {
+        "all_tasks": null,
+        "per_task": {
+          "roles": 168960,
+          "negation": 184320,
+          "space": 133120,
+          "quantity": null
+        }
+      },
+      "counters": {
+        "updates": 782,
+        "tokens": 8434720,
+        "padded_tokens": 10000000,
+        "recurrent_updates": 20000000,
+        "evaluation_examples": 160000
+      },
+      "clocks_seconds": {
+        "train": 176.47470694035292,
+        "eval": 46.78469010954723,
+        "auxiliary": 0.0,
+        "checkpoint": 10.2769664444495,
+        "test": 0.0,
+        "review_eval": 0.0
+      },
+      "gpu_hours": 0.07035709684501247,
+      "summary_gpu_hours": 0.06724209259529339,
+      "attempts": [
+        {
+          "reservation_id": "explore-v4-wb-20003-mono-de",
+          "reserved_hours": 0.25,
+          "device": "cuda:1",
+          "wall_hours": 0.07035709684501247,
+          "exit_code": 0,
+          "status": "completed",
+          "started_at_utc": "2026-09-16T20:07:51.399371+00:00",
+          "ended_at_utc": "2026-09-16T20:12:04.722974+00:00",
+          "interrupted": null,
+          "concurrent_with": [
+            "explore-v4-wb-20003-mono-ko"
+          ],
+          "console_log": "runs/exploratory-v4-wordbound-attainment/explore-v4-wb-20003-mono-de.console.log",
+          "error": null
+        }
+      ],
+      "seconds_per_update": 0.2256709807421393,
+      "seconds_per_update_alone_v3_profile": 0.11184830677968155,
+      "slowdown_vs_alone": 2.017652186605429,
+      "loss_first_last_min": [
+        0.7056763172149658,
+        0.2089654803276062,
+        0.16580243408679962
+      ],
+      "scheduled_panels": 40,
+      "curve": [
+        {
+          "seen": 5120,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.516,
+            "de/negation": 0.494,
+            "de/space": 0.495,
+            "de/quantity": 0.502
+          }
+        },
+        {
+          "seen": 10240,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.482,
+            "de/negation": 0.492,
+            "de/space": 0.5,
+            "de/quantity": 0.496
+          }
+        },
+        {
+          "seen": 15360,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.495,
+            "de/negation": 0.506,
+            "de/space": 0.512,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 20480,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.501,
+            "de/negation": 0.504,
+            "de/space": 0.487,
+            "de/quantity": 0.499
+          }
+        },
+        {
+          "seen": 25600,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.528,
+            "de/negation": 0.496,
+            "de/space": 0.514,
+            "de/quantity": 0.498
+          }
+        },
+        {
+          "seen": 30720,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.497,
+            "de/space": 0.506,
+            "de/quantity": 0.496
+          }
+        },
+        {
+          "seen": 35840,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.508,
+            "de/negation": 0.501,
+            "de/space": 0.51,
+            "de/quantity": 0.506
+          }
+        },
+        {
+          "seen": 40960,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.498,
+            "de/negation": 0.509,
+            "de/space": 0.499,
+            "de/quantity": 0.49
+          }
+        },
+        {
+          "seen": 46080,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.512,
+            "de/negation": 0.498,
+            "de/space": 0.499,
+            "de/quantity": 0.504
+          }
+        },
+        {
+          "seen": 51200,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.497,
+            "de/negation": 0.5,
+            "de/space": 0.501,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 56320,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.5,
+            "de/space": 0.5,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 61440,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.495,
+            "de/negation": 0.502,
+            "de/space": 0.508,
+            "de/quantity": 0.479
+          }
+        },
+        {
+          "seen": 66560,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.519,
+            "de/negation": 0.494,
+            "de/space": 0.516,
+            "de/quantity": 0.513
+          }
+        },
+        {
+          "seen": 71680,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.499,
+            "de/negation": 0.503,
+            "de/space": 0.472,
+            "de/quantity": 0.476
+          }
+        },
+        {
+          "seen": 76800,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.495,
+            "de/negation": 0.506,
+            "de/space": 0.503,
+            "de/quantity": 0.52
+          }
+        },
+        {
+          "seen": 81920,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.501,
+            "de/negation": 0.493,
+            "de/space": 0.494,
+            "de/quantity": 0.479
+          }
+        },
+        {
+          "seen": 87040,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.539,
+            "de/negation": 0.492,
+            "de/space": 0.488,
+            "de/quantity": 0.501
+          }
+        },
+        {
+          "seen": 92160,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.532,
+            "de/negation": 0.496,
+            "de/space": 0.466,
+            "de/quantity": 0.482
+          }
+        },
+        {
+          "seen": 97280,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.504,
+            "de/negation": 0.503,
+            "de/space": 0.473,
+            "de/quantity": 0.502
+          }
+        },
+        {
+          "seen": 102400,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.5,
+            "de/negation": 0.5,
+            "de/space": 0.503,
+            "de/quantity": 0.501
+          }
+        },
+        {
+          "seen": 107520,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.549,
+            "de/negation": 0.503,
+            "de/space": 0.527,
+            "de/quantity": 0.502
+          }
+        },
+        {
+          "seen": 112640,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.549,
+            "de/negation": 0.503,
+            "de/space": 0.541,
+            "de/quantity": 0.497
+          }
+        },
+        {
+          "seen": 117760,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.506,
+            "de/negation": 0.496,
+            "de/space": 0.628,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 122880,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.502,
+            "de/negation": 0.504,
+            "de/space": 0.677,
+            "de/quantity": 0.499
+          }
+        },
+        {
+          "seen": 128000,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.47,
+            "de/negation": 0.503,
+            "de/space": 0.828,
+            "de/quantity": 0.499
+          }
+        },
+        {
+          "seen": 133120,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.509,
+            "de/negation": 0.524,
+            "de/space": 0.996,
+            "de/quantity": 0.476
+          }
+        },
+        {
+          "seen": 138240,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.575,
+            "de/negation": 0.503,
+            "de/space": 0.998,
+            "de/quantity": 0.491
+          }
+        },
+        {
+          "seen": 143360,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.519,
+            "de/negation": 0.501,
+            "de/space": 0.999,
+            "de/quantity": 0.5
+          }
+        },
+        {
+          "seen": 148480,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.575,
+            "de/negation": 0.512,
+            "de/space": 1.0,
+            "de/quantity": 0.53
+          }
+        },
+        {
+          "seen": 153600,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.608,
+            "de/negation": 0.504,
+            "de/space": 1.0,
+            "de/quantity": 0.511
+          }
+        },
+        {
+          "seen": 158720,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.717,
+            "de/negation": 0.512,
+            "de/space": 1.0,
+            "de/quantity": 0.508
+          }
+        },
+        {
+          "seen": 163840,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.859,
+            "de/negation": 0.547,
+            "de/space": 0.999,
+            "de/quantity": 0.504
+          }
+        },
+        {
+          "seen": 168960,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.86,
+            "de/negation": 0.62,
+            "de/space": 1.0,
+            "de/quantity": 0.529
+          }
+        },
+        {
+          "seen": 174080,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.861,
+            "de/negation": 0.72,
+            "de/space": 1.0,
+            "de/quantity": 0.534
+          }
+        },
+        {
+          "seen": 179200,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.874,
+            "de/negation": 0.84,
+            "de/space": 1.0,
+            "de/quantity": 0.546
+          }
+        },
+        {
+          "seen": 184320,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.878,
+            "de/negation": 0.991,
+            "de/space": 1.0,
+            "de/quantity": 0.593
+          }
+        },
+        {
+          "seen": 189440,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.907,
+            "de/negation": 0.995,
+            "de/space": 1.0,
+            "de/quantity": 0.632
+          }
+        },
+        {
+          "seen": 194560,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.951,
+            "de/negation": 0.999,
+            "de/space": 1.0,
+            "de/quantity": 0.64
+          }
+        },
+        {
+          "seen": 199680,
+          "panel": "dev_a",
+          "accuracy": {
+            "de/roles": 0.987,
+            "de/negation": 1.0,
+            "de/space": 1.0,
+            "de/quantity": 0.63
+          }
+        },
+        {
+          "seen": 200000,
+          "panel": "dev_b",
+          "accuracy": {
+            "de/roles": 0.985,
+            "de/negation": 1.0,
+            "de/space": 1.0,
+            "de/quantity": 0.717
+          }
+        }
+      ],
+      "terminal_evaluation": {
+        "checkpoint_hash": "9593844593ee8d9fea347c6e90884b528b2afac0d11b1a4f054566d4ffab13d0",
+        "seen": 200000,
+        "updates": 782,
+        "scores": {
+          "dev_a/primary": {
+            "de/roles": [
+              990,
+              1000
+            ],
+            "de/negation": [
+              1000,
+              1000
+            ],
+            "de/space": [
+              1000,
+              1000
+            ],
+            "de/quantity": [
+              688,
+              1000
+            ]
+          },
+          "dev_a/auxiliary": {
+            "de/roles": [
+              580,
+              1000
+            ],
+            "de/negation": [
+              557,
+              1000
+            ],
+            "de/space": [
+              414,
+              1000
+            ],
+            "de/quantity": [
+              490,
+              1000
+            ]
+          },
+          "dev_b/primary": {
+            "de/roles": [
+              985,
+              1000
+            ],
+            "de/negation": [
+              1000,
+              1000
+            ],
+            "de/space": [
+              1000,
+              1000
+            ],
+            "de/quantity": [
+              717,
+              1000
+            ]
+          },
+          "dev_b/auxiliary": {
+            "de/roles": [
+              477,
+              1000
+            ],
+            "de/negation": [
+              524,
+              1000
+            ],
+            "de/space": [
+              735,
+              1000
+            ],
+            "de/quantity": [
+              479,
+              1000
+            ]
+          }
+        },
+        "seconds": 7.821301418822259
+      },
+      "independent_test": "skipped_exploratory",
+      "independent_test_written": false
+    },
+    {
+      "run_id": "explore-v4-wb-20002-mono-ko",
+      "seed": 20002,
+      "language": "ko",
+      "status": "completed",
+      "stop_reason": "mastered",
+      "seen": 153600,
+      "updates": 600,
+      "attainment": {
+        "all_tasks": 153600,
+        "per_task": {
+          "roles": 92160,
+          "negation": 92160,
+          "space": 153600,
+          "quantity": 117760
+        }
+      },
+      "counters": {
+        "updates": 600,
+        "tokens": 5836806,
+        "padded_tokens": 6758400,
+        "recurrent_updates": 13516800,
+        "evaluation_examples": 120000
+      },
+      "clocks_seconds": {
+        "train": 61.12724346900359,
+        "eval": 18.80823458614759,
+        "auxiliary": 0.0,
+        "checkpoint": 7.868863651296124,
+        "test": 0.0,
+        "review_eval": 0.0
+      },
+      "gpu_hours": 0.02889261925799979,
+      "summary_gpu_hours": 0.026201470690559493,
+      "attempts": [
+        {
+          "reservation_id": "explore-v4-wb-20002-mono-ko",
+          "reserved_hours": 0.25,
+          "device": "cuda:0",
+          "wall_hours": 0.02889261925799979,
+          "exit_code": 0,
+          "status": "completed",
+          "started_at_utc": "2026-09-16T20:10:06.591116+00:00",
+          "ended_at_utc": "2026-09-16T20:11:50.644921+00:00",
+          "interrupted": null,
+          "concurrent_with": [
+            "explore-v4-wb-20003-mono-de"
+          ],
+          "console_log": "runs/exploratory-v4-wordbound-attainment/explore-v4-wb-20002-mono-ko.console.log",
+          "error": null
+        }
+      ],
+      "seconds_per_update": 0.10187873911500599,
+      "seconds_per_update_alone_v3_profile": 0.098991602755765,
+      "slowdown_vs_alone": 1.029165467361552,
+      "loss_first_last_min": [
+        0.701780378818512,
+        0.050415050238370895,
+        0.04576249420642853
+      ],
+      "scheduled_panels": 30,
+      "curve": [
+        {
+          "seen": 5120,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.5,
+            "ko/negation": 0.5,
+            "ko/space": 0.5,
+            "ko/quantity": 0.484
+          }
+        },
+        {
+          "seen": 10240,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.5,
+            "ko/negation": 0.5,
+            "ko/space": 0.5,
+            "ko/quantity": 0.5
+          }
+        },
+        {
+          "seen": 15360,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.53,
+            "ko/negation": 0.5,
+            "ko/space": 0.488,
+            "ko/quantity": 0.52
+          }
+        },
+        {
+          "seen": 20480,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.5,
+            "ko/negation": 0.5,
+            "ko/space": 0.5,
+            "ko/quantity": 0.502
+          }
+        },
+        {
+          "seen": 25600,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.523,
+            "ko/negation": 0.477,
+            "ko/space": 0.502,
+            "ko/quantity": 0.504
+          }
+        },
+        {
+          "seen": 30720,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.501,
+            "ko/negation": 0.503,
+            "ko/space": 0.5,
+            "ko/quantity": 0.484
+          }
+        },
+        {
+          "seen": 35840,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.496,
+            "ko/negation": 0.5,
+            "ko/space": 0.5,
+            "ko/quantity": 0.494
+          }
+        },
+        {
+          "seen": 40960,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.489,
+            "ko/negation": 0.507,
+            "ko/space": 0.501,
+            "ko/quantity": 0.466
+          }
+        },
+        {
+          "seen": 46080,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.535,
+            "ko/negation": 0.518,
+            "ko/space": 0.525,
+            "ko/quantity": 0.5
+          }
+        },
+        {
+          "seen": 51200,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.524,
+            "ko/negation": 0.541,
+            "ko/space": 0.49,
+            "ko/quantity": 0.49
+          }
+        },
+        {
+          "seen": 56320,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.55,
+            "ko/negation": 0.51,
+            "ko/space": 0.496,
+            "ko/quantity": 0.489
+          }
+        },
+        {
+          "seen": 61440,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.566,
+            "ko/negation": 0.565,
+            "ko/space": 0.483,
+            "ko/quantity": 0.496
+          }
+        },
+        {
+          "seen": 66560,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.583,
+            "ko/negation": 0.591,
+            "ko/space": 0.496,
+            "ko/quantity": 0.515
+          }
+        },
+        {
+          "seen": 71680,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.4,
+            "ko/negation": 0.401,
+            "ko/space": 0.535,
+            "ko/quantity": 0.484
+          }
+        },
+        {
+          "seen": 76800,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.538,
+            "ko/negation": 0.486,
+            "ko/space": 0.525,
+            "ko/quantity": 0.501
+          }
+        },
+        {
+          "seen": 81920,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.748,
+            "ko/negation": 0.785,
+            "ko/space": 0.504,
+            "ko/quantity": 0.489
+          }
+        },
+        {
+          "seen": 87040,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.862,
+            "ko/negation": 0.959,
+            "ko/space": 0.508,
+            "ko/quantity": 0.522
+          }
+        },
+        {
+          "seen": 92160,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.854,
+            "ko/negation": 1.0,
+            "ko/space": 0.514,
+            "ko/quantity": 0.581
+          }
+        },
+        {
+          "seen": 97280,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.863,
+            "ko/negation": 1.0,
+            "ko/space": 0.516,
+            "ko/quantity": 0.653
+          }
+        },
+        {
+          "seen": 102400,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.907,
+            "ko/negation": 1.0,
+            "ko/space": 0.52,
+            "ko/quantity": 0.718
+          }
+        },
+        {
+          "seen": 107520,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.999,
+            "ko/negation": 1.0,
+            "ko/space": 0.518,
+            "ko/quantity": 0.662
+          }
+        },
+        {
+          "seen": 112640,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 0.505,
+            "ko/quantity": 0.855
+          }
+        },
+        {
+          "seen": 117760,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 0.543,
+            "ko/quantity": 0.86
+          }
+        },
+        {
+          "seen": 122880,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 0.52,
+            "ko/quantity": 0.903
+          }
+        },
+        {
+          "seen": 128000,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 0.573,
+            "ko/quantity": 0.906
+          }
+        },
+        {
+          "seen": 133120,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 0.566,
+            "ko/quantity": 0.928
+          }
+        },
+        {
+          "seen": 138240,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 0.653,
+            "ko/quantity": 0.861
+          }
+        },
+        {
+          "seen": 143360,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 0.748,
+            "ko/quantity": 0.928
+          }
+        },
+        {
+          "seen": 148480,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 0.972,
+            "ko/quantity": 0.928
+          }
+        },
+        {
+          "seen": 153600,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.999,
+            "ko/negation": 1.0,
+            "ko/space": 0.998,
+            "ko/quantity": 0.934
+          }
+        }
+      ],
+      "terminal_evaluation": {
+        "checkpoint_hash": "a90e8cfbc84a07d07763313809292b37888eb53817da2334504f67ef44195bfb",
+        "seen": 153600,
+        "updates": 600,
+        "scores": {
+          "dev_a/primary": {
+            "ko/roles": [
+              1000,
+              1000
+            ],
+            "ko/negation": [
+              1000,
+              1000
+            ],
+            "ko/space": [
+              998,
+              1000
+            ],
+            "ko/quantity": [
+              910,
+              1000
+            ]
+          },
+          "dev_a/auxiliary": {
+            "ko/roles": [
+              418,
+              1000
+            ],
+            "ko/negation": [
+              481,
+              1000
+            ],
+            "ko/space": [
+              559,
+              1000
+            ],
+            "ko/quantity": [
+              523,
+              1000
+            ]
+          },
+          "dev_b/primary": {
+            "ko/roles": [
+              999,
+              1000
+            ],
+            "ko/negation": [
+              1000,
+              1000
+            ],
+            "ko/space": [
+              998,
+              1000
+            ],
+            "ko/quantity": [
+              934,
+              1000
+            ]
+          },
+          "dev_b/auxiliary": {
+            "ko/roles": [
+              423,
+              1000
+            ],
+            "ko/negation": [
+              500,
+              1000
+            ],
+            "ko/space": [
+              471,
+              1000
+            ],
+            "ko/quantity": [
+              469,
+              1000
+            ]
+          }
+        },
+        "seconds": 6.063033849932253
+      },
+      "independent_test": "skipped_exploratory",
+      "independent_test_written": false
+    },
+    {
+      "run_id": "explore-v4-wb-20003-mono-ko",
+      "seed": 20003,
+      "language": "ko",
+      "status": "completed",
+      "stop_reason": "mastered",
+      "seen": 200000,
+      "updates": 782,
+      "attainment": {
+        "all_tasks": 200000,
+        "per_task": {
+          "roles": 179200,
+          "negation": 174080,
+          "space": 163840,
+          "quantity": 200000
+        }
+      },
+      "counters": {
+        "updates": 782,
+        "tokens": 7600000,
+        "padded_tokens": 8800000,
+        "recurrent_updates": 17600000,
+        "evaluation_examples": 160000
+      },
+      "clocks_seconds": {
+        "train": 79.56472781812772,
+        "eval": 24.559113339986652,
+        "auxiliary": 0.0,
+        "checkpoint": 10.232885414734483,
+        "test": 0.0,
+        "review_eval": 0.0
+      },
+      "gpu_hours": 0.03640383445722465,
+      "summary_gpu_hours": 0.03351642458221047,
+      "attempts": [
+        {
+          "reservation_id": "explore-v4-wb-20003-mono-ko",
+          "reserved_hours": 0.25,
+          "device": "cuda:0",
+          "wall_hours": 0.03640383445722465,
+          "exit_code": 0,
+          "status": "completed",
+          "started_at_utc": "2026-09-16T20:11:51.683089+00:00",
+          "ended_at_utc": "2026-09-16T20:14:02.773110+00:00",
+          "interrupted": null,
+          "concurrent_with": [],
+          "console_log": "runs/exploratory-v4-wordbound-attainment/explore-v4-wb-20003-mono-ko.console.log",
+          "error": null
+        }
+      ],
+      "seconds_per_update": 0.10174517623801499,
+      "seconds_per_update_alone_v3_profile": 0.098991602755765,
+      "slowdown_vs_alone": 1.0278162329490077,
+      "loss_first_last_min": [
+        0.6982929110527039,
+        0.14120882749557495,
+        0.09999644011259079
+      ],
+      "scheduled_panels": 40,
+      "curve": [
+        {
+          "seen": 5120,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.501,
+            "ko/negation": 0.5,
+            "ko/space": 0.5,
+            "ko/quantity": 0.5
+          }
+        },
+        {
+          "seen": 10240,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.502,
+            "ko/negation": 0.504,
+            "ko/space": 0.5,
+            "ko/quantity": 0.516
+          }
+        },
+        {
+          "seen": 15360,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.5,
+            "ko/negation": 0.503,
+            "ko/space": 0.497,
+            "ko/quantity": 0.5
+          }
+        },
+        {
+          "seen": 20480,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.495,
+            "ko/negation": 0.511,
+            "ko/space": 0.499,
+            "ko/quantity": 0.483
+          }
+        },
+        {
+          "seen": 25600,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.519,
+            "ko/negation": 0.485,
+            "ko/space": 0.506,
+            "ko/quantity": 0.5
+          }
+        },
+        {
+          "seen": 30720,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.485,
+            "ko/negation": 0.504,
+            "ko/space": 0.487,
+            "ko/quantity": 0.474
+          }
+        },
+        {
+          "seen": 35840,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.498,
+            "ko/negation": 0.478,
+            "ko/space": 0.503,
+            "ko/quantity": 0.521
+          }
+        },
+        {
+          "seen": 40960,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.497,
+            "ko/negation": 0.496,
+            "ko/space": 0.508,
+            "ko/quantity": 0.497
+          }
+        },
+        {
+          "seen": 46080,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.503,
+            "ko/negation": 0.506,
+            "ko/space": 0.5,
+            "ko/quantity": 0.502
+          }
+        },
+        {
+          "seen": 51200,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.497,
+            "ko/negation": 0.5,
+            "ko/space": 0.499,
+            "ko/quantity": 0.5
+          }
+        },
+        {
+          "seen": 56320,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.5,
+            "ko/negation": 0.5,
+            "ko/space": 0.5,
+            "ko/quantity": 0.5
+          }
+        },
+        {
+          "seen": 61440,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.501,
+            "ko/negation": 0.495,
+            "ko/space": 0.519,
+            "ko/quantity": 0.482
+          }
+        },
+        {
+          "seen": 66560,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.53,
+            "ko/negation": 0.5,
+            "ko/space": 0.508,
+            "ko/quantity": 0.521
+          }
+        },
+        {
+          "seen": 71680,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.474,
+            "ko/negation": 0.511,
+            "ko/space": 0.49,
+            "ko/quantity": 0.48
+          }
+        },
+        {
+          "seen": 76800,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.533,
+            "ko/negation": 0.483,
+            "ko/space": 0.514,
+            "ko/quantity": 0.49
+          }
+        },
+        {
+          "seen": 81920,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.484,
+            "ko/negation": 0.498,
+            "ko/space": 0.499,
+            "ko/quantity": 0.495
+          }
+        },
+        {
+          "seen": 87040,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.519,
+            "ko/negation": 0.496,
+            "ko/space": 0.518,
+            "ko/quantity": 0.492
+          }
+        },
+        {
+          "seen": 92160,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.498,
+            "ko/negation": 0.501,
+            "ko/space": 0.506,
+            "ko/quantity": 0.511
+          }
+        },
+        {
+          "seen": 97280,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.5,
+            "ko/negation": 0.5,
+            "ko/space": 0.5,
+            "ko/quantity": 0.501
+          }
+        },
+        {
+          "seen": 102400,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.5,
+            "ko/negation": 0.5,
+            "ko/space": 0.5,
+            "ko/quantity": 0.498
+          }
+        },
+        {
+          "seen": 107520,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.509,
+            "ko/negation": 0.495,
+            "ko/space": 0.518,
+            "ko/quantity": 0.5
+          }
+        },
+        {
+          "seen": 112640,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.517,
+            "ko/negation": 0.529,
+            "ko/space": 0.498,
+            "ko/quantity": 0.481
+          }
+        },
+        {
+          "seen": 117760,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.517,
+            "ko/negation": 0.5,
+            "ko/space": 0.508,
+            "ko/quantity": 0.51
+          }
+        },
+        {
+          "seen": 122880,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.493,
+            "ko/negation": 0.505,
+            "ko/space": 0.508,
+            "ko/quantity": 0.502
+          }
+        },
+        {
+          "seen": 128000,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.509,
+            "ko/negation": 0.531,
+            "ko/space": 0.511,
+            "ko/quantity": 0.495
+          }
+        },
+        {
+          "seen": 133120,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.499,
+            "ko/negation": 0.5,
+            "ko/space": 0.511,
+            "ko/quantity": 0.497
+          }
+        },
+        {
+          "seen": 138240,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.499,
+            "ko/negation": 0.499,
+            "ko/space": 0.521,
+            "ko/quantity": 0.51
+          }
+        },
+        {
+          "seen": 143360,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.498,
+            "ko/negation": 0.537,
+            "ko/space": 0.57,
+            "ko/quantity": 0.502
+          }
+        },
+        {
+          "seen": 148480,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.518,
+            "ko/negation": 0.475,
+            "ko/space": 0.653,
+            "ko/quantity": 0.522
+          }
+        },
+        {
+          "seen": 153600,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.511,
+            "ko/negation": 0.581,
+            "ko/space": 0.74,
+            "ko/quantity": 0.491
+          }
+        },
+        {
+          "seen": 158720,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.511,
+            "ko/negation": 0.614,
+            "ko/space": 0.885,
+            "ko/quantity": 0.535
+          }
+        },
+        {
+          "seen": 163840,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.533,
+            "ko/negation": 0.735,
+            "ko/space": 0.972,
+            "ko/quantity": 0.494
+          }
+        },
+        {
+          "seen": 168960,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.713,
+            "ko/negation": 0.976,
+            "ko/space": 0.999,
+            "ko/quantity": 0.513
+          }
+        },
+        {
+          "seen": 174080,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.825,
+            "ko/negation": 0.998,
+            "ko/space": 1.0,
+            "ko/quantity": 0.52
+          }
+        },
+        {
+          "seen": 179200,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 0.9,
+            "ko/negation": 1.0,
+            "ko/space": 1.0,
+            "ko/quantity": 0.567
+          }
+        },
+        {
+          "seen": 184320,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.994,
+            "ko/negation": 1.0,
+            "ko/space": 1.0,
+            "ko/quantity": 0.615
+          }
+        },
+        {
+          "seen": 189440,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 1.0,
+            "ko/quantity": 0.732
+          }
+        },
+        {
+          "seen": 194560,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 0.999,
+            "ko/negation": 1.0,
+            "ko/space": 1.0,
+            "ko/quantity": 0.795
+          }
+        },
+        {
+          "seen": 199680,
+          "panel": "dev_a",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 1.0,
+            "ko/quantity": 0.867
+          }
+        },
+        {
+          "seen": 200000,
+          "panel": "dev_b",
+          "accuracy": {
+            "ko/roles": 1.0,
+            "ko/negation": 1.0,
+            "ko/space": 1.0,
+            "ko/quantity": 0.846
+          }
+        }
+      ],
+      "terminal_evaluation": {
+        "checkpoint_hash": "6aba29c971b22900c05390ed788e1e7f4e8ae61318c583325b7517d2817e491f",
+        "seen": 200000,
+        "updates": 782,
+        "scores": {
+          "dev_a/primary": {
+            "ko/roles": [
+              1000,
+              1000
+            ],
+            "ko/negation": [
+              1000,
+              1000
+            ],
+            "ko/space": [
+              1000,
+              1000
+            ],
+            "ko/quantity": [
+              859,
+              1000
+            ]
+          },
+          "dev_a/auxiliary": {
+            "ko/roles": [
+              648,
+              1000
+            ],
+            "ko/negation": [
+              500,
+              1000
+            ],
+            "ko/space": [
+              499,
+              1000
+            ],
+            "ko/quantity": [
+              460,
+              1000
+            ]
+          },
+          "dev_b/primary": {
+            "ko/roles": [
+              1000,
+              1000
+            ],
+            "ko/negation": [
+              1000,
+              1000
+            ],
+            "ko/space": [
+              1000,
+              1000
+            ],
+            "ko/quantity": [
+              846,
+              1000
+            ]
+          },
+          "dev_b/auxiliary": {
+            "ko/roles": [
+              678,
+              1000
+            ],
+            "ko/negation": [
+              757,
+              1000
+            ],
+            "ko/space": [
+              661,
+              1000
+            ],
+            "ko/quantity": [
+              529,
+              1000
+            ]
+          }
+        },
+        "seconds": 6.117627857020125
+      },
+      "independent_test": "skipped_exploratory",
+      "independent_test_written": false
+    }
+  ],
+  "figures": [
+    "reports/figures/exploratory-v4-wordbound-attainment/explore-v4-wb-20002-mono-de.png",
+    "reports/figures/exploratory-v4-wordbound-attainment/explore-v4-wb-20002-mono-en.png",
+    "reports/figures/exploratory-v4-wordbound-attainment/explore-v4-wb-20002-mono-ko.png",
+    "reports/figures/exploratory-v4-wordbound-attainment/explore-v4-wb-20003-mono-de.png",
+    "reports/figures/exploratory-v4-wordbound-attainment/explore-v4-wb-20003-mono-en.png",
+    "reports/figures/exploratory-v4-wordbound-attainment/explore-v4-wb-20003-mono-ko.png"
+  ],
+  "ledger": {
+    "path": "runs/gpu-ledger.json",
+    "plan_reserved_hours": 1.5,
+    "retry_reserved_hours": 0,
+    "training_charged_hours": 0.2657361764088273,
+    "attempts": {
+      "explore-v4-wb-20002-mono-en": [
+        {
+          "reservation_id": "explore-v4-wb-20002-mono-en",
+          "status": "completed",
+          "wall_hours": 0.04389511121417551
+        }
+      ],
+      "explore-v4-wb-20003-mono-en": [
+        {
+          "reservation_id": "explore-v4-wb-20003-mono-en",
+          "status": "completed",
+          "wall_hours": 0.04644833849943502
+        }
+      ],
+      "explore-v4-wb-20002-mono-de": [
+        {
+          "reservation_id": "explore-v4-wb-20002-mono-de",
+          "status": "completed",
+          "wall_hours": 0.03973917613497987
+        }
+      ],
+      "explore-v4-wb-20003-mono-de": [
+        {
+          "reservation_id": "explore-v4-wb-20003-mono-de",
+          "status": "completed",
+          "wall_hours": 0.07035709684501247
+        }
+      ],
+      "explore-v4-wb-20002-mono-ko": [
+        {
+          "reservation_id": "explore-v4-wb-20002-mono-ko",
+          "status": "completed",
+          "wall_hours": 0.02889261925799979
+        }
+      ],
+      "explore-v4-wb-20003-mono-ko": [
+        {
+          "reservation_id": "explore-v4-wb-20003-mono-ko",
+          "status": "completed",
+          "wall_hours": 0.03640383445722465
+        }
+      ]
+    }
+  }
+}

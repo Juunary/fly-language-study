@@ -25,6 +25,8 @@ artifacts/power/*
 !artifacts/tokenizer-v4.4.meta.json
 !artifacts/tokenizer-wordbound-v1.json
 !artifacts/tokenizer-wordbound-v1.meta.json
+!artifacts/tokenizer-wordbound-v4.4.json
+!artifacts/tokenizer-wordbound-v4.4.meta.json
 
 # Earlier drafts remain local. Only the reviewed-candidate version is published.
 data/*
