@@ -10,6 +10,7 @@ import torch
 from tokenizers import Tokenizer
 
 from .budget import Ledger
+from .data import require_confirmatory_test
 from .gates import code_hash, environment, verify_main_launch
 from .graph import Graph
 from .model import FlyClassifier, train_batch
@@ -75,6 +76,9 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
         raise ValueError("Invalid cohort")
     if smoke != (cohort == "smoke"):
         raise ValueError("Smoke experiments require an explicit smoke cohort")
+    data_meta = json.loads((Path(dataset)/"manifest.json").read_text(encoding="utf-8"))
+    if not smoke:
+        require_confirmatory_test(data_meta)
     if not smoke and (graph.n != 5000 or device == "cpu" or backend != "cuda"):
         raise ValueError("Production/pilot runs require cb5k and the validated CUDA backend")
     if cohort == "pilot" and seed in protocol.main_seeds:
@@ -85,7 +89,6 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
     if output.exists() and any(output.iterdir()) and resume is None:
         raise FileExistsError("Use an empty run directory or explicit resume")
     output.mkdir(parents=True, exist_ok=True)
-    data_meta = json.loads((Path(dataset)/"manifest.json").read_text(encoding="utf-8"))
     token_meta_path = Path(tokenizer_path).with_suffix(".meta.json")
     token_meta = json.loads(token_meta_path.read_text(encoding="utf-8"))
     if token_meta["dataset_hash"] != data_meta["dataset_hash"] or token_meta["tokenizer_hash"] != file_hash(tokenizer_path):
@@ -148,7 +151,7 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
     model = FlyClassifier(graph, tokenizer.get_vocab_size(), protocol.embed_dim,
                           protocol.microsteps, seed, backend).to(device)
     optimizer = torch.optim.AdamW(model.parameter_groups(protocol), weight_decay=protocol.weight_decay)
-    clocks = dict(train=0., eval=0., checkpoint=0., test=0., review_eval=0.)
+    clocks = dict(train=0., eval=0., auxiliary=0., checkpoint=0., test=0., review_eval=0.)
     counters = dict(updates=0, tokens=0, padded_tokens=0, recurrent_updates=0, evaluation_examples=0)
     completed_reviews = []
     elapsed_before = 0.
@@ -161,6 +164,7 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
         sampler.load_state_dict(ck["sampler"]); restore_rng(ck["rng"])
         curriculum = Curriculum.restore(protocol, ck["curriculum"])
         clocks, counters = ck["clocks"], ck["counters"]
+        clocks.setdefault("auxiliary", 0.)
         completed_reviews = ck["completed_reviews"]
         elapsed_before = ck["elapsed_seconds"]
         # Crash recovery truncates events after the latest complete checkpoint.
@@ -203,6 +207,13 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
                 scores, strata = evaluate(model, corpus, panel, curriculum.languages, microbatch, optimizer, sampler)
                 sync(device); clocks["eval"] += time.perf_counter()-begin
                 counters["evaluation_examples"] += sum(v[1] for v in scores.values())
+                if corpus.has_auxiliary(panel):
+                    # Outer-frame transfer on the same items; recorded only, never a mastery observation.
+                    sync(device); begin = time.perf_counter()
+                    aux_scores, aux_strata = evaluate(model, corpus, panel, curriculum.languages, microbatch, optimizer, sampler, view="auxiliary")
+                    sync(device); clocks["auxiliary"] += time.perf_counter()-begin
+                    counters["evaluation_examples"] += sum(v[1] for v in aux_scores.values())
+                    append_event(log, dict(kind="auxiliary", seen=curriculum.seen, panel=panel, scores=aux_scores, strata=aux_strata))
                 curriculum.evaluate(scores, panel)
                 append_event(log, dict(kind="scheduled", seen=curriculum.seen, panel=panel, scores=scores,
                                       strata=strata, stage=curriculum.stage, confirmed=curriculum.confirmed,
@@ -248,9 +259,12 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
             else:
                 sync(device); begin = time.perf_counter()
                 tests, test_strata = evaluate(model, corpus, "test", curriculum.languages, microbatch, optimizer, sampler)
+                record = dict(scores=tests, strata=test_strata, checkpoint_hash=file_hash(output / "primary.pt"), used_for_training=False)
+                if corpus.has_auxiliary("test"):
+                    aux_tests, aux_strata = evaluate(model, corpus, "test", curriculum.languages, microbatch, optimizer, sampler, view="auxiliary")
+                    record.update(auxiliary_scores=aux_tests, auxiliary_strata=aux_strata)
                 sync(device); clocks["test"] += time.perf_counter()-begin
-                write_json(test_path, dict(scores=tests, strata=test_strata,
-                           checkpoint_hash=file_hash(output / "primary.pt"), used_for_training=False))
+                write_json(test_path, record)
     except Exception as exc:
         status = "technical_failure"
         try:

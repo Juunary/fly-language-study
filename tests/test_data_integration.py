@@ -28,8 +28,9 @@ def test_no_split_foil_or_template_leaks(corpus_files):
 def test_korean_copular_endings_are_inflected(corpus_files):
     for split,ending in (('dev_a','사실이라는'),('dev_b','사실이라고'),('test','사실이라면')):
         rows=[r for r in load_rows(corpus_files/'data',split) if r['language']=='ko' and r['task']=='roles']
-        assert rows and all(ending in r['sentence_a'] for r in rows)
-        assert all('이다는' not in r['sentence_a'] and '이다고' not in r['sentence_a'] for r in rows)
+        assert rows and all(ending in r['auxiliary']['sentence_a'] for r in rows)
+        assert all('이다는' not in r['auxiliary']['sentence_a'] and '이다고' not in r['auxiliary']['sentence_a'] for r in rows)
+        assert all(r['sentence_a'].endswith('사실이다.') for r in rows)
 
 
 def test_dataset_tampering_detected(corpus_files,tmp_path):

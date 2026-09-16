@@ -14,6 +14,9 @@ def parser():
     commands = p.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init"); init.add_argument("--output", required=True)
     prep = commands.add_parser("prepare-data"); prep.add_argument("--output", required=True); prep.add_argument("--tiny", action="store_true")
+    revise = commands.add_parser("revise-evaluation", help="new version: primary (training-frame) + auxiliary (outer-frame) renderings of the same held-out items")
+    revise.add_argument("--source", required=True); revise.add_argument("--output", required=True)
+    revise.add_argument("--test-unused", action="store_true", help="mark the test split confirmatory (default: consumed by exploration)")
     for name in ("audit-data", "baselines", "cue-baselines"):
         sub = commands.add_parser(name); sub.add_argument("--data", required=True)
     tok = commands.add_parser("tokenizer"); tok.add_argument("--data", required=True); tok.add_argument("--output", required=True); tok.add_argument("--vocab-size", type=int, default=4096)
@@ -120,6 +123,9 @@ def dispatch(a):
     if a.command == "prepare-data":
         from .data import generate
         return generate(a.output, 18, 2) if a.tiny else generate(a.output)
+    if a.command == "revise-evaluation":
+        from .data import revise_evaluation
+        return revise_evaluation(a.source, a.output, test_used_in_exploration=not a.test_unused)
     if a.command in ("audit-data", "baselines", "tokenizer"):
         from .data import audit, baselines, train_tokenizer
         return {"audit-data": lambda: audit(a.data), "baselines": lambda: baselines(a.data),

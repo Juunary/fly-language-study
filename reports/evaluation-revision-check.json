@@ -1,0 +1,445 @@
+{
+  "kind": "evaluation_revision_check",
+  "study_evidence": false,
+  "created_at_utc": "2026-09-16T18:26:25.926855+00:00",
+  "code_hash": "926c1a6729140c46255cb914113f84b31ec363ddbf7864e75eb5b0c177b2501c",
+  "script_hash": "e6623afb816d6bd1f547eba8139d299ab998eb2d97ea84599e378910fc518996",
+  "old": {
+    "path": "data/draft-v4.3",
+    "manifest": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e"
+  },
+  "new": {
+    "path": "data/draft-v4.4",
+    "manifest": "488d8f22a4dfe1f19f00af90a31c6817c00efcaf9c15652736a772a5bf3193ac"
+  },
+  "tokenizer_hash": "d30ef71c4d5222fe82cf2b4cafedde998145a3a58e440f862cdc988d46f70883",
+  "tokenizer_identical_to_v43": true,
+  "parameter_updates": 0,
+  "test_split_used": false,
+  "cpu": {
+    "training_bytes_identical": true,
+    "splits": {
+      "dev_a": {
+        "rows": 12000,
+        "id_known": 12000,
+        "metadata_equal": 12000,
+        "auxiliary_equals_v43_sentences": 12000,
+        "auxiliary_family_equals_v43": 12000,
+        "primary_equals_assertion_view": 12000,
+        "counts_by_language_task_equal": true,
+        "meaning_ids_equal": true,
+        "tokens": {
+          "en/primary": {
+            "items": 4000,
+            "tokens": 49106,
+            "mean_tokens": 12.2765,
+            "unseen_fraction": 0.0,
+            "matches_token_exposure_v1": true
+          },
+          "en/auxiliary": {
+            "items": 4000,
+            "tokens": 162932,
+            "mean_tokens": 40.733,
+            "unseen_fraction": 0.7141015883927037,
+            "matches_token_exposure_v1": true
+          },
+          "de/primary": {
+            "items": 4000,
+            "tokens": 63680,
+            "mean_tokens": 15.92,
+            "unseen_fraction": 0.0,
+            "matches_token_exposure_v1": true
+          },
+          "de/auxiliary": {
+            "items": 4000,
+            "tokens": 258854,
+            "mean_tokens": 64.7135,
+            "unseen_fraction": 0.76827864355969,
+            "matches_token_exposure_v1": true
+          },
+          "ko/primary": {
+            "items": 4000,
+            "tokens": 63741,
+            "mean_tokens": 15.93525,
+            "unseen_fraction": 0.0,
+            "matches_token_exposure_v1": true
+          },
+          "ko/auxiliary": {
+            "items": 4000,
+            "tokens": 178791,
+            "mean_tokens": 44.69775,
+            "unseen_fraction": 0.6806886252663724,
+            "matches_token_exposure_v1": true
+          }
+        }
+      },
+      "dev_b": {
+        "rows": 12000,
+        "id_known": 12000,
+        "metadata_equal": 12000,
+        "auxiliary_equals_v43_sentences": 12000,
+        "auxiliary_family_equals_v43": 12000,
+        "primary_equals_assertion_view": 12000,
+        "counts_by_language_task_equal": true,
+        "meaning_ids_equal": true,
+        "tokens": {
+          "en/primary": {
+            "items": 4000,
+            "tokens": 49117,
+            "mean_tokens": 12.27925,
+            "unseen_fraction": 0.0,
+            "matches_token_exposure_v1": true
+          },
+          "en/auxiliary": {
+            "items": 4000,
+            "tokens": 170374,
+            "mean_tokens": 42.5935,
+            "unseen_fraction": 0.7160717010811509,
+            "matches_token_exposure_v1": true
+          },
+          "de/primary": {
+            "items": 4000,
+            "tokens": 63725,
+            "mean_tokens": 15.93125,
+            "unseen_fraction": 0.0,
+            "matches_token_exposure_v1": true
+          },
+          "de/auxiliary": {
+            "items": 4000,
+            "tokens": 243871,
+            "mean_tokens": 60.96775,
+            "unseen_fraction": 0.7543045298538982,
+            "matches_token_exposure_v1": true
+          },
+          "ko/primary": {
+            "items": 4000,
+            "tokens": 63773,
+            "mean_tokens": 15.94325,
+            "unseen_fraction": 0.0,
+            "matches_token_exposure_v1": true
+          },
+          "ko/auxiliary": {
+            "items": 4000,
+            "tokens": 194747,
+            "mean_tokens": 48.68675,
+            "unseen_fraction": 0.7070969000806174,
+            "matches_token_exposure_v1": true
+          }
+        }
+      },
+      "test": {
+        "rows": 12000,
+        "id_known": 12000,
+        "metadata_equal": 12000,
+        "auxiliary_equals_v43_sentences": 12000,
+        "auxiliary_family_equals_v43": 12000,
+        "primary_equals_assertion_view": 12000,
+        "counts_by_language_task_equal": true,
+        "meaning_ids_equal": true,
+        "tokens": {
+          "en/primary": {
+            "items": 4000,
+            "tokens": 49046,
+            "mean_tokens": 12.2615,
+            "unseen_fraction": 0.0
+          },
+          "en/auxiliary": {
+            "items": 4000,
+            "tokens": 162870,
+            "mean_tokens": 40.7175,
+            "unseen_fraction": 0.7143979861239025
+          },
+          "de/primary": {
+            "items": 4000,
+            "tokens": 63650,
+            "mean_tokens": 15.9125,
+            "unseen_fraction": 0.0
+          },
+          "de/auxiliary": {
+            "items": 4000,
+            "tokens": 275082,
+            "mean_tokens": 68.7705,
+            "unseen_fraction": 0.7824866767000386
+          },
+          "ko/primary": {
+            "items": 4000,
+            "tokens": 63749,
+            "mean_tokens": 15.93725,
+            "unseen_fraction": 0.0
+          },
+          "ko/auxiliary": {
+            "items": 4000,
+            "tokens": 258636,
+            "mean_tokens": 64.659,
+            "unseen_fraction": 0.7654773504075225
+          }
+        }
+      }
+    }
+  },
+  "environment": {
+    "python": "3.12.4",
+    "system": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "torch": "2.5.1+cu121",
+    "torch_cuda": "12.1",
+    "nvcc": "/usr/local/cuda-12.1/bin/nvcc",
+    "cuda_devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3080 Ti",
+        "capability": [
+          8,
+          6
+        ],
+        "vram": 12622954496
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA GeForce RTX 3080 Ti",
+        "capability": [
+          8,
+          6
+        ],
+        "vram": 12622954496
+      }
+    ],
+    "code_hash": "926c1a6729140c46255cb914113f84b31ec363ddbf7864e75eb5b0c177b2501c"
+  },
+  "gpu": [
+    {
+      "source": "frame-diagnostic-v1",
+      "run_id": "explore-v1-mono-en",
+      "stage": "final",
+      "checkpoint_hash": "6bf366000b9edd9f0fb8a1b4aced5dd24ce0d0cae272e4655b516b86f68ee8db",
+      "seen": 200000,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 4.942519060801715
+    },
+    {
+      "source": "frame-diagnostic-v1",
+      "run_id": "explore-v1-mono-de",
+      "stage": "final",
+      "checkpoint_hash": "17e6a4f5a0f4fd7d7f73bca47d2a774db7fb5feff6425b02533955f270e373e3",
+      "seen": 200000,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 2.265828598057851
+    },
+    {
+      "source": "frame-diagnostic-v1",
+      "run_id": "explore-v1-mono-ko",
+      "stage": "final",
+      "checkpoint_hash": "382af7790570083ccf899cf559e65becacb73f4b160d51db51194247ebc57cc3",
+      "seen": 200000,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.922077588038519
+    },
+    {
+      "source": "frame-diagnostic-v1",
+      "run_id": "explore-v1-mixed",
+      "stage": "final",
+      "checkpoint_hash": "89024f0dda84e1d4c770a4cc00e5b1979e522e928412f35202f0cf1afae86635",
+      "seen": 900000,
+      "cells_compared": 48,
+      "cells_recorded": 48,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 5.656037055887282
+    },
+    {
+      "source": "frame-diagnostic-v1",
+      "run_id": "explore-v1-seq-en-de-ko",
+      "stage": "final",
+      "checkpoint_hash": "901c451ba2549fe609667a79f1a57f6f42fdf366068032f3fea4f625cb736466",
+      "seen": 900000,
+      "cells_compared": 48,
+      "cells_recorded": 48,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 5.662797236116603
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-en",
+      "stage": "200k",
+      "checkpoint_hash": "cdbda9cb666e05c94823557f60ebae34be3d334de5c163626e0d425d40e9a04a",
+      "seen": 199936,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.7208006370346993
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-en",
+      "stage": "300k",
+      "checkpoint_hash": "949702efbdfda9eb6a55ec4d350c02ae2c2dde22ea92ab0fb7bd128aeb790d54",
+      "seen": 300032,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.7082163740415126
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-en",
+      "stage": "600k",
+      "checkpoint_hash": "3d61486030da32b8e971e1fc2cab8c39ea0b05aee76726719f48239085b36529",
+      "seen": 600064,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.7232973708305508
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-en",
+      "stage": "900k",
+      "checkpoint_hash": "2d5b84eab19dece5686471dd01dc1dbe664f703aa08fe2be833c6424d0a8846f",
+      "seen": 899840,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.7289150869473815
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-de",
+      "stage": "200k",
+      "checkpoint_hash": "7a6dee8ae4bb5242b8a3718d1bc3584507b2371198af6201d701f57726307e25",
+      "seen": 199936,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 2.2714504620525986
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-de",
+      "stage": "300k",
+      "checkpoint_hash": "df788fb231b80a1b7fe2b1708a9145ae223ffc2b5ebf3dea601eb6ca7447edeb",
+      "seen": 300032,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 2.276103069074452
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-de",
+      "stage": "600k",
+      "checkpoint_hash": "a0d75dea8355d2f2056d0c1b2d30a58952aa4894ba8377c531141756e77eaf99",
+      "seen": 600064,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 2.271556822117418
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-de",
+      "stage": "900k",
+      "checkpoint_hash": "bc1fec551fb518dfb63f16c8df98ca50b064820a564ef30a0b80d4a7c2ccfb01",
+      "seen": 899840,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 2.2741859720554203
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-ko",
+      "stage": "200k",
+      "checkpoint_hash": "2db4dca09d5b6eb9a836f463c88db9078d8eec47a8bef137653e3159d23ef904",
+      "seen": 199936,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.9307256489992142
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-ko",
+      "stage": "300k",
+      "checkpoint_hash": "9f014131b311e54ed7f04023baa84a5bb53d20beca76b3317b3eb2de9c4102b7",
+      "seen": 300032,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.9268715190701187
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-ko",
+      "stage": "600k",
+      "checkpoint_hash": "1f2a79f8a9281923b37bb7b4e7e1ac6a42aa05d772d2325e868f0b55f665b3b6",
+      "seen": 600064,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.928159762872383
+    },
+    {
+      "source": "exploratory-v2",
+      "run_id": "explore-v2-mono-ko",
+      "stage": "900k",
+      "checkpoint_hash": "359f65d88ef34ec28b7487f84d85430711052299194a8f7b7486892c9f5f81d1",
+      "seen": 899840,
+      "cells_compared": 16,
+      "cells_recorded": 16,
+      "mismatches": [],
+      "reproduced": true,
+      "parameters_unchanged": true,
+      "seconds": 1.9164407278876752
+    }
+  ],
+  "ledger": {
+    "path": "runs/gpu-ledger.json",
+    "reservation_id": "eval-revision-check-1",
+    "reserved_hours": 0.1,
+    "charged_hours": 0.012523492943922368,
+    "status": "completed"
+  },
+  "summary": {
+    "checkpoints": 17,
+    "reproduced": 17,
+    "parameters_unchanged": true,
+    "cpu_all_rows_matched": true,
+    "token_exposure_matched": true
+  }
+}

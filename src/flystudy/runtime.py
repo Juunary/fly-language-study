@@ -70,17 +70,25 @@ class Corpus:
         self.pad_id = tokenizer.token_to_id("[PAD]")
         self.cache = {}
 
-    def split(self, split):
-        if split not in self.cache:
+    def split(self, split, view="primary"):
+        """'primary' encodes sentence_a/b (training frame); 'auxiliary' encodes the same items' outer-frame rendering."""
+        if view not in ("primary", "auxiliary"):
+            raise ValueError("Unknown rendering view")
+        if (split, view) not in self.cache:
             groups = {}
             for lang in LANGUAGES:
                 groups[lang] = []
             for row in load_rows(self.root, split):
-                groups[row["language"]].append((row, encode_pair(self.tokenizer, row)))
+                if view == "auxiliary" and "auxiliary" not in row:
+                    raise ValueError(f"No auxiliary rendering in split {split}")
+                groups[row["language"]].append((row, encode_pair(self.tokenizer, row if view == "primary" else row["auxiliary"])))
             for lang in LANGUAGES:
                 groups[lang].sort(key=lambda x: (x[0]["meaning_id"], x[0]["label"]))
-            self.cache[split] = groups
-        return self.cache[split]
+            self.cache[(split, view)] = groups
+        return self.cache[(split, view)]
+
+    def has_auxiliary(self, split):
+        return all("auxiliary" in row for items in self.split(split).values() for row, _ in items)
 
 
 class AlignedSampler:
@@ -129,11 +137,11 @@ class AlignedSampler:
         self.unique, self.exposures = set(state["unique"]), dict(state["exposures"])
 
 
-def evaluate(model, corpus, split, languages, microbatch, optimizer=None, sampler=None):
+def evaluate(model, corpus, split, languages, microbatch, optimizer=None, sampler=None, view="primary"):
     scores, strata = {}, {}
     with immutable_evaluation(model, optimizer, sampler):
         for lang in languages:
-            items = corpus.split(split)[lang]
+            items = corpus.split(split, view)[lang]
             for task in TASKS:
                 selected = [(r, tokens) for r, tokens in items if r["task"] == task]
                 correct, count, male_correct, male_count = 0, 0, 0, 0

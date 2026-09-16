@@ -1,0 +1,720 @@
+{
+  "kind": "exploratory_error_breakdown",
+  "study_evidence": false,
+  "created_at_utc": "2026-09-16T18:30:37.131859+00:00",
+  "code_hash": "926c1a6729140c46255cb914113f84b31ec363ddbf7864e75eb5b0c177b2501c",
+  "data": "data/draft-v4.4",
+  "stage": "900k",
+  "parameter_updates": 0,
+  "test_split_used": false,
+  "checkpoints": [
+    {
+      "run_id": "explore-v2-mono-en",
+      "seen": 899840,
+      "checkpoint_hash": "2d5b84eab19dece5686471dd01dc1dbe664f703aa08fe2be833c6424d0a8846f",
+      "cells": {
+        "en/space/dev_a": {
+          "all": {
+            "correct": 590,
+            "items": 1000,
+            "accuracy": 0.59
+          },
+          "axis=above/below": {
+            "correct": 196,
+            "items": 344,
+            "accuracy": 0.5697674418604651
+          },
+          "axis=front/behind": {
+            "correct": 228,
+            "items": 344,
+            "accuracy": 0.6627906976744186
+          },
+          "axis=left/right": {
+            "correct": 166,
+            "items": 312,
+            "accuracy": 0.532051282051282
+          },
+          "axis+direction=above/below:False": {
+            "correct": 103,
+            "items": 172,
+            "accuracy": 0.5988372093023255
+          },
+          "axis+direction=above/below:True": {
+            "correct": 93,
+            "items": 172,
+            "accuracy": 0.5406976744186046
+          },
+          "axis+direction=front/behind:False": {
+            "correct": 130,
+            "items": 182,
+            "accuracy": 0.7142857142857143
+          },
+          "axis+direction=front/behind:True": {
+            "correct": 98,
+            "items": 162,
+            "accuracy": 0.6049382716049383
+          },
+          "axis+direction=left/right:False": {
+            "correct": 98,
+            "items": 174,
+            "accuracy": 0.5632183908045977
+          },
+          "axis+direction=left/right:True": {
+            "correct": 68,
+            "items": 138,
+            "accuracy": 0.4927536231884058
+          },
+          "direction=False": {
+            "correct": 331,
+            "items": 528,
+            "accuracy": 0.6268939393939394
+          },
+          "direction=True": {
+            "correct": 259,
+            "items": 472,
+            "accuracy": 0.548728813559322
+          },
+          "label=0": {
+            "correct": 259,
+            "items": 500,
+            "accuracy": 0.518
+          },
+          "label=1": {
+            "correct": 331,
+            "items": 500,
+            "accuracy": 0.662
+          }
+        },
+        "en/space/dev_b": {
+          "all": {
+            "correct": 561,
+            "items": 1000,
+            "accuracy": 0.561
+          },
+          "axis=above/below": {
+            "correct": 161,
+            "items": 300,
+            "accuracy": 0.5366666666666666
+          },
+          "axis=front/behind": {
+            "correct": 215,
+            "items": 350,
+            "accuracy": 0.6142857142857143
+          },
+          "axis=left/right": {
+            "correct": 185,
+            "items": 350,
+            "accuracy": 0.5285714285714286
+          },
+          "axis+direction=above/below:False": {
+            "correct": 79,
+            "items": 138,
+            "accuracy": 0.572463768115942
+          },
+          "axis+direction=above/below:True": {
+            "correct": 82,
+            "items": 162,
+            "accuracy": 0.5061728395061729
+          },
+          "axis+direction=front/behind:False": {
+            "correct": 104,
+            "items": 174,
+            "accuracy": 0.5977011494252874
+          },
+          "axis+direction=front/behind:True": {
+            "correct": 111,
+            "items": 176,
+            "accuracy": 0.6306818181818182
+          },
+          "axis+direction=left/right:False": {
+            "correct": 93,
+            "items": 186,
+            "accuracy": 0.5
+          },
+          "axis+direction=left/right:True": {
+            "correct": 92,
+            "items": 164,
+            "accuracy": 0.5609756097560976
+          },
+          "direction=False": {
+            "correct": 276,
+            "items": 498,
+            "accuracy": 0.5542168674698795
+          },
+          "direction=True": {
+            "correct": 285,
+            "items": 502,
+            "accuracy": 0.5677290836653387
+          },
+          "label=0": {
+            "correct": 253,
+            "items": 500,
+            "accuracy": 0.506
+          },
+          "label=1": {
+            "correct": 308,
+            "items": 500,
+            "accuracy": 0.616
+          }
+        },
+        "en/roles/dev_a": {
+          "all": {
+            "correct": 948,
+            "items": 1000,
+            "accuracy": 0.948
+          },
+          "label=0": {
+            "correct": 484,
+            "items": 500,
+            "accuracy": 0.968
+          },
+          "label=1": {
+            "correct": 464,
+            "items": 500,
+            "accuracy": 0.928
+          },
+          "verb_order=0>1": {
+            "correct": 144,
+            "items": 148,
+            "accuracy": 0.972972972972973
+          },
+          "verb_order=0>2": {
+            "correct": 142,
+            "items": 152,
+            "accuracy": 0.9342105263157895
+          },
+          "verb_order=1>0": {
+            "correct": 135,
+            "items": 140,
+            "accuracy": 0.9642857142857143
+          },
+          "verb_order=1>2": {
+            "correct": 146,
+            "items": 164,
+            "accuracy": 0.8902439024390244
+          },
+          "verb_order=2>0": {
+            "correct": 185,
+            "items": 190,
+            "accuracy": 0.9736842105263158
+          },
+          "verb_order=2>1": {
+            "correct": 196,
+            "items": 206,
+            "accuracy": 0.9514563106796117
+          },
+          "verb_pair=0-1": {
+            "correct": 279,
+            "items": 288,
+            "accuracy": 0.96875
+          },
+          "verb_pair=0-2": {
+            "correct": 327,
+            "items": 342,
+            "accuracy": 0.956140350877193
+          },
+          "verb_pair=1-2": {
+            "correct": 342,
+            "items": 370,
+            "accuracy": 0.9243243243243243
+          }
+        },
+        "en/roles/dev_b": {
+          "all": {
+            "correct": 960,
+            "items": 1000,
+            "accuracy": 0.96
+          },
+          "label=0": {
+            "correct": 484,
+            "items": 500,
+            "accuracy": 0.968
+          },
+          "label=1": {
+            "correct": 476,
+            "items": 500,
+            "accuracy": 0.952
+          },
+          "verb_order=0>1": {
+            "correct": 152,
+            "items": 154,
+            "accuracy": 0.987012987012987
+          },
+          "verb_order=0>2": {
+            "correct": 191,
+            "items": 192,
+            "accuracy": 0.9947916666666666
+          },
+          "verb_order=1>0": {
+            "correct": 130,
+            "items": 134,
+            "accuracy": 0.9701492537313433
+          },
+          "verb_order=1>2": {
+            "correct": 175,
+            "items": 188,
+            "accuracy": 0.9308510638297872
+          },
+          "verb_order=2>0": {
+            "correct": 158,
+            "items": 166,
+            "accuracy": 0.9518072289156626
+          },
+          "verb_order=2>1": {
+            "correct": 154,
+            "items": 166,
+            "accuracy": 0.927710843373494
+          },
+          "verb_pair=0-1": {
+            "correct": 282,
+            "items": 288,
+            "accuracy": 0.9791666666666666
+          },
+          "verb_pair=0-2": {
+            "correct": 349,
+            "items": 358,
+            "accuracy": 0.9748603351955307
+          },
+          "verb_pair=1-2": {
+            "correct": 329,
+            "items": 354,
+            "accuracy": 0.9293785310734464
+          }
+        }
+      }
+    },
+    {
+      "run_id": "explore-v2-mono-de",
+      "seen": 899840,
+      "checkpoint_hash": "bc1fec551fb518dfb63f16c8df98ca50b064820a564ef30a0b80d4a7c2ccfb01",
+      "cells": {
+        "de/roles/dev_a": {
+          "all": {
+            "correct": 715,
+            "items": 1000,
+            "accuracy": 0.715
+          },
+          "label=0": {
+            "correct": 349,
+            "items": 500,
+            "accuracy": 0.698
+          },
+          "label=1": {
+            "correct": 366,
+            "items": 500,
+            "accuracy": 0.732
+          },
+          "verb_order=0>1": {
+            "correct": 102,
+            "items": 148,
+            "accuracy": 0.6891891891891891
+          },
+          "verb_order=0>2": {
+            "correct": 104,
+            "items": 152,
+            "accuracy": 0.6842105263157895
+          },
+          "verb_order=1>0": {
+            "correct": 91,
+            "items": 140,
+            "accuracy": 0.65
+          },
+          "verb_order=1>2": {
+            "correct": 120,
+            "items": 164,
+            "accuracy": 0.7317073170731707
+          },
+          "verb_order=2>0": {
+            "correct": 140,
+            "items": 190,
+            "accuracy": 0.7368421052631579
+          },
+          "verb_order=2>1": {
+            "correct": 158,
+            "items": 206,
+            "accuracy": 0.7669902912621359
+          },
+          "verb_pair=0-1": {
+            "correct": 193,
+            "items": 288,
+            "accuracy": 0.6701388888888888
+          },
+          "verb_pair=0-2": {
+            "correct": 244,
+            "items": 342,
+            "accuracy": 0.7134502923976608
+          },
+          "verb_pair=1-2": {
+            "correct": 278,
+            "items": 370,
+            "accuracy": 0.7513513513513513
+          }
+        },
+        "de/roles/dev_b": {
+          "all": {
+            "correct": 681,
+            "items": 1000,
+            "accuracy": 0.681
+          },
+          "label=0": {
+            "correct": 339,
+            "items": 500,
+            "accuracy": 0.678
+          },
+          "label=1": {
+            "correct": 342,
+            "items": 500,
+            "accuracy": 0.684
+          },
+          "verb_order=0>1": {
+            "correct": 103,
+            "items": 154,
+            "accuracy": 0.6688311688311688
+          },
+          "verb_order=0>2": {
+            "correct": 122,
+            "items": 192,
+            "accuracy": 0.6354166666666666
+          },
+          "verb_order=1>0": {
+            "correct": 89,
+            "items": 134,
+            "accuracy": 0.664179104477612
+          },
+          "verb_order=1>2": {
+            "correct": 118,
+            "items": 188,
+            "accuracy": 0.6276595744680851
+          },
+          "verb_order=2>0": {
+            "correct": 123,
+            "items": 166,
+            "accuracy": 0.7409638554216867
+          },
+          "verb_order=2>1": {
+            "correct": 126,
+            "items": 166,
+            "accuracy": 0.7590361445783133
+          },
+          "verb_pair=0-1": {
+            "correct": 192,
+            "items": 288,
+            "accuracy": 0.6666666666666666
+          },
+          "verb_pair=0-2": {
+            "correct": 245,
+            "items": 358,
+            "accuracy": 0.6843575418994413
+          },
+          "verb_pair=1-2": {
+            "correct": 244,
+            "items": 354,
+            "accuracy": 0.6892655367231638
+          }
+        },
+        "de/space/dev_a": {
+          "all": {
+            "correct": 580,
+            "items": 1000,
+            "accuracy": 0.58
+          },
+          "axis=above/below": {
+            "correct": 194,
+            "items": 344,
+            "accuracy": 0.563953488372093
+          },
+          "axis=front/behind": {
+            "correct": 189,
+            "items": 344,
+            "accuracy": 0.5494186046511628
+          },
+          "axis=left/right": {
+            "correct": 197,
+            "items": 312,
+            "accuracy": 0.6314102564102564
+          },
+          "axis+direction=above/below:False": {
+            "correct": 102,
+            "items": 172,
+            "accuracy": 0.5930232558139535
+          },
+          "axis+direction=above/below:True": {
+            "correct": 92,
+            "items": 172,
+            "accuracy": 0.5348837209302325
+          },
+          "axis+direction=front/behind:False": {
+            "correct": 108,
+            "items": 182,
+            "accuracy": 0.5934065934065934
+          },
+          "axis+direction=front/behind:True": {
+            "correct": 81,
+            "items": 162,
+            "accuracy": 0.5
+          },
+          "axis+direction=left/right:False": {
+            "correct": 121,
+            "items": 174,
+            "accuracy": 0.6954022988505747
+          },
+          "axis+direction=left/right:True": {
+            "correct": 76,
+            "items": 138,
+            "accuracy": 0.5507246376811594
+          },
+          "direction=False": {
+            "correct": 331,
+            "items": 528,
+            "accuracy": 0.6268939393939394
+          },
+          "direction=True": {
+            "correct": 249,
+            "items": 472,
+            "accuracy": 0.527542372881356
+          },
+          "label=0": {
+            "correct": 272,
+            "items": 500,
+            "accuracy": 0.544
+          },
+          "label=1": {
+            "correct": 308,
+            "items": 500,
+            "accuracy": 0.616
+          }
+        },
+        "de/space/dev_b": {
+          "all": {
+            "correct": 575,
+            "items": 1000,
+            "accuracy": 0.575
+          },
+          "axis=above/below": {
+            "correct": 155,
+            "items": 300,
+            "accuracy": 0.5166666666666667
+          },
+          "axis=front/behind": {
+            "correct": 193,
+            "items": 350,
+            "accuracy": 0.5514285714285714
+          },
+          "axis=left/right": {
+            "correct": 227,
+            "items": 350,
+            "accuracy": 0.6485714285714286
+          },
+          "axis+direction=above/below:False": {
+            "correct": 72,
+            "items": 138,
+            "accuracy": 0.5217391304347826
+          },
+          "axis+direction=above/below:True": {
+            "correct": 83,
+            "items": 162,
+            "accuracy": 0.5123456790123457
+          },
+          "axis+direction=front/behind:False": {
+            "correct": 105,
+            "items": 174,
+            "accuracy": 0.603448275862069
+          },
+          "axis+direction=front/behind:True": {
+            "correct": 88,
+            "items": 176,
+            "accuracy": 0.5
+          },
+          "axis+direction=left/right:False": {
+            "correct": 129,
+            "items": 186,
+            "accuracy": 0.6935483870967742
+          },
+          "axis+direction=left/right:True": {
+            "correct": 98,
+            "items": 164,
+            "accuracy": 0.5975609756097561
+          },
+          "direction=False": {
+            "correct": 306,
+            "items": 498,
+            "accuracy": 0.6144578313253012
+          },
+          "direction=True": {
+            "correct": 269,
+            "items": 502,
+            "accuracy": 0.5358565737051793
+          },
+          "label=0": {
+            "correct": 264,
+            "items": 500,
+            "accuracy": 0.528
+          },
+          "label=1": {
+            "correct": 311,
+            "items": 500,
+            "accuracy": 0.622
+          }
+        }
+      }
+    },
+    {
+      "run_id": "explore-v2-mono-ko",
+      "seen": 899840,
+      "checkpoint_hash": "359f65d88ef34ec28b7487f84d85430711052299194a8f7b7486892c9f5f81d1",
+      "cells": {
+        "ko/space/dev_a": {
+          "all": {
+            "correct": 1000,
+            "items": 1000,
+            "accuracy": 1.0
+          },
+          "axis=above/below": {
+            "correct": 344,
+            "items": 344,
+            "accuracy": 1.0
+          },
+          "axis=front/behind": {
+            "correct": 344,
+            "items": 344,
+            "accuracy": 1.0
+          },
+          "axis=left/right": {
+            "correct": 312,
+            "items": 312,
+            "accuracy": 1.0
+          },
+          "axis+direction=above/below:False": {
+            "correct": 172,
+            "items": 172,
+            "accuracy": 1.0
+          },
+          "axis+direction=above/below:True": {
+            "correct": 172,
+            "items": 172,
+            "accuracy": 1.0
+          },
+          "axis+direction=front/behind:False": {
+            "correct": 182,
+            "items": 182,
+            "accuracy": 1.0
+          },
+          "axis+direction=front/behind:True": {
+            "correct": 162,
+            "items": 162,
+            "accuracy": 1.0
+          },
+          "axis+direction=left/right:False": {
+            "correct": 174,
+            "items": 174,
+            "accuracy": 1.0
+          },
+          "axis+direction=left/right:True": {
+            "correct": 138,
+            "items": 138,
+            "accuracy": 1.0
+          },
+          "direction=False": {
+            "correct": 528,
+            "items": 528,
+            "accuracy": 1.0
+          },
+          "direction=True": {
+            "correct": 472,
+            "items": 472,
+            "accuracy": 1.0
+          },
+          "label=0": {
+            "correct": 500,
+            "items": 500,
+            "accuracy": 1.0
+          },
+          "label=1": {
+            "correct": 500,
+            "items": 500,
+            "accuracy": 1.0
+          }
+        },
+        "ko/space/dev_b": {
+          "all": {
+            "correct": 999,
+            "items": 1000,
+            "accuracy": 0.999
+          },
+          "axis=above/below": {
+            "correct": 300,
+            "items": 300,
+            "accuracy": 1.0
+          },
+          "axis=front/behind": {
+            "correct": 350,
+            "items": 350,
+            "accuracy": 1.0
+          },
+          "axis=left/right": {
+            "correct": 349,
+            "items": 350,
+            "accuracy": 0.9971428571428571
+          },
+          "axis+direction=above/below:False": {
+            "correct": 138,
+            "items": 138,
+            "accuracy": 1.0
+          },
+          "axis+direction=above/below:True": {
+            "correct": 162,
+            "items": 162,
+            "accuracy": 1.0
+          },
+          "axis+direction=front/behind:False": {
+            "correct": 174,
+            "items": 174,
+            "accuracy": 1.0
+          },
+          "axis+direction=front/behind:True": {
+            "correct": 176,
+            "items": 176,
+            "accuracy": 1.0
+          },
+          "axis+direction=left/right:False": {
+            "correct": 186,
+            "items": 186,
+            "accuracy": 1.0
+          },
+          "axis+direction=left/right:True": {
+            "correct": 163,
+            "items": 164,
+            "accuracy": 0.9939024390243902
+          },
+          "direction=False": {
+            "correct": 498,
+            "items": 498,
+            "accuracy": 1.0
+          },
+          "direction=True": {
+            "correct": 501,
+            "items": 502,
+            "accuracy": 0.99800796812749
+          },
+          "label=0": {
+            "correct": 500,
+            "items": 500,
+            "accuracy": 1.0
+          },
+          "label=1": {
+            "correct": 499,
+            "items": 500,
+            "accuracy": 0.998
+          }
+        }
+      }
+    }
+  ],
+  "ledger": {
+    "path": "runs/gpu-ledger.json",
+    "reservation_id": "eval-revision-errors-1",
+    "reserved_hours": 0.05,
+    "charged_hours": 0.000885782368067238,
+    "status": "completed"
+  }
+}

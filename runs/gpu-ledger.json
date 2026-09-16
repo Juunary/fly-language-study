@@ -171,6 +171,20 @@
       "used": 0.06279901389446524,
       "status": "completed",
       "exceeded_reservation": false
+    },
+    "eval-revision-check-1": {
+      "category": "reserve",
+      "reserved": 0.1,
+      "used": 0.012523492943922368,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "eval-revision-errors-1": {
+      "category": "reserve",
+      "reserved": 0.05,
+      "used": 0.000885782368067238,
+      "status": "completed",
+      "exceeded_reservation": false
     }
   },
   "transfers": []

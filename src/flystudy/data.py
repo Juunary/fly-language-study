@@ -42,7 +42,11 @@ NUMBERS = {"en": ("two", "three", "four", "five", "six", "seven", "eight"),
            "de": ("zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht"),
            "ko": ("두", "세", "네", "다섯", "여섯", "일곱", "여덟")}
 SPLITS = ("train", "dev_a", "dev_b", "test")
+EVALUATION_SPLITS = SPLITS[1:]
+# Auxiliary (outer-frame) family owned by each split. The primary rendering of every
+# evaluation item uses the training frame by design; only the auxiliary families are held out.
 FAMILIES = dict(zip(SPLITS, ("assertion", "truth_question", "reported_clause", "conditional")))
+PRIMARY_FAMILY = FAMILIES["train"]
 
 
 def coordinate_ko(sentence):
@@ -184,7 +188,46 @@ def render(scene, lang, split, inverse=False, foil=False):
     return unicodedata.normalize("NFC", text[0].upper() + text[1:])
 
 
-def generate(root, train_per_task=5000, panel_per_task=1000, seed=1729):
+def example_record(orbit, split, task, scene, pair, label, lang):
+    """Primary rendering (training frame) plus, for held-out splits, the auxiliary outer-frame rendering of the same item."""
+    record = dict(id=f"{orbit}:{label}:{lang}", meaning_id=orbit, foil_group=orbit,
+                  template_family=PRIMARY_FAMILY, split=split, task=task, language=lang,
+                  label=label, gender_pair=pair, scene=scene,
+                  sentence_a=render(scene, lang, "train"),
+                  sentence_b=render(scene, lang, "train", inverse=True, foil=not label))
+    if split != "train":
+        record["auxiliary"] = dict(template_family=FAMILIES[split], sentence_a=render(scene, lang, split),
+                                   sentence_b=render(scene, lang, split, inverse=True, foil=not label))
+    return record
+
+
+def dataset_manifest(version, seed, files, train_per_task, panel_per_task, independent_test, **extra):
+    manifest = dict(version=version, seed=seed, files=files, train_per_task=train_per_task, panel_per_task=panel_per_task,
+                    human_review="pending", families=FAMILIES,
+                    evaluation=dict(
+                        primary=dict(template_family=PRIMARY_FAMILY, fields=["sentence_a", "sentence_b"], shared_with_training=True,
+                                     purpose="held-out meaning combinations rendered in the training (declarative) frame; "
+                                             "scheduled panels, mastery and the independent test use this rendering"),
+                        auxiliary=dict(field="auxiliary", template_families={s: FAMILIES[s] for s in EVALUATION_SPLITS},
+                                       same_items_as_primary=True,
+                                       purpose="the same held-out items rendered in a held-out outer frame; outer-frame transfer only, never mastery"),
+                        note="Primary and auxiliary are two renderings of one item: same id, meaning_id, scene and label."),
+                    independent_test=independent_test,
+                    note="Semantic orbits, foils and translations are split-exclusive. Outer construction families are held out "
+                         "only in the auxiliary rendering; embedded grammar rules and the declarative frame are shared. "
+                         "Animal colors form a controlled fictional domain.", **extra)
+    manifest["dataset_hash"] = digest(files)
+    return manifest
+
+
+def write_split(path, records):
+    with Path(path).open("w", encoding="utf-8") as f:
+        for record in records:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    return file_hash(path)
+
+
+def generate(root, train_per_task=5000, panel_per_task=1000, seed=1729, version=None):
     root = Path(root)
     if (root / "manifest.json").exists():
         raise FileExistsError("Use a new version directory; do not overwrite a dataset")
@@ -240,28 +283,58 @@ def generate(root, train_per_task=5000, panel_per_task=1000, seed=1729):
             used.add(orbit)
             for label in (0, 1):
                 for lang in LANGUAGES:
-                    record = dict(id=f"{orbit}:{label}:{lang}", meaning_id=orbit, foil_group=orbit,
-                                  template_family=FAMILIES[split], split=split, task=task, language=lang,
-                                  label=label, gender_pair=pair, scene=scene,
-                                  sentence_a=render(scene, lang, split),
-                                  sentence_b=render(scene, lang, split, inverse=True, foil=not label))
-                    rows[split].append(record)
+                    rows[split].append(example_record(orbit, split, task, scene, pair, label, lang))
                 counts[split] += 1
-    files = {}
-    for split, records in rows.items():
-        path = root / f"{split}.jsonl"
-        with path.open("w", encoding="utf-8") as f:
-            for record in records:
-                f.write(json.dumps(record, ensure_ascii=False) + "\n")
-        files[path.name] = file_hash(path)
-    manifest = dict(version="draft-v4.3", seed=seed, files=files,
-                    train_per_task=train_per_task, panel_per_task=panel_per_task,
-                    human_review="pending", families=FAMILIES,
-                    note="Outer construction families are held out; embedded grammar rules are shared. Animal colors form a controlled fictional domain.")
-    manifest["dataset_hash"] = digest(files)
+    files = {f"{split}.jsonl": write_split(root / f"{split}.jsonl", records) for split, records in rows.items()}
+    manifest = dataset_manifest(version or root.name, seed, files, train_per_task, panel_per_task,
+                                independent_test=dict(confirmatory=True, note="Fresh test orbits; apply once at a run's terminal state."))
     write_json(root / "manifest.json", manifest)
     export_review(root, rows)
     return audit(root)
+
+
+def revise_evaluation(source, output, test_used_in_exploration=True):
+    """Derive a new version from an existing one: identical training bytes and split ownership; every
+    held-out item gains a primary (training-frame) rendering while its former sentences become the auxiliary."""
+    import shutil
+    source, output = Path(source), Path(output)
+    if output.resolve() == source.resolve() or (output / "manifest.json").exists():
+        raise FileExistsError("Use a new version directory; do not overwrite a dataset")
+    origin = json.loads((source / "manifest.json").read_text(encoding="utf-8"))
+    for name, sha in origin["files"].items():
+        if file_hash(source / name) != sha:
+            raise ValueError(f"Source file changed since its manifest: {name}")
+    output.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source / "train.jsonl", output / "train.jsonl")
+    rows = {"train": load_rows(source, "train")}
+    for split in EVALUATION_SPLITS:
+        rows[split] = []
+        for r in load_rows(source, split):
+            record = example_record(r["meaning_id"], split, r["task"], r["scene"], r["gender_pair"], r["label"], r["language"])
+            former = r.get("auxiliary", r)
+            if record["id"] != r["id"] or (record["auxiliary"]["sentence_a"], record["auxiliary"]["sentence_b"]) != (former["sentence_a"], former["sentence_b"]):
+                raise ValueError(f"Source row cannot be re-rendered from its scene: {r['id']}")
+            rows[split].append(record)
+        write_split(output / f"{split}.jsonl", rows[split])
+    files = {f"{split}.jsonl": file_hash(output / f"{split}.jsonl") for split in SPLITS}
+    independent_test = (dict(confirmatory=False, reason="test orbits were already evaluated in exploratory runs of the source version; "
+                                                        "create a new confirmatory test set before the main experiment")
+                        if test_used_in_exploration else dict(confirmatory=True, note="Test orbits unused so far."))
+    manifest = dataset_manifest(output.name, origin["seed"], files, origin["train_per_task"], origin["panel_per_task"], independent_test,
+                                derived_from=dict(version=origin["version"], dataset_hash=origin["dataset_hash"], files=origin["files"],
+                                                  training_split_identical=files["train.jsonl"] == origin["files"]["train.jsonl"],
+                                                  orbit_ownership_preserved=True))
+    write_json(output / "manifest.json", manifest)
+    export_review(output, rows)
+    return audit(output)
+
+
+def require_confirmatory_test(manifest):
+    """Study cohorts must not reuse a test split that exploration already consumed."""
+    status = manifest.get("independent_test", {})
+    if status.get("confirmatory") is False:
+        raise ValueError(f"The test split is not confirmatory ({status.get('reason', 'consumed before the study')}); "
+                         "create a new confirmatory test set first")
 
 
 def load_rows(root, split):
@@ -303,8 +376,10 @@ def audit(root):
     root = Path(root)
     manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
     errors, owners, family_owners, identifiers = [], {}, {}, set()
-    counts, labels, genders = Counter(), Counter(), Counter()
+    counts, labels, genders, views = Counter(), Counter(), Counter(), Counter()
     translations = defaultdict(set)
+    train_pairs = {(r["sentence_a"], r["sentence_b"]) for r in load_rows(root, "train")}
+    two_renderings = "evaluation" in manifest
     for split in SPLITS:
         path = root / f"{split}.jsonl"
         if file_hash(path) != manifest["files"][path.name]:
@@ -316,10 +391,31 @@ def audit(root):
             for key in (r["meaning_id"], r["foil_group"]):
                 if owners.setdefault(key, split) != split:
                     errors.append("semantic/foil leakage")
-            if family_owners.setdefault(r["template_family"], split) != split:
+            # The held-out outer frame lives in the auxiliary rendering; the primary frame is shared by design.
+            family = r["auxiliary"]["template_family"] if "auxiliary" in r else r["template_family"]
+            if family_owners.setdefault(family, split) != split:
                 errors.append("template family leakage")
             if r["split"] != split or r["task"] not in TASKS or r["language"] not in LANGUAGES:
                 errors.append("invalid record metadata")
+            if split != "train":
+                if (r["sentence_a"], r["sentence_b"]) in train_pairs:
+                    errors.append("primary sentence leakage")
+                    views["primary_pairs_in_train"] += 1
+                if "auxiliary" in r:
+                    views["auxiliary_rows"] += 1
+                    if r["template_family"] != PRIMARY_FAMILY:
+                        errors.append("primary rendering is not the training frame")
+                    expected = example_record(r["meaning_id"], split, r["task"], r["scene"], r["gender_pair"], r["label"], r["language"])
+                    if (r["sentence_a"], r["sentence_b"]) == (expected["sentence_a"], expected["sentence_b"]):
+                        views["primary_rerendered"] += 1
+                    else:
+                        errors.append("primary rendering mismatch")
+                    if r["auxiliary"] == expected["auxiliary"]:
+                        views["auxiliary_rerendered"] += 1
+                    else:
+                        errors.append("auxiliary/primary mismatch")
+                elif two_renderings:
+                    errors.append("missing auxiliary rendering")
             counts[(split, r["language"], r["task"])] += 1
             labels[(split, r["language"], r["task"], r["label"])] += 1
             genders[(split, r["task"], r["gender_pair"])] += r["language"] == "de"
@@ -340,7 +436,8 @@ def audit(root):
         errors.append("missing aligned translation")
     report = dict(passed=not errors, errors=sorted(set(errors)), dataset_hash=manifest["dataset_hash"],
                   examples=len(identifiers), counts={"/".join(k): v for k, v in counts.items()},
-                  gender_counts={"/".join(k): v for k, v in genders.items()}, human_review="pending")
+                  gender_counts={"/".join(k): v for k, v in genders.items()}, human_review="pending",
+                  view_checks={k: views[k] for k in ("auxiliary_rows", "primary_rerendered", "auxiliary_rerendered", "primary_pairs_in_train")})
     write_json(root / "audit.json", report)
     return report
 

@@ -21,10 +21,13 @@ artifacts/power/*
 !artifacts/power/final-grid.meta.json
 !artifacts/tokenizer-v4.3.json
 !artifacts/tokenizer-v4.3.meta.json
+!artifacts/tokenizer-v4.4.json
+!artifacts/tokenizer-v4.4.meta.json
 
 # Earlier drafts remain local. Only the reviewed-candidate version is published.
 data/*
 !data/draft-v4.3/
+!data/draft-v4.4/
 
 # Human review: blinded distribution packages are published; the review-id mapping,
 # reviewer registry and returned judgments never leave the operator.

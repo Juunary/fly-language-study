@@ -1,0 +1,59 @@
+{
+  "version": "draft-v4.4",
+  "seed": 1729,
+  "files": {
+    "train.jsonl": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+    "dev_a.jsonl": "86bfa8dd8c3aaa877d9fb6c2ebf441ac646e25f8242a9716ce5eb7f49a383656",
+    "dev_b.jsonl": "bb0d409c927d17007d9de183784cb99662f6f12f1d185ff3ddfb770c829c6e21",
+    "test.jsonl": "e590cd9ebff1f426027129be18402c35841d82de7934d9d0f76cc1fcba04680f"
+  },
+  "train_per_task": 5000,
+  "panel_per_task": 1000,
+  "human_review": "pending",
+  "families": {
+    "train": "assertion",
+    "dev_a": "truth_question",
+    "dev_b": "reported_clause",
+    "test": "conditional"
+  },
+  "evaluation": {
+    "primary": {
+      "template_family": "assertion",
+      "fields": [
+        "sentence_a",
+        "sentence_b"
+      ],
+      "shared_with_training": true,
+      "purpose": "held-out meaning combinations rendered in the training (declarative) frame; scheduled panels, mastery and the independent test use this rendering"
+    },
+    "auxiliary": {
+      "field": "auxiliary",
+      "template_families": {
+        "dev_a": "truth_question",
+        "dev_b": "reported_clause",
+        "test": "conditional"
+      },
+      "same_items_as_primary": true,
+      "purpose": "the same held-out items rendered in a held-out outer frame; outer-frame transfer only, never mastery"
+    },
+    "note": "Primary and auxiliary are two renderings of one item: same id, meaning_id, scene and label."
+  },
+  "independent_test": {
+    "confirmatory": false,
+    "reason": "test orbits were already evaluated in exploratory runs of the source version; create a new confirmatory test set before the main experiment"
+  },
+  "note": "Semantic orbits, foils and translations are split-exclusive. Outer construction families are held out only in the auxiliary rendering; embedded grammar rules and the declarative frame are shared. Animal colors form a controlled fictional domain.",
+  "derived_from": {
+    "version": "draft-v4.3",
+    "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e",
+    "files": {
+      "train.jsonl": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+      "dev_a.jsonl": "0c3e1d1e14b2c731ec924769ed9a22053a971778a6cb478a8f19ec27648a13f9",
+      "dev_b.jsonl": "fcf8d983b0506fe511317420d792dfc299358ae7c86dab51034ac7c5f3888dd1",
+      "test.jsonl": "53f1675da68d0520cf09cd1974cad2af2513e3997c905ec00da9f4cc9a301aa2"
+    },
+    "training_split_identical": true,
+    "orbit_ownership_preserved": true
+  },
+  "dataset_hash": "488d8f22a4dfe1f19f00af90a31c6817c00efcaf9c15652736a772a5bf3193ac"
+}
