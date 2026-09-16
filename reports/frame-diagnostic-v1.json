@@ -1,0 +1,3913 @@
+{
+  "kind": "exploratory_frame_diagnostic",
+  "study_evidence": false,
+  "confirmatory": false,
+  "source": "reports/TOKEN_EXPOSURE_V1.md",
+  "created_at_utc": "2026-09-16T14:16:42.725730+00:00",
+  "note": "Assertion view keeps held-out scenes, meaning IDs and labels but renders them in the training declarative frame, relaxing the outer-frame holdout. Not a replacement for dev/test evaluation, mastery timing or independent tests, which are unchanged.",
+  "code_hash": "6df7331008bb4b206dbd538e1389ac386656f5582103559adb8fbb8e3cf686a8",
+  "script_hash": "95d1e87af0cbb53bf05753d3de27dfc01d13cc220b7b617a27cbb1f44d7323fd",
+  "audit_script_hash": "fd4b6d62a11d479610df6e272db5f67f810049645da9c718255bf8edc15aa42b",
+  "protocol_path": "/mnt/nas4/kjune/fly-language-study/configs/protocol-v4-ai.json",
+  "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e",
+  "tokenizer_hash": "d30ef71c4d5222fe82cf2b4cafedde998145a3a58e440f862cdc988d46f70883",
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "device": "cuda:0",
+  "microbatch": 256,
+  "parameter_updates": 0,
+  "other_compute_processes_at_start": [],
+  "open_ledger_reservations_at_start": [],
+  "ledger": {
+    "path": "runs/gpu-ledger.json",
+    "reservation_id": "explore-v1-frame-diagnostic-1",
+    "category": "reserve",
+    "reserved_hours": 0.25,
+    "charged_hours": 0.0073081129185933,
+    "status": "completed"
+  },
+  "runs": [
+    {
+      "run_id": "explore-v1-mono-en",
+      "mode": "mono",
+      "order": [
+        "en"
+      ],
+      "seed": 20001,
+      "seen": 200000,
+      "stop_reason": "administrative_cap",
+      "checkpoint_hash": "6bf366000b9edd9f0fb8a1b4aced5dd24ce0d0cae272e4655b516b86f68ee8db",
+      "languages": [
+        "en"
+      ],
+      "final_scheduled_panel": {
+        "seen": 200000,
+        "panel": "dev_b"
+      },
+      "original_dev_b_reproduces_final_scheduled_panel": true,
+      "seconds": 1.9174103480763733,
+      "cells": [
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "roles",
+          "correct": 504,
+          "items": 1000,
+          "predicted_positive": 788,
+          "label_positive": 500,
+          "accuracy": 0.504,
+          "wilson95": [
+            0.4730552790917704,
+            0.5349141068398641
+          ],
+          "tokens": 38398,
+          "mean_tokens": 38.398,
+          "unseen_in_any_training_fraction": 0.6815979998958279,
+          "unseen_in_language_fraction": 0.6815979998958279
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "negation",
+          "correct": 504,
+          "items": 1000,
+          "predicted_positive": 758,
+          "label_positive": 500,
+          "accuracy": 0.504,
+          "wilson95": [
+            0.4730552790917704,
+            0.5349141068398641
+          ],
+          "tokens": 38392,
+          "mean_tokens": 38.392,
+          "unseen_in_any_training_fraction": 0.6811835799124818,
+          "unseen_in_language_fraction": 0.6811835799124818
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "space",
+          "correct": 511,
+          "items": 1000,
+          "predicted_positive": 777,
+          "label_positive": 500,
+          "accuracy": 0.511,
+          "wilson95": [
+            0.4800349631929444,
+            0.5418808481190504
+          ],
+          "tokens": 40300,
+          "mean_tokens": 40.3,
+          "unseen_in_any_training_fraction": 0.649727047146402,
+          "unseen_in_language_fraction": 0.649727047146402
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "quantity",
+          "correct": 506,
+          "items": 1000,
+          "predicted_positive": 766,
+          "label_positive": 500,
+          "accuracy": 0.506,
+          "wilson95": [
+            0.4750488581199961,
+            0.5369052207774556
+          ],
+          "tokens": 45842,
+          "mean_tokens": 45.842,
+          "unseen_in_any_training_fraction": 0.8254875441734654,
+          "unseen_in_language_fraction": 0.8254875441734654
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "roles",
+          "correct": 529,
+          "items": 1000,
+          "predicted_positive": 787,
+          "label_positive": 500,
+          "accuracy": 0.529,
+          "wilson95": [
+            0.49801049346462045,
+            0.5597675545397293
+          ],
+          "tokens": 12226,
+          "mean_tokens": 12.226,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "negation",
+          "correct": 516,
+          "items": 1000,
+          "predicted_positive": 790,
+          "label_positive": 500,
+          "accuracy": 0.516,
+          "wilson95": [
+            0.48502415177631736,
+            0.5468533919502204
+          ],
+          "tokens": 12240,
+          "mean_tokens": 12.24,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "space",
+          "correct": 502,
+          "items": 1000,
+          "predicted_positive": 786,
+          "label_positive": 500,
+          "accuracy": 0.502,
+          "wilson95": [
+            0.4710621931052472,
+            0.5329224998605699
+          ],
+          "tokens": 14116,
+          "mean_tokens": 14.116,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "quantity",
+          "correct": 504,
+          "items": 1000,
+          "predicted_positive": 800,
+          "label_positive": 500,
+          "accuracy": 0.504,
+          "wilson95": [
+            0.4730552790917704,
+            0.5349141068398641
+          ],
+          "tokens": 10524,
+          "mean_tokens": 10.524,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "roles",
+          "correct": 489,
+          "items": 1000,
+          "predicted_positive": 793,
+          "label_positive": 500,
+          "accuracy": 0.489,
+          "wilson95": [
+            0.4581191518809496,
+            0.5199650368070555
+          ],
+          "tokens": 40206,
+          "mean_tokens": 40.206,
+          "unseen_in_any_training_fraction": 0.6964134706262747,
+          "unseen_in_language_fraction": 0.6964134706262747
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "negation",
+          "correct": 509,
+          "items": 1000,
+          "predicted_positive": 805,
+          "label_positive": 500,
+          "accuracy": 0.509,
+          "wilson95": [
+            0.4780401512509307,
+            0.5398909670952468
+          ],
+          "tokens": 40222,
+          "mean_tokens": 40.222,
+          "unseen_in_any_training_fraction": 0.6961364427427776,
+          "unseen_in_language_fraction": 0.6961364427427776
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "space",
+          "correct": 525,
+          "items": 1000,
+          "predicted_positive": 763,
+          "label_positive": 500,
+          "accuracy": 0.525,
+          "wilson95": [
+            0.49401247021699196,
+            0.5557961918557234
+          ],
+          "tokens": 42120,
+          "mean_tokens": 42.12,
+          "unseen_in_any_training_fraction": 0.6647673314339981,
+          "unseen_in_language_fraction": 0.6647673314339981
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "quantity",
+          "correct": 463,
+          "items": 1000,
+          "predicted_positive": 497,
+          "label_positive": 500,
+          "accuracy": 0.463,
+          "wilson95": [
+            0.43229566891409493,
+            0.4939875112182864
+          ],
+          "tokens": 47826,
+          "mean_tokens": 47.826,
+          "unseen_in_any_training_fraction": 0.7945468991761803,
+          "unseen_in_language_fraction": 0.7945468991761803
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "roles",
+          "correct": 512,
+          "items": 1000,
+          "predicted_positive": 788,
+          "label_positive": 500,
+          "accuracy": 0.512,
+          "wilson95": [
+            0.48103255416239704,
+            0.5428756036325063
+          ],
+          "tokens": 12206,
+          "mean_tokens": 12.206,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "negation",
+          "correct": 499,
+          "items": 1000,
+          "predicted_positive": 811,
+          "label_positive": 500,
+          "accuracy": 0.499,
+          "wilson95": [
+            0.4680734885077433,
+            0.5299341650093481
+          ],
+          "tokens": 12222,
+          "mean_tokens": 12.222,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "space",
+          "correct": 520,
+          "items": 1000,
+          "predicted_positive": 762,
+          "label_positive": 500,
+          "accuracy": 0.52,
+          "wilson95": [
+            0.48901772441346714,
+            0.5508292052447051
+          ],
+          "tokens": 14120,
+          "mean_tokens": 14.12,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "quantity",
+          "correct": 506,
+          "items": 1000,
+          "predicted_positive": 828,
+          "label_positive": 500,
+          "accuracy": 0.506,
+          "wilson95": [
+            0.4750488581199961,
+            0.5369052207774556
+          ],
+          "tokens": 10569,
+          "mean_tokens": 10.569,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "mode": "mono",
+      "order": [
+        "de"
+      ],
+      "seed": 20001,
+      "seen": 200000,
+      "stop_reason": "administrative_cap",
+      "checkpoint_hash": "17e6a4f5a0f4fd7d7f73bca47d2a774db7fb5feff6425b02533955f270e373e3",
+      "languages": [
+        "de"
+      ],
+      "final_scheduled_panel": {
+        "seen": 200000,
+        "panel": "dev_b"
+      },
+      "original_dev_b_reproduces_final_scheduled_panel": true,
+      "seconds": 2.2893687321338803,
+      "cells": [
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "roles",
+          "correct": 503,
+          "items": 1000,
+          "predicted_positive": 987,
+          "label_positive": 500,
+          "accuracy": 0.503,
+          "wilson95": [
+            0.4720586744710588,
+            0.5339183649776669
+          ],
+          "tokens": 67674,
+          "mean_tokens": 67.674,
+          "unseen_in_any_training_fraction": 0.7453674971185389,
+          "unseen_in_language_fraction": 0.7453674971185389
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "negation",
+          "correct": 497,
+          "items": 1000,
+          "predicted_positive": 997,
+          "label_positive": 500,
+          "accuracy": 0.497,
+          "wilson95": [
+            0.46608163502233296,
+            0.527941325528941
+          ],
+          "tokens": 70018,
+          "mean_tokens": 70.018,
+          "unseen_in_any_training_fraction": 0.7538632922962667,
+          "unseen_in_language_fraction": 0.7538632922962667
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "space",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 994,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 69954,
+          "mean_tokens": 69.954,
+          "unseen_in_any_training_fraction": 0.7517797409726391,
+          "unseen_in_language_fraction": 0.7517797409726391
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "quantity",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 51208,
+          "mean_tokens": 51.208,
+          "unseen_in_any_training_fraction": 0.8408061240431183,
+          "unseen_in_language_fraction": 0.8408061240431183
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "roles",
+          "correct": 508,
+          "items": 1000,
+          "predicted_positive": 644,
+          "label_positive": 500,
+          "accuracy": 0.508,
+          "wilson95": [
+            0.4770429302488735,
+            0.5388958416143953
+          ],
+          "tokens": 17730,
+          "mean_tokens": 17.73,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "negation",
+          "correct": 503,
+          "items": 1000,
+          "predicted_positive": 643,
+          "label_positive": 500,
+          "accuracy": 0.503,
+          "wilson95": [
+            0.4720586744710588,
+            0.5339183649776669
+          ],
+          "tokens": 17832,
+          "mean_tokens": 17.832,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "space",
+          "correct": 486,
+          "items": 1000,
+          "predicted_positive": 708,
+          "label_positive": 500,
+          "accuracy": 0.486,
+          "wilson95": [
+            0.45513525542230243,
+            0.5169718938169768
+          ],
+          "tokens": 17548,
+          "mean_tokens": 17.548,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "quantity",
+          "correct": 478,
+          "items": 1000,
+          "predicted_positive": 678,
+          "label_positive": 500,
+          "accuracy": 0.478,
+          "wilson95": [
+            0.4471836292590468,
+            0.5089847481169636
+          ],
+          "tokens": 10570,
+          "mean_tokens": 10.57,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "roles",
+          "correct": 501,
+          "items": 1000,
+          "predicted_positive": 707,
+          "label_positive": 500,
+          "accuracy": 0.501,
+          "wilson95": [
+            0.47006583499065185,
+            0.5319265114922567
+          ],
+          "tokens": 64110,
+          "mean_tokens": 64.11,
+          "unseen_in_any_training_fraction": 0.7307752300733115,
+          "unseen_in_language_fraction": 0.7307752300733115
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "negation",
+          "correct": 499,
+          "items": 1000,
+          "predicted_positive": 779,
+          "label_positive": 500,
+          "accuracy": 0.499,
+          "wilson95": [
+            0.4680734885077433,
+            0.5299341650093481
+          ],
+          "tokens": 66510,
+          "mean_tokens": 66.51,
+          "unseen_in_any_training_fraction": 0.7404901518568636,
+          "unseen_in_language_fraction": 0.7404901518568636
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "space",
+          "correct": 497,
+          "items": 1000,
+          "predicted_positive": 201,
+          "label_positive": 500,
+          "accuracy": 0.497,
+          "wilson95": [
+            0.46608163502233296,
+            0.527941325528941
+          ],
+          "tokens": 66130,
+          "mean_tokens": 66.13,
+          "unseen_in_any_training_fraction": 0.7389989414789052,
+          "unseen_in_language_fraction": 0.7389989414789052
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "quantity",
+          "correct": 497,
+          "items": 1000,
+          "predicted_positive": 119,
+          "label_positive": 500,
+          "accuracy": 0.497,
+          "wilson95": [
+            0.46608163502233296,
+            0.527941325528941
+          ],
+          "tokens": 47121,
+          "mean_tokens": 47.121,
+          "unseen_in_any_training_fraction": 0.8272956855754334,
+          "unseen_in_language_fraction": 0.8272956855754334
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "roles",
+          "correct": 520,
+          "items": 1000,
+          "predicted_positive": 642,
+          "label_positive": 500,
+          "accuracy": 0.52,
+          "wilson95": [
+            0.48901772441346714,
+            0.5508292052447051
+          ],
+          "tokens": 17696,
+          "mean_tokens": 17.696,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "negation",
+          "correct": 514,
+          "items": 1000,
+          "predicted_positive": 622,
+          "label_positive": 500,
+          "accuracy": 0.514,
+          "wilson95": [
+            0.48302810618302305,
+            0.5448647445776975
+          ],
+          "tokens": 17872,
+          "mean_tokens": 17.872,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "space",
+          "correct": 481,
+          "items": 1000,
+          "predicted_positive": 701,
+          "label_positive": 500,
+          "accuracy": 0.481,
+          "wilson95": [
+            0.4501645628338681,
+            0.5119808539908681
+          ],
+          "tokens": 17504,
+          "mean_tokens": 17.504,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "quantity",
+          "correct": 464,
+          "items": 1000,
+          "predicted_positive": 682,
+          "label_positive": 500,
+          "accuracy": 0.464,
+          "wilson95": [
+            0.4332873316076309,
+            0.494988195007659
+          ],
+          "tokens": 10653,
+          "mean_tokens": 10.653,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "mode": "mono",
+      "order": [
+        "ko"
+      ],
+      "seed": 20001,
+      "seen": 200000,
+      "stop_reason": "administrative_cap",
+      "checkpoint_hash": "382af7790570083ccf899cf559e65becacb73f4b160d51db51194247ebc57cc3",
+      "languages": [
+        "ko"
+      ],
+      "final_scheduled_panel": {
+        "seen": 200000,
+        "panel": "dev_b"
+      },
+      "original_dev_b_reproduces_final_scheduled_panel": true,
+      "seconds": 1.957249817904085,
+      "cells": [
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "roles",
+          "correct": 506,
+          "items": 1000,
+          "predicted_positive": 62,
+          "label_positive": 500,
+          "accuracy": 0.506,
+          "wilson95": [
+            0.4750488581199961,
+            0.5369052207774556
+          ],
+          "tokens": 48086,
+          "mean_tokens": 48.086,
+          "unseen_in_any_training_fraction": 0.6654743584411263,
+          "unseen_in_language_fraction": 0.6654743584411263
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "negation",
+          "correct": 505,
+          "items": 1000,
+          "predicted_positive": 59,
+          "label_positive": 500,
+          "accuracy": 0.505,
+          "wilson95": [
+            0.474052006972539,
+            0.5359097254420041
+          ],
+          "tokens": 48119,
+          "mean_tokens": 48.119,
+          "unseen_in_any_training_fraction": 0.665017976267171,
+          "unseen_in_language_fraction": 0.665017976267171
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "space",
+          "correct": 501,
+          "items": 1000,
+          "predicted_positive": 45,
+          "label_positive": 500,
+          "accuracy": 0.501,
+          "wilson95": [
+            0.47006583499065185,
+            0.5319265114922567
+          ],
+          "tokens": 49592,
+          "mean_tokens": 49.592,
+          "unseen_in_any_training_fraction": 0.6855944507178577,
+          "unseen_in_language_fraction": 0.6855944507178577
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 32994,
+          "mean_tokens": 32.994,
+          "unseen_in_any_training_fraction": 0.7183427289810268,
+          "unseen_in_language_fraction": 0.7183427289810268
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "roles",
+          "correct": 885,
+          "items": 1000,
+          "predicted_positive": 497,
+          "label_positive": 500,
+          "accuracy": 0.885,
+          "wilson95": [
+            0.8637368275740424,
+            0.9033165683457732
+          ],
+          "tokens": 17544,
+          "mean_tokens": 17.544,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "negation",
+          "correct": 997,
+          "items": 1000,
+          "predicted_positive": 497,
+          "label_positive": 500,
+          "accuracy": 0.997,
+          "wilson95": [
+            0.9912169858787878,
+            0.9989792161267923
+          ],
+          "tokens": 17611,
+          "mean_tokens": 17.611,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "space",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17592,
+          "mean_tokens": 17.592,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 893,
+          "items": 1000,
+          "predicted_positive": 541,
+          "label_positive": 500,
+          "accuracy": 0.893,
+          "wilson95": [
+            0.872315041963094,
+            0.9106771258199905
+          ],
+          "tokens": 10994,
+          "mean_tokens": 10.994,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "roles",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 49941,
+          "mean_tokens": 49.941,
+          "unseen_in_any_training_fraction": 0.6808033479505817,
+          "unseen_in_language_fraction": 0.6808033479505817
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "negation",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 50177,
+          "mean_tokens": 50.177,
+          "unseen_in_any_training_fraction": 0.6776012914283437,
+          "unseen_in_language_fraction": 0.6776012914283437
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "space",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 51646,
+          "mean_tokens": 51.646,
+          "unseen_in_any_training_fraction": 0.6970530147542888,
+          "unseen_in_language_fraction": 0.6970530147542888
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 42983,
+          "mean_tokens": 42.983,
+          "unseen_in_any_training_fraction": 0.7841472209943466,
+          "unseen_in_language_fraction": 0.7841472209943466
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "roles",
+          "correct": 876,
+          "items": 1000,
+          "predicted_positive": 520,
+          "label_positive": 500,
+          "accuracy": 0.876,
+          "wilson95": [
+            0.8541222508068366,
+            0.8950000267668013
+          ],
+          "tokens": 17439,
+          "mean_tokens": 17.439,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "negation",
+          "correct": 997,
+          "items": 1000,
+          "predicted_positive": 501,
+          "label_positive": 500,
+          "accuracy": 0.997,
+          "wilson95": [
+            0.9912169858787878,
+            0.9989792161267923
+          ],
+          "tokens": 17705,
+          "mean_tokens": 17.705,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "space",
+          "correct": 999,
+          "items": 1000,
+          "predicted_positive": 499,
+          "label_positive": 500,
+          "accuracy": 0.999,
+          "wilson95": [
+            0.9943574413400738,
+            0.9998234536313233
+          ],
+          "tokens": 17646,
+          "mean_tokens": 17.646,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 867,
+          "items": 1000,
+          "predicted_positive": 545,
+          "label_positive": 500,
+          "accuracy": 0.867,
+          "wilson95": [
+            0.8445423197406393,
+            0.8866488394868212
+          ],
+          "tokens": 10983,
+          "mean_tokens": 10.983,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 20001,
+      "seen": 900000,
+      "stop_reason": "administrative_cap",
+      "checkpoint_hash": "89024f0dda84e1d4c770a4cc00e5b1979e522e928412f35202f0cf1afae86635",
+      "languages": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "final_scheduled_panel": {
+        "seen": 900000,
+        "panel": "dev_b"
+      },
+      "original_dev_b_reproduces_final_scheduled_panel": true,
+      "seconds": 5.735528942896053,
+      "cells": [
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "roles",
+          "correct": 493,
+          "items": 1000,
+          "predicted_positive": 429,
+          "label_positive": 500,
+          "accuracy": 0.493,
+          "wilson95": [
+            0.462099407161887,
+            0.5239541674577526
+          ],
+          "tokens": 38398,
+          "mean_tokens": 38.398,
+          "unseen_in_any_training_fraction": 0.6815979998958279,
+          "unseen_in_language_fraction": 0.6815979998958279
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "negation",
+          "correct": 474,
+          "items": 1000,
+          "predicted_positive": 384,
+          "label_positive": 500,
+          "accuracy": 0.474,
+          "wilson95": [
+            0.4432107818116775,
+            0.5049882096326984
+          ],
+          "tokens": 38392,
+          "mean_tokens": 38.392,
+          "unseen_in_any_training_fraction": 0.6811835799124818,
+          "unseen_in_language_fraction": 0.6811835799124818
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "space",
+          "correct": 506,
+          "items": 1000,
+          "predicted_positive": 434,
+          "label_positive": 500,
+          "accuracy": 0.506,
+          "wilson95": [
+            0.4750488581199961,
+            0.5369052207774556
+          ],
+          "tokens": 40300,
+          "mean_tokens": 40.3,
+          "unseen_in_any_training_fraction": 0.649727047146402,
+          "unseen_in_language_fraction": 0.649727047146402
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "quantity",
+          "correct": 511,
+          "items": 1000,
+          "predicted_positive": 733,
+          "label_positive": 500,
+          "accuracy": 0.511,
+          "wilson95": [
+            0.4800349631929444,
+            0.5418808481190504
+          ],
+          "tokens": 45842,
+          "mean_tokens": 45.842,
+          "unseen_in_any_training_fraction": 0.8254875441734654,
+          "unseen_in_language_fraction": 0.8254875441734654
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "roles",
+          "correct": 489,
+          "items": 1000,
+          "predicted_positive": 163,
+          "label_positive": 500,
+          "accuracy": 0.489,
+          "wilson95": [
+            0.4581191518809496,
+            0.5199650368070555
+          ],
+          "tokens": 67674,
+          "mean_tokens": 67.674,
+          "unseen_in_any_training_fraction": 0.7453674971185389,
+          "unseen_in_language_fraction": 0.7453674971185389
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "negation",
+          "correct": 494,
+          "items": 1000,
+          "predicted_positive": 190,
+          "label_positive": 500,
+          "accuracy": 0.494,
+          "wilson95": [
+            0.46309477922254433,
+            0.5249511418800038
+          ],
+          "tokens": 70018,
+          "mean_tokens": 70.018,
+          "unseen_in_any_training_fraction": 0.7538632922962667,
+          "unseen_in_language_fraction": 0.7538632922962667
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "space",
+          "correct": 526,
+          "items": 1000,
+          "predicted_positive": 430,
+          "label_positive": 500,
+          "accuracy": 0.526,
+          "wilson95": [
+            0.49501179036730153,
+            0.5567892181883224
+          ],
+          "tokens": 69954,
+          "mean_tokens": 69.954,
+          "unseen_in_any_training_fraction": 0.7517797409726391,
+          "unseen_in_language_fraction": 0.7517797409726391
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "quantity",
+          "correct": 480,
+          "items": 1000,
+          "predicted_positive": 286,
+          "label_positive": 500,
+          "accuracy": 0.48,
+          "wilson95": [
+            0.4491707947552948,
+            0.5109822755865329
+          ],
+          "tokens": 51208,
+          "mean_tokens": 51.208,
+          "unseen_in_any_training_fraction": 0.8408061240431183,
+          "unseen_in_language_fraction": 0.8408061240431183
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "roles",
+          "correct": 502,
+          "items": 1000,
+          "predicted_positive": 2,
+          "label_positive": 500,
+          "accuracy": 0.502,
+          "wilson95": [
+            0.4710621931052472,
+            0.5329224998605699
+          ],
+          "tokens": 48086,
+          "mean_tokens": 48.086,
+          "unseen_in_any_training_fraction": 0.6654743584411263,
+          "unseen_in_language_fraction": 0.6654743584411263
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "negation",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 0,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 48119,
+          "mean_tokens": 48.119,
+          "unseen_in_any_training_fraction": 0.665017976267171,
+          "unseen_in_language_fraction": 0.665017976267171
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "space",
+          "correct": 509,
+          "items": 1000,
+          "predicted_positive": 15,
+          "label_positive": 500,
+          "accuracy": 0.509,
+          "wilson95": [
+            0.4780401512509307,
+            0.5398909670952468
+          ],
+          "tokens": 49592,
+          "mean_tokens": 49.592,
+          "unseen_in_any_training_fraction": 0.6855944507178577,
+          "unseen_in_language_fraction": 0.6855944507178577
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 554,
+          "items": 1000,
+          "predicted_positive": 696,
+          "label_positive": 500,
+          "accuracy": 0.554,
+          "wilson95": [
+            0.5230431760041859,
+            0.5845435340728792
+          ],
+          "tokens": 32994,
+          "mean_tokens": 32.994,
+          "unseen_in_any_training_fraction": 0.7183427289810268,
+          "unseen_in_language_fraction": 0.7183427289810268
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "roles",
+          "correct": 788,
+          "items": 1000,
+          "predicted_positive": 452,
+          "label_positive": 500,
+          "accuracy": 0.788,
+          "wilson95": [
+            0.7615898392030916,
+            0.8122059478745886
+          ],
+          "tokens": 12226,
+          "mean_tokens": 12.226,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "negation",
+          "correct": 891,
+          "items": 1000,
+          "predicted_positive": 533,
+          "label_positive": 500,
+          "accuracy": 0.891,
+          "wilson95": [
+            0.8701675080724476,
+            0.9088399667448197
+          ],
+          "tokens": 12240,
+          "mean_tokens": 12.24,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "space",
+          "correct": 548,
+          "items": 1000,
+          "predicted_positive": 556,
+          "label_positive": 500,
+          "accuracy": 0.548,
+          "wilson95": [
+            0.5170282249589022,
+            0.5786044062207112
+          ],
+          "tokens": 14116,
+          "mean_tokens": 14.116,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "quantity",
+          "correct": 973,
+          "items": 1000,
+          "predicted_positive": 499,
+          "label_positive": 500,
+          "accuracy": 0.973,
+          "wilson95": [
+            0.9610012691359279,
+            0.9813786172798454
+          ],
+          "tokens": 10524,
+          "mean_tokens": 10.524,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "roles",
+          "correct": 842,
+          "items": 1000,
+          "predicted_positive": 588,
+          "label_positive": 500,
+          "accuracy": 0.842,
+          "wilson95": [
+            0.8180901539098308,
+            0.8632923432449143
+          ],
+          "tokens": 17730,
+          "mean_tokens": 17.73,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "negation",
+          "correct": 869,
+          "items": 1000,
+          "predicted_positive": 559,
+          "label_positive": 500,
+          "accuracy": 0.869,
+          "wilson95": [
+            0.8466683582523495,
+            0.8885074939409281
+          ],
+          "tokens": 17832,
+          "mean_tokens": 17.832,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "space",
+          "correct": 903,
+          "items": 1000,
+          "predicted_positive": 529,
+          "label_positive": 500,
+          "accuracy": 0.903,
+          "wilson95": [
+            0.883084794281343,
+            0.9198308383308277
+          ],
+          "tokens": 17548,
+          "mean_tokens": 17.548,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "quantity",
+          "correct": 892,
+          "items": 1000,
+          "predicted_positive": 502,
+          "label_positive": 500,
+          "accuracy": 0.892,
+          "wilson95": [
+            0.8712410197340538,
+            0.9097588015661221
+          ],
+          "tokens": 10570,
+          "mean_tokens": 10.57,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "roles",
+          "correct": 997,
+          "items": 1000,
+          "predicted_positive": 501,
+          "label_positive": 500,
+          "accuracy": 0.997,
+          "wilson95": [
+            0.9912169858787878,
+            0.9989792161267923
+          ],
+          "tokens": 17544,
+          "mean_tokens": 17.544,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "negation",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17611,
+          "mean_tokens": 17.611,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "space",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17592,
+          "mean_tokens": 17.592,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 961,
+          "items": 1000,
+          "predicted_positive": 519,
+          "label_positive": 500,
+          "accuracy": 0.961,
+          "wilson95": [
+            0.9471306894556356,
+            0.9713410391652343
+          ],
+          "tokens": 10994,
+          "mean_tokens": 10.994,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "roles",
+          "correct": 524,
+          "items": 1000,
+          "predicted_positive": 232,
+          "label_positive": 500,
+          "accuracy": 0.524,
+          "wilson95": [
+            0.4930132737768037,
+            0.5548030418130031
+          ],
+          "tokens": 40206,
+          "mean_tokens": 40.206,
+          "unseen_in_any_training_fraction": 0.6964134706262747,
+          "unseen_in_language_fraction": 0.6964134706262747
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "negation",
+          "correct": 541,
+          "items": 1000,
+          "predicted_positive": 235,
+          "label_positive": 500,
+          "accuracy": 0.541,
+          "wilson95": [
+            0.5100164671440286,
+            0.5716697386552245
+          ],
+          "tokens": 40222,
+          "mean_tokens": 40.222,
+          "unseen_in_any_training_fraction": 0.6961364427427776,
+          "unseen_in_language_fraction": 0.6961364427427776
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "space",
+          "correct": 509,
+          "items": 1000,
+          "predicted_positive": 131,
+          "label_positive": 500,
+          "accuracy": 0.509,
+          "wilson95": [
+            0.4780401512509307,
+            0.5398909670952468
+          ],
+          "tokens": 42120,
+          "mean_tokens": 42.12,
+          "unseen_in_any_training_fraction": 0.6647673314339981,
+          "unseen_in_language_fraction": 0.6647673314339981
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "quantity",
+          "correct": 487,
+          "items": 1000,
+          "predicted_positive": 481,
+          "label_positive": 500,
+          "accuracy": 0.487,
+          "wilson95": [
+            0.4561297642084628,
+            0.5179697315137252
+          ],
+          "tokens": 47826,
+          "mean_tokens": 47.826,
+          "unseen_in_any_training_fraction": 0.7945468991761803,
+          "unseen_in_language_fraction": 0.7945468991761803
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "roles",
+          "correct": 501,
+          "items": 1000,
+          "predicted_positive": 183,
+          "label_positive": 500,
+          "accuracy": 0.501,
+          "wilson95": [
+            0.47006583499065185,
+            0.5319265114922567
+          ],
+          "tokens": 64110,
+          "mean_tokens": 64.11,
+          "unseen_in_any_training_fraction": 0.7307752300733115,
+          "unseen_in_language_fraction": 0.7307752300733115
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "negation",
+          "correct": 490,
+          "items": 1000,
+          "predicted_positive": 178,
+          "label_positive": 500,
+          "accuracy": 0.49,
+          "wilson95": [
+            0.4591140307318651,
+            0.5209625044390487
+          ],
+          "tokens": 66510,
+          "mean_tokens": 66.51,
+          "unseen_in_any_training_fraction": 0.7404901518568636,
+          "unseen_in_language_fraction": 0.7404901518568636
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "space",
+          "correct": 495,
+          "items": 1000,
+          "predicted_positive": 403,
+          "label_positive": 500,
+          "accuracy": 0.495,
+          "wilson95": [
+            0.4640902745579959,
+            0.525947993027461
+          ],
+          "tokens": 66130,
+          "mean_tokens": 66.13,
+          "unseen_in_any_training_fraction": 0.7389989414789052,
+          "unseen_in_language_fraction": 0.7389989414789052
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "quantity",
+          "correct": 523,
+          "items": 1000,
+          "predicted_positive": 411,
+          "label_positive": 500,
+          "accuracy": 0.523,
+          "wilson95": [
+            0.4920142010104232,
+            0.5538097680964749
+          ],
+          "tokens": 47121,
+          "mean_tokens": 47.121,
+          "unseen_in_any_training_fraction": 0.8272956855754334,
+          "unseen_in_language_fraction": 0.8272956855754334
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "roles",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 49941,
+          "mean_tokens": 49.941,
+          "unseen_in_any_training_fraction": 0.6808033479505817,
+          "unseen_in_language_fraction": 0.6808033479505817
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "negation",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 50177,
+          "mean_tokens": 50.177,
+          "unseen_in_any_training_fraction": 0.6776012914283437,
+          "unseen_in_language_fraction": 0.6776012914283437
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "space",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 51646,
+          "mean_tokens": 51.646,
+          "unseen_in_any_training_fraction": 0.6970530147542888,
+          "unseen_in_language_fraction": 0.6970530147542888
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 42983,
+          "mean_tokens": 42.983,
+          "unseen_in_any_training_fraction": 0.7841472209943466,
+          "unseen_in_language_fraction": 0.7841472209943466
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "roles",
+          "correct": 747,
+          "items": 1000,
+          "predicted_positive": 443,
+          "label_positive": 500,
+          "accuracy": 0.747,
+          "wilson95": [
+            0.7191453806671427,
+            0.7729642006112843
+          ],
+          "tokens": 12206,
+          "mean_tokens": 12.206,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "negation",
+          "correct": 878,
+          "items": 1000,
+          "predicted_positive": 550,
+          "label_positive": 500,
+          "accuracy": 0.878,
+          "wilson95": [
+            0.8562557151152141,
+            0.8968512554242412
+          ],
+          "tokens": 12222,
+          "mean_tokens": 12.222,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "space",
+          "correct": 533,
+          "items": 1000,
+          "predicted_positive": 557,
+          "label_positive": 500,
+          "accuracy": 0.533,
+          "wilson95": [
+            0.5020104986689969,
+            0.5637369352669873
+          ],
+          "tokens": 14120,
+          "mean_tokens": 14.12,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "quantity",
+          "correct": 963,
+          "items": 1000,
+          "predicted_positive": 503,
+          "label_positive": 500,
+          "accuracy": 0.963,
+          "wilson95": [
+            0.9494176023951937,
+            0.9730388191914936
+          ],
+          "tokens": 10569,
+          "mean_tokens": 10.569,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "roles",
+          "correct": 812,
+          "items": 1000,
+          "predicted_positive": 596,
+          "label_positive": 500,
+          "accuracy": 0.812,
+          "wilson95": [
+            0.7866068123794059,
+            0.8350052902880811
+          ],
+          "tokens": 17696,
+          "mean_tokens": 17.696,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "negation",
+          "correct": 854,
+          "items": 1000,
+          "predicted_positive": 588,
+          "label_positive": 500,
+          "accuracy": 0.854,
+          "wilson95": [
+            0.8307599282287107,
+            0.8745307267209378
+          ],
+          "tokens": 17872,
+          "mean_tokens": 17.872,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "space",
+          "correct": 924,
+          "items": 1000,
+          "predicted_positive": 524,
+          "label_positive": 500,
+          "accuracy": 0.924,
+          "wilson95": [
+            0.9059043567197566,
+            0.938850552033495
+          ],
+          "tokens": 17504,
+          "mean_tokens": 17.504,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "quantity",
+          "correct": 883,
+          "items": 1000,
+          "predicted_positive": 505,
+          "label_positive": 500,
+          "accuracy": 0.883,
+          "wilson95": [
+            0.8615970904387529,
+            0.9014716125152455
+          ],
+          "tokens": 10653,
+          "mean_tokens": 10.653,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "roles",
+          "correct": 999,
+          "items": 1000,
+          "predicted_positive": 501,
+          "label_positive": 500,
+          "accuracy": 0.999,
+          "wilson95": [
+            0.9943574413400738,
+            0.9998234536313233
+          ],
+          "tokens": 17439,
+          "mean_tokens": 17.439,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "negation",
+          "correct": 998,
+          "items": 1000,
+          "predicted_positive": 498,
+          "label_positive": 500,
+          "accuracy": 0.998,
+          "wilson95": [
+            0.9927371920716791,
+            0.9994513564168096
+          ],
+          "tokens": 17705,
+          "mean_tokens": 17.705,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "space",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17646,
+          "mean_tokens": 17.646,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 970,
+          "items": 1000,
+          "predicted_positive": 520,
+          "label_positive": 500,
+          "accuracy": 0.97,
+          "wilson95": [
+            0.9574965857376578,
+            0.9789062612293897
+          ],
+          "tokens": 10983,
+          "mean_tokens": 10.983,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 20001,
+      "seen": 900000,
+      "stop_reason": "administrative_cap",
+      "checkpoint_hash": "901c451ba2549fe609667a79f1a57f6f42fdf366068032f3fea4f625cb736466",
+      "languages": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "final_scheduled_panel": {
+        "seen": 900000,
+        "panel": "dev_b"
+      },
+      "original_dev_b_reproduces_final_scheduled_panel": true,
+      "seconds": 5.774979552952573,
+      "cells": [
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "roles",
+          "correct": 534,
+          "items": 1000,
+          "predicted_positive": 572,
+          "label_positive": 500,
+          "accuracy": 0.534,
+          "wilson95": [
+            0.5030108099881843,
+            0.5647289704307086
+          ],
+          "tokens": 38398,
+          "mean_tokens": 38.398,
+          "unseen_in_any_training_fraction": 0.6815979998958279,
+          "unseen_in_language_fraction": 0.6815979998958279
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "negation",
+          "correct": 551,
+          "items": 1000,
+          "predicted_positive": 549,
+          "label_positive": 500,
+          "accuracy": 0.551,
+          "wilson95": [
+            0.5200351371242172,
+            0.5815745335041221
+          ],
+          "tokens": 38392,
+          "mean_tokens": 38.392,
+          "unseen_in_any_training_fraction": 0.6811835799124818,
+          "unseen_in_language_fraction": 0.6811835799124818
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "space",
+          "correct": 506,
+          "items": 1000,
+          "predicted_positive": 566,
+          "label_positive": 500,
+          "accuracy": 0.506,
+          "wilson95": [
+            0.4750488581199961,
+            0.5369052207774556
+          ],
+          "tokens": 40300,
+          "mean_tokens": 40.3,
+          "unseen_in_any_training_fraction": 0.649727047146402,
+          "unseen_in_language_fraction": 0.649727047146402
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "en",
+          "task": "quantity",
+          "correct": 512,
+          "items": 1000,
+          "predicted_positive": 774,
+          "label_positive": 500,
+          "accuracy": 0.512,
+          "wilson95": [
+            0.48103255416239704,
+            0.5428756036325063
+          ],
+          "tokens": 45842,
+          "mean_tokens": 45.842,
+          "unseen_in_any_training_fraction": 0.8254875441734654,
+          "unseen_in_language_fraction": 0.8254875441734654
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "roles",
+          "correct": 522,
+          "items": 1000,
+          "predicted_positive": 356,
+          "label_positive": 500,
+          "accuracy": 0.522,
+          "wilson95": [
+            0.49101525188303635,
+            0.5528163707409531
+          ],
+          "tokens": 67674,
+          "mean_tokens": 67.674,
+          "unseen_in_any_training_fraction": 0.7453674971185389,
+          "unseen_in_language_fraction": 0.7453674971185389
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "negation",
+          "correct": 491,
+          "items": 1000,
+          "predicted_positive": 435,
+          "label_positive": 500,
+          "accuracy": 0.491,
+          "wilson95": [
+            0.46010903290475313,
+            0.5219598487490692
+          ],
+          "tokens": 70018,
+          "mean_tokens": 70.018,
+          "unseen_in_any_training_fraction": 0.7538632922962667,
+          "unseen_in_language_fraction": 0.7538632922962667
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "space",
+          "correct": 504,
+          "items": 1000,
+          "predicted_positive": 458,
+          "label_positive": 500,
+          "accuracy": 0.504,
+          "wilson95": [
+            0.4730552790917704,
+            0.5349141068398641
+          ],
+          "tokens": 69954,
+          "mean_tokens": 69.954,
+          "unseen_in_any_training_fraction": 0.7517797409726391,
+          "unseen_in_language_fraction": 0.7517797409726391
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "de",
+          "task": "quantity",
+          "correct": 492,
+          "items": 1000,
+          "predicted_positive": 636,
+          "label_positive": 500,
+          "accuracy": 0.492,
+          "wilson95": [
+            0.4611041583856046,
+            0.5229570697511264
+          ],
+          "tokens": 51208,
+          "mean_tokens": 51.208,
+          "unseen_in_any_training_fraction": 0.8408061240431183,
+          "unseen_in_language_fraction": 0.8408061240431183
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "roles",
+          "correct": 514,
+          "items": 1000,
+          "predicted_positive": 970,
+          "label_positive": 500,
+          "accuracy": 0.514,
+          "wilson95": [
+            0.48302810618302305,
+            0.5448647445776975
+          ],
+          "tokens": 48086,
+          "mean_tokens": 48.086,
+          "unseen_in_any_training_fraction": 0.6654743584411263,
+          "unseen_in_language_fraction": 0.6654743584411263
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "negation",
+          "correct": 512,
+          "items": 1000,
+          "predicted_positive": 956,
+          "label_positive": 500,
+          "accuracy": 0.512,
+          "wilson95": [
+            0.48103255416239704,
+            0.5428756036325063
+          ],
+          "tokens": 48119,
+          "mean_tokens": 48.119,
+          "unseen_in_any_training_fraction": 0.665017976267171,
+          "unseen_in_language_fraction": 0.665017976267171
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "space",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 980,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 49592,
+          "mean_tokens": 49.592,
+          "unseen_in_any_training_fraction": 0.6855944507178577,
+          "unseen_in_language_fraction": 0.6855944507178577
+        },
+        {
+          "split": "dev_a",
+          "view": "original",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 514,
+          "items": 1000,
+          "predicted_positive": 936,
+          "label_positive": 500,
+          "accuracy": 0.514,
+          "wilson95": [
+            0.48302810618302305,
+            0.5448647445776975
+          ],
+          "tokens": 32994,
+          "mean_tokens": 32.994,
+          "unseen_in_any_training_fraction": 0.7183427289810268,
+          "unseen_in_language_fraction": 0.7183427289810268
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "roles",
+          "correct": 770,
+          "items": 1000,
+          "predicted_positive": 466,
+          "label_positive": 500,
+          "accuracy": 0.77,
+          "wilson95": [
+            0.7429132439167508,
+            0.7950203064685745
+          ],
+          "tokens": 12226,
+          "mean_tokens": 12.226,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "negation",
+          "correct": 807,
+          "items": 1000,
+          "predicted_positive": 555,
+          "label_positive": 500,
+          "accuracy": 0.807,
+          "wilson95": [
+            0.7813833836331806,
+            0.8302669866197633
+          ],
+          "tokens": 12240,
+          "mean_tokens": 12.24,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "space",
+          "correct": 512,
+          "items": 1000,
+          "predicted_positive": 526,
+          "label_positive": 500,
+          "accuracy": 0.512,
+          "wilson95": [
+            0.48103255416239704,
+            0.5428756036325063
+          ],
+          "tokens": 14116,
+          "mean_tokens": 14.116,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "en",
+          "task": "quantity",
+          "correct": 825,
+          "items": 1000,
+          "predicted_positive": 527,
+          "label_positive": 500,
+          "accuracy": 0.825,
+          "wilson95": [
+            0.8002183544097695,
+            0.8472942525355293
+          ],
+          "tokens": 10524,
+          "mean_tokens": 10.524,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "roles",
+          "correct": 563,
+          "items": 1000,
+          "predicted_positive": 517,
+          "label_positive": 500,
+          "accuracy": 0.563,
+          "wilson95": [
+            0.5320740750542617,
+            0.5934437533689806
+          ],
+          "tokens": 17730,
+          "mean_tokens": 17.73,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "negation",
+          "correct": 697,
+          "items": 1000,
+          "predicted_positive": 493,
+          "label_positive": 500,
+          "accuracy": 0.697,
+          "wilson95": [
+            0.6678076812431664,
+            0.7246845758898302
+          ],
+          "tokens": 17832,
+          "mean_tokens": 17.832,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "space",
+          "correct": 564,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 0.564,
+          "wilson95": [
+            0.5330781381983665,
+            0.5944320367077847
+          ],
+          "tokens": 17548,
+          "mean_tokens": 17.548,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "de",
+          "task": "quantity",
+          "correct": 793,
+          "items": 1000,
+          "predicted_positive": 493,
+          "label_positive": 500,
+          "accuracy": 0.793,
+          "wilson95": [
+            0.7667904472930755,
+            0.8169670721991478
+          ],
+          "tokens": 10570,
+          "mean_tokens": 10.57,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "roles",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17544,
+          "mean_tokens": 17.544,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "negation",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17611,
+          "mean_tokens": 17.611,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "space",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17592,
+          "mean_tokens": 17.592,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_a",
+          "view": "assertion",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 968,
+          "items": 1000,
+          "predicted_positive": 526,
+          "label_positive": 500,
+          "accuracy": 0.968,
+          "wilson95": [
+            0.9551752617991018,
+            0.9772428922021283
+          ],
+          "tokens": 10994,
+          "mean_tokens": 10.994,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "roles",
+          "correct": 497,
+          "items": 1000,
+          "predicted_positive": 547,
+          "label_positive": 500,
+          "accuracy": 0.497,
+          "wilson95": [
+            0.46608163502233296,
+            0.527941325528941
+          ],
+          "tokens": 40206,
+          "mean_tokens": 40.206,
+          "unseen_in_any_training_fraction": 0.6964134706262747,
+          "unseen_in_language_fraction": 0.6964134706262747
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "negation",
+          "correct": 503,
+          "items": 1000,
+          "predicted_positive": 571,
+          "label_positive": 500,
+          "accuracy": 0.503,
+          "wilson95": [
+            0.4720586744710588,
+            0.5339183649776669
+          ],
+          "tokens": 40222,
+          "mean_tokens": 40.222,
+          "unseen_in_any_training_fraction": 0.6961364427427776,
+          "unseen_in_language_fraction": 0.6961364427427776
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "space",
+          "correct": 492,
+          "items": 1000,
+          "predicted_positive": 610,
+          "label_positive": 500,
+          "accuracy": 0.492,
+          "wilson95": [
+            0.4611041583856046,
+            0.5229570697511264
+          ],
+          "tokens": 42120,
+          "mean_tokens": 42.12,
+          "unseen_in_any_training_fraction": 0.6647673314339981,
+          "unseen_in_language_fraction": 0.6647673314339981
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "en",
+          "task": "quantity",
+          "correct": 496,
+          "items": 1000,
+          "predicted_positive": 524,
+          "label_positive": 500,
+          "accuracy": 0.496,
+          "wilson95": [
+            0.4650858931601359,
+            0.5269447209082295
+          ],
+          "tokens": 47826,
+          "mean_tokens": 47.826,
+          "unseen_in_any_training_fraction": 0.7945468991761803,
+          "unseen_in_language_fraction": 0.7945468991761803
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "roles",
+          "correct": 502,
+          "items": 1000,
+          "predicted_positive": 268,
+          "label_positive": 500,
+          "accuracy": 0.502,
+          "wilson95": [
+            0.4710621931052472,
+            0.5329224998605699
+          ],
+          "tokens": 64110,
+          "mean_tokens": 64.11,
+          "unseen_in_any_training_fraction": 0.7307752300733115,
+          "unseen_in_language_fraction": 0.7307752300733115
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "negation",
+          "correct": 502,
+          "items": 1000,
+          "predicted_positive": 342,
+          "label_positive": 500,
+          "accuracy": 0.502,
+          "wilson95": [
+            0.4710621931052472,
+            0.5329224998605699
+          ],
+          "tokens": 66510,
+          "mean_tokens": 66.51,
+          "unseen_in_any_training_fraction": 0.7404901518568636,
+          "unseen_in_language_fraction": 0.7404901518568636
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "space",
+          "correct": 496,
+          "items": 1000,
+          "predicted_positive": 560,
+          "label_positive": 500,
+          "accuracy": 0.496,
+          "wilson95": [
+            0.4650858931601359,
+            0.5269447209082295
+          ],
+          "tokens": 66130,
+          "mean_tokens": 66.13,
+          "unseen_in_any_training_fraction": 0.7389989414789052,
+          "unseen_in_language_fraction": 0.7389989414789052
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "de",
+          "task": "quantity",
+          "correct": 495,
+          "items": 1000,
+          "predicted_positive": 633,
+          "label_positive": 500,
+          "accuracy": 0.495,
+          "wilson95": [
+            0.4640902745579959,
+            0.525947993027461
+          ],
+          "tokens": 47121,
+          "mean_tokens": 47.121,
+          "unseen_in_any_training_fraction": 0.8272956855754334,
+          "unseen_in_language_fraction": 0.8272956855754334
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "roles",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 49941,
+          "mean_tokens": 49.941,
+          "unseen_in_any_training_fraction": 0.6808033479505817,
+          "unseen_in_language_fraction": 0.6808033479505817
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "negation",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 50177,
+          "mean_tokens": 50.177,
+          "unseen_in_any_training_fraction": 0.6776012914283437,
+          "unseen_in_language_fraction": 0.6776012914283437
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "space",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 51646,
+          "mean_tokens": 51.646,
+          "unseen_in_any_training_fraction": 0.6970530147542888,
+          "unseen_in_language_fraction": 0.6970530147542888
+        },
+        {
+          "split": "dev_b",
+          "view": "original",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 500,
+          "items": 1000,
+          "predicted_positive": 1000,
+          "label_positive": 500,
+          "accuracy": 0.5,
+          "wilson95": [
+            0.46906960012506277,
+            0.5309303998749372
+          ],
+          "tokens": 42983,
+          "mean_tokens": 42.983,
+          "unseen_in_any_training_fraction": 0.7841472209943466,
+          "unseen_in_language_fraction": 0.7841472209943466
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "roles",
+          "correct": 758,
+          "items": 1000,
+          "predicted_positive": 472,
+          "label_positive": 500,
+          "accuracy": 0.758,
+          "wilson95": [
+            0.730499679695936,
+            0.7835257128944859
+          ],
+          "tokens": 12206,
+          "mean_tokens": 12.206,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "negation",
+          "correct": 827,
+          "items": 1000,
+          "predicted_positive": 563,
+          "label_positive": 500,
+          "accuracy": 0.827,
+          "wilson95": [
+            0.8023165341990856,
+            0.8491807657120304
+          ],
+          "tokens": 12222,
+          "mean_tokens": 12.222,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "space",
+          "correct": 524,
+          "items": 1000,
+          "predicted_positive": 528,
+          "label_positive": 500,
+          "accuracy": 0.524,
+          "wilson95": [
+            0.4930132737768037,
+            0.5548030418130031
+          ],
+          "tokens": 14120,
+          "mean_tokens": 14.12,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "en",
+          "task": "quantity",
+          "correct": 820,
+          "items": 1000,
+          "predicted_positive": 526,
+          "label_positive": 500,
+          "accuracy": 0.82,
+          "wilson95": [
+            0.7949777668912537,
+            0.842573107639502
+          ],
+          "tokens": 10569,
+          "mean_tokens": 10.569,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "roles",
+          "correct": 551,
+          "items": 1000,
+          "predicted_positive": 511,
+          "label_positive": 500,
+          "accuracy": 0.551,
+          "wilson95": [
+            0.5200351371242172,
+            0.5815745335041221
+          ],
+          "tokens": 17696,
+          "mean_tokens": 17.696,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "negation",
+          "correct": 691,
+          "items": 1000,
+          "predicted_positive": 503,
+          "label_positive": 500,
+          "accuracy": 0.691,
+          "wilson95": [
+            0.6616750357388649,
+            0.7188631424966799
+          ],
+          "tokens": 17872,
+          "mean_tokens": 17.872,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "space",
+          "correct": 575,
+          "items": 1000,
+          "predicted_positive": 499,
+          "label_positive": 500,
+          "accuracy": 0.575,
+          "wilson95": [
+            0.5441311930875008,
+            0.6052947931306449
+          ],
+          "tokens": 17504,
+          "mean_tokens": 17.504,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "de",
+          "task": "quantity",
+          "correct": 795,
+          "items": 1000,
+          "predicted_positive": 503,
+          "label_positive": 500,
+          "accuracy": 0.795,
+          "wilson95": [
+            0.7688722987548496,
+            0.8188699137031908
+          ],
+          "tokens": 10653,
+          "mean_tokens": 10.653,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "roles",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17439,
+          "mean_tokens": 17.439,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "negation",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17705,
+          "mean_tokens": 17.705,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "space",
+          "correct": 1000,
+          "items": 1000,
+          "predicted_positive": 500,
+          "label_positive": 500,
+          "accuracy": 1.0,
+          "wilson95": [
+            0.9961732414543059,
+            1.0
+          ],
+          "tokens": 17646,
+          "mean_tokens": 17.646,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        },
+        {
+          "split": "dev_b",
+          "view": "assertion",
+          "language": "ko",
+          "task": "quantity",
+          "correct": 955,
+          "items": 1000,
+          "predicted_positive": 529,
+          "label_positive": 500,
+          "accuracy": 0.955,
+          "wilson95": [
+            0.940317161932881,
+            0.9662004877905372
+          ],
+          "tokens": 10983,
+          "mean_tokens": 10.983,
+          "unseen_in_any_training_fraction": 0.0,
+          "unseen_in_language_fraction": 0.0
+        }
+      ]
+    }
+  ],
+  "input_checks": {
+    "dev_a": {
+      "rows": 12000,
+      "non_sentence_fields_preserved": 12000,
+      "original_a_rerendered_exactly": 12000,
+      "original_b_rerendered_exactly": 12000,
+      "assertion_pair_in_training": 0,
+      "meaning_id_in_training": 0
+    },
+    "dev_b": {
+      "rows": 12000,
+      "non_sentence_fields_preserved": 12000,
+      "original_a_rerendered_exactly": 12000,
+      "original_b_rerendered_exactly": 12000,
+      "assertion_pair_in_training": 0,
+      "meaning_id_in_training": 0
+    }
+  },
+  "environment": {
+    "python": "3.12.4",
+    "system": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "torch": "2.5.1+cu121",
+    "torch_cuda": "12.1",
+    "nvcc": "/usr/local/cuda-12.1/bin/nvcc",
+    "cuda_devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3080 Ti",
+        "capability": [
+          8,
+          6
+        ],
+        "vram": 12622954496
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA GeForce RTX 3080 Ti",
+        "capability": [
+          8,
+          6
+        ],
+        "vram": 12622954496
+      }
+    ],
+    "code_hash": "6df7331008bb4b206dbd538e1389ac386656f5582103559adb8fbb8e3cf686a8"
+  },
+  "preserved_files": {
+    "sha256": {
+      "runs/exploratory-v1/exploratory-manifest.json": "daff54fddb9c02286cf085b6d485f04fce062c35f496ccf815f6fb0cd9eb03fe",
+      "artifacts/tokenizer-v4.3.json": "d30ef71c4d5222fe82cf2b4cafedde998145a3a58e440f862cdc988d46f70883",
+      "artifacts/tokenizer-v4.3.meta.json": "5e5344dfa9cfd9ee68670dc9a5f2dca68c3d06a758802b495e5bb57eaf5d0891",
+      "artifacts/graphs/real.npz": "e26c22783ff6ae7db99f366ac6223b62736caa16f1d9f2996e678fbc5523fb54",
+      "data/draft-v4.3/train.jsonl": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+      "data/draft-v4.3/dev_a.jsonl": "0c3e1d1e14b2c731ec924769ed9a22053a971778a6cb478a8f19ec27648a13f9",
+      "data/draft-v4.3/dev_b.jsonl": "fcf8d983b0506fe511317420d792dfc299358ae7c86dab51034ac7c5f3888dd1",
+      "data/draft-v4.3/test.jsonl": "53f1675da68d0520cf09cd1974cad2af2513e3997c905ec00da9f4cc9a301aa2",
+      "data/draft-v4.3/manifest.json": "b79ccdee3c81127c11169b1566726ebc50dc4a3dcc162fc4e22ce4dd1fa303d8",
+      "runs/exploratory-v1/explore-v1-mono-en/primary.pt": "6bf366000b9edd9f0fb8a1b4aced5dd24ce0d0cae272e4655b516b86f68ee8db",
+      "runs/exploratory-v1/explore-v1-mono-en/latest.pt": "b7b08c76fa4f528f0f30f66c330272018a38bf7f68a66306281b4ea76fb6f191",
+      "runs/exploratory-v1/explore-v1-mono-en/summary.json": "73ff349a21ba9273f0d19dee0ddea83acbb6f6e0f9cf3bdfc2f4bbf9dd07d49a",
+      "runs/exploratory-v1/explore-v1-mono-en/independent-test.json": "8754ccb171e1a076c4f425b34cd9c829b356413b5518992a2f4ef3a83710fdc4",
+      "runs/exploratory-v1/explore-v1-mono-en/events.jsonl": "2f2096b0c88917e1512ac32f2d6a4d268fcd384da67f6b3a0a6b7efbda6de495",
+      "runs/exploratory-v1/explore-v1-mono-en/metadata.json": "0ec37aa32bc50b77b67d033b39687338ddd94a32a56eaf38dc757a9b4bbcb29e",
+      "runs/exploratory-v1/explore-v1-mono-de/primary.pt": "17e6a4f5a0f4fd7d7f73bca47d2a774db7fb5feff6425b02533955f270e373e3",
+      "runs/exploratory-v1/explore-v1-mono-de/latest.pt": "331e8cba7a462aa637197c5cb2dd28f5ad4ce0f62c28e1522f78754160bcb45f",
+      "runs/exploratory-v1/explore-v1-mono-de/summary.json": "2e92abae50d51380729fd9871e41435cba4316225265357fdd5c3da89512183f",
+      "runs/exploratory-v1/explore-v1-mono-de/independent-test.json": "0d79aa839d034084b92b7852cd6647c304f14ee3139cb64520e77f8d52bb7867",
+      "runs/exploratory-v1/explore-v1-mono-de/events.jsonl": "bbf94289b42c083833101a1a5f6b37397981b4a133888ca0b0ca49b8f3bc4fb3",
+      "runs/exploratory-v1/explore-v1-mono-de/metadata.json": "deb0f0d0cc5dfb5381ef69b95c2ac9572b3511a393664ecb6a95a74f0619fda4",
+      "runs/exploratory-v1/explore-v1-mono-ko/primary.pt": "382af7790570083ccf899cf559e65becacb73f4b160d51db51194247ebc57cc3",
+      "runs/exploratory-v1/explore-v1-mono-ko/latest.pt": "700264979b09dca441a53a5f9572a9ba1385e257a53b843d9f61d0b2bf6b9f79",
+      "runs/exploratory-v1/explore-v1-mono-ko/summary.json": "b47a579fb1b0a831b9ca142f7616ca9bc0e02f18f047b52c17d3c931775cdff0",
+      "runs/exploratory-v1/explore-v1-mono-ko/independent-test.json": "96f6088eac0d8676271ef63b54f70ce84f3468290a2ac7fcafdc21fe507b9906",
+      "runs/exploratory-v1/explore-v1-mono-ko/events.jsonl": "c35ab172760ee46f53de285098d4fe49f48320e32cd18403fad827880647d9f3",
+      "runs/exploratory-v1/explore-v1-mono-ko/metadata.json": "ae1c158c7914d54831972913e813bee581c91b1ce5e73c4cdf8a310d082914a7",
+      "runs/exploratory-v1/explore-v1-mixed/primary.pt": "89024f0dda84e1d4c770a4cc00e5b1979e522e928412f35202f0cf1afae86635",
+      "runs/exploratory-v1/explore-v1-mixed/latest.pt": "3e829cbed1781713044c5a3ee187a190b15053e8a283a0a80e7fe323430d6179",
+      "runs/exploratory-v1/explore-v1-mixed/summary.json": "82290dcf4d53257832396adef2690c74f3d3ff86db8bd7f9e42cf823523fa605",
+      "runs/exploratory-v1/explore-v1-mixed/independent-test.json": "26dbfcccba3cc3fc727d972ca165d1cf6a4904cecb6ecfa41eee1911a997b497",
+      "runs/exploratory-v1/explore-v1-mixed/events.jsonl": "b3c8146bdcf072d14fbd074bf9ffcd5684a3adfd576d751e3f590bb367c7f550",
+      "runs/exploratory-v1/explore-v1-mixed/metadata.json": "29b7b856032e43d78b1815550fede068f864f81cad2564415d2da9a1abd754df",
+      "runs/exploratory-v1/explore-v1-seq-en-de-ko/primary.pt": "901c451ba2549fe609667a79f1a57f6f42fdf366068032f3fea4f625cb736466",
+      "runs/exploratory-v1/explore-v1-seq-en-de-ko/latest.pt": "c8f11d680a2eccc72da9bb95b8f056e45f78215177481b92c791b7e4eb2cac8c",
+      "runs/exploratory-v1/explore-v1-seq-en-de-ko/summary.json": "7953bcac19fad9c7e6378219cb970afd501f0bec1ab4788fe6a85e3a25449420",
+      "runs/exploratory-v1/explore-v1-seq-en-de-ko/independent-test.json": "aa9e5ed0de4d0583000fe5f3c08b6669a0d65ca0878744320ee680aa71a685d7",
+      "runs/exploratory-v1/explore-v1-seq-en-de-ko/events.jsonl": "6e4849bc47947390a37b190e1d4424aa177dc88a70c9872e50e77047aeea356d",
+      "runs/exploratory-v1/explore-v1-seq-en-de-ko/metadata.json": "6d9ba2c36aec0c3d5ffef4137424d76149b9156ac41d446b959f6b0dee07a436"
+    },
+    "unchanged": true
+  },
+  "completed_at_utc": "2026-09-16T14:17:09.071890+00:00",
+  "comparison": [
+    {
+      "run_id": "explore-v1-mono-en",
+      "split": "dev_a",
+      "language": "en",
+      "task": "roles",
+      "original_accuracy": 0.504,
+      "assertion_accuracy": 0.529,
+      "delta": 0.025000000000000022,
+      "original_mean_tokens": 38.398,
+      "assertion_mean_tokens": 12.226,
+      "original_unseen_fraction": 0.6815979998958279,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-en",
+      "split": "dev_a",
+      "language": "en",
+      "task": "negation",
+      "original_accuracy": 0.504,
+      "assertion_accuracy": 0.516,
+      "delta": 0.01200000000000001,
+      "original_mean_tokens": 38.392,
+      "assertion_mean_tokens": 12.24,
+      "original_unseen_fraction": 0.6811835799124818,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-en",
+      "split": "dev_a",
+      "language": "en",
+      "task": "space",
+      "original_accuracy": 0.511,
+      "assertion_accuracy": 0.502,
+      "delta": -0.009000000000000008,
+      "original_mean_tokens": 40.3,
+      "assertion_mean_tokens": 14.116,
+      "original_unseen_fraction": 0.649727047146402,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-en",
+      "split": "dev_a",
+      "language": "en",
+      "task": "quantity",
+      "original_accuracy": 0.506,
+      "assertion_accuracy": 0.504,
+      "delta": -0.0020000000000000018,
+      "original_mean_tokens": 45.842,
+      "assertion_mean_tokens": 10.524,
+      "original_unseen_fraction": 0.8254875441734654,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-en",
+      "split": "dev_b",
+      "language": "en",
+      "task": "roles",
+      "original_accuracy": 0.489,
+      "assertion_accuracy": 0.512,
+      "delta": 0.02300000000000002,
+      "original_mean_tokens": 40.206,
+      "assertion_mean_tokens": 12.206,
+      "original_unseen_fraction": 0.6964134706262747,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-en",
+      "split": "dev_b",
+      "language": "en",
+      "task": "negation",
+      "original_accuracy": 0.509,
+      "assertion_accuracy": 0.499,
+      "delta": -0.010000000000000009,
+      "original_mean_tokens": 40.222,
+      "assertion_mean_tokens": 12.222,
+      "original_unseen_fraction": 0.6961364427427776,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-en",
+      "split": "dev_b",
+      "language": "en",
+      "task": "space",
+      "original_accuracy": 0.525,
+      "assertion_accuracy": 0.52,
+      "delta": -0.0050000000000000044,
+      "original_mean_tokens": 42.12,
+      "assertion_mean_tokens": 14.12,
+      "original_unseen_fraction": 0.6647673314339981,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-en",
+      "split": "dev_b",
+      "language": "en",
+      "task": "quantity",
+      "original_accuracy": 0.463,
+      "assertion_accuracy": 0.506,
+      "delta": 0.04299999999999998,
+      "original_mean_tokens": 47.826,
+      "assertion_mean_tokens": 10.569,
+      "original_unseen_fraction": 0.7945468991761803,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "split": "dev_a",
+      "language": "de",
+      "task": "roles",
+      "original_accuracy": 0.503,
+      "assertion_accuracy": 0.508,
+      "delta": 0.0050000000000000044,
+      "original_mean_tokens": 67.674,
+      "assertion_mean_tokens": 17.73,
+      "original_unseen_fraction": 0.7453674971185389,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "split": "dev_a",
+      "language": "de",
+      "task": "negation",
+      "original_accuracy": 0.497,
+      "assertion_accuracy": 0.503,
+      "delta": 0.006000000000000005,
+      "original_mean_tokens": 70.018,
+      "assertion_mean_tokens": 17.832,
+      "original_unseen_fraction": 0.7538632922962667,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "split": "dev_a",
+      "language": "de",
+      "task": "space",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.486,
+      "delta": -0.014000000000000012,
+      "original_mean_tokens": 69.954,
+      "assertion_mean_tokens": 17.548,
+      "original_unseen_fraction": 0.7517797409726391,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "split": "dev_a",
+      "language": "de",
+      "task": "quantity",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.478,
+      "delta": -0.02200000000000002,
+      "original_mean_tokens": 51.208,
+      "assertion_mean_tokens": 10.57,
+      "original_unseen_fraction": 0.8408061240431183,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "split": "dev_b",
+      "language": "de",
+      "task": "roles",
+      "original_accuracy": 0.501,
+      "assertion_accuracy": 0.52,
+      "delta": 0.019000000000000017,
+      "original_mean_tokens": 64.11,
+      "assertion_mean_tokens": 17.696,
+      "original_unseen_fraction": 0.7307752300733115,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "split": "dev_b",
+      "language": "de",
+      "task": "negation",
+      "original_accuracy": 0.499,
+      "assertion_accuracy": 0.514,
+      "delta": 0.015000000000000013,
+      "original_mean_tokens": 66.51,
+      "assertion_mean_tokens": 17.872,
+      "original_unseen_fraction": 0.7404901518568636,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "split": "dev_b",
+      "language": "de",
+      "task": "space",
+      "original_accuracy": 0.497,
+      "assertion_accuracy": 0.481,
+      "delta": -0.016000000000000014,
+      "original_mean_tokens": 66.13,
+      "assertion_mean_tokens": 17.504,
+      "original_unseen_fraction": 0.7389989414789052,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "split": "dev_b",
+      "language": "de",
+      "task": "quantity",
+      "original_accuracy": 0.497,
+      "assertion_accuracy": 0.464,
+      "delta": -0.032999999999999974,
+      "original_mean_tokens": 47.121,
+      "assertion_mean_tokens": 10.653,
+      "original_unseen_fraction": 0.8272956855754334,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "roles",
+      "original_accuracy": 0.506,
+      "assertion_accuracy": 0.885,
+      "delta": 0.379,
+      "original_mean_tokens": 48.086,
+      "assertion_mean_tokens": 17.544,
+      "original_unseen_fraction": 0.6654743584411263,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "negation",
+      "original_accuracy": 0.505,
+      "assertion_accuracy": 0.997,
+      "delta": 0.492,
+      "original_mean_tokens": 48.119,
+      "assertion_mean_tokens": 17.611,
+      "original_unseen_fraction": 0.665017976267171,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "space",
+      "original_accuracy": 0.501,
+      "assertion_accuracy": 1.0,
+      "delta": 0.499,
+      "original_mean_tokens": 49.592,
+      "assertion_mean_tokens": 17.592,
+      "original_unseen_fraction": 0.6855944507178577,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "quantity",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.893,
+      "delta": 0.393,
+      "original_mean_tokens": 32.994,
+      "assertion_mean_tokens": 10.994,
+      "original_unseen_fraction": 0.7183427289810268,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "roles",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.876,
+      "delta": 0.376,
+      "original_mean_tokens": 49.941,
+      "assertion_mean_tokens": 17.439,
+      "original_unseen_fraction": 0.6808033479505817,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "negation",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.997,
+      "delta": 0.497,
+      "original_mean_tokens": 50.177,
+      "assertion_mean_tokens": 17.705,
+      "original_unseen_fraction": 0.6776012914283437,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "space",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.999,
+      "delta": 0.499,
+      "original_mean_tokens": 51.646,
+      "assertion_mean_tokens": 17.646,
+      "original_unseen_fraction": 0.6970530147542888,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "quantity",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.867,
+      "delta": 0.367,
+      "original_mean_tokens": 42.983,
+      "assertion_mean_tokens": 10.983,
+      "original_unseen_fraction": 0.7841472209943466,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "en",
+      "task": "roles",
+      "original_accuracy": 0.493,
+      "assertion_accuracy": 0.788,
+      "delta": 0.29500000000000004,
+      "original_mean_tokens": 38.398,
+      "assertion_mean_tokens": 12.226,
+      "original_unseen_fraction": 0.6815979998958279,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "en",
+      "task": "negation",
+      "original_accuracy": 0.474,
+      "assertion_accuracy": 0.891,
+      "delta": 0.41700000000000004,
+      "original_mean_tokens": 38.392,
+      "assertion_mean_tokens": 12.24,
+      "original_unseen_fraction": 0.6811835799124818,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "en",
+      "task": "space",
+      "original_accuracy": 0.506,
+      "assertion_accuracy": 0.548,
+      "delta": 0.04200000000000004,
+      "original_mean_tokens": 40.3,
+      "assertion_mean_tokens": 14.116,
+      "original_unseen_fraction": 0.649727047146402,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "en",
+      "task": "quantity",
+      "original_accuracy": 0.511,
+      "assertion_accuracy": 0.973,
+      "delta": 0.46199999999999997,
+      "original_mean_tokens": 45.842,
+      "assertion_mean_tokens": 10.524,
+      "original_unseen_fraction": 0.8254875441734654,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "de",
+      "task": "roles",
+      "original_accuracy": 0.489,
+      "assertion_accuracy": 0.842,
+      "delta": 0.353,
+      "original_mean_tokens": 67.674,
+      "assertion_mean_tokens": 17.73,
+      "original_unseen_fraction": 0.7453674971185389,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "de",
+      "task": "negation",
+      "original_accuracy": 0.494,
+      "assertion_accuracy": 0.869,
+      "delta": 0.375,
+      "original_mean_tokens": 70.018,
+      "assertion_mean_tokens": 17.832,
+      "original_unseen_fraction": 0.7538632922962667,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "de",
+      "task": "space",
+      "original_accuracy": 0.526,
+      "assertion_accuracy": 0.903,
+      "delta": 0.377,
+      "original_mean_tokens": 69.954,
+      "assertion_mean_tokens": 17.548,
+      "original_unseen_fraction": 0.7517797409726391,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "de",
+      "task": "quantity",
+      "original_accuracy": 0.48,
+      "assertion_accuracy": 0.892,
+      "delta": 0.41200000000000003,
+      "original_mean_tokens": 51.208,
+      "assertion_mean_tokens": 10.57,
+      "original_unseen_fraction": 0.8408061240431183,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "roles",
+      "original_accuracy": 0.502,
+      "assertion_accuracy": 0.997,
+      "delta": 0.495,
+      "original_mean_tokens": 48.086,
+      "assertion_mean_tokens": 17.544,
+      "original_unseen_fraction": 0.6654743584411263,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "negation",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 1.0,
+      "delta": 0.5,
+      "original_mean_tokens": 48.119,
+      "assertion_mean_tokens": 17.611,
+      "original_unseen_fraction": 0.665017976267171,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "space",
+      "original_accuracy": 0.509,
+      "assertion_accuracy": 1.0,
+      "delta": 0.491,
+      "original_mean_tokens": 49.592,
+      "assertion_mean_tokens": 17.592,
+      "original_unseen_fraction": 0.6855944507178577,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "quantity",
+      "original_accuracy": 0.554,
+      "assertion_accuracy": 0.961,
+      "delta": 0.4069999999999999,
+      "original_mean_tokens": 32.994,
+      "assertion_mean_tokens": 10.994,
+      "original_unseen_fraction": 0.7183427289810268,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "en",
+      "task": "roles",
+      "original_accuracy": 0.524,
+      "assertion_accuracy": 0.747,
+      "delta": 0.22299999999999998,
+      "original_mean_tokens": 40.206,
+      "assertion_mean_tokens": 12.206,
+      "original_unseen_fraction": 0.6964134706262747,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "en",
+      "task": "negation",
+      "original_accuracy": 0.541,
+      "assertion_accuracy": 0.878,
+      "delta": 0.33699999999999997,
+      "original_mean_tokens": 40.222,
+      "assertion_mean_tokens": 12.222,
+      "original_unseen_fraction": 0.6961364427427776,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "en",
+      "task": "space",
+      "original_accuracy": 0.509,
+      "assertion_accuracy": 0.533,
+      "delta": 0.02400000000000002,
+      "original_mean_tokens": 42.12,
+      "assertion_mean_tokens": 14.12,
+      "original_unseen_fraction": 0.6647673314339981,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "en",
+      "task": "quantity",
+      "original_accuracy": 0.487,
+      "assertion_accuracy": 0.963,
+      "delta": 0.476,
+      "original_mean_tokens": 47.826,
+      "assertion_mean_tokens": 10.569,
+      "original_unseen_fraction": 0.7945468991761803,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "de",
+      "task": "roles",
+      "original_accuracy": 0.501,
+      "assertion_accuracy": 0.812,
+      "delta": 0.31100000000000005,
+      "original_mean_tokens": 64.11,
+      "assertion_mean_tokens": 17.696,
+      "original_unseen_fraction": 0.7307752300733115,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "de",
+      "task": "negation",
+      "original_accuracy": 0.49,
+      "assertion_accuracy": 0.854,
+      "delta": 0.364,
+      "original_mean_tokens": 66.51,
+      "assertion_mean_tokens": 17.872,
+      "original_unseen_fraction": 0.7404901518568636,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "de",
+      "task": "space",
+      "original_accuracy": 0.495,
+      "assertion_accuracy": 0.924,
+      "delta": 0.42900000000000005,
+      "original_mean_tokens": 66.13,
+      "assertion_mean_tokens": 17.504,
+      "original_unseen_fraction": 0.7389989414789052,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "de",
+      "task": "quantity",
+      "original_accuracy": 0.523,
+      "assertion_accuracy": 0.883,
+      "delta": 0.36,
+      "original_mean_tokens": 47.121,
+      "assertion_mean_tokens": 10.653,
+      "original_unseen_fraction": 0.8272956855754334,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "roles",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.999,
+      "delta": 0.499,
+      "original_mean_tokens": 49.941,
+      "assertion_mean_tokens": 17.439,
+      "original_unseen_fraction": 0.6808033479505817,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "negation",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.998,
+      "delta": 0.498,
+      "original_mean_tokens": 50.177,
+      "assertion_mean_tokens": 17.705,
+      "original_unseen_fraction": 0.6776012914283437,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "space",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 1.0,
+      "delta": 0.5,
+      "original_mean_tokens": 51.646,
+      "assertion_mean_tokens": 17.646,
+      "original_unseen_fraction": 0.6970530147542888,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "quantity",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.97,
+      "delta": 0.47,
+      "original_mean_tokens": 42.983,
+      "assertion_mean_tokens": 10.983,
+      "original_unseen_fraction": 0.7841472209943466,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "en",
+      "task": "roles",
+      "original_accuracy": 0.534,
+      "assertion_accuracy": 0.77,
+      "delta": 0.236,
+      "original_mean_tokens": 38.398,
+      "assertion_mean_tokens": 12.226,
+      "original_unseen_fraction": 0.6815979998958279,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "en",
+      "task": "negation",
+      "original_accuracy": 0.551,
+      "assertion_accuracy": 0.807,
+      "delta": 0.256,
+      "original_mean_tokens": 38.392,
+      "assertion_mean_tokens": 12.24,
+      "original_unseen_fraction": 0.6811835799124818,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "en",
+      "task": "space",
+      "original_accuracy": 0.506,
+      "assertion_accuracy": 0.512,
+      "delta": 0.006000000000000005,
+      "original_mean_tokens": 40.3,
+      "assertion_mean_tokens": 14.116,
+      "original_unseen_fraction": 0.649727047146402,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "en",
+      "task": "quantity",
+      "original_accuracy": 0.512,
+      "assertion_accuracy": 0.825,
+      "delta": 0.31299999999999994,
+      "original_mean_tokens": 45.842,
+      "assertion_mean_tokens": 10.524,
+      "original_unseen_fraction": 0.8254875441734654,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "de",
+      "task": "roles",
+      "original_accuracy": 0.522,
+      "assertion_accuracy": 0.563,
+      "delta": 0.040999999999999925,
+      "original_mean_tokens": 67.674,
+      "assertion_mean_tokens": 17.73,
+      "original_unseen_fraction": 0.7453674971185389,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "de",
+      "task": "negation",
+      "original_accuracy": 0.491,
+      "assertion_accuracy": 0.697,
+      "delta": 0.20599999999999996,
+      "original_mean_tokens": 70.018,
+      "assertion_mean_tokens": 17.832,
+      "original_unseen_fraction": 0.7538632922962667,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "de",
+      "task": "space",
+      "original_accuracy": 0.504,
+      "assertion_accuracy": 0.564,
+      "delta": 0.05999999999999994,
+      "original_mean_tokens": 69.954,
+      "assertion_mean_tokens": 17.548,
+      "original_unseen_fraction": 0.7517797409726391,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "de",
+      "task": "quantity",
+      "original_accuracy": 0.492,
+      "assertion_accuracy": 0.793,
+      "delta": 0.30100000000000005,
+      "original_mean_tokens": 51.208,
+      "assertion_mean_tokens": 10.57,
+      "original_unseen_fraction": 0.8408061240431183,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "roles",
+      "original_accuracy": 0.514,
+      "assertion_accuracy": 1.0,
+      "delta": 0.486,
+      "original_mean_tokens": 48.086,
+      "assertion_mean_tokens": 17.544,
+      "original_unseen_fraction": 0.6654743584411263,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "negation",
+      "original_accuracy": 0.512,
+      "assertion_accuracy": 1.0,
+      "delta": 0.488,
+      "original_mean_tokens": 48.119,
+      "assertion_mean_tokens": 17.611,
+      "original_unseen_fraction": 0.665017976267171,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "space",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 1.0,
+      "delta": 0.5,
+      "original_mean_tokens": 49.592,
+      "assertion_mean_tokens": 17.592,
+      "original_unseen_fraction": 0.6855944507178577,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_a",
+      "language": "ko",
+      "task": "quantity",
+      "original_accuracy": 0.514,
+      "assertion_accuracy": 0.968,
+      "delta": 0.45399999999999996,
+      "original_mean_tokens": 32.994,
+      "assertion_mean_tokens": 10.994,
+      "original_unseen_fraction": 0.7183427289810268,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "en",
+      "task": "roles",
+      "original_accuracy": 0.497,
+      "assertion_accuracy": 0.758,
+      "delta": 0.261,
+      "original_mean_tokens": 40.206,
+      "assertion_mean_tokens": 12.206,
+      "original_unseen_fraction": 0.6964134706262747,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "en",
+      "task": "negation",
+      "original_accuracy": 0.503,
+      "assertion_accuracy": 0.827,
+      "delta": 0.32399999999999995,
+      "original_mean_tokens": 40.222,
+      "assertion_mean_tokens": 12.222,
+      "original_unseen_fraction": 0.6961364427427776,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "en",
+      "task": "space",
+      "original_accuracy": 0.492,
+      "assertion_accuracy": 0.524,
+      "delta": 0.03200000000000003,
+      "original_mean_tokens": 42.12,
+      "assertion_mean_tokens": 14.12,
+      "original_unseen_fraction": 0.6647673314339981,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "en",
+      "task": "quantity",
+      "original_accuracy": 0.496,
+      "assertion_accuracy": 0.82,
+      "delta": 0.32399999999999995,
+      "original_mean_tokens": 47.826,
+      "assertion_mean_tokens": 10.569,
+      "original_unseen_fraction": 0.7945468991761803,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "de",
+      "task": "roles",
+      "original_accuracy": 0.502,
+      "assertion_accuracy": 0.551,
+      "delta": 0.049000000000000044,
+      "original_mean_tokens": 64.11,
+      "assertion_mean_tokens": 17.696,
+      "original_unseen_fraction": 0.7307752300733115,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "de",
+      "task": "negation",
+      "original_accuracy": 0.502,
+      "assertion_accuracy": 0.691,
+      "delta": 0.18899999999999995,
+      "original_mean_tokens": 66.51,
+      "assertion_mean_tokens": 17.872,
+      "original_unseen_fraction": 0.7404901518568636,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "de",
+      "task": "space",
+      "original_accuracy": 0.496,
+      "assertion_accuracy": 0.575,
+      "delta": 0.07899999999999996,
+      "original_mean_tokens": 66.13,
+      "assertion_mean_tokens": 17.504,
+      "original_unseen_fraction": 0.7389989414789052,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "de",
+      "task": "quantity",
+      "original_accuracy": 0.495,
+      "assertion_accuracy": 0.795,
+      "delta": 0.30000000000000004,
+      "original_mean_tokens": 47.121,
+      "assertion_mean_tokens": 10.653,
+      "original_unseen_fraction": 0.8272956855754334,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "roles",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 1.0,
+      "delta": 0.5,
+      "original_mean_tokens": 49.941,
+      "assertion_mean_tokens": 17.439,
+      "original_unseen_fraction": 0.6808033479505817,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "negation",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 1.0,
+      "delta": 0.5,
+      "original_mean_tokens": 50.177,
+      "assertion_mean_tokens": 17.705,
+      "original_unseen_fraction": 0.6776012914283437,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "space",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 1.0,
+      "delta": 0.5,
+      "original_mean_tokens": 51.646,
+      "assertion_mean_tokens": 17.646,
+      "original_unseen_fraction": 0.6970530147542888,
+      "assertion_unseen_fraction": 0.0
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "split": "dev_b",
+      "language": "ko",
+      "task": "quantity",
+      "original_accuracy": 0.5,
+      "assertion_accuracy": 0.955,
+      "delta": 0.45499999999999996,
+      "original_mean_tokens": 42.983,
+      "assertion_mean_tokens": 10.983,
+      "original_unseen_fraction": 0.7841472209943466,
+      "assertion_unseen_fraction": 0.0
+    }
+  ]
+}

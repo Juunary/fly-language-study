@@ -115,6 +115,13 @@
       "used": 0.006214293704445784,
       "status": "completed",
       "exceeded_reservation": false
+    },
+    "explore-v1-frame-diagnostic-1": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.0073081129185933,
+      "status": "completed",
+      "exceeded_reservation": false
     }
   },
   "transfers": []
