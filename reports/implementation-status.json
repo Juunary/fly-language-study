@@ -38,7 +38,7 @@
     "registry": "review/private/reviewer-registry.csv (code + language-fluency evidence + dates; names/contacts kept by the operator outside the repository)",
     "mapping": "review/private/mapping.csv (never distributed)",
     "build_manifest": "review/private/build-manifest.json",
-    "merge_tool": "scripts/merge_review_submissions.py -> review/submissions/merged/reviewed-audit-sample.csv + attestation-draft.json",
+    "merge_tool": "scripts/merge_review_submissions.py (verifies build-manifest source_hashes and dataset_hash before merging) -> review/submissions/merged/reviewed-audit-sample.csv + attestation-draft.json",
     "gate": "certify-review unchanged: 200 items/language, agreement >= .95, kappa >= .8, two identifiers per language, human attestation",
     "guide": "docs/HUMAN_REVIEW_GUIDE.md",
     "judgments_filled_by_ai": false,
@@ -126,7 +126,7 @@
     "cuda_devices": [],
     "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4"
   },
-  "server_updated_at_utc": "2026-09-16T08:54:05.663885+00:00",
+  "server_updated_at_utc": "2026-09-16T09:24:42.540677+00:00",
   "server_environment": {
     "python": "3.12.4",
     "torch": "2.5.1+cu121",
@@ -150,12 +150,12 @@
     "graph_file": true
   },
   "cpu_tests_server": {
-    "tests": 52,
+    "tests": 54,
     "failures": 0,
     "errors": 0,
     "skipped": 0,
     "report": "reports/cpu-tests-server.xml",
-    "note": "46 delivered + 6 review-packaging tests"
+    "note": "46 delivered + 8 review-packaging tests"
   },
   "cpu_smoke_server": "artifacts/server-cpu-smoke (synthetic graph; not study evidence)",
   "data_recheck_server": "audit-data/baselines/cue-baselines regenerated on a scratch copy: JSON identical to delivered files (delivered files have CRLF line endings; left unchanged)",

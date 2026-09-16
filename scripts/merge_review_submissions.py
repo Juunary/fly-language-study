@@ -10,6 +10,8 @@ Outputs (<review>/submissions/merged/):
   disagreements.csv           operator-only consensus worklist (includes the original label)
   attestation-draft.json      reviewers per language and unresolved item keys; humans must complete every value
   receipt.json                hashes/counts/agreement of the raw submissions
+Before anything else the current originals are compared with the build manifest's source_hashes and
+dataset_hash; a changed original aborts the merge without writing any output.
 No judgment is invented or altered: rows are copied verbatim after normalising 'yes'/'no' spelling.
 """
 from __future__ import annotations
@@ -58,6 +60,17 @@ def normalise_fluent(value: str):
     return "yes" if v in YES else "no" if v in NO else None
 
 
+def verify_sources(manifest, data: Path):
+    """The mapping and the attestation hash only mean something for the exact files the packages were built from."""
+    changed = [name for name, h in manifest["source_hashes"].items() if not (data / name).exists() or sha256(data / name) != h]
+    current = json.loads((data / "manifest.json").read_text(encoding="utf-8")).get("dataset_hash")
+    if current != manifest.get("dataset_hash"):
+        changed.append("manifest.json:dataset_hash")
+    if changed:
+        raise ValueError("Source files changed since the review build: " + ", ".join(changed) +
+                         ". Rebuild the packages for the new data version; do not merge against changed originals.")
+
+
 def find_submission(folder: Path):
     files = sorted(p for p in folder.glob("*.csv") if p.is_file()) if folder.exists() else []
     return files
@@ -66,6 +79,7 @@ def find_submission(folder: Path):
 def merge(review: Path, data: Path, output: Path | None = None):
     private = review / "private"
     manifest = json.loads((private / "build-manifest.json").read_text(encoding="utf-8"))
+    verify_sources(manifest, data)
     mapping = {r["review_id"]: r for r in read_csv(private / "mapping.csv")}
     originals = {}
     for row in read_csv(data / "audit-sample.csv"):

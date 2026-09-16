@@ -221,28 +221,38 @@ REGISTRY_FIELDS = ["reviewer_code", "language", "slot", "fluency_evidence", "dat
 
 def refresh_instructions(output: Path, reason: str):
     """Regenerate INSTRUCTIONS.md, the registry schema and the zips of an existing build.
-    Items, review IDs and the mapping are never touched; the manifest records the refresh."""
+    Items, review IDs and the mapping are never touched. Every precondition is checked before
+    the first write, so a refused refresh leaves the build byte-for-byte unchanged."""
     private, dist = output / "private", output / "dist"
     manifest_path = private / "build-manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    before = {code: sha256(dist / code / f"items-{code}.csv") for code in manifest["packages"]}
-    mapping_before = sha256(private / "mapping.csv")
-    for code, info in manifest["packages"].items():
-        folder = dist / code
-        (folder / "INSTRUCTIONS.md").write_text(instructions(code, info["language"], info["items"]), encoding="utf-8")
-        files = sorted(p for p in folder.iterdir() if p.is_file())
-        with zipfile.ZipFile(dist / f"{code}.zip", "w", zipfile.ZIP_DEFLATED) as z:
-            for p in files:
-                z.write(p, f"{code}/{p.name}")
-        info["files"] = {p.name: sha256(p) for p in files}
-        info["zip"] = sha256(dist / f"{code}.zip")
     registry_path = private / "reviewer-registry.csv"
     registry = read_csv(registry_path)
     filled = [r for r in registry if any(v.strip() for k, v in r.items() if k not in ("reviewer_code", "language", "slot"))]
     if filled:
         raise ValueError("Registry already contains entries; migrate it by hand instead of rewriting")
+    if {r["reviewer_code"] for r in registry} != set(manifest["packages"]):
+        raise ValueError("Registry codes differ from the manifest")
+    for code, info in manifest["packages"].items():
+        items = dist / code / f"items-{code}.csv"
+        if not items.exists() or sha256(items) != info["files"][f"items-{code}.csv"]:
+            raise RuntimeError(f"Items for {code} differ from the manifest; refusing to refresh")
+    mapping_before = sha256(private / "mapping.csv")
+    items_before = {code: sha256(dist / code / f"items-{code}.csv") for code in manifest["packages"]}
+    # Writes start here.
+    for code, info in manifest["packages"].items():
+        folder = dist / code
+        (folder / "INSTRUCTIONS.md").write_text(instructions(code, info["language"], info["items"]), encoding="utf-8")
+        files = sorted(p for p in folder.iterdir() if p.is_file())
+        temp = dist / f"{code}.zip.partial"
+        with zipfile.ZipFile(temp, "w", zipfile.ZIP_DEFLATED) as z:
+            for p in files:
+                z.write(p, f"{code}/{p.name}")
+        os.replace(temp, dist / f"{code}.zip")
+        info["files"] = {p.name: sha256(p) for p in files}
+        info["zip"] = sha256(dist / f"{code}.zip")
     write_csv(registry_path, REGISTRY_FIELDS, [{**{f: "" for f in REGISTRY_FIELDS}, **{k: r[k] for k in ("reviewer_code", "language", "slot")}} for r in registry])
-    if any(sha256(dist / code / f"items-{code}.csv") != h for code, h in before.items()) or sha256(private / "mapping.csv") != mapping_before:
+    if any(sha256(dist / code / f"items-{code}.csv") != h for code, h in items_before.items()) or sha256(private / "mapping.csv") != mapping_before:
         raise RuntimeError("Refresh must not modify items or mapping")
     manifest.setdefault("refreshes", []).append(dict(at_utc=datetime.now(timezone.utc).isoformat(), reason=reason,
                                                     items_and_mapping_unchanged=True))

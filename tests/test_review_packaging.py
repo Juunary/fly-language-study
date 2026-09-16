@@ -113,6 +113,38 @@ def test_refresh_keeps_ids_and_mapping_and_updates_zips(tiny, tmp_path, monkeypa
         build_mod.refresh_instructions(review, "second")
 
 
+def snapshot(root):
+    return {str(p.relative_to(root)): p.read_bytes() for p in root.rglob("*") if p.is_file()}
+
+
+def test_refused_refresh_changes_nothing(tiny, tmp_path):
+    review = tmp_path / "review"; shutil.copytree(tiny / "review", review)
+    registry = read(review / "private" / "reviewer-registry.csv")
+    registry[3]["fluency_evidence"] = "certified translator"
+    with (review / "private" / "reviewer-registry.csv").open("w", encoding="utf-8-sig", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(registry[0].keys())); w.writeheader(); w.writerows(registry)
+    before = snapshot(review)
+    with pytest.raises(ValueError, match="already contains entries"):
+        build_mod.refresh_instructions(review, "must not write")
+    assert snapshot(review) == before
+
+
+def test_merge_rejects_changed_originals_without_output(tiny, tmp_path):
+    review = tmp_path / "review"; shutil.copytree(tiny / "review", review)
+    data = tmp_path / "data"; shutil.copytree(tiny / "data", data)
+    synthetic_submissions(review, data, lambda o: (o["label"], "yes", ""))
+    inventory = json.loads((data / "template-inventory.json").read_text(encoding="utf-8"))
+    inventory["review_status"] = "edited after build"
+    (data / "template-inventory.json").write_text(json.dumps(inventory, ensure_ascii=False), encoding="utf-8")
+    with pytest.raises(ValueError, match="changed since the review build.*template-inventory.json"):
+        merge_mod.merge(review, data)
+    assert not (review / "submissions" / "merged").exists()
+    with (data / "audit-sample.csv").open("a", encoding="utf-8") as f:
+        f.write("")  # unchanged content must not trip the check once the inventory is restored
+    (data / "template-inventory.json").write_bytes((tiny / "data" / "template-inventory.json").read_bytes())
+    assert merge_mod.merge(review, data)["items"] > 0
+
+
 def test_rebuild_refuses_to_regenerate_ids(tiny):
     with pytest.raises(FileExistsError):
         build_mod.build(tiny / "data", tiny / "review")
