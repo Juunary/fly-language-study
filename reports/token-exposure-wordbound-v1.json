@@ -1,0 +1,148 @@
+{
+  "kind": "exploratory_token_exposure_diagnostic",
+  "model_evaluation_performed": false,
+  "gpu_used": false,
+  "tokenizer_hash": "24589e33b428a52fcf3a44d3480f663d8c24c6803dbd5116dabcb23de838c2f3",
+  "source_hashes": {
+    "train.jsonl": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+    "dev_a.jsonl": "0c3e1d1e14b2c731ec924769ed9a22053a971778a6cb478a8f19ec27648a13f9",
+    "dev_b.jsonl": "fcf8d983b0506fe511317420d792dfc299358ae7c86dab51034ac7c5f3888dd1"
+  },
+  "cells": [
+    {
+      "split": "dev_a",
+      "language": "de",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 168624,
+      "mean_tokens": 42.156,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_a",
+      "language": "de",
+      "view": "original",
+      "items": 4000,
+      "tokens": 258624,
+      "mean_tokens": 64.656,
+      "unseen_in_language_count": 92000,
+      "unseen_in_any_training_count": 92000,
+      "unseen_in_any_training_fraction": 0.3557287800049493
+    },
+    {
+      "split": "dev_a",
+      "language": "en",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 172120,
+      "mean_tokens": 43.03,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_a",
+      "language": "en",
+      "view": "original",
+      "items": 4000,
+      "tokens": 254120,
+      "mean_tokens": 63.53,
+      "unseen_in_language_count": 90000,
+      "unseen_in_any_training_count": 90000,
+      "unseen_in_any_training_fraction": 0.3541633873760428
+    },
+    {
+      "split": "dev_a",
+      "language": "ko",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 152000,
+      "mean_tokens": 38.0,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_a",
+      "language": "ko",
+      "view": "original",
+      "items": 4000,
+      "tokens": 224000,
+      "mean_tokens": 56.0,
+      "unseen_in_language_count": 78000,
+      "unseen_in_any_training_count": 78000,
+      "unseen_in_any_training_fraction": 0.3482142857142857
+    },
+    {
+      "split": "dev_b",
+      "language": "de",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 168600,
+      "mean_tokens": 42.15,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_b",
+      "language": "de",
+      "view": "original",
+      "items": 4000,
+      "tokens": 250600,
+      "mean_tokens": 62.65,
+      "unseen_in_language_count": 76000,
+      "unseen_in_any_training_count": 76000,
+      "unseen_in_any_training_fraction": 0.3032721468475658
+    },
+    {
+      "split": "dev_b",
+      "language": "en",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 172600,
+      "mean_tokens": 43.15,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_b",
+      "language": "en",
+      "view": "original",
+      "items": 4000,
+      "tokens": 278600,
+      "mean_tokens": 69.65,
+      "unseen_in_language_count": 106000,
+      "unseen_in_any_training_count": 106000,
+      "unseen_in_any_training_fraction": 0.38047379755922467
+    },
+    {
+      "split": "dev_b",
+      "language": "ko",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 152000,
+      "mean_tokens": 38.0,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_b",
+      "language": "ko",
+      "view": "original",
+      "items": 4000,
+      "tokens": 262000,
+      "mean_tokens": 65.5,
+      "unseen_in_language_count": 108000,
+      "unseen_in_any_training_count": 108000,
+      "unseen_in_any_training_fraction": 0.4122137404580153
+    }
+  ],
+  "interpretation": "Token-occurrence fractions, including SEP/EOS; not vocabulary-type fractions or UNK rates. Original evaluation combines frame shift, length shift, and token IDs absent from all training inputs. Assertion views retain held-out semantic scenes but relax outer-frame holdout. This is a diagnostic, not a replacement confirmatory evaluation or evidence that this shift caused all performance failures.",
+  "tokenizer": "artifacts/tokenizer-wordbound-v1.json",
+  "boundary_policy": "word_boundary_byte_BPE_use_regex_true"
+}

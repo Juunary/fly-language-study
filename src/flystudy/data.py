@@ -442,15 +442,21 @@ def audit(root):
     return report
 
 
-def train_tokenizer(root, output, vocab_size=4096):
+def train_tokenizer(root, output, vocab_size=4096, boundary="whole_string", strict_vocab=True):
+    """boundary='whole_string' (study default) lets merges cross spaces; 'word' keeps every merge inside one
+    whitespace-delimited word. A vocabulary that falls short of vocab_size is refused unless strict_vocab=False,
+    in which case the actual size and the shortfall are recorded; it is never padded."""
     from tokenizers import Tokenizer, models, trainers, pre_tokenizers, decoders, normalizers
+    if boundary not in ("whole_string", "word"):
+        raise ValueError("Unknown boundary policy")
     root, output = Path(root), Path(output)
     rows = load_rows(root, "train")
     tokenizer = Tokenizer(models.BPE(unk_token="[UNK]"))
     tokenizer.normalizer = normalizers.NFC()
     # Whole-string byte BPE: the controlled lexicon exhausts word-local merges
     # before 1,024; explicit cross-space merges make 1,024/4,096 distinct policies.
-    tokenizer.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False, use_regex=False)
+    use_regex = boundary == "word"
+    tokenizer.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False, use_regex=use_regex)
     tokenizer.decoder = decoders.ByteLevel()
     trainer = trainers.BpeTrainer(vocab_size=vocab_size, min_frequency=2,
                                  initial_alphabet=pre_tokenizers.ByteLevel.alphabet(),
@@ -463,9 +469,10 @@ def train_tokenizer(root, output, vocab_size=4096):
         for row in load_rows(root, split):
             lengths[f"{split}/{row['language']}/{row['task']}"].append(len(encode_pair(tokenizer, row)))
     import numpy as np
-    if tokenizer.get_vocab_size() != vocab_size:
+    if strict_vocab and tokenizer.get_vocab_size() != vocab_size:
         raise ValueError("Corpus cannot support the requested vocabulary; do not silently relabel a smaller tokenizer")
-    report = dict(vocab_requested=vocab_size, vocab_actual=tokenizer.get_vocab_size(), boundary_policy="whole_string_byte_BPE_use_regex_false",
+    report = dict(vocab_requested=vocab_size, vocab_actual=tokenizer.get_vocab_size(), vocab_shortfall=vocab_size-tokenizer.get_vocab_size(),
+                  boundary_policy=f"{'word_boundary' if use_regex else 'whole_string'}_byte_BPE_use_regex_{str(use_regex).lower()}",
                   tokenizer_hash=file_hash(output), training_file_hash=file_hash(root / "train.jsonl"),
                   dataset_hash=json.loads((root / "manifest.json").read_text())["dataset_hash"],
                   excluded_examples=0, lengths={k: dict(mean=float(np.mean(v)), max=max(v),

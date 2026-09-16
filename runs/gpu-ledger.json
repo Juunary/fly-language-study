@@ -185,6 +185,55 @@
       "used": 0.000885782368067238,
       "status": "completed",
       "exceeded_reservation": false
+    },
+    "explore-v3-wb-profile-1": {
+      "category": "reserve",
+      "reserved": 0.05,
+      "used": 0.009917549341658337,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v3-wb-mono-en": {
+      "category": "reserve",
+      "reserved": 0.30000000000000004,
+      "used": 0.167519881994166,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v3-wb-mono-de": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.2500901099178009,
+      "status": "budget_interruption",
+      "exceeded_reservation": true
+    },
+    "explore-v3-wb-mono-ko": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.13617765293495418,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v3-wb-eval-1": {
+      "category": "reserve",
+      "reserved": 0.1,
+      "used": 0.013114941301949633,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v3-wb-mono-de-r2": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.0008335258508385677,
+      "status": "technical_failure",
+      "exceeded_reservation": false
+    },
+    "explore-v3-wb-mono-de-r3": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.03444798559642449,
+      "status": "completed",
+      "exceeded_reservation": false
     }
   },
   "transfers": []
