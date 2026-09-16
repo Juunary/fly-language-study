@@ -7,7 +7,7 @@ import torch
 from flystudy.graph import synthetic, scramble
 from flystudy.model import FlyClassifier, train_batch
 from flystudy.protocol import Protocol
-from flystudy.runtime import immutable_evaluation, rng_state, equal_state
+from flystudy.runtime import immutable_evaluation, rng_state, equal_state, restore_rng
 
 
 @pytest.mark.parametrize("microsteps", [2,4])
@@ -54,6 +54,48 @@ def test_evaluation_restores_rng_and_nested_modes():
         model(torch.tensor([[1,2]]),torch.tensor([2]))
     assert model.training and not model.embed.training
     assert equal_state(state,rng_state())
+
+
+def test_restore_normalizes_device_mapped_rng_states(monkeypatch):
+    """CPU regression: both RNG APIs must receive the normalized byte tensors."""
+    state = rng_state()
+    cpu_bytes = state["torch"].clone()
+    class MappedState:
+        def cpu(self):
+            return cpu_bytes
+    state["torch"] = MappedState()
+    state["cuda"] = [MappedState(), MappedState()]
+    received = []
+    def consume(value):
+        assert isinstance(value, torch.Tensor) and value.device.type == "cpu" and value.dtype == torch.uint8
+        received.append(value)
+    monkeypatch.setattr(torch, "set_rng_state", consume)
+    monkeypatch.setattr(torch.cuda, "set_rng_state_all", lambda values: [consume(v) for v in values])
+    restore_rng(state)
+    assert len(received) == 3
+
+
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="Requires actual CUDA checkpoint mapping")
+def test_cuda_mapped_checkpoint_restores_all_random_streams(tmp_path):
+    """Exercise the exact failing load path without the exploratory script's workaround."""
+    before = rng_state()
+    path = tmp_path / "rng.pt"
+    try:
+        torch.save({"rng": before}, path)
+        expected = (random.random(), np.random.random(), torch.rand(12),
+                    [torch.rand(12, device=f"cuda:{i}") for i in range(torch.cuda.device_count())])
+        mapped = torch.load(path, map_location="cuda:0", weights_only=True)["rng"]
+        assert mapped["torch"].device.type == "cuda"
+        assert all(v.device.type == "cuda" for v in mapped["cuda"])
+        restore_rng(mapped)
+        actual = (random.random(), np.random.random(), torch.rand(12),
+                  [torch.rand(12, device=f"cuda:{i}") for i in range(torch.cuda.device_count())])
+        assert actual[:2] == expected[:2]
+        torch.testing.assert_close(actual[2], expected[2], atol=0, rtol=0)
+        for a, b in zip(actual[3], expected[3]):
+            torch.testing.assert_close(a, b, atol=0, rtol=0)
+    finally:
+        restore_rng(before)
 
 
 def test_mutating_evaluation_fails():

@@ -24,9 +24,11 @@ def restore_rng(state):
     random.setstate(state["python"])
     ns = state["numpy"]
     np.random.set_state((ns[0], np.array(ns[1], dtype=np.uint32), ns[2], ns[3], ns[4]))
-    torch.set_rng_state(state["torch"])
+    # torch.load(map_location="cuda:...") also moves serialized RNG byte tensors.
+    # Generator state APIs consume CPU byte tensors even for CUDA generators.
+    torch.set_rng_state(state["torch"].cpu())
     if state["cuda"]:
-        torch.cuda.set_rng_state_all(state["cuda"])
+        torch.cuda.set_rng_state_all([value.cpu() for value in state["cuda"]])
 
 
 def equal_state(a, b):
