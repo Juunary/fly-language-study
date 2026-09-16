@@ -1,0 +1,146 @@
+{
+  "kind": "exploratory_token_exposure_diagnostic",
+  "model_evaluation_performed": false,
+  "gpu_used": false,
+  "tokenizer_hash": "d30ef71c4d5222fe82cf2b4cafedde998145a3a58e440f862cdc988d46f70883",
+  "source_hashes": {
+    "train.jsonl": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+    "dev_a.jsonl": "0c3e1d1e14b2c731ec924769ed9a22053a971778a6cb478a8f19ec27648a13f9",
+    "dev_b.jsonl": "fcf8d983b0506fe511317420d792dfc299358ae7c86dab51034ac7c5f3888dd1"
+  },
+  "cells": [
+    {
+      "split": "dev_a",
+      "language": "de",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 63680,
+      "mean_tokens": 15.92,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_a",
+      "language": "de",
+      "view": "original",
+      "items": 4000,
+      "tokens": 258854,
+      "mean_tokens": 64.7135,
+      "unseen_in_language_count": 198872,
+      "unseen_in_any_training_count": 198872,
+      "unseen_in_any_training_fraction": 0.76827864355969
+    },
+    {
+      "split": "dev_a",
+      "language": "en",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 49106,
+      "mean_tokens": 12.2765,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_a",
+      "language": "en",
+      "view": "original",
+      "items": 4000,
+      "tokens": 162932,
+      "mean_tokens": 40.733,
+      "unseen_in_language_count": 116350,
+      "unseen_in_any_training_count": 116350,
+      "unseen_in_any_training_fraction": 0.7141015883927037
+    },
+    {
+      "split": "dev_a",
+      "language": "ko",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 63741,
+      "mean_tokens": 15.93525,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_a",
+      "language": "ko",
+      "view": "original",
+      "items": 4000,
+      "tokens": 178791,
+      "mean_tokens": 44.69775,
+      "unseen_in_language_count": 121701,
+      "unseen_in_any_training_count": 121701,
+      "unseen_in_any_training_fraction": 0.6806886252663724
+    },
+    {
+      "split": "dev_b",
+      "language": "de",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 63725,
+      "mean_tokens": 15.93125,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_b",
+      "language": "de",
+      "view": "original",
+      "items": 4000,
+      "tokens": 243871,
+      "mean_tokens": 60.96775,
+      "unseen_in_language_count": 183953,
+      "unseen_in_any_training_count": 183953,
+      "unseen_in_any_training_fraction": 0.7543045298538982
+    },
+    {
+      "split": "dev_b",
+      "language": "en",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 49117,
+      "mean_tokens": 12.27925,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_b",
+      "language": "en",
+      "view": "original",
+      "items": 4000,
+      "tokens": 170374,
+      "mean_tokens": 42.5935,
+      "unseen_in_language_count": 122000,
+      "unseen_in_any_training_count": 122000,
+      "unseen_in_any_training_fraction": 0.7160717010811509
+    },
+    {
+      "split": "dev_b",
+      "language": "ko",
+      "view": "assertion",
+      "items": 4000,
+      "tokens": 63773,
+      "mean_tokens": 15.94325,
+      "unseen_in_language_count": 0,
+      "unseen_in_any_training_count": 0,
+      "unseen_in_any_training_fraction": 0.0
+    },
+    {
+      "split": "dev_b",
+      "language": "ko",
+      "view": "original",
+      "items": 4000,
+      "tokens": 194747,
+      "mean_tokens": 48.68675,
+      "unseen_in_language_count": 137705,
+      "unseen_in_any_training_count": 137705,
+      "unseen_in_any_training_fraction": 0.7070969000806174
+    }
+  ],
+  "interpretation": "Token-occurrence fractions, including SEP/EOS; not vocabulary-type fractions or UNK rates. Original evaluation combines frame shift, length shift, and token IDs absent from all training inputs. Assertion views retain held-out semantic scenes but relax outer-frame holdout. This is a diagnostic, not a replacement confirmatory evaluation or evidence that this shift caused all performance failures."
+}
