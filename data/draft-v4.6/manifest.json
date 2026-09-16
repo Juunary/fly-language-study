@@ -1,0 +1,122 @@
+{
+  "version": "draft-v4.6",
+  "seed": 1729,
+  "files": {
+    "train.jsonl": "a43332d3481777b15622d1cbace64dd8b1b7a78e730ed955e9fe137a6dc5ca8a",
+    "dev_a.jsonl": "a2350ed029c136fd2e0869888087dc7c00e7e5855105eb1429477ca71b5a8484",
+    "dev_b.jsonl": "5b8b7e360062574ddf6d0433870853b907a7ca9bf787e80c5360a5caf6f1219c",
+    "test.jsonl": "5cb8f5f6c2a25def87f60d55bf4e0cb4fe70d3adeecdeaf4ef4163f5522f942f"
+  },
+  "train_per_task": 5000,
+  "panel_per_task": 1000,
+  "human_review": "pending",
+  "families": {
+    "train": "assertion",
+    "dev_a": "truth_question",
+    "dev_b": "reported_clause",
+    "test": "conditional"
+  },
+  "evaluation": {
+    "primary": {
+      "template_family": "assertion",
+      "fields": [
+        "sentence_a",
+        "sentence_b"
+      ],
+      "shared_with_training": true,
+      "purpose": "held-out meaning combinations rendered in the training (declarative) frame; scheduled panels, mastery and the independent test use this rendering"
+    },
+    "auxiliary": {
+      "field": "auxiliary",
+      "template_families": {
+        "dev_a": "truth_question",
+        "dev_b": "reported_clause",
+        "test": "conditional"
+      },
+      "same_items_as_primary": true,
+      "purpose": "the same held-out items rendered in a held-out outer frame; outer-frame transfer only, never mastery"
+    },
+    "note": "Primary and auxiliary are two renderings of one item: same id, meaning_id, scene and label."
+  },
+  "independent_test": {
+    "confirmatory": true,
+    "note": "Fresh test orbits unused by any listed dataset or exploratory run; apply once at a run's terminal state after the protocol freeze."
+  },
+  "note": "Semantic orbits, foils and translations are split-exclusive. Outer construction families are held out only in the auxiliary rendering; embedded grammar rules and the declarative frame are shared. Animal colors form a controlled fictional domain.",
+  "test_seed": 1731,
+  "overlap_check": {
+    "datasets_checked": [
+      {
+        "path": "data/draft-v4.6-base",
+        "dataset_hash": "c103a8c8ab4e29e58680b987a321fbdba132780bf23d07f3b12d67f74ca3205f"
+      },
+      {
+        "path": "data/draft-v4.3",
+        "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e"
+      },
+      {
+        "path": "data/draft-v4.4",
+        "dataset_hash": "488d8f22a4dfe1f19f00af90a31c6817c00efcaf9c15652736a772a5bf3193ac"
+      }
+    ],
+    "orbits_shared_with_source": 0,
+    "sentence_pairs_shared_with_source": 0,
+    "new_orbits": 2000
+  },
+  "derived_from": {
+    "version": "draft-v4.6-base",
+    "dataset_hash": "c103a8c8ab4e29e58680b987a321fbdba132780bf23d07f3b12d67f74ca3205f",
+    "files": {
+      "train.jsonl": "a43332d3481777b15622d1cbace64dd8b1b7a78e730ed955e9fe137a6dc5ca8a",
+      "dev_a.jsonl": "a2350ed029c136fd2e0869888087dc7c00e7e5855105eb1429477ca71b5a8484",
+      "dev_b.jsonl": "5b8b7e360062574ddf6d0433870853b907a7ca9bf787e80c5360a5caf6f1219c",
+      "test.jsonl": "f339866cf1348a881c92a2257264444e7fbb7fec906ce01e3d60e01825118ba8"
+    },
+    "training_split_identical": true,
+    "dev_splits_identical": true,
+    "replaced_split": "test"
+  },
+  "dataset_hash": "47368f15d5496aa14ba0d972ae716ecd348048cbba2de83da04029dcdf1afae9",
+  "template_revision": {
+    "reason": "Claude-only review of draft-v4.5 (review/v5, 2026-09-17) flagged template issues; see reports/ai-review-v5-outcome.json",
+    "changes": [
+      "KO spatial frame: embedded subject takes nominative 이/가 instead of topic 은/는",
+      "KO truth question: '…모두 사실이다' is questioned directly as '…모두 사실인가?' (no second 사실)",
+      "DE vertical relation: 'über/unter' + dative instead of 'oberhalb/unterhalb von' + dative",
+      "EN noun 'hen' → 'chicken' (matches Huhn/닭)",
+      "KO verb 맞이한다 → 반긴다 (greets)",
+      "KO colours all in the X색 form (빨간색 파란색 초록색 노란색 검은색 하얀색)",
+      "inventory lists sizes and ages separately; catalog labels forms with words and lists Korean cases nom/acc/gen"
+    ],
+    "comparison_with_reference": {
+      "reference": "data/draft-v4.5",
+      "reference_hash": "727ca4be1372c77a70580adb4f064b3aef15065460088d2a0217fec6ed75efa9",
+      "splits": {
+        "train": {
+          "rows": 60000,
+          "semantic_identity_and_order": true,
+          "primary_pairs_changed": 25328,
+          "auxiliary_pairs_changed": 0
+        },
+        "dev_a": {
+          "rows": 12000,
+          "semantic_identity_and_order": true,
+          "primary_pairs_changed": 5050,
+          "auxiliary_pairs_changed": 5082
+        },
+        "dev_b": {
+          "rows": 12000,
+          "semantic_identity_and_order": true,
+          "primary_pairs_changed": 5112,
+          "auxiliary_pairs_changed": 5112
+        },
+        "test": {
+          "rows": 12000,
+          "semantic_identity_and_order": true,
+          "primary_pairs_changed": 5028,
+          "auxiliary_pairs_changed": 5028
+        }
+      }
+    }
+  }
+}

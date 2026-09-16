@@ -6,6 +6,7 @@ from datetime import datetime
 import json
 from pathlib import Path
 
+from .data import CASES
 from .protocol import LANGUAGES, file_hash
 
 MODE = "claude_only"
@@ -165,7 +166,7 @@ def validate_ai_evidence(dataset, reviewed_csv, attestation, evidence_path):
                            for family, split in (("assertion", "train"), ("truth_question", "dev_a"),
                                                  ("reported_clause", "dev_b"), ("conditional", "test"))
                            for task in ("roles", "negation", "space", "quantity")}
-        required_checks |= {("noun_forms", language, "", "", case) for case in ("nom", "acc", "dat", "plural")}
+        required_checks |= {("noun_forms", language, "", "", case) for case in (*CASES[language], "plural")}
         required_checks.add(("vocabulary", language, "", "", "template-inventory.json"))
         if (expected_checks != required_checks or len(checks) != len(required_checks) or
                 {tuple(r[k] for k in check_fields) for r in checks} != required_checks):

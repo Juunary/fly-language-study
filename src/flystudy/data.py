@@ -28,15 +28,20 @@ NOUNS = [
     ("duck", "ducks", "Ente", "Ente", "Ente", "Enten", "f", "오리"),
     ("horse", "horses", "Pferd", "Pferd", "Pferd", "Pferde", "n", "말"),
     ("sheep", "sheep", "Schaf", "Schaf", "Schaf", "Schafe", "n", "양"),
-    ("hen", "hens", "Huhn", "Huhn", "Huhn", "Hühner", "n", "닭"),
+    ("chicken", "chickens", "Huhn", "Huhn", "Huhn", "Hühner", "n", "닭"),
     ("rabbit", "rabbits", "Kaninchen", "Kaninchen", "Kaninchen", "Kaninchen", "n", "토끼"),
 ]
-COLORS = [("red", "rot", "빨간"), ("blue", "blau", "파란"), ("green", "grün", "초록색"),
-          ("yellow", "gelb", "노란"), ("black", "schwarz", "검은"), ("white", "weiß", "하얀")]
-SIZES = [("small", "klein", "작은"), ("large", "groß", "큰"),
-         ("young", "jung", "어린"), ("old", "alt", "늙은")]
+COLORS = [("red", "rot", "빨간색"), ("blue", "blau", "파란색"), ("green", "grün", "초록색"),
+          ("yellow", "gelb", "노란색"), ("black", "schwarz", "검은색"), ("white", "weiß", "하얀색")]
+SIZES = [("small", "klein", "작은"), ("large", "groß", "큰")]
+AGES = [("young", "jung", "어린"), ("old", "alt", "늙은")]
+# A noun phrase carries exactly one attribute adjective; scene index 0-1 is a size, 2-3 an age (generation contract).
+ATTRIBUTES = SIZES + AGES
+# Case forms listed in the review catalog per language: Korean marks nominative/accusative with particles and uses the
+# genitive 의 in the spatial frame; it has no dative form anywhere in the data.
+CASES = {"en": ("nom", "acc", "dat"), "de": ("nom", "acc", "dat"), "ko": ("nom", "acc", "gen")}
 VERBS = [("sees", "see", "seen", "sieht", "gesehen", "본다"),
-         ("greets", "greet", "greeted", "grüßt", "gegrüßt", "맞이한다"),
+         ("greets", "greet", "greeted", "grüßt", "gegrüßt", "반긴다"),
          ("follows", "follow", "followed", "verfolgt", "verfolgt", "뒤따른다")]
 NUMBERS = {"en": ("two", "three", "four", "five", "six", "seven", "eight"),
            "de": ("zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht"),
@@ -50,7 +55,7 @@ PRIMARY_FAMILY = FAMILIES["train"]
 
 
 def coordinate_ko(sentence):
-    for end, replacement in (("않는다", "않으며"), ("맞이한다", "맞이하며"),
+    for end, replacement in (("않는다", "않으며"), ("반긴다", "반기며"),
                              ("뒤따른다", "뒤따르며"), ("본다", "보며"), ("있다", "있으며")):
         if sentence.endswith(end):
             return sentence[:-len(end)] + replacement
@@ -74,7 +79,7 @@ def particle(word, pair):
 
 def noun_phrase(entity, lang, case="nom", count=None):
     n, color, size = entity
-    noun, col, adj = NOUNS[n], COLORS[color], SIZES[size]
+    noun, col, adj = NOUNS[n], COLORS[color], ATTRIBUTES[size]
     index = LANGUAGES.index(lang)
     if lang == "en":
         return f"{'the' if count is None else NUMBERS[lang][count]} {adj[0]} {col[0]} {noun[0 if count is None else 1]}"
@@ -134,7 +139,7 @@ def clause(scene, lang, inverse=False, foil=False):
             return f"{subject} {verb[3]} {rest}", f"{subject} {rest} {verb[3]}"
         subject = particle(noun_phrase(a, lang), ("이", "가"))
         obj = particle(noun_phrase(b, lang), ("을", "를"))
-        ending = ("보지 않는다", "맞이하지 않는다", "뒤따르지 않는다")[scene["verb"]] if neg else verb[5]
+        ending = ("보지 않는다", "반기지 않는다", "뒤따르지 않는다")[scene["verb"]] if neg else verb[5]
         s = f"{obj} {subject} {ending}" if inverse else f"{subject} {obj} {ending}"
         return s, s
     if task == "space":
@@ -144,7 +149,7 @@ def clause(scene, lang, inverse=False, foil=False):
             a, b = b, a
             direction = not direction
         en = (("to the left of", "to the right of"), ("above", "below"), ("in front of", "behind"))[axis][int(direction)]
-        de = (("links von", "rechts von"), ("oberhalb von", "unterhalb von"), ("vor", "hinter"))[axis][int(direction)]
+        de = (("links von", "rechts von"), ("über", "unter"), ("vor", "hinter"))[axis][int(direction)]
         ko = (("왼쪽", "오른쪽"), ("위", "아래"), ("앞", "뒤"))[axis][int(direction)]
         if lang == "en":
             s = f"{noun_phrase(a, lang)} is {en} {noun_phrase(b, lang)}"
@@ -152,7 +157,7 @@ def clause(scene, lang, inverse=False, foil=False):
         if lang == "de":
             s, rest = noun_phrase(a, lang), f"{de} {noun_phrase(b, lang, 'dat')}"
             return f"{s} ist {rest}", f"{s} {rest} ist"
-        s = f"{particle(noun_phrase(a, lang), ('은','는'))} {noun_phrase(b, lang)}의 {ko}에 있다"
+        s = f"{particle(noun_phrase(a, lang), ('이','가'))} {noun_phrase(b, lang)}의 {ko}에 있다"
         return s, s
     c1, c2 = scene["counts"]
     if foil:
@@ -179,11 +184,12 @@ def render(scene, lang, split, inverse=False, foil=False):
         text = {"train": f"{main}.", "dev_a": f"Stimmt es, dass {sub}?",
                 "dev_b": f"Jemand sagt, dass {sub}.", "test": f"Wenn {sub}, klingelt eine Glocke."}[split]
     else:
-        # Copular 이다 takes 이라는/이라고/이라면, unlike 있다/본다.
-        quoted = main[:-2]+'이라는' if main.endswith('이다') else main+'는'
+        # Copular 이다 takes 이라고/이라면, unlike 있다/본다. A main clause that already ends in "…모두 사실이다" is
+        # questioned directly ("…모두 사실인가?") instead of nominalising it under a second 사실.
+        question = main[:-2]+'인가' if main.endswith('이다') else main+'는 것이 사실인가'
         reported = main[:-2]+'이라고' if main.endswith('이다') else main+'고'
         conditional = main[:-2]+'이라면' if main.endswith('이다') else main+'면'
-        text = {"train": f"{main}.", "dev_a": f"{quoted} 것이 사실인가?",
+        text = {"train": f"{main}.", "dev_a": f"{question}?",
                 "dev_b": f"{reported} 누군가 말한다.", "test": f"만약 {conditional} 종이 울린다."}[split]
     return unicodedata.normalize("NFC", text[0].upper() + text[1:])
 
@@ -459,7 +465,7 @@ def export_review(root, rows):
             for r in chosen:
                 for reviewer in ("reviewer_1", "reviewer_2"):
                     writer.writerow({**r, "reviewer": reviewer})
-    write_json(root / "template-inventory.json", dict(nouns=NOUNS, colors=COLORS, sizes=SIZES,
+    write_json(root / "template-inventory.json", dict(nouns=NOUNS, colors=COLORS, sizes=SIZES, ages=AGES, cases=CASES,
                verbs=VERBS, families=FAMILIES, rendering_source_hash=file_hash(__file__), review_status="pending"))
 
 

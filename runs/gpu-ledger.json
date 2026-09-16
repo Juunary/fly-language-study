@@ -402,6 +402,34 @@
       "used": 0.0032058124407841307,
       "status": "completed",
       "exceeded_reservation": false
+    },
+    "g0-v5.1-1": {
+      "category": "g0_g1",
+      "reserved": 0.5,
+      "used": 0.006391261619541587,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "g1-v5.1-1": {
+      "category": "g0_g1",
+      "reserved": 0.5,
+      "used": 0.005043811878616301,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "profile-v5.1-cuda0-1": {
+      "category": "g0_g1",
+      "reserved": 0.25,
+      "used": 0.00318667119808702,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "profile-v5.1-cuda1-1": {
+      "category": "g0_g1",
+      "reserved": 0.25,
+      "used": 0.00316955595167302,
+      "status": "completed",
+      "exceeded_reservation": false
     }
   },
   "transfers": []

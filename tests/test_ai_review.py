@@ -2,20 +2,28 @@
 import csv
 import importlib.util
 import json
+import subprocess
+import sys
 from pathlib import Path
-import shutil
 
 import pytest
 
 from flystudy.ai_review import rows, text_key, validate_ai_evidence
+from flystudy.data import generate
 from flystudy.gates import certify_review
 from flystudy.protocol import file_hash, write_json
 from flystudy.workflow import review_provenance
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("prepare_ai", ROOT / "scripts/prepare_ai_review.py")
-prepare_mod = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(prepare_mod)
+
+
+def load(name, alias):
+    spec = importlib.util.spec_from_file_location(alias, ROOT / "scripts" / f"{name}.py")
+    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+    return module
+
+
+prepare_mod, build_mod = load("prepare_ai_review", "prepare_ai"), load("build_review_packages", "build_review_packages_ai")
 
 
 def csv_write(path, records):
@@ -27,11 +35,12 @@ def csv_write(path, records):
 @pytest.fixture
 def evidence(tmp_path):
     data = tmp_path / "data"
-    data.mkdir()
-    # Validation reads these source files; the expensive data audit is covered by integration tests.
-    for name in (*prepare_mod.SOURCES, "manifest.json"):
-        shutil.copyfile(ROOT / "data/draft-v4.3" / name, data / name)
-    path = prepare_mod.prepare(data, ROOT / "review/dist", tmp_path / "ai")
+    # A tiny dataset, its review catalog and blinded packages from the current builder, so that the checklist the
+    # validator requires (language-specific case inventory) is the one the packages carry.
+    generate(data, 40, 4)  # 208 examples per language, so the frozen audit sample has its full 200 items per language
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "export_review_catalog.py"), "--data", str(data)], check=True)
+    build_mod.build(data, tmp_path / "review")
+    path = prepare_mod.prepare(data, tmp_path / "review" / "dist", tmp_path / "ai")
     manifest = json.loads(path.read_text())
     manifest["data_origin"] = "actual_claude_responses"  # software fixture only
     originals = {text_key(r): r for r in rows(data / "audit-sample.csv")}

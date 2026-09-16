@@ -1,0 +1,560 @@
+{
+ "review": "v5 (data/draft-v4.5, protocol v5, v4-ai-review-1)",
+ "merged": "review/v5/submissions/merged-ai-v5",
+ "merge_receipt": {
+  "merged_at_utc": "2026-09-16T23:02:09.867211+00:00",
+  "submissions": {
+   "DE-R1-DPJFH": {
+    "file": "review/v5/submissions/raw/DE-R1-DPJFH/items-response.csv",
+    "sha256": "e7059750c669006784a3b9c6666f8ac595b948fa13f38f48f98794b1982941cc",
+    "rows": 200,
+    "language": "de"
+   },
+   "DE-R2-4X2W5": {
+    "file": "review/v5/submissions/raw/DE-R2-4X2W5/items-response.csv",
+    "sha256": "807b693cd3873908e8ff60cad55cbfe5a743ca148ffa3f051ad639a1b7e21afa",
+    "rows": 200,
+    "language": "de"
+   },
+   "EN-R1-W6SFQ": {
+    "file": "review/v5/submissions/raw/EN-R1-W6SFQ/items-response.csv",
+    "sha256": "20942c2b865500ad187ef24ad3de59881d56c4a6a0490a507a739c0fe44d5fa8",
+    "rows": 200,
+    "language": "en"
+   },
+   "EN-R2-PJZZQ": {
+    "file": "review/v5/submissions/raw/EN-R2-PJZZQ/items-response.csv",
+    "sha256": "2d11b8c3f6e2ef2508e1bd79683f1493e9833fc9d9bf2a239f36044e37cbe66d",
+    "rows": 200,
+    "language": "en"
+   },
+   "KO-R1-5SU99": {
+    "file": "review/v5/submissions/raw/KO-R1-5SU99/items-response.csv",
+    "sha256": "2833d027efe935de35f71b1f903a6060ae2f7c53c0c210bac5955d3126312561",
+    "rows": 200,
+    "language": "ko"
+   },
+   "KO-R2-37XFZ": {
+    "file": "review/v5/submissions/raw/KO-R2-37XFZ/items-response.csv",
+    "sha256": "326baf5e8a3849ab755660119ff2a200843016ae8afd5b6f44f11dbf97ef61f8",
+    "rows": 200,
+    "language": "ko"
+   }
+  },
+  "items": 600,
+  "merged_rows": 1200,
+  "unresolved_items": 65,
+  "agreement_by_language": {
+   "de": {
+    "items": 200,
+    "raw_agreement": 1.0,
+    "kappa": 1.0,
+    "fluent_no": 30,
+    "differs_from_original": 0
+   },
+   "en": {
+    "items": 200,
+    "raw_agreement": 1.0,
+    "kappa": 1.0,
+    "fluent_no": 0,
+    "differs_from_original": 0
+   },
+   "ko": {
+    "items": 200,
+    "raw_agreement": 1.0,
+    "kappa": 1.0,
+    "fluent_no": 50,
+    "differs_from_original": 0
+   }
+  },
+  "certify_thresholds": {
+   "items_per_language": 200,
+   "min_agreement": 0.95,
+   "min_kappa": 0.8
+  },
+  "outputs": {
+   "reviewed-audit-sample.csv": "751fa3e206cfee8aa8542263fd5dd769ded5ef9438ace815a4cfc73a70f0b9f5",
+   "disagreements.csv": "b803385cc0696e5fbc4efd918729ee8f04c24c486b82b01ed7bc36f7ad5c5935",
+   "attestation-draft.json": "2d64036e99f5857345ce98c5b9ca8316a8df6c4664fec244e83b37b8961035bf"
+  }
+ },
+ "sessions": [
+  {
+   "reviewer": "DE-R1-DPJFH",
+   "language": "de",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-af4ccde3c980c3e4c",
+   "started": "2026-09-16T22:25:17.186Z",
+   "finished": "2026-09-16T22:41:57.532Z",
+   "stop_reasons": [
+    null,
+    null,
+    null,
+    "max_tokens",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    1,
+    4,
+    64000,
+    38303
+   ],
+   "items": 200,
+   "fluent_no": 15,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 4,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 2,
+     "unterminated": 1,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [
+      {
+       "message": 3,
+       "rows": 30,
+       "complete_rows": 29,
+       "disagreements": {
+        "judged_label": [],
+        "fluent": []
+       }
+      }
+     ]
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": []
+    }
+   },
+   "prior_attempts": []
+  },
+  {
+   "reviewer": "DE-R2-4X2W5",
+   "language": "de",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-ad5c15f855ba8132b",
+   "started": "2026-09-16T22:45:27.093Z",
+   "finished": "2026-09-16T23:01:22.860Z",
+   "stop_reasons": [
+    null,
+    null,
+    "max_tokens",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    5,
+    64000,
+    34440
+   ],
+   "items": 200,
+   "fluent_no": 15,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 4,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 2,
+     "unterminated": 1,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [
+      {
+       "message": 2,
+       "rows": 51,
+       "complete_rows": 51,
+       "disagreements": {
+        "judged_label": [],
+        "fluent": []
+       }
+      }
+     ]
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": []
+    }
+   },
+   "prior_attempts": [
+    "DE-R2-4X2W5/attempt-1-af7ee2438d5d8f42b/session-transcript.jsonl",
+    "DE-R2-4X2W5/attempt-1-af7ee2438d5d8f42b/transcript.txt",
+    "DE-R2-4X2W5/attempt-1-af7ee2438d5d8f42b/NOTE.md"
+   ]
+  },
+  {
+   "reviewer": "EN-R1-W6SFQ",
+   "language": "en",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-a7831bb3fa6d12fe8",
+   "started": "2026-09-16T22:25:10.803Z",
+   "finished": "2026-09-16T22:37:40.692Z",
+   "stop_reasons": [
+    null,
+    null,
+    "max_tokens",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    5,
+    64000,
+    7553
+   ],
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 1,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 2,
+     "unterminated": 1,
+     "dropped_partial_rows": [
+      {
+       "review_id": "e25b7a66e1",
+       "text": "e25b7a66e1,en,dev_b,roles,The old blue lion greets the old black horse and the old black horse follows the old blue lion.,The old black horse is followed by the old blue lion and the old blue lion is greeted by the old"
+      }
+     ],
+     "superseded_attempts": []
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": []
+    }
+   },
+   "prior_attempts": []
+  },
+  {
+   "reviewer": "EN-R2-PJZZQ",
+   "language": "en",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-a834e320eca9ea2f8",
+   "started": "2026-09-16T22:25:14.046Z",
+   "finished": "2026-09-16T22:40:22.146Z",
+   "stop_reasons": [
+    null,
+    null,
+    "max_tokens",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    1,
+    64000,
+    25804
+   ],
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 1,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 2,
+     "unterminated": 1,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [
+      {
+       "message": 2,
+       "rows": 178,
+       "complete_rows": 177,
+       "disagreements": {
+        "judged_label": [],
+        "fluent": []
+       }
+      }
+     ]
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": []
+    }
+   },
+   "prior_attempts": []
+  },
+  {
+   "reviewer": "KO-R1-5SU99",
+   "language": "ko",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-a91bbbcc414aab4db",
+   "started": "2026-09-16T22:25:23.331Z",
+   "finished": "2026-09-16T22:41:15.768Z",
+   "stop_reasons": [
+    null,
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    56388
+   ],
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 6,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": []
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": []
+    }
+   },
+   "prior_attempts": []
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "language": "ko",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-a8e644581e4ea1417",
+   "started": "2026-09-16T22:25:25.996Z",
+   "finished": "2026-09-16T22:43:00.911Z",
+   "stop_reasons": [
+    null,
+    "max_tokens",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    64000,
+    40169
+   ],
+   "items": 200,
+   "fluent_no": 50,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 8,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 2,
+     "unterminated": 1,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [
+      {
+       "message": 1,
+       "rows": 87,
+       "complete_rows": 86,
+       "disagreements": {
+        "judged_label": [],
+        "fluent": []
+       }
+      }
+     ]
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": []
+    }
+   },
+   "prior_attempts": []
+  }
+ ],
+ "certification": {
+  "status": "not_certifiable",
+  "reason": "certify-ai-review (flystudy.ai_review.validate_ai_evidence) rejects any checklist row with issue=yes: 'Unresolved Claude template/form issue; revise data and review the new version'. The attestation was left unsigned (all_templates_and_forms_checked not set) because 24 checklist rows across the six sessions carry issue=yes; the recorded certify attempt therefore stopped at 'Claude template/form attestation is incomplete'. No adjudication session was run for the 65 fluent=no items because every one of them is an instance of a flagged template issue (KO space-frame 은/는, DE oberhalb/unterhalb von dem)."
+ },
+ "checklist_issue_rows": [
+  {
+   "reviewer": "DE-R1-DPJFH",
+   "area": "construction",
+   "family": "assertion",
+   "split": "train",
+   "task": "space",
+   "comment": "links/rechts/vor/hinter take correct dative complements, but the vertical frame 'ist oberhalb/unterhalb von dem X' is unidiomatic for object-to-object position; German uses 'ist über/unter dem X' (or genitive 'oberhalb des X'). Uncontracted 'von dem' compounds the stiltedness."
+  },
+  {
+   "reviewer": "DE-R1-DPJFH",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "space",
+   "comment": "Clause structure ('..., dass A links von B ist ...?') is correct, but the vertical frame 'oberhalb/unterhalb von dem X' is unidiomatic; prefer 'über/unter dem X'."
+  },
+  {
+   "reviewer": "DE-R1-DPJFH",
+   "area": "construction",
+   "family": "reported_clause",
+   "split": "dev_b",
+   "task": "space",
+   "comment": "Embedding is correct, but 'oberhalb/unterhalb von dem X ist' is unidiomatic; 'über/unter dem X ist' is the natural rendering."
+  },
+  {
+   "reviewer": "DE-R1-DPJFH",
+   "area": "construction",
+   "family": "conditional",
+   "split": "test",
+   "task": "space",
+   "comment": "Conditional frame is correct; same vertical-preposition problem: 'oberhalb/unterhalb von dem X' should be 'über/unter dem X'."
+  },
+  {
+   "reviewer": "DE-R2-4X2W5",
+   "area": "construction",
+   "family": "assertion",
+   "split": "train",
+   "task": "space",
+   "comment": "links von / rechts von / vor / hinter are idiomatic; oberhalb von dem X and unterhalb von dem X are not. With a definite NP these prepositions normally take the genitive and for a direct relation between two objects German uses über dem X / unter dem X."
+  },
+  {
+   "reviewer": "DE-R2-4X2W5",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "space",
+   "comment": "Verb-final ist placement is correct but the same oberhalb von dem / unterhalb von dem problem carries over from the primary rendering; über dem / unter dem would be natural."
+  },
+  {
+   "reviewer": "DE-R2-4X2W5",
+   "area": "construction",
+   "family": "reported_clause",
+   "split": "dev_b",
+   "task": "space",
+   "comment": "Same oberhalb von dem / unterhalb von dem issue as the other families; suggest über dem / unter dem. The horizontal and front/back relations are fine."
+  },
+  {
+   "reviewer": "DE-R2-4X2W5",
+   "area": "construction",
+   "family": "conditional",
+   "split": "test",
+   "task": "space",
+   "comment": "Syntax of the wenn-clause is correct but oberhalb von dem / unterhalb von dem remains unidiomatic; über dem / unter dem would be natural."
+  },
+  {
+   "reviewer": "EN-R1-W6SFQ",
+   "area": "vocabulary",
+   "family": "",
+   "split": "",
+   "task": "template-inventory.json",
+   "comment": "English entries are correct: the twelve singular/plural pairs including mouse-mice and sheep-sheep and the three verb triples sees-see-seen and greets-greet-greeted and follows-follow-followed are all well formed and the six colour terms are ordinary English adjectives. The one problem is the field named sizes which lists young and old beside small and large; young and old are age adjectives and not size terms so the field name misdescribes half of its values. This affects labelling only and produces no ungrammatical English. The German and Korean columns fall outside this English package and were not assessed."
+  },
+  {
+   "reviewer": "EN-R2-PJZZQ",
+   "area": "vocabulary",
+   "family": "",
+   "split": "",
+   "task": "template-inventory.json",
+   "comment": "English nouns plurals and the verb triples sees/see/seen greets/greet/greeted follows/follow/followed are all correct and match the noun-forms file; the issue is that the sizes list mixes true size (small large) with age (young old) so the attribute is mislabelled and size and age can never co-occur in one noun phrase."
+  },
+  {
+   "reviewer": "KO-R1-5SU99",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "roles",
+   "comment": "Grammatical but the outer frame stacks 사실 twice as ...이 모두 사실이라는 것이 사실인가; suggest ...이 모두 사실인가 to remove the redundant nominalisation. The inner clause itself is fine."
+  },
+  {
+   "reviewer": "KO-R1-5SU99",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "negation",
+   "comment": "Same redundant ...이 모두 사실이라는 것이 사실인가 stacking; suggest ...이 모두 사실인가. Negation inside the question is correctly formed."
+  },
+  {
+   "reviewer": "KO-R1-5SU99",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "space",
+   "comment": "Same redundant ...이 모두 사실이라는 것이 사실인가 stacking; suggest ...이 모두 사실인가. This frame also carries the 은/는 embedded subject noted for the space family."
+  },
+  {
+   "reviewer": "KO-R1-5SU99",
+   "area": "construction",
+   "family": "conditional",
+   "split": "test",
+   "task": "space",
+   "comment": "만약 큰 빨간 곰은 작은 파란 사자의 아래에 있다는 것과 ... places 은/는 immediately after 만약 which is unnatural; a conditional antecedent subject should take 이/가 as in 만약 큰 빨간 곰이 작은 파란 사자의 아래에 있다는 것과 ...."
+  },
+  {
+   "reviewer": "KO-R1-5SU99",
+   "area": "noun_forms",
+   "family": "",
+   "split": "",
+   "task": "dat",
+   "comment": "The dat rows carry no dative exponent at all - they are bare noun phrases identical to the stem that the space frame combines with 의 as in 늙은 검은 고양이의 뒤에. The surfaces are well formed for that use but a real Korean dative would need 에게 or 한테; the case label dat is therefore misleading and should be renamed to a bare or genitive-base form."
+  },
+  {
+   "reviewer": "KO-R1-5SU99",
+   "area": "vocabulary",
+   "family": "",
+   "split": "",
+   "task": "template-inventory.json",
+   "comment": "Korean nouns colors sizes and verbs match the corpus and every entry is well formed: 본다 맞이한다 뒤따른다 are correct plain-style present forms and all twelve animal words are standard. Two notes for the operator: hen is rendered 닭 which is the generic word for chicken rather than 암탉; and green is 초록색 a noun plus 색 while the other five colors are adnominal forms such as 빨간 - both are natural prenominally but the form classes differ. The sizes list also mixes size 작은 큰 with age 어린 늙은 under one label. None of this affects the item judgments."
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "area": "construction",
+   "family": "assertion",
+   "split": "train",
+   "task": "space",
+   "comment": "Embedded subjects carry topic 은/는 (늙은 하얀 소는 ... 위에 있다는 것) but a 다는 것 complement takes neutral 이/가; the roles and negation templates use 이/가 in the same position so the space frame is inconsistent. Suggested: 늙은 하얀 소가 ... 위에 있다는 것. Relation terms 위/아래 앞/뒤 왼쪽/오른쪽 and the genitive 의 are otherwise correct."
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "roles",
+   "comment": "Primary declarative is fine but the auxiliary question stacks 사실 twice (... 모두 사실이라는 것이 사실인가?); natural Korean would be ... 모두 사실인가? The doubling is grammatical yet stilted."
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "negation",
+   "comment": "Negation is well formed; same 사실이라는 것이 사실인가 redundancy as the roles question. Suggested: ... 모두 사실인가?"
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "space",
+   "comment": "Two issues: embedded subjects take 은/는 where 이/가 is required in the 다는 것 complement; and the auxiliary question repeats 사실 (사실이라는 것이 사실인가)."
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "area": "construction",
+   "family": "reported_clause",
+   "split": "dev_b",
+   "task": "space",
+   "comment": "Quotative frame is fine but the embedded locative subjects take 은/는 where the 다는 것 complement requires 이/가."
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "area": "construction",
+   "family": "conditional",
+   "split": "test",
+   "task": "space",
+   "comment": "Worst case of the 은/는 problem: a 만약-clause with a topic-marked embedded subject (만약 큰 빨간 곰은 ... 있다는 것과 ... 사실이라면) is clearly awkward; 곰이 is required."
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "area": "noun_forms",
+   "family": "",
+   "split": "",
+   "task": "dat",
+   "comment": "The dat surfaces are bare noun phrases with no dative marker (작은 빨간 개); Korean animate dative requires 에게 or 한테. In the data these strings only ever feed the genitive 의 of the space frame so the slot label does not match the surface; rename the slot or add 에게."
+  },
+  {
+   "reviewer": "KO-R2-37XFZ",
+   "area": "vocabulary",
+   "family": "",
+   "split": "",
+   "task": "template-inventory.json",
+   "comment": "초록색 is a noun+색 form while the other five colors are adnominal -ㄴ adjectives (빨간 파란 노란 검은 하얀); 초록색 개 is natural Korean but the form class and the extra syllable are inconsistent and could confound length-sensitive analyses. 닭 renders hen only generically (hen proper is 암탉). 맞이한다 for greets means welcome or receive a guest and is odd between animals; 반긴다 or 인사한다 would be more natural. Sizes 작은 큰 어린 늙은 the remaining 11 nouns and the verbs 본다 뒤따른다 are correct."
+  }
+ ]
+}

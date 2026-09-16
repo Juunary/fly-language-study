@@ -25,6 +25,8 @@ from pathlib import Path
 LANGUAGES = ("en", "de", "ko")
 TASKS = ("roles", "negation", "space", "quantity")
 FAMILIES = {"train": "assertion", "dev_a": "truth_question", "dev_b": "reported_clause", "test": "conditional"}
+# Case forms per language, mirroring flystudy.data.CASES: Korean has no dative anywhere in the data.
+CASES = {"en": ("nom", "acc", "dat"), "de": ("nom", "acc", "dat"), "ko": ("nom", "acc", "gen")}
 ITEM_FIELDS = ["review_id", "language", "split", "task", "sentence_a", "sentence_b", "reviewer", "judged_label", "fluent", "comment"]
 CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"  # no 0/O/1/I
 LANGUAGE_NAMES = {"en": "English", "de": "German (Deutsch)", "ko": "Korean (한국어)"}
@@ -128,7 +130,7 @@ def checklist_rows(lang: str):
     rows = [dict(area="construction", language=lang, family=family, split=split, task=task, checked="", issue="", comment="")
             for split, family in FAMILIES.items() for task in TASKS]
     rows += [dict(area="noun_forms", language=lang, family="", split="", task=case, checked="", issue="", comment="")
-             for case in ("nom", "acc", "dat", "plural")]
+             for case in (*CASES[lang], "plural")]
     rows.append(dict(area="vocabulary", language=lang, family="", split="", task="template-inventory.json", checked="", issue="", comment=""))
     return rows
 
@@ -172,7 +174,7 @@ def build(data: Path, output: Path, rng: secrets.SystemRandom | None = None):
             folder = dist / code
             folder.mkdir()
             write_csv(folder / f"items-{code}.csv", ITEM_FIELDS, rows)
-            write_csv(folder / f"noun-forms-{lang}.csv", ["language", "noun", "color", "size", "case", "count_index", "surface"],
+            write_csv(folder / f"noun-forms-{lang}.csv", list(noun_forms[0].keys()),
                       [r for r in noun_forms if r["language"] == lang])
             construction_fields = [k for k in constructions[0].keys() if k != "label"]  # label column intentionally omitted
             write_csv(folder / f"construction-examples-{lang}.csv", construction_fields,

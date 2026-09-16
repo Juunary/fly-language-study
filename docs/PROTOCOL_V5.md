@@ -1,19 +1,50 @@
 # 프로토콜 v5 — 단어 경계 BPE 입력과 같은 틀 주 평가 (본실험 설정 고정)
 
-2026-09-17 개정. 탐색 v1–v5(`reports/EXPLORATORY_*.md`, `reports/FRAME_DIAGNOSTIC_V1.md`, `reports/EVALUATION_REVISION_V4.md`)는
-탐색 자료로만 남기며 본실험 표본에 포함하지 않는다. 이 문서는 v4(`PROTOCOL_V4.md`)에서 바뀐 항목만 적고, 나머지는 v4를 따른다.
-설정 파일 `configs/protocol-v5.json`, 코드 기본값(`flystudy.protocol.Protocol`), 실행 검사(`validate_primary_model`, `train.run`),
-분석 코드가 같은 값을 쓴다. 설정 확정 뒤에는 결과를 보고 임계값·상한·과제를 바꾸지 않는다.
+2026-09-17 개정(v5.0), 같은 날 v5.1로 재개정. 탐색 v1–v5(`reports/EXPLORATORY_*.md`, `reports/FRAME_DIAGNOSTIC_V1.md`,
+`reports/EVALUATION_REVISION_V4.md`)는 탐색 자료로만 남기며 본실험 표본에 포함하지 않는다. 이 문서는 v4(`PROTOCOL_V4.md`)에서
+바뀐 항목만 적고, 나머지는 v4를 따른다. 설정 파일 `configs/protocol-v5.1.json`, 코드 기본값(`flystudy.protocol.Protocol`),
+실행 검사(`validate_primary_model`, `train.run`), 분석 코드가 같은 값을 쓴다. 설정 확정 뒤에는 결과를 보고 임계값·상한·과제를 바꾸지 않는다.
+
+## v5.1 개정 (2026-09-17) — 검수가 지적한 문장 틀 수정, 자료 v4.6
+
+v5.0이 고정한 `data/draft-v4.5`에 대한 Claude 단독 검수 1차(`review/v5`, 6세션, `reports/ai-review-v5-outcome.json`)는
+문항 판정에서는 여섯 세션 모두 정답과 200/200 일치했지만, 체크리스트에서 24행이 `issue=yes`였다. 인증 규칙
+(`flystudy.ai_review.validate_ai_evidence`)은 `issue=yes`가 하나라도 있으면 "자료를 고치고 새 버전을 검수"하라고 거부하므로
+v4.5는 인증할 수 없다. 지적 사항과 수정(모두 표면형만 바꾸며 의미 궤도·분할·장면·정답은 v4.5와 **동일**, 순서까지 같다;
+`data/draft-v4.6/manifest.json`의 `template_revision.comparison_with_reference`):
+
+| 지적 (세션) | 수정 |
+|---|---|
+| KO 공간 틀의 내포 주어가 주제 은/는 (KO-R1·R2; 문항 50건 `fluent=no`) | 주격 이/가 (`…개가 …의 위에 있다는 것과 …`) |
+| KO 진위 질문이 사실을 두 번 씀 `…사실이라는 것이 사실인가?` (KO-R1·R2) | `…모두 사실인가?` (보조 표현만 해당) |
+| DE 상하 관계 `oberhalb/unterhalb von dem X` 부자연 (DE-R1·R2; 문항 30건 `fluent=no`) | `über/unter dem X` |
+| 어휘표 `sizes`에 나이 형용사 혼입 (EN-R1·R2, KO-R2) | `sizes`/`ages` 분리, 활용표는 단어로 표기 |
+| KO `dat` 활용 행이 실제로는 무표지 (KO-R1·R2) | KO 격 목록 nom/acc/gen(의); `flystudy.data.CASES` |
+| hen/Huhn/닭 대응 불일치 (KO-R1·R2, DE-R2) | EN `chicken`/`chickens` |
+| KO 맞이한다 부자연 (KO-R2) | 반긴다 (부정 반기지 않는다) |
+| KO 초록색만 명사+색 (KO-R2) | 여섯 색 모두 `X색` |
+
+- 자료: `data/draft-v4.6` = `generate(seed 1729)` + `new_test_split(seed 1731, v4.3·v4.4 제외)`, 감사 통과, dataset_hash
+  `47368f15…`. 학습·dev 파일은 v4.3/v4.4와 더 이상 바이트 동일하지 않다(표면형 변경). 독립 시험셋은 v4.5와 같은 의미 궤도를
+  새 표면형으로 렌더링한 것이며 여전히 어떤 탐색 런도 쓰지 않았다.
+- 입력: `artifacts/tokenizer-wordbound-v4.6.json`, 같은 정책(단어 경계 byte BPE, 요청 4,096), 실제 어휘 **832**
+  (v4.5: 841; 부족분 3,264 기록). 최대 길이 58토큰(EN 공간), 128 초과 0.
+- 코드: `flystudy.protocol.Protocol` 기본값 `v5.1-wordbound`/832, `validate_primary_model`이 832를 고정. 코드 해시
+  `fca989e2…`로 CPU 테스트 108건(`reports/cpu-tests-v5.1.xml`), G0/G1(`reports/g0-v5.1.json`, `g1-v5.1.json`),
+  두 GPU 프로파일(`reports/profile-v5.1-cuda*.json`)을 새 예약(`configs/v5.1-gate-reservations.json`)으로 다시 통과했다.
+  v5.0 보고서는 수정하지 않는다.
+- 검수: `data/draft-v4.6`으로 새 패키지(`review/v6`)를 만들어 여섯 세션을 다시 실행한다. 1차 회신은 어떤 판정도 재사용하지 않는다.
+- 그 밖의 설정(간격 5,120, 상한 200,000/900,000, 임계 0.8, 패널 1,000, 학습률, 배치, 마이크로스텝, 시드 목록)은 v5.0과 같다.
 
 ## 고정 설정
 
 | 항목 | 값 | 비고 |
 |---|---|---|
 | 배선 | 실제 cb5k (`artifacts/graphs/real.npz`) | v4와 동일 |
-| 입력 | 공유 byte-level BPE, **공백 경계를 넘는 병합 없음**, 실제 어휘 **841** | `artifacts/tokenizer-wordbound-v4.5.json` (`tokenizer-wordbound-v1`과 바이트 동일, 메타는 v4.5 dataset_hash에 연결). 요청 4,096 대비 부족분은 기록만 하며 채우지 않는다 |
+| 입력 | 공유 byte-level BPE, **공백 경계를 넘는 병합 없음**, 실제 어휘 **832** (v5.1; v5.0은 841) | `artifacts/tokenizer-wordbound-v4.6.json`. 요청 4,096 대비 부족분은 기록만 하며 채우지 않는다 |
 | 모델 | 임베딩 32, 마이크로스텝 2, 출력 뉴런 분류부 | v4와 동일; 학습 파라미터 570,710 |
 | 최적화 | AdamW 순환부 0.0003 / 입출력부 0.001, weight decay 0.01, clipping 1.0, 유효 배치 256 | v4와 동일 |
-| 데이터 | `data/draft-v4.5` — 학습·dev A/B는 v4.3/v4.4와 바이트 동일; test는 새 의미 궤도 | 아래 "독립 시험셋" |
+| 데이터 | `data/draft-v4.6` (v5.1; v5.0은 v4.5) — 의미 궤도·분할·정답은 v4.3/v4.4/v4.5와 동일, 표면형만 개정; test는 새 의미 궤도 | 아래 "독립 시험셋" |
 | **주 평가** | 보류 의미 조합을 학습과 같은 평서문 틀로 렌더링한 `sentence_a/b` | `EVALUATION_REVISION_V4.md` |
 | 평가 간격 | **5,120문항**, 전체 A/B 패널 교대, 단일 언어 4셀·순차/혼합은 처음부터 12셀 | |
 | 숙달 | 유형별 ≥80%를 **같은 연속 두 정규 평가**에서 | v4와 동일 |
@@ -27,7 +58,7 @@
 
 ## 독립 시험셋
 
-`data/draft-v4.5/test.jsonl`은 어떤 기존 자료(v4.3·v4.4의 train/dev A/dev B/test, 따라서 모든 탐색 런)도 쓰지 않은
+`data/draft-v4.6/test.jsonl`(v5.0에서는 v4.5)은 어떤 기존 자료(v4.3·v4.4의 train/dev A/dev B/test, 따라서 모든 탐색 런)도 쓰지 않은
 의미 궤도에서 만든다(`flystudy.data.new_test_split`, 시드 1731). 궤도 소유 규칙(digest→test)과 독일어 성별 할당은 생성기와 같다.
 중복 검사는 의미 궤도와 문장 쌍(주·보조 표현 모두)에 대해 0건이어야 하며 manifest `overlap_check`에 기록한다.
 학습·dev 파일과 토크나이저가 바뀌지 않았음은 해시로 확인한다. 이 시험셋은 프로토콜 동결 뒤 본실험 종료 체크포인트에만
@@ -35,13 +66,13 @@
 
 ## 검수 인증 범위
 
-Claude 단독 검수(`v4-ai-review-1` 절차, `docs/AI_REVIEW_GUIDE.md`)는 `data/draft-v4.5`의 감사 표본 600문항(주 표현)과
+Claude 단독 검수(`v4-ai-review-1` 절차, `docs/AI_REVIEW_GUIDE.md`)는 `data/draft-v4.6`의 감사 표본 600문항(주 표현)과
 21행 체크리스트(주·보조 표현의 구문 예시 포함)에 적용한다. **문항 단위 의미 판정은 주 표현에 한정**되며, 보조 외곽 틀 표현은
 구문 예시 수준의 점검만 받는다. 이 한계는 인증 보고서와 결과 보고에 별도로 표시한다. 인증은 언어적 타당성을 확립하지 않는다.
 
 ## 표본·분석 (v4에서 유지)
 
-시드가 독립 반복 단위이며 시드당 단일 언어 3런 + 순서 6런 + 혼합 1런. 본실험 시드 목록은 `configs/protocol-v5.json`의
+시드가 독립 반복 단위이며 시드당 단일 언어 3런 + 순서 6런 + 혼합 1런. 본실험 시드 목록은 `configs/protocol-v5.1.json`의
 `main_seeds`(30001–30020, 사전 등록 순서; 선택된 N은 앞에서 N개)이고, 파일럿 시드는 30101–30105이다. 두 확증 대비(KO 마지막
 두 순서 − KO 첫 번째 두 순서, EN/DE 인접 네 순서 − 분리 두 순서), 양측 대응 t 검정과 Holm 보정, 시드 내부 평균 대비,
 공통 상한까지의 RMST와 Bonferroni 97.5% 동시 신뢰구간, 시드 블록 부트스트랩 민감도는 v4와 같다. 15개 전체 쌍 비교를

@@ -65,6 +65,31 @@ python scripts/prepare_ai_review.py --output review/ai/claude-v1
 필수다. 대화에서 추출한 CSV의 내용은 원응답과 일치해야 한다. 기록은 `review/ai/`에 보관하고
 Git에 올리지 않는다. 모델/API 사용료는 GPU시간과 별도로 운영 기록에 남긴다.
 
+## 세션 실행과 기록 (Claude Code 하위 세션)
+
+각 패키지는 `scripts/prepare_claude_sessions.py --workspace review/<ver>/ai/<name>`가 만든 `prompt-sent.md`
+(일반 요청문 + 다섯 입력 파일의 절대 경로와 출력 형식)와 한 단락짜리 `launcher-text.md`로 시작한다. 세션은
+새 컨텍스트의 Claude Code 하위 에이전트(도구는 파일 읽기만)이며, 실행 기록(JSONL 전사)이 곧 증거다.
+
+세션이 끝나면 판정을 손대지 않고 아래로 기록한다.
+
+```bash
+python scripts/record_ai_review_session.py --workspace review/<ver>/ai/<name> --code <CODE> \
+  --agent-transcript <세션 JSONL> --launcher review/<ver>/ai/<name>/<CODE>/launcher-text.md \
+  --session-id agent-<id> --submissions review/<ver>/submissions/raw
+```
+
+- 전사에서 모델 식별자(`model` 첨부의 `modelId`), 시작·종료 시각, 정지 사유, 출력 토큰 수를 그대로 옮긴다.
+  추정값을 쓰지 않는다. 전사 사본은 `<CODE>/session-transcript.jsonl`, 읽기용 정리본은 `transcript.txt`.
+- 응답이 출력 한도에서 끊긴 경우 두 형태만 허용한다. (1) **이어쓰기**: 다음 메시지가 헤더 없이 끊긴 행부터
+  다시 쓰면 앞 블록을 이어 붙이고, 끊긴 부분 행 하나만 버린다(같은 review_id의 완전한 행이 있어야 하며, 부분
+  행이 완전한 행의 접두사가 아니면 거부). (2) **재시작**: 다음 메시지가 헤더부터 완전한 블록을 다시 내면 그 블록이
+  최종 응답이고, 끊긴 시도는 `superseded_attempts`에 행 수와 최종 블록과의 판정 불일치 목록을 남긴다. 두 경우 모두
+  `evidence.json`의 `response_assembly`에 기록된다.
+- 검증(행 수·식별자·문장·코드 불변, 판정 존재, `fluent=no`의 comment, 체크리스트 행 집합 일치)에 실패하면
+  기록하지 않고 종료한다. 그 시도의 전사는 `<CODE>/attempt-<n>-<id>/`에 보존해 `prior_artifacts`에 등록하고,
+  같은 패키지로 **새 세션**을 실행한다. 판정을 보고 세션을 고르지 않는다(거부 사유는 기계적 검증뿐이다).
+
 ## 결합·재검토·인증
 
 기존 merged 결과와 확인서를 덮어쓰지 않도록 새 출력 폴더를 사용한다. raw에는 각 코드당

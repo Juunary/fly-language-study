@@ -2,24 +2,29 @@
 import argparse
 import csv
 from pathlib import Path
-from flystudy.data import NOUNS,COLORS,SIZES,LANGUAGES,SPLITS,noun_phrase,particle,load_rows
+from flystudy.data import NOUNS,COLORS,ATTRIBUTES,CASES,LANGUAGES,SPLITS,noun_phrase,particle,load_rows
 from flystudy.protocol import file_hash,write_json
 
 p=argparse.ArgumentParser(); p.add_argument('--data',required=True); a=p.parse_args()
 root=Path(a.data)
 with (root/'noun-forms.csv').open('w',encoding='utf-8-sig',newline='') as f:
-    w=csv.writer(f); w.writerow(['language','noun','color','size','case','count_index','surface'])
+    # Words rather than indices label each form; the case list is language specific (flystudy.data.CASES): Korean has
+    # nominative/accusative particles and the genitive 의 of the spatial frame, and no dative anywhere in the data.
+    w=csv.writer(f); w.writerow(['language','noun','color','attribute','case','count_index','surface'])
     for lang in LANGUAGES:
         for n in range(len(NOUNS)):
             for c in range(len(COLORS)):
-                for s in range(len(SIZES)):
-                    for case in ('nom','acc','dat'):
-                        value=noun_phrase((n,c,s),lang,case)
-                        if lang=='ko' and case in ('nom','acc'):
-                            value=particle(value,('이','가') if case=='nom' else ('을','를'))
-                        w.writerow([lang,n,c,s,case,'',value])
+                for s in range(len(ATTRIBUTES)):
+                    labels=[lang,NOUNS[n][0],COLORS[c][0],ATTRIBUTES[s][0]]
+                    for case in CASES[lang]:
+                        if lang=='ko':
+                            value=noun_phrase((n,c,s),lang)
+                            value=particle(value,('이','가')) if case=='nom' else particle(value,('을','를')) if case=='acc' else value+'의'
+                        else:
+                            value=noun_phrase((n,c,s),lang,case)
+                        w.writerow([*labels,case,'',value])
                     for count in range(7):
-                        w.writerow([lang,n,c,s,'plural',count,noun_phrase((n,c,s),lang,count=count)])
+                        w.writerow([*labels,'plural',count,noun_phrase((n,c,s),lang,count=count)])
 with (root/'construction-examples.csv').open('w',encoding='utf-8-sig',newline='') as f:
     # Two renderings per held-out item since draft-v4.4: the primary (training-frame) sentences and the
     # auxiliary outer-frame family owned by the split. Training rows have the primary rendering only.
