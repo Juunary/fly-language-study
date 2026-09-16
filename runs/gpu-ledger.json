@@ -276,6 +276,104 @@
       "used": 0.03640383445722465,
       "status": "completed",
       "exceeded_reservation": false
+    },
+    "explore-v5-wb-20002-seq-en-de-ko": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.09834618459442734,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20003-seq-en-de-ko": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.21312413969083638,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20002-seq-en-ko-de": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.10723389530664362,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20003-seq-en-ko-de": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.12031187392195634,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20002-seq-de-en-ko": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.3373238884236586,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20003-seq-de-en-ko": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.09000969953414621,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20002-seq-de-ko-en": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.08278695624334634,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20003-seq-de-ko-en": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.092525205607526,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20002-seq-ko-en-de": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.2584255721661288,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20003-seq-ko-en-de": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.0747312839794904,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20002-seq-ko-de-en": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.07028543999528564,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20003-seq-ko-de-en": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.07725451617139495,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20002-mixed": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.2617311112516068,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v5-wb-20003-mixed": {
+      "category": "reserve",
+      "reserved": 0.6,
+      "used": 0.18668874869161906,
+      "status": "completed",
+      "exceeded_reservation": false
     }
   },
   "transfers": []
