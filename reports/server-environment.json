@@ -1,0 +1,45 @@
+{
+  "recorded_at_utc": "2026-09-16T08:16:39.458403+00:00",
+  "host": "sailab01",
+  "os": "Ubuntu 22.04.4 LTS",
+  "kernel": "6.8.0-138-generic",
+  "cpu_threads": 32,
+  "python": "3.12.4",
+  "torch": "2.5.1+cu121",
+  "torch_cuda": "12.1",
+  "nvidia_smi": [
+    "0, NVIDIA GeForce RTX 3080 Ti, 550.144.03, 12288 MiB, 00000000:04:00.0",
+    "1, NVIDIA GeForce RTX 3080 Ti, 550.144.03, 12288 MiB, 00000000:0A:00.0"
+  ],
+  "nvcc": [
+    "Cuda compilation tools, release 12.1, V12.1.105",
+    "Build cuda_12.1.r12.1/compiler.32688072_0"
+  ],
+  "cuda_home": "/usr/local/cuda-12.1",
+  "gcc": "11.4.0",
+  "venv": ".venv (python -m venv from /home/sai/anaconda3/bin/python 3.12.4)",
+  "torch_install_command": "python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121",
+  "torch_choice_rationale": "Host nvcc is 12.1; connectome-kernels requires torch.version.cuda major to match nvcc, and the cu121 wheel gives an exact 12.1 match. Driver 550.144.03 supports CUDA runtime <= 12.4.",
+  "connectome_kernels": {
+    "version": "0.1.0",
+    "direct_url": {
+      "url": "file:///mnt/nas4/kjune/fly-language-study/external/connectome-kernels",
+      "vcs_info": {
+        "commit_id": "c6be4cfea8ca2210098ef52344b88e85c683fd5c",
+        "requested_revision": "c6be4cfea8ca2210098ef52344b88e85c683fd5c",
+        "vcs": "git"
+      }
+    },
+    "source": "git clone https://github.com/QuixiAI/connectome-kernels -> external/connectome-kernels; checkout c6be4cfea8ca2210098ef52344b88e85c683fd5c (clean)",
+    "build_command": "CUDA_HOME=/usr/local/cuda-12.1 PATH=/usr/local/cuda-12.1/bin:$PATH CK_CUDA_ARCHS=86 python -m pip install -v --no-build-isolation git+file:///mnt/nas4/kjune/fly-language-study/external/connectome-kernels@c6be4cfea8ca2210098ef52344b88e85c683fd5c",
+    "cuda_archs": "86",
+    "extension": "/mnt/nas4/kjune/fly-language-study/.venv/lib/python3.12/site-packages/connectome_kernels/_C.cpython-312-x86_64-linux-gnu.so",
+    "upstream_tests": "11 passed on cuda:0"
+  },
+  "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4",
+  "handoff_verification": "scripts/verify_handoff.py passed (65 files) before any modification",
+  "cpu_tests": "reports/cpu-tests-server.xml: 46 passed, 0 failed, 0 skipped",
+  "data_recheck": "audit-data/baselines/cue-baselines re-run on a scratch copy; JSON content identical to delivered files. Delivered files carry CRLF line endings from Windows, so byte hashes differ. Delivered files left unchanged so nuisance-baselines.meta.json report_hash stays consistent.",
+  "cpu_smoke": "artifacts/server-cpu-smoke: smoke_completed on a synthetic graph; not study evidence",
+  "packages": "requirements-server-observed.txt"
+}

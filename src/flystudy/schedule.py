@@ -128,3 +128,4 @@ class Curriculum:
         state = dict(state)
         state["order"] = tuple(state["order"])
         return cls(protocol=protocol, **state)
+

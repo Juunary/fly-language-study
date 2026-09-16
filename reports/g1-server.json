@@ -1,0 +1,73 @@
+{
+  "gate": "G1",
+  "status": "passed",
+  "history": [
+    {
+      "update": 10,
+      "scores": {
+        "roles": 0.625,
+        "negation": 0.78125,
+        "space": 0.71875,
+        "quantity": 0.75
+      },
+      "overall": 0.71875
+    },
+    {
+      "update": 20,
+      "scores": {
+        "roles": 0.65625,
+        "negation": 0.8125,
+        "space": 0.71875,
+        "quantity": 0.875
+      },
+      "overall": 0.765625
+    },
+    {
+      "update": 30,
+      "scores": {
+        "roles": 0.71875,
+        "negation": 0.84375,
+        "space": 0.84375,
+        "quantity": 0.90625
+      },
+      "overall": 0.828125
+    },
+    {
+      "update": 40,
+      "scores": {
+        "roles": 0.78125,
+        "negation": 0.90625,
+        "space": 0.96875,
+        "quantity": 0.90625
+      },
+      "overall": 0.890625
+    },
+    {
+      "update": 50,
+      "scores": {
+        "roles": 0.875,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 0.9375
+      },
+      "overall": 0.953125
+    },
+    {
+      "update": 60,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 1.0
+      },
+      "overall": 1.0
+    }
+  ],
+  "seed": 9001,
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "tokenizer_hash": "d30ef71c4d5222fe82cf2b4cafedde998145a3a58e440f862cdc988d46f70883",
+  "protocol_hash": "d0ea5d9c44027ec5808c2c2baba0df96ddbc30844ab090dd8d0508c0d2819bdb",
+  "training_hash": "64c2707b385a3588f23735426aa13e7a2a1251c7072cef4956a9eb2c7cea0ddf",
+  "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4",
+  "gpu_hours": 0.00072922559416232
+}

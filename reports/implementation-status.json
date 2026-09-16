@@ -1,7 +1,7 @@
 {
-  "packaged_at_utc": "2026-09-16T08:13:04.191310+00:00",
-  "phase": "implementation_and_cpu_validation",
-  "code_hash": "c90ac7a731088e0994b155778baf9e8f88d6f0358bf3a02f7de0b1b9963e6d2c",
+  "packaged_at_utc": "2026-09-15T23:16:47.869317+00:00",
+  "phase": "cuda_validation_complete_awaiting_human_review",
+  "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4",
   "dataset_version": "draft-v4.3",
   "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e",
   "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
@@ -16,21 +16,51 @@
     "errors": 0,
     "skipped": 0
   },
-  "local_environment": {
-    "python": "3.12.10",
-    "system": "Windows-11-10.0.26200-SP0",
-    "torch": "2.14.0+cpu",
-    "torch_cuda": null,
-    "nvcc": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.3\\bin\\nvcc.EXE",
-    "cuda_devices": [],
-    "code_hash": "c90ac7a731088e0994b155778baf9e8f88d6f0358bf3a02f7de0b1b9963e6d2c"
+  "cuda_g0": {
+    "status": "passed",
+    "devices": 2,
+    "checks": 48,
+    "kernel_revision": "c6be4cfea8ca2210098ef52344b88e85c683fd5c",
+    "gpu_hours": 0.007021852613866536,
+    "report": "reports/g0-server.json"
   },
-  "cuda_g0": "blocked_no_two_sm86_devices",
-  "human_review": "pending",
-  "g1": "not_run_on_cuda",
-  "g2": "not_run",
-  "g3": "not_run",
-  "sequential_pilots": "not_run",
+  "human_review": {
+    "status": "pending_external",
+    "distribution": "review/dist/<code>.zip (6 blinded packages: random review IDs, no labels/original IDs, independent order per reviewer; construction-examples label column removed). Refreshed 2026-09-16 after user review: bidirectional meaning-equivalence criterion; independence is procedural (files are content-matchable).",
+    "reviewer_identifiers": [
+      "DE-R1-EDV65",
+      "DE-R2-WKGG7",
+      "EN-R1-SSJKF",
+      "EN-R2-G4A2V",
+      "KO-R1-9PNJS",
+      "KO-R2-Q73JV"
+    ],
+    "registry": "review/private/reviewer-registry.csv (code + language-fluency evidence + dates; names/contacts kept by the operator outside the repository)",
+    "mapping": "review/private/mapping.csv (never distributed)",
+    "build_manifest": "review/private/build-manifest.json",
+    "merge_tool": "scripts/merge_review_submissions.py -> review/submissions/merged/reviewed-audit-sample.csv + attestation-draft.json",
+    "gate": "certify-review unchanged: 200 items/language, agreement >= .95, kappa >= .8, two identifiers per language, human attestation",
+    "guide": "docs/HUMAN_REVIEW_GUIDE.md",
+    "judgments_filled_by_ai": false,
+    "zip_contents_checked_by_user": "2026-09-16: user confirmed 200 items each, blank judgments, no labels/original IDs/mapping, sentences match; not a review pass"
+  },
+  "g1": {
+    "status": "passed",
+    "seed": 9001,
+    "passed_at_update": 60,
+    "final_scores": {
+      "roles": 1.0,
+      "negation": 1.0,
+      "space": 1.0,
+      "quantity": 1.0
+    },
+    "gpu_hours": 0.00072922559416232,
+    "report": "reports/g1-server.json",
+    "note": "Memorization of 128 training items only; not evidence of generalization"
+  },
+  "g2": "blocked_until_human_review",
+  "g3": "blocked_until_human_review",
+  "sequential_pilots": "blocked_until_human_review",
   "main": "not_started",
   "power": {
     "records": 3888,
@@ -79,12 +109,172 @@
       }
     }
   },
-  "observed_study_gpu_hours": 0,
+  "observed_study_gpu_hours": 0.02006085892641244,
   "baseline_notes": "Nuisance 50% in all 12 cells; hypothesis-only roles 54.4%, other cells 50%; grammar roles 100%. These are corpus diagnostics, not FlyGPT performance.",
   "limitations": [
     "Draft corpus requires two human reviewers per language.",
     "Whole-string BPE creates different train/evaluation lengths; metadata reports all language/task lengths.",
     "Template holdout means outer construction families; embedded grammar is shared.",
-    "CUDA compatibility, learnability, power feasibility and wall time remain unmeasured."
-  ]
+    "CUDA G0/G1/throughput are measured on this server; learnability beyond memorization, power feasibility and wall time still require pilots after human review."
+  ],
+  "handoff_local_environment": {
+    "python": "3.12.10",
+    "system": "Windows-11-10.0.26200-SP0",
+    "torch": "2.14.0+cpu",
+    "torch_cuda": null,
+    "nvcc": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.3\\bin\\nvcc.EXE",
+    "cuda_devices": [],
+    "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4"
+  },
+  "server_updated_at_utc": "2026-09-16T08:54:05.663885+00:00",
+  "server_environment": {
+    "python": "3.12.4",
+    "torch": "2.5.1+cu121",
+    "torch_cuda": "12.1",
+    "nvcc": "12.1.105",
+    "driver": "550.144.03",
+    "gpus": [
+      "NVIDIA GeForce RTX 3080 Ti cc86",
+      "NVIDIA GeForce RTX 3080 Ti cc86"
+    ],
+    "connectome_kernels": "c6be4cfea8ca2210098ef52344b88e85c683fd5c",
+    "cuda_archs": "86",
+    "record": "reports/server-environment.json"
+  },
+  "handoff_integrity": "scripts/verify_handoff.py passed, 65 files, before any modification",
+  "hash_recheck_on_server": {
+    "code": true,
+    "dataset": true,
+    "tokenizer": true,
+    "graph_structure": true,
+    "graph_file": true
+  },
+  "cpu_tests_server": {
+    "tests": 52,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "report": "reports/cpu-tests-server.xml",
+    "note": "46 delivered + 6 review-packaging tests"
+  },
+  "cpu_smoke_server": "artifacts/server-cpu-smoke (synthetic graph; not study evidence)",
+  "data_recheck_server": "audit-data/baselines/cue-baselines regenerated on a scratch copy: JSON identical to delivered files (delivered files have CRLF line endings; left unchanged)",
+  "throughput": {
+    "status": "measured",
+    "selected_microbatch": 256,
+    "train_seconds_per_256_by_microbatch": {
+      "cuda:0": {
+        "32": 0.09984815302304924,
+        "64": 0.07187958178110421,
+        "128": 0.05380878481082618,
+        "256": 0.048511141212657094
+      },
+      "cuda:1": {
+        "32": 0.09814563719555736,
+        "64": 0.07102491580881179,
+        "128": 0.05331014962866902,
+        "256": 0.048159283399581906
+      }
+    },
+    "peak_bytes_microbatch_256": {
+      "cuda:0": 697944064,
+      "cuda:1": 697944064
+    },
+    "full_panel_eval_seconds_microbatch_256": {
+      "dev_a": 1.965690843993798,
+      "dev_b": 1.9909876638557762,
+      "test": 2.2396568511612713
+    },
+    "eval_peak_bytes_microbatch_256": 1689501184,
+    "checkpoint_seconds": 0.18480516714043915,
+    "cap_bounded_projection_hours_by_interval": {
+      "5120": {
+        "mono_hours": 0.02215146160020527,
+        "mixed_hours": 0.15437343544727708,
+        "sequential_hours": 0.15437343544727708,
+        "calibration_hours": 0.02924369254291782,
+        "pilot_block_two_seeds_hours": 2.294136865863111
+      },
+      "10240": {
+        "mono_hours": 0.016448267565660733,
+        "mixed_hours": 0.1011873884673696,
+        "sequential_hours": 0.1011873884673696,
+        "calibration_hours": null,
+        "pilot_block_two_seeds_hours": 1.5153130439371387
+      },
+      "20480": {
+        "mono_hours": 0.01359667054838846,
+        "mixed_hours": 0.07459436497741585,
+        "sequential_hours": 0.07459436497741585,
+        "calibration_hours": null,
+        "pilot_block_two_seeds_hours": 1.1259011329741526
+      }
+    },
+    "reports": [
+      "reports/profile-cuda0.json",
+      "reports/profile-cuda1.json",
+      "reports/profile-eval-cuda0.json"
+    ],
+    "note": "Training benchmark uses the 256 longest training items; projection assumes every run reaches its cap. Pilots set actual pricing."
+  },
+  "ledger": {
+    "path": "runs/gpu-ledger.json",
+    "total_allocation": 672,
+    "runs": {
+      "g0-server-1": {
+        "category": "g0_g1",
+        "reserved": 4,
+        "used": 0.007021852613866536,
+        "status": "completed"
+      },
+      "g1-server-1": {
+        "category": "g0_g1",
+        "reserved": 8,
+        "used": 0.0020170824055741024,
+        "status": "completed"
+      },
+      "profile-cuda0-1": {
+        "category": "g0_g1",
+        "reserved": 2,
+        "used": 0.0021101585639149156,
+        "status": "completed"
+      },
+      "profile-cuda1-1": {
+        "category": "g0_g1",
+        "reserved": 2,
+        "used": 0.0020851735396879827,
+        "status": "completed"
+      },
+      "eval-profile-cuda0-1": {
+        "category": "g0_g1",
+        "reserved": 1,
+        "used": 0.006826591803368905,
+        "status": "completed"
+      }
+    }
+  },
+  "next_stop_condition": "Do not run certify-review/pilot-ready/G2/G3/order pilots/main until real human review files exist.",
+  "human_review_distribution": {
+    "status": "packages_built_awaiting_distribution_and_return",
+    "built_at_utc": "2026-09-16T08:32:40.386513+00:00",
+    "packages": [
+      "EN-R1-SSJKF",
+      "EN-R2-G4A2V",
+      "DE-R1-EDV65",
+      "DE-R2-WKGG7",
+      "KO-R1-9PNJS",
+      "KO-R2-Q73JV"
+    ],
+    "items_per_language": {
+      "en": 200,
+      "de": 200,
+      "ko": 200
+    },
+    "dist": "review/dist/<code>.zip (blinded: random review ids, no labels, no original ids, independent order per copy)",
+    "private_never_distribute": "review/private/ (mapping.csv, reviewer-registry.csv, build-manifest.json)",
+    "reviewer_identity": "operator-assigned codes; real names only in private registry, filled offline by the operator",
+    "merge": "scripts/merge_review_submissions.py -> review/submissions/merged/reviewed-audit-sample.csv + attestation-draft.json (humans complete)",
+    "judgments_prefilled": false,
+    "tests": "tests/test_review_packaging.py (5) in reports/cpu-tests-server.xml: 51 passed"
+  }
 }

@@ -1,7 +1,6 @@
 {
   "files": {
-    ".gitattributes": "c9af3f21efb71c28f681a3095d5e8c362ef4a6b37d7fba15bddd6873845527de",
-    ".gitignore": "4c79f21767e75325366274fe8e74c5d06750be3ba0af0a5a1ebd6247cd7be3f1",
+    ".gitignore": "50ce4fcb1d6df7a625fae30c9d34f6a3dac41fa8581a9f5ee20b414a4e398e47",
     "artifacts/graphs/real.json": "664d9c913b6a1217a257e26d1140ae27138149623481663a8ac7bf86362ff347",
     "artifacts/graphs/real.npz": "e26c22783ff6ae7db99f366ac6223b62736caa16f1d9f2996e678fbc5523fb54",
     "artifacts/power/final-grid.jsonl": "c448caee01867d55d011b0a7ceead1275acba4b5f068289f90ffa22d778fd385",
@@ -31,15 +30,15 @@
     "docs/SOURCE_AUDIT.md": "28992a70ef1e0cfd83c9eafb97a9e812279226854bb7aa64c4f3d52f25227807",
     "pyproject.toml": "504b817ea6807af3592cc195ea3227f37d01dc85bdf14173d7f309cdb015132a",
     "README.md": "8c038ccad4985d8435c404b8df4a40daaf658424b0f3c32f96383cbf70db99ed",
-    "reports/cpu-tests.xml": "aedfc0feda28f51d60f184d700d6449d6d7209774474accc8963522e7b0eada0",
-    "reports/g0-local.json": "ac5f26ce26440570b231e24a5cc341fb0248cd4f46ea7525db1241f19eeee670",
-    "reports/implementation-status.json": "383beec76dbfe390380718f861e6c6ad5dfbb490694ed964c1ff7a9a2d007e18",
+    "reports/cpu-tests.xml": "2ddec3c9d9ebbad99a8249f878eb241427ead0945fc4dcc1ae8d94e79370c25d",
+    "reports/g0-local.json": "b891e6c0326d02611365e0f6f450a37400da217d50d8d10b5c674c210c9aa53e",
+    "reports/implementation-status.json": "6722c0dd544cffa6da28f58e8e5eab833a0934e5a7482b53ae6c6b9f294be18a",
     "reports/power-summary.json": "99c1dd00ec5919713cb9d5e1d15fed95dcd100278a6b8d06a291d68cec98e005",
     "requirements-cpu-observed.txt": "64f883917a6398222fa423e6104c3f548dfc59b44528233dd4cac7c85d83ad7e",
     "scripts/build_handoff.py": "c13c79eab3eb3b7450eda32cf6e62a61b1a1e8cd85c2b40c0656ace98a9d8890",
     "scripts/export_review_catalog.py": "8b085d967050cfa586d1cd6139f7f1fe04994cd1683c17f29942ffb4a66ce462",
     "scripts/verify_handoff.py": "0e5d1896a9cd6cec0a874a9b0dcef75b9bdebe7794f09a2a940512d0556cb2eb",
-    "src/flystudy/__init__.py": "caeb05a8b4897d2e5024b8f290392cf005a0f67cd119053240b42e1286b4d3e0",
+    "src/flystudy/__init__.py": "d4d81efb50f543546266fbdf573b21514f540a8a63dd8c4cddfed21fedad2de7",
     "src/flystudy/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "src/flystudy/auxiliary.py": "a177eb11629adb7d87cf5d2a5fa19af6231f4b41b5a62609a8ff41c1e1dddd8a",
     "src/flystudy/auxplan.py": "7c9f055df4489d8b7d5bcee8e59b8ef070c9993d99721cec84527939449a272b",
@@ -55,7 +54,7 @@
     "src/flystudy/protocol.py": "039a2607efec399cb36beda89d82e7e8843a6ba5f10cb22978687f6fbcb7cf80",
     "src/flystudy/reporting.py": "17d5592902ebde0a8dc283868506cdc1d16b94586a4cc4b6493df053cc85397a",
     "src/flystudy/runtime.py": "dc27c9dfcebe702544fa7b5690e8d63a5af8b34d6fe30c6ed751ba624d65b738",
-    "src/flystudy/schedule.py": "9d4691d232f66ac2ce7c7642ed7f8d81a59c8e7d448485fe0d55a78e6b4f7668",
+    "src/flystudy/schedule.py": "bcd01e2c434ba118683c096bc9faa4a5718fabeacd66e3cc02fd8179b61cd450",
     "src/flystudy/statistics.py": "15f316f42afe930c9e6923aa15ee9133ce58d734bb4777ac53185112521f6989",
     "src/flystudy/train.py": "81397593efb8d0a6c05006ab6a6641b67c396fbf7d067898e2ceb9d0c65375c4",
     "src/flystudy/workflow.py": "fbe208e4874310f04337b3eda0ad045f74f2c13eaf320486ad2f99482625f1f3",
@@ -67,6 +66,6 @@
     "tests/test_workflow_guards.py": "82102cbfb24d6e1737971d1dcd18572dc998b38e18eefdc2fd3d1dc52a2b36a7",
     "THIRD_PARTY_NOTICES.md": "b75b5a5b8cc0303466f41f83f8f43987d1ec6e12a1dcd8c5590bd93994ed095e"
   },
-  "code_hash": "c90ac7a731088e0994b155778baf9e8f88d6f0358bf3a02f7de0b1b9963e6d2c",
+  "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4",
   "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e"
 }

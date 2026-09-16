@@ -1,0 +1,152 @@
+{
+  "status": "completed",
+  "device": "cuda:0",
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4",
+  "environment": {
+    "python": "3.12.4",
+    "system": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "torch": "2.5.1+cu121",
+    "torch_cuda": "12.1",
+    "nvcc": "/usr/local/cuda-12.1/bin/nvcc",
+    "cuda_devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3080 Ti",
+        "capability": [
+          8,
+          6
+        ],
+        "vram": 12622954496
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA GeForce RTX 3080 Ti",
+        "capability": [
+          8,
+          6
+        ],
+        "vram": 12622954496
+      }
+    ],
+    "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4"
+  },
+  "is_gate": false,
+  "is_study_evidence": false,
+  "rows": [
+    {
+      "microbatch": 32,
+      "split": "dev_a",
+      "cells": 12,
+      "items": 12000,
+      "seconds": 3.5768185139168054,
+      "items_per_second": 3354.9367834319796,
+      "peak_bytes": 269411328
+    },
+    {
+      "microbatch": 32,
+      "split": "dev_b",
+      "cells": 12,
+      "items": 12000,
+      "seconds": 3.3610355050768703,
+      "items_per_second": 3570.3282461235253,
+      "peak_bytes": 260887552
+    },
+    {
+      "microbatch": 32,
+      "split": "test",
+      "cells": 12,
+      "items": 12000,
+      "seconds": 3.9733286811970174,
+      "items_per_second": 3020.1377642850434,
+      "peak_bytes": 278696960
+    },
+    {
+      "microbatch": 256,
+      "split": "dev_a",
+      "cells": 12,
+      "items": 12000,
+      "seconds": 1.965690843993798,
+      "items_per_second": 6104.723963417851,
+      "peak_bytes": 1603321344
+    },
+    {
+      "microbatch": 256,
+      "split": "dev_b",
+      "cells": 12,
+      "items": 12000,
+      "seconds": 1.9909876638557762,
+      "items_per_second": 6027.159393223272,
+      "peak_bytes": 1540350976
+    },
+    {
+      "microbatch": 256,
+      "split": "test",
+      "cells": 12,
+      "items": 12000,
+      "seconds": 2.2396568511612713,
+      "items_per_second": 5357.963651341477,
+      "peak_bytes": 1689501184
+    }
+  ],
+  "per_language_dev_a": [
+    {
+      "language": "en",
+      "microbatch": 256,
+      "items": 4000,
+      "seconds": 0.5807409221306443
+    },
+    {
+      "language": "de",
+      "microbatch": 256,
+      "items": 4000,
+      "seconds": 0.8417697590775788
+    },
+    {
+      "language": "ko",
+      "microbatch": 256,
+      "items": 4000,
+      "seconds": 0.6254853019490838
+    }
+  ],
+  "checkpoint": {
+    "seconds": 0.18480516714043915,
+    "bytes": 18827638,
+    "path_filesystem": "/mnt/nas4/kjune/fly-language-study/reports"
+  },
+  "projection": {
+    "assumptions": "Every run reaches its administrative cap; training time uses the 256 longest training items (upper bound); evaluation time uses the slowest full panel measured here; one checkpoint per evaluation; one independent test; no contingency (reserve-pilots adds 25%).",
+    "selected_microbatch": 256,
+    "train_seconds_per_update": 0.048511141212657094,
+    "eval_seconds_12_cells": 1.9909876638557762,
+    "eval_seconds_4_cells": 0.8417697590775788,
+    "test_seconds_12_cells": 2.2396568511612713,
+    "checkpoint_seconds": 0.18480516714043915,
+    "by_interval": {
+      "5120": {
+        "mono_hours": 0.02215146160020527,
+        "mixed_hours": 0.15437343544727708,
+        "sequential_hours": 0.15437343544727708,
+        "calibration_hours": 0.02924369254291782,
+        "pilot_block_two_seeds_hours": 2.294136865863111
+      },
+      "10240": {
+        "mono_hours": 0.016448267565660733,
+        "mixed_hours": 0.1011873884673696,
+        "sequential_hours": 0.1011873884673696,
+        "calibration_hours": null,
+        "pilot_block_two_seeds_hours": 1.5153130439371387
+      },
+      "20480": {
+        "mono_hours": 0.01359667054838846,
+        "mixed_hours": 0.07459436497741585,
+        "sequential_hours": 0.07459436497741585,
+        "calibration_hours": null,
+        "pilot_block_two_seeds_hours": 1.1259011329741526
+      }
+    }
+  },
+  "gpu_hours": 0.006826591803368905,
+  "charged_category": "g0_g1",
+  "reservation_id": "eval-profile-cuda0-1"
+}

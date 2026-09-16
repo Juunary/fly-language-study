@@ -3,8 +3,11 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 external/
-runs/
 *.partial
+
+# The GPU-hour ledger is versioned; run outputs, checkpoints and lock files stay local.
+runs/*
+!runs/gpu-ledger.json
 
 # Keep only the frozen study artifacts needed to reproduce the handoff.
 artifacts/*
@@ -22,3 +25,8 @@ artifacts/power/*
 # Earlier drafts remain local. Only the reviewed-candidate version is published.
 data/*
 !data/draft-v4.3/
+
+# Human review: blinded distribution packages are published; the review-id mapping,
+# reviewer registry and returned judgments never leave the operator.
+review/private/
+review/submissions/

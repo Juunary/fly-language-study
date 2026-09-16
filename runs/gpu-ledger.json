@@ -1,0 +1,51 @@
+{
+  "allocations": {
+    "g0_g1": 16,
+    "g2": 48,
+    "g3": 32,
+    "order_pilot": 32,
+    "main": 448,
+    "tokenizer": 24,
+    "shuffle": 24,
+    "review": 16,
+    "reserve": 32
+  },
+  "runs": {
+    "g0-server-1": {
+      "category": "g0_g1",
+      "reserved": 4,
+      "used": 0.007021852613866536,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "g1-server-1": {
+      "category": "g0_g1",
+      "reserved": 8,
+      "used": 0.0020170824055741024,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "profile-cuda0-1": {
+      "category": "g0_g1",
+      "reserved": 2,
+      "used": 0.0021101585639149156,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "profile-cuda1-1": {
+      "category": "g0_g1",
+      "reserved": 2,
+      "used": 0.0020851735396879827,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "eval-profile-cuda0-1": {
+      "category": "g0_g1",
+      "reserved": 1,
+      "used": 0.006826591803368905,
+      "status": "completed",
+      "exceeded_reservation": false
+    }
+  },
+  "transfers": []
+}
