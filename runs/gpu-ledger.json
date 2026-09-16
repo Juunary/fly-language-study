@@ -73,6 +73,48 @@
       "used": 0.002022106989687826,
       "status": "completed",
       "exceeded_reservation": false
+    },
+    "explore-v1-mono-en": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.01722455554473628,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v1-mono-de": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.019739959726381737,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v1-mono-ko": {
+      "category": "reserve",
+      "reserved": 0.25,
+      "used": 0.019458116785584328,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v1-mixed": {
+      "category": "reserve",
+      "reserved": 0.75,
+      "used": 0.18558976590917964,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v1-seq-en-de-ko": {
+      "category": "reserve",
+      "reserved": 0.75,
+      "used": 0.10834678583468,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "explore-v1-diagnostic-1": {
+      "category": "reserve",
+      "reserved": 0.1,
+      "used": 0.006214293704445784,
+      "status": "completed",
+      "exceeded_reservation": false
     }
   },
   "transfers": []

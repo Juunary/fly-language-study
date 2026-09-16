@@ -1,0 +1,692 @@
+{
+  "title": "Exploratory learnability run v1 (real cb5k graph, CUDA) — NOT study evidence",
+  "generated_at_utc": "2026-09-16T14:03:58.336875+00:00",
+  "code_hash": "6df7331008bb4b206dbd538e1389ac386656f5582103559adb8fbb8e3cf686a8",
+  "protocol_hash": "51e572e689be3758df54c384a4bde8dfa9deebef02170420e05e07a826f61743",
+  "training_hash": "0f178e9fcf9065aa14dabdd258346851c818706fe1ba8b17787d7580d57cbaa4",
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e",
+  "tokenizer_hash": "d30ef71c4d5222fe82cf2b4cafedde998145a3a58e440f862cdc988d46f70883",
+  "seed": 20001,
+  "microbatch": 256,
+  "labels": {
+    "study_evidence": false,
+    "review_status": "incomplete_ai_review_not_certified",
+    "cohort_label": "exploratory (code cohort 'smoke' with the real graph)",
+    "gates_not_passed": [
+      "certify-ai-review",
+      "pilot-ready",
+      "G2",
+      "G3",
+      "order pilots",
+      "power/budget",
+      "freeze"
+    ],
+    "conclusion_scope": "learnability and cost only; no language-ordering conclusion"
+  },
+  "findings": [
+    "EN and DE monolingual runs did not learn within the 200,000-exposure cap: training loss stayed at ln2 (0.696->0.695/0.698->0.695) and accuracy on their own training items was 0.52-0.55.",
+    "KO monolingual fit its training items (loss 0.16; train-item accuracy 0.89-1.00) but held-out panels (other construction families, 2-4x longer sequences) stayed at 0.50-0.52 on dev_a/dev_b and 0.50 on test.",
+    "Sequential en->de->ko (900k) and mixed (900k) started fitting all three languages in-distribution (loss min 0.03/0.17) but held-out accuracy never exceeded 0.60 in any cell; no cell reached the 0.80 mastery threshold, so every run ended at its administrative cap.",
+    "Interpretation: with train sentences of 10-20 tokens and evaluation panels of 38-73 tokens in unseen outer frames, the model shows no cross-frame generalisation at this scale; EN/DE also optimise far more slowly than KO. This is a data/design and optimisation issue to resolve before any pilot or main run."
+  ],
+  "sequence_lengths_tokens": {
+    "train/en/roles": {
+      "mean": 12.1748,
+      "max": 14,
+      "p95": 13.0,
+      "over_128": 0
+    },
+    "train/de/roles": {
+      "mean": 17.6796,
+      "max": 18,
+      "p95": 18.0,
+      "over_128": 0
+    },
+    "train/ko/roles": {
+      "mean": 17.3286,
+      "max": 20,
+      "p95": 19.0,
+      "over_128": 0
+    },
+    "train/en/negation": {
+      "mean": 12.1588,
+      "max": 14,
+      "p95": 13.0,
+      "over_128": 0
+    },
+    "train/de/negation": {
+      "mean": 17.8368,
+      "max": 18,
+      "p95": 18.0,
+      "over_128": 0
+    },
+    "train/ko/negation": {
+      "mean": 17.4382,
+      "max": 20,
+      "p95": 19.0,
+      "over_128": 0
+    },
+    "train/en/space": {
+      "mean": 14.0588,
+      "max": 16,
+      "p95": 15.0,
+      "over_128": 0
+    },
+    "train/de/space": {
+      "mean": 17.4652,
+      "max": 18,
+      "p95": 18.0,
+      "over_128": 0
+    },
+    "train/ko/space": {
+      "mean": 17.5136,
+      "max": 20,
+      "p95": 18.0,
+      "over_128": 0
+    },
+    "train/en/quantity": {
+      "mean": 10.4218,
+      "max": 12,
+      "p95": 12.0,
+      "over_128": 0
+    },
+    "train/de/quantity": {
+      "mean": 10.4586,
+      "max": 12,
+      "p95": 12.0,
+      "over_128": 0
+    },
+    "train/ko/quantity": {
+      "mean": 10.9808,
+      "max": 14,
+      "p95": 12.0,
+      "over_128": 0
+    },
+    "dev_a/en/roles": {
+      "mean": 38.398,
+      "max": 41,
+      "p95": 39.049999999999955,
+      "over_128": 0
+    },
+    "dev_a/de/roles": {
+      "mean": 67.674,
+      "max": 70,
+      "p95": 70.0,
+      "over_128": 0
+    },
+    "dev_a/ko/roles": {
+      "mean": 48.086,
+      "max": 51,
+      "p95": 49.0,
+      "over_128": 0
+    },
+    "dev_a/en/negation": {
+      "mean": 38.392,
+      "max": 41,
+      "p95": 39.0,
+      "over_128": 0
+    },
+    "dev_a/de/negation": {
+      "mean": 70.018,
+      "max": 73,
+      "p95": 73.0,
+      "over_128": 0
+    },
+    "dev_a/ko/negation": {
+      "mean": 48.119,
+      "max": 50,
+      "p95": 49.0,
+      "over_128": 0
+    },
+    "dev_a/en/space": {
+      "mean": 40.3,
+      "max": 44,
+      "p95": 41.0,
+      "over_128": 0
+    },
+    "dev_a/de/space": {
+      "mean": 69.954,
+      "max": 72,
+      "p95": 72.0,
+      "over_128": 0
+    },
+    "dev_a/ko/space": {
+      "mean": 49.592,
+      "max": 51,
+      "p95": 50.0,
+      "over_128": 0
+    },
+    "dev_a/en/quantity": {
+      "mean": 45.842,
+      "max": 46,
+      "p95": 46.0,
+      "over_128": 0
+    },
+    "dev_a/de/quantity": {
+      "mean": 51.208,
+      "max": 54,
+      "p95": 53.0,
+      "over_128": 0
+    },
+    "dev_a/ko/quantity": {
+      "mean": 32.994,
+      "max": 36,
+      "p95": 34.0,
+      "over_128": 0
+    },
+    "test/en/roles": {
+      "mean": 38.382,
+      "max": 41,
+      "p95": 39.0,
+      "over_128": 0
+    },
+    "test/de/roles": {
+      "mean": 71.942,
+      "max": 74,
+      "p95": 74.0,
+      "over_128": 0
+    },
+    "test/ko/roles": {
+      "mean": 66.756,
+      "max": 69,
+      "p95": 68.0,
+      "over_128": 0
+    },
+    "test/en/negation": {
+      "mean": 38.386,
+      "max": 41,
+      "p95": 39.0,
+      "over_128": 0
+    },
+    "test/de/negation": {
+      "mean": 74.076,
+      "max": 77,
+      "p95": 77.0,
+      "over_128": 0
+    },
+    "test/ko/negation": {
+      "mean": 66.857,
+      "max": 69,
+      "p95": 68.0,
+      "over_128": 0
+    },
+    "test/en/space": {
+      "mean": 40.264,
+      "max": 43,
+      "p95": 41.0,
+      "over_128": 0
+    },
+    "test/de/space": {
+      "mean": 73.978,
+      "max": 76,
+      "p95": 76.0,
+      "over_128": 0
+    },
+    "test/ko/space": {
+      "mean": 69.066,
+      "max": 70,
+      "p95": 70.0,
+      "over_128": 0
+    },
+    "test/en/quantity": {
+      "mean": 45.838,
+      "max": 46,
+      "p95": 46.0,
+      "over_128": 0
+    },
+    "test/de/quantity": {
+      "mean": 55.086,
+      "max": 58,
+      "p95": 57.0,
+      "over_128": 0
+    },
+    "test/ko/quantity": {
+      "mean": 55.957,
+      "max": 58,
+      "p95": 57.0,
+      "over_128": 0
+    }
+  },
+  "cost": {
+    "actual_gpu_hours_runs": 0.3503,
+    "diagnostic_gpu_hours": 0.0062,
+    "reserved_hours": 2.25,
+    "budget_category": "reserve",
+    "per_run_wall_hours": {
+      "explore-v1-mono-en": 0.0172,
+      "explore-v1-mono-de": 0.0197,
+      "explore-v1-mono-ko": 0.0195,
+      "explore-v1-mixed": 0.1856,
+      "explore-v1-seq-en-de-ko": 0.1083
+    },
+    "cap_bounded_projection_hours": {
+      "mono": 0.0164,
+      "multi": 0.1012
+    },
+    "ledger_total_used_gpu_hours": 0.3893,
+    "ledger_total_allocation": 672
+  },
+  "ko_new_ai_evaluation": {
+    "scope": "50 deduplicated KO space items with fluent=no in both primary responses + 5 flagged checklist rows",
+    "result": "50/50 judged fluent=no by a fresh isolated Opus 5 session; new semantic labels agree 50/50 with the original labels; 4 KO space construction families flagged issue=yes (topic marker 는 inside embedded '-다는 것' clauses; recommended nominative 이/가), noun_forms/dat issue=no",
+    "evidence": "review/ai/claude-v1/evidence.json -> adjudication (gitignored)",
+    "implication": "data revision required for KO space templates before certification"
+  },
+  "runs": [
+    {
+      "run_id": "explore-v1-mono-en",
+      "mode": "mono",
+      "order": [
+        "en"
+      ],
+      "status": "completed",
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "updates": 782,
+      "mastered": false,
+      "first_task": {},
+      "first_language": {},
+      "train_loss": {
+        "first20": 0.6996,
+        "last20": 0.696,
+        "min": 0.6784,
+        "chance_ln2": 0.6931
+      },
+      "held_out_best_accuracy": {
+        "en/roles": 0.51,
+        "en/negation": 0.522,
+        "en/space": 0.525,
+        "en/quantity": 0.527
+      },
+      "held_out_final": {
+        "en/roles": 0.489,
+        "en/negation": 0.509,
+        "en/space": 0.525,
+        "en/quantity": 0.463
+      },
+      "independent_test": {
+        "en/roles": 0.513,
+        "en/negation": 0.498,
+        "en/space": 0.503,
+        "en/quantity": 0.518
+      },
+      "train_item_accuracy": {
+        "train": {
+          "en/roles": 0.549,
+          "en/negation": 0.534,
+          "en/space": 0.53,
+          "en/quantity": 0.53
+        },
+        "dev_a": {
+          "en/roles": 0.504,
+          "en/negation": 0.504,
+          "en/space": 0.511,
+          "en/quantity": 0.506
+        },
+        "test": {
+          "en/roles": 0.513,
+          "en/negation": 0.498,
+          "en/space": 0.503,
+          "en/quantity": 0.518
+        }
+      },
+      "wall_hours": 0.0172,
+      "clocks_seconds": {
+        "train": 30.8,
+        "eval": 13.7,
+        "checkpoint": 5.5,
+        "test": 1.7,
+        "review_eval": 0.0
+      },
+      "stages": []
+    },
+    {
+      "run_id": "explore-v1-mono-de",
+      "mode": "mono",
+      "order": [
+        "de"
+      ],
+      "status": "completed",
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "updates": 782,
+      "mastered": false,
+      "first_task": {},
+      "first_language": {},
+      "train_loss": {
+        "first20": 0.6982,
+        "last20": 0.6949,
+        "min": 0.68,
+        "chance_ln2": 0.6931
+      },
+      "held_out_best_accuracy": {
+        "de/roles": 0.508,
+        "de/negation": 0.507,
+        "de/space": 0.506,
+        "de/quantity": 0.506
+      },
+      "held_out_final": {
+        "de/roles": 0.501,
+        "de/negation": 0.499,
+        "de/space": 0.497,
+        "de/quantity": 0.497
+      },
+      "independent_test": {
+        "de/roles": 0.501,
+        "de/negation": 0.499,
+        "de/space": 0.504,
+        "de/quantity": 0.502
+      },
+      "train_item_accuracy": {
+        "train": {
+          "de/roles": 0.541,
+          "de/negation": 0.529,
+          "de/space": 0.523,
+          "de/quantity": 0.53
+        },
+        "dev_a": {
+          "de/roles": 0.503,
+          "de/negation": 0.497,
+          "de/space": 0.5,
+          "de/quantity": 0.5
+        },
+        "test": {
+          "de/roles": 0.501,
+          "de/negation": 0.499,
+          "de/space": 0.504,
+          "de/quantity": 0.502
+        }
+      },
+      "wall_hours": 0.0197,
+      "clocks_seconds": {
+        "train": 34.9,
+        "eval": 18.3,
+        "checkpoint": 5.5,
+        "test": 1.9,
+        "review_eval": 0.0
+      },
+      "stages": []
+    },
+    {
+      "run_id": "explore-v1-mono-ko",
+      "mode": "mono",
+      "order": [
+        "ko"
+      ],
+      "status": "completed",
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "updates": 782,
+      "mastered": false,
+      "first_task": {},
+      "first_language": {},
+      "train_loss": {
+        "first20": 0.6968,
+        "last20": 0.1583,
+        "min": 0.1218,
+        "chance_ln2": 0.6931
+      },
+      "held_out_best_accuracy": {
+        "ko/roles": 0.511,
+        "ko/negation": 0.523,
+        "ko/space": 0.508,
+        "ko/quantity": 0.51
+      },
+      "held_out_final": {
+        "ko/roles": 0.5,
+        "ko/negation": 0.5,
+        "ko/space": 0.5,
+        "ko/quantity": 0.5
+      },
+      "independent_test": {
+        "ko/roles": 0.5,
+        "ko/negation": 0.5,
+        "ko/space": 0.5,
+        "ko/quantity": 0.5
+      },
+      "train_item_accuracy": {
+        "train": {
+          "ko/roles": 0.891,
+          "ko/negation": 0.999,
+          "ko/space": 1.0,
+          "ko/quantity": 0.899
+        },
+        "dev_a": {
+          "ko/roles": 0.506,
+          "ko/negation": 0.505,
+          "ko/space": 0.501,
+          "ko/quantity": 0.5
+        },
+        "test": {
+          "ko/roles": 0.5,
+          "ko/negation": 0.5,
+          "ko/space": 0.5,
+          "ko/quantity": 0.5
+        }
+      },
+      "wall_hours": 0.0195,
+      "clocks_seconds": {
+        "train": 37.9,
+        "eval": 15.1,
+        "checkpoint": 5.5,
+        "test": 1.9,
+        "review_eval": 0.0
+      },
+      "stages": []
+    },
+    {
+      "run_id": "explore-v1-mixed",
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "status": "completed",
+      "stop_reason": "administrative_cap",
+      "seen": 900000,
+      "updates": 3516,
+      "mastered": false,
+      "first_task": {},
+      "first_language": {},
+      "train_loss": {
+        "first20": 0.6989,
+        "last20": 0.2279,
+        "min": 0.1606,
+        "chance_ln2": 0.6931
+      },
+      "held_out_best_accuracy": {
+        "en/roles": 0.536,
+        "en/negation": 0.541,
+        "en/space": 0.527,
+        "en/quantity": 0.518,
+        "de/roles": 0.524,
+        "de/negation": 0.519,
+        "de/space": 0.528,
+        "de/quantity": 0.532,
+        "ko/roles": 0.515,
+        "ko/negation": 0.532,
+        "ko/space": 0.54,
+        "ko/quantity": 0.562
+      },
+      "held_out_final": {
+        "en/roles": 0.524,
+        "en/negation": 0.541,
+        "en/space": 0.509,
+        "en/quantity": 0.487,
+        "de/roles": 0.501,
+        "de/negation": 0.49,
+        "de/space": 0.495,
+        "de/quantity": 0.523,
+        "ko/roles": 0.5,
+        "ko/negation": 0.5,
+        "ko/space": 0.5,
+        "ko/quantity": 0.5
+      },
+      "independent_test": {
+        "en/roles": 0.477,
+        "en/negation": 0.487,
+        "en/space": 0.495,
+        "en/quantity": 0.498,
+        "de/roles": 0.497,
+        "de/negation": 0.498,
+        "de/space": 0.496,
+        "de/quantity": 0.5,
+        "ko/roles": 0.5,
+        "ko/negation": 0.5,
+        "ko/space": 0.5,
+        "ko/quantity": 0.52
+      },
+      "train_item_accuracy": null,
+      "wall_hours": 0.1856,
+      "clocks_seconds": {
+        "train": 286.5,
+        "eval": 332.6,
+        "checkpoint": 28.9,
+        "test": 4.0,
+        "review_eval": 0.0
+      },
+      "stages": []
+    },
+    {
+      "run_id": "explore-v1-seq-en-de-ko",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "status": "completed",
+      "stop_reason": "administrative_cap",
+      "seen": 900000,
+      "updates": 3520,
+      "mastered": false,
+      "first_task": {},
+      "first_language": {},
+      "train_loss": {
+        "first20": 0.6996,
+        "last20": 0.3591,
+        "min": 0.0342,
+        "chance_ln2": 0.6931
+      },
+      "held_out_best_accuracy": {
+        "en/roles": 0.568,
+        "en/negation": 0.598,
+        "en/space": 0.523,
+        "en/quantity": 0.527,
+        "de/roles": 0.534,
+        "de/negation": 0.519,
+        "de/space": 0.515,
+        "de/quantity": 0.52,
+        "ko/roles": 0.542,
+        "ko/negation": 0.53,
+        "ko/space": 0.531,
+        "ko/quantity": 0.542
+      },
+      "held_out_final": {
+        "en/roles": 0.497,
+        "en/negation": 0.503,
+        "en/space": 0.492,
+        "en/quantity": 0.496,
+        "de/roles": 0.502,
+        "de/negation": 0.502,
+        "de/space": 0.496,
+        "de/quantity": 0.495,
+        "ko/roles": 0.5,
+        "ko/negation": 0.5,
+        "ko/space": 0.5,
+        "ko/quantity": 0.5
+      },
+      "independent_test": {
+        "en/roles": 0.49,
+        "en/negation": 0.507,
+        "en/space": 0.51,
+        "en/quantity": 0.5,
+        "de/roles": 0.5,
+        "de/negation": 0.5,
+        "de/space": 0.5,
+        "de/quantity": 0.503,
+        "ko/roles": 0.5,
+        "ko/negation": 0.5,
+        "ko/space": 0.5,
+        "ko/quantity": 0.5
+      },
+      "train_item_accuracy": {
+        "train": {
+          "en/roles": 0.79,
+          "en/negation": 0.863,
+          "en/space": 0.594,
+          "en/quantity": 0.861,
+          "de/roles": 0.613,
+          "de/negation": 0.729,
+          "de/space": 0.648,
+          "de/quantity": 0.838,
+          "ko/roles": 1.0,
+          "ko/negation": 1.0,
+          "ko/space": 1.0,
+          "ko/quantity": 0.968
+        },
+        "dev_a": {
+          "en/roles": 0.534,
+          "en/negation": 0.551,
+          "en/space": 0.506,
+          "en/quantity": 0.512,
+          "de/roles": 0.522,
+          "de/negation": 0.491,
+          "de/space": 0.504,
+          "de/quantity": 0.492,
+          "ko/roles": 0.514,
+          "ko/negation": 0.512,
+          "ko/space": 0.5,
+          "ko/quantity": 0.514
+        },
+        "test": {
+          "en/roles": 0.49,
+          "en/negation": 0.507,
+          "en/space": 0.51,
+          "en/quantity": 0.5,
+          "de/roles": 0.5,
+          "de/negation": 0.5,
+          "de/space": 0.5,
+          "de/quantity": 0.503,
+          "ko/roles": 0.5,
+          "ko/negation": 0.5,
+          "ko/space": 0.5,
+          "ko/quantity": 0.5
+        }
+      },
+      "wall_hours": 0.1083,
+      "clocks_seconds": {
+        "train": 160.7,
+        "eval": 182.9,
+        "checkpoint": 27.5,
+        "test": 3.5,
+        "review_eval": 0.0
+      },
+      "stages": [
+        {
+          "language": "en",
+          "start": 0,
+          "end": 200000,
+          "exposures": 200000,
+          "reason": "stage_cap"
+        },
+        {
+          "language": "de",
+          "start": 200000,
+          "end": 400000,
+          "exposures": 200000,
+          "reason": "stage_cap"
+        },
+        {
+          "language": "ko",
+          "start": 400000,
+          "end": 600000,
+          "exposures": 200000,
+          "reason": "stage_cap"
+        }
+      ]
+    }
+  ]
+}
