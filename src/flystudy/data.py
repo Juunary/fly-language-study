@@ -188,6 +188,45 @@ def render(scene, lang, split, inverse=False, foil=False):
     return unicodedata.normalize("NFC", text[0].upper() + text[1:])
 
 
+def draw_scene(rng, task):
+    """One random scene, its semantic-orbit digest and the German gender pair; None when the entities coincide.
+    The order of random draws is the generation contract and must not change."""
+    a = (rng.randrange(12), rng.randrange(6), rng.randrange(4))
+    b = (rng.randrange(12), rng.randrange(6), rng.randrange(4))
+    if a == b:
+        return None
+    scene = dict(task=task, a=a, b=b, verb=rng.randrange(3), neg=bool(rng.randrange(2)),
+                 axis=rng.randrange(3), direction=bool(rng.randrange(2)),
+                 counts=rng.sample(range(7), 2))
+    if task == "roles":
+        scene["neg"] = False
+        scene["verb2"] = rng.choice([v for v in range(len(VERBS)) if v != scene["verb"]])
+    key = dict(task=task, entities=sorted([a, b]))
+    if task == "roles":
+        key["verbs"] = sorted([scene["verb"], scene["verb2"]])
+    if task == "negation":
+        key["verb"] = scene["verb"]
+    if task == "space":
+        extras = []
+        while len(extras) < 2:
+            candidate = (rng.randrange(12), rng.randrange(6), rng.randrange(4))
+            if candidate not in [a, b] + extras:
+                extras.append(candidate)
+        scene["c"], scene["d"] = extras
+        key["entities"] = sorted([a, b] + extras)
+        key["axis"] = scene["axis"]
+    return scene, digest(key), NOUNS[a[0]][6] + NOUNS[b[0]][6]
+
+
+def orbit_split(orbit):
+    return SPLITS[int(orbit[:8], 16) % 4]
+
+
+def gender_quota(count):
+    quota_index = (count // 2) % 9
+    return "mfn"[quota_index // 3] + "mfn"[quota_index % 3]
+
+
 def example_record(orbit, split, task, scene, pair, label, lang):
     """Primary rendering (training frame) plus, for held-out splits, the auxiliary outer-frame rendering of the same item."""
     record = dict(id=f"{orbit}:{label}:{lang}", meaning_id=orbit, foil_group=orbit,
@@ -247,38 +286,14 @@ def generate(root, train_per_task=5000, panel_per_task=1000, seed=1729, version=
             if attempt > 2000000:
                 raise RuntimeError("Insufficient semantic orbits")
             # Cycle gender pairs separately inside each split through quotas below.
-            a = (rng.randrange(12), rng.randrange(6), rng.randrange(4))
-            b = (rng.randrange(12), rng.randrange(6), rng.randrange(4))
-            if a == b:
+            drawn = draw_scene(rng, task)
+            if drawn is None:
                 continue
-            scene = dict(task=task, a=a, b=b, verb=rng.randrange(3), neg=bool(rng.randrange(2)),
-                         axis=rng.randrange(3), direction=bool(rng.randrange(2)),
-                         counts=rng.sample(range(7), 2))
-            if task == "roles":
-                scene["neg"] = False
-                scene["verb2"] = rng.choice([v for v in range(len(VERBS)) if v != scene["verb"]])
-            key = dict(task=task, entities=sorted([a, b]))
-            if task == "roles":
-                key["verbs"] = sorted([scene["verb"], scene["verb2"]])
-            if task == "negation":
-                key["verb"] = scene["verb"]
-            if task == "space":
-                extras = []
-                while len(extras) < 2:
-                    candidate = (rng.randrange(12), rng.randrange(6), rng.randrange(4))
-                    if candidate not in [a, b] + extras:
-                        extras.append(candidate)
-                scene["c"], scene["d"] = extras
-                key["entities"] = sorted([a, b] + extras)
-                key["axis"] = scene["axis"]
-            orbit = digest(key)
-            split = SPLITS[int(orbit[:8], 16) % 4]
+            scene, orbit, pair = drawn
+            split = orbit_split(orbit)
             if orbit in used or counts[split] >= capacities[split]:
                 continue
-            pair = NOUNS[a[0]][6] + NOUNS[b[0]][6]
-            quota_index = (counts[split] // 2) % 9
-            target_pair = "mfn"[quota_index // 3] + "mfn"[quota_index % 3]
-            if pair != target_pair:
+            if pair != gender_quota(counts[split]):
                 continue
             used.add(orbit)
             for label in (0, 1):
@@ -324,6 +339,82 @@ def revise_evaluation(source, output, test_used_in_exploration=True):
                                 derived_from=dict(version=origin["version"], dataset_hash=origin["dataset_hash"], files=origin["files"],
                                                   training_split_identical=files["train.jsonl"] == origin["files"]["train.jsonl"],
                                                   orbit_ownership_preserved=True))
+    write_json(output / "manifest.json", manifest)
+    export_review(output, rows)
+    return audit(output)
+
+
+def dataset_orbits_and_pairs(root):
+    """Every semantic orbit and every rendered sentence pair (primary and auxiliary) of a dataset."""
+    orbits, pairs = set(), set()
+    for split in SPLITS:
+        for r in load_rows(root, split):
+            orbits.add(r["meaning_id"])
+            pairs.add((r["sentence_a"], r["sentence_b"]))
+            if "auxiliary" in r:
+                pairs.add((r["auxiliary"]["sentence_a"], r["auxiliary"]["sentence_b"]))
+    return orbits, pairs
+
+
+def new_test_split(source, output, seed, exclude=()):
+    """A new confirmatory test split from semantic orbits that no listed dataset uses; train/dev bytes are copied unchanged.
+    Orbits keep the ownership rule (their digest maps to 'test'); gender quotas match generate()."""
+    import shutil
+    source, output = Path(source), Path(output)
+    if output.resolve() == source.resolve() or (output / "manifest.json").exists():
+        raise FileExistsError("Use a new version directory; do not overwrite a dataset")
+    origin = json.loads((source / "manifest.json").read_text(encoding="utf-8"))
+    for name, sha in origin["files"].items():
+        if file_hash(source / name) != sha:
+            raise ValueError(f"Source file changed since its manifest: {name}")
+    used_orbits, used_pairs = dataset_orbits_and_pairs(source)
+    checked = [dict(path=str(source), dataset_hash=origin["dataset_hash"])]
+    for extra in exclude:
+        extra = Path(extra)
+        orbits, pairs = dataset_orbits_and_pairs(extra)
+        used_orbits |= orbits; used_pairs |= pairs
+        checked.append(dict(path=str(extra), dataset_hash=json.loads((extra / "manifest.json").read_text(encoding="utf-8"))["dataset_hash"]))
+    rng = random.Random(seed)
+    per_task = origin["panel_per_task"]
+    records = []
+    for task in TASKS:
+        count, attempt, chosen = 0, 0, set()
+        while count < per_task:
+            attempt += 1
+            if attempt > 2000000:
+                raise RuntimeError("Insufficient unused semantic orbits")
+            drawn = draw_scene(rng, task)
+            if drawn is None:
+                continue
+            scene, orbit, pair = drawn
+            if orbit_split(orbit) != "test" or orbit in used_orbits or orbit in chosen or pair != gender_quota(count):
+                continue
+            chosen.add(orbit)
+            for label in (0, 1):  # count advances per label exactly as generate() does: panel size is rows per language
+                for lang in LANGUAGES:
+                    records.append(example_record(orbit, "test", task, scene, pair, label, lang))
+                count += 1
+    new_pairs = {(r["sentence_a"], r["sentence_b"]) for r in records} | {(r["auxiliary"]["sentence_a"], r["auxiliary"]["sentence_b"]) for r in records}
+    overlap = dict(datasets_checked=checked, orbits_shared_with_source=sum(r["meaning_id"] in used_orbits for r in records),
+                   sentence_pairs_shared_with_source=len(new_pairs & used_pairs), new_orbits=len({r["meaning_id"] for r in records}))
+    if overlap["orbits_shared_with_source"] or overlap["sentence_pairs_shared_with_source"]:
+        raise RuntimeError(f"New test split overlaps existing data: {overlap}")
+    output.mkdir(parents=True, exist_ok=True)
+    rows = {}
+    for split in ("train", "dev_a", "dev_b"):
+        shutil.copyfile(source / f"{split}.jsonl", output / f"{split}.jsonl")
+        rows[split] = load_rows(source, split)
+    rows["test"] = records
+    write_split(output / "test.jsonl", records)
+    files = {f"{split}.jsonl": file_hash(output / f"{split}.jsonl") for split in SPLITS}
+    manifest = dataset_manifest(output.name, origin["seed"], files, origin["train_per_task"], per_task,
+                                independent_test=dict(confirmatory=True, note="Fresh test orbits unused by any listed dataset or exploratory run; "
+                                                                             "apply once at a run's terminal state after the protocol freeze."),
+                                test_seed=seed, overlap_check=overlap,
+                                derived_from=dict(version=origin["version"], dataset_hash=origin["dataset_hash"], files=origin["files"],
+                                                  training_split_identical=files["train.jsonl"] == origin["files"]["train.jsonl"],
+                                                  dev_splits_identical=all(files[f"{s}.jsonl"] == origin["files"][f"{s}.jsonl"] for s in ("dev_a", "dev_b")),
+                                                  replaced_split="test"))
     write_json(output / "manifest.json", manifest)
     export_review(output, rows)
     return audit(output)

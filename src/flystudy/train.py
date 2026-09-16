@@ -65,10 +65,10 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
         cohort="pilot", device="cuda:0", backend="cuda", microbatch=32,
         launch=None, ledger_path=None, run_id=None, resume=None, smoke=False,
         max_updates=None, review_samples=False, reservation_id=None,
-        independent_test=True, auxiliary_panels=True):
+        independent_test=True, auxiliary_panels=False):
     """One bounded run. Technical/budget interruption never becomes a censored success.
-    Smoke (exploratory) runs may skip the terminal independent test and the per-panel auxiliary
-    evaluation; study cohorts always perform both."""
+    The auxiliary (outer-frame) rendering is scored once at the terminal checkpoint and never
+    used for mastery; smoke runs may additionally score it at every panel or skip the independent test."""
     protocol.validate(production=not smoke)
     if cohort in ('main','pilot'): protocol.validate_primary_model()
     if microbatch < 1 or microbatch > protocol.effective_batch:
@@ -79,8 +79,8 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
         raise ValueError("Invalid cohort")
     if smoke != (cohort == "smoke"):
         raise ValueError("Smoke experiments require an explicit smoke cohort")
-    if not smoke and not (independent_test and auxiliary_panels):
-        raise ValueError("Study cohorts always run the independent test and the auxiliary panels")
+    if not smoke and (not independent_test or auxiliary_panels):
+        raise ValueError("Study cohorts always run the independent test and score the auxiliary rendering only at the terminal checkpoint")
     data_meta = json.loads((Path(dataset)/"manifest.json").read_text(encoding="utf-8"))
     if not smoke:
         require_confirmatory_test(data_meta)
@@ -271,6 +271,14 @@ def run(protocol, graph_path, dataset, tokenizer_path, output, mode, order, seed
                     record.update(auxiliary_scores=aux_tests, auxiliary_strata=aux_strata)
                 sync(device); clocks["test"] += time.perf_counter()-begin
                 write_json(test_path, record)
+        aux_path = output / "terminal-auxiliary.json"
+        if status in ("mastered", "administrative_cap") and corpus.has_auxiliary("dev_a") and not aux_path.exists():
+            # Outer-frame transfer of the terminal state on the development panels; never a mastery observation.
+            sync(device); begin = time.perf_counter()
+            aux = {split: evaluate(model, corpus, split, curriculum.languages, microbatch, optimizer, sampler, view="auxiliary")[0]
+                   for split in ("dev_a", "dev_b")}
+            sync(device); clocks["auxiliary"] += time.perf_counter()-begin
+            write_json(aux_path, dict(scores=aux, checkpoint_hash=file_hash(output / "primary.pt"), used_for_mastery=False))
     except Exception as exc:
         status = "technical_failure"
         try:

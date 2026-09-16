@@ -139,7 +139,7 @@ def test_corpus_views_encode_the_requested_rendering(corpus_files):
 def test_training_scores_auxiliary_panels_without_touching_mastery(corpus_files, tmp_path):
     p = Protocol(vocab_size=320, embed_dim=8, effective_batch=4, eval_interval=8, mono_cap=12, total_cap=32, panel_per_task=2)
     summary = run(p, corpus_files/"graph.npz", corpus_files/"data", corpus_files/"tokenizer.json", tmp_path/"run",
-                  "mono", ("en",), 7, cohort="smoke", device="cpu", backend="dense", microbatch=3, smoke=True)
+                  "mono", ("en",), 7, cohort="smoke", device="cpu", backend="dense", microbatch=3, smoke=True, auxiliary_panels=True)
     events = [json.loads(l) for l in (tmp_path/"run"/"events.jsonl").read_text(encoding="utf-8").splitlines()]
     scheduled = [e for e in events if e["kind"] == "scheduled"]
     auxiliary = [e for e in events if e["kind"] == "auxiliary"]
@@ -188,11 +188,4 @@ def test_smoke_run_can_skip_independent_test_and_auxiliary_panels(corpus_files, 
     assert (tmp_path/"run"/"primary.pt").exists() and not (tmp_path/"run"/"independent-test.json").exists()
     events = [json.loads(l) for l in (tmp_path/"run"/"events.jsonl").read_text(encoding="utf-8").splitlines()]
     assert any(e["kind"] == "scheduled" for e in events) and not any(e["kind"] == "auxiliary" for e in events)
-    assert summary["clocks_seconds"]["auxiliary"] == 0 and summary["clocks_seconds"]["test"] == 0
-
-
-def test_study_cohorts_cannot_skip_independent_test_or_auxiliary_panels(corpus_files, tmp_path):
-    for kwargs in (dict(independent_test=False), dict(auxiliary_panels=False)):
-        with pytest.raises(ValueError, match="Study cohorts"):
-            run(Protocol(), corpus_files/"graph.npz", corpus_files/"data", corpus_files/"tokenizer.json", tmp_path/"pilot",
-                "mono", ("en",), 10001, cohort="pilot", device="cpu", backend="dense", **kwargs)
+    assert summary["clocks_seconds"]["test"] == 0 and (tmp_path/"run"/"terminal-auxiliary.json").exists()

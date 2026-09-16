@@ -1,0 +1,143 @@
+{
+  "gate": "G1",
+  "status": "passed",
+  "history": [
+    {
+      "update": 10,
+      "scores": {
+        "roles": 0.5,
+        "negation": 0.5,
+        "space": 0.5,
+        "quantity": 0.5
+      },
+      "overall": 0.5
+    },
+    {
+      "update": 20,
+      "scores": {
+        "roles": 0.53125,
+        "negation": 0.59375,
+        "space": 0.59375,
+        "quantity": 0.59375
+      },
+      "overall": 0.578125
+    },
+    {
+      "update": 30,
+      "scores": {
+        "roles": 0.5625,
+        "negation": 0.5,
+        "space": 0.65625,
+        "quantity": 0.71875
+      },
+      "overall": 0.609375
+    },
+    {
+      "update": 40,
+      "scores": {
+        "roles": 0.5,
+        "negation": 0.625,
+        "space": 0.65625,
+        "quantity": 0.71875
+      },
+      "overall": 0.625
+    },
+    {
+      "update": 50,
+      "scores": {
+        "roles": 0.5,
+        "negation": 0.59375,
+        "space": 0.6875,
+        "quantity": 0.75
+      },
+      "overall": 0.6328125
+    },
+    {
+      "update": 60,
+      "scores": {
+        "roles": 0.59375,
+        "negation": 0.59375,
+        "space": 0.6875,
+        "quantity": 0.78125
+      },
+      "overall": 0.6640625
+    },
+    {
+      "update": 70,
+      "scores": {
+        "roles": 0.59375,
+        "negation": 0.71875,
+        "space": 0.71875,
+        "quantity": 0.78125
+      },
+      "overall": 0.703125
+    },
+    {
+      "update": 80,
+      "scores": {
+        "roles": 0.8125,
+        "negation": 0.84375,
+        "space": 0.78125,
+        "quantity": 0.8125
+      },
+      "overall": 0.8125
+    },
+    {
+      "update": 90,
+      "scores": {
+        "roles": 0.96875,
+        "negation": 0.96875,
+        "space": 0.875,
+        "quantity": 0.84375
+      },
+      "overall": 0.9140625
+    },
+    {
+      "update": 100,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 0.9375,
+        "quantity": 0.84375
+      },
+      "overall": 0.9453125
+    },
+    {
+      "update": 110,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 0.9375
+      },
+      "overall": 0.984375
+    },
+    {
+      "update": 120,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 0.9375
+      },
+      "overall": 0.984375
+    },
+    {
+      "update": 130,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 1.0
+      },
+      "overall": 1.0
+    }
+  ],
+  "seed": 9001,
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "tokenizer_hash": "24589e33b428a52fcf3a44d3480f663d8c24c6803dbd5116dabcb23de838c2f3",
+  "protocol_hash": "fb59e935df4c82eded05ed87e5a0bef9ba48d933bc872d1683867fab3abd10f9",
+  "training_hash": "5fed7b74451378e98589f26f9b8a7b0c626fbd98cf5c1d366e0622ea3711edcd",
+  "code_hash": "11f83f67f968089d1e2aca6a2e60b23d21356f4700123a026492bf4504921306",
+  "gpu_hours": 0.004149801362202399
+}

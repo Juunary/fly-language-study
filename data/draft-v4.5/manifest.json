@@ -1,0 +1,76 @@
+{
+  "version": "draft-v4.5",
+  "seed": 1729,
+  "files": {
+    "train.jsonl": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+    "dev_a.jsonl": "86bfa8dd8c3aaa877d9fb6c2ebf441ac646e25f8242a9716ce5eb7f49a383656",
+    "dev_b.jsonl": "bb0d409c927d17007d9de183784cb99662f6f12f1d185ff3ddfb770c829c6e21",
+    "test.jsonl": "dac7e5e9eadf991019a1904d1a61683eb25fbf4b13cf04a652bff3060bc068d8"
+  },
+  "train_per_task": 5000,
+  "panel_per_task": 1000,
+  "human_review": "pending",
+  "families": {
+    "train": "assertion",
+    "dev_a": "truth_question",
+    "dev_b": "reported_clause",
+    "test": "conditional"
+  },
+  "evaluation": {
+    "primary": {
+      "template_family": "assertion",
+      "fields": [
+        "sentence_a",
+        "sentence_b"
+      ],
+      "shared_with_training": true,
+      "purpose": "held-out meaning combinations rendered in the training (declarative) frame; scheduled panels, mastery and the independent test use this rendering"
+    },
+    "auxiliary": {
+      "field": "auxiliary",
+      "template_families": {
+        "dev_a": "truth_question",
+        "dev_b": "reported_clause",
+        "test": "conditional"
+      },
+      "same_items_as_primary": true,
+      "purpose": "the same held-out items rendered in a held-out outer frame; outer-frame transfer only, never mastery"
+    },
+    "note": "Primary and auxiliary are two renderings of one item: same id, meaning_id, scene and label."
+  },
+  "independent_test": {
+    "confirmatory": true,
+    "note": "Fresh test orbits unused by any listed dataset or exploratory run; apply once at a run's terminal state after the protocol freeze."
+  },
+  "note": "Semantic orbits, foils and translations are split-exclusive. Outer construction families are held out only in the auxiliary rendering; embedded grammar rules and the declarative frame are shared. Animal colors form a controlled fictional domain.",
+  "test_seed": 1731,
+  "overlap_check": {
+    "datasets_checked": [
+      {
+        "path": "data/draft-v4.4",
+        "dataset_hash": "488d8f22a4dfe1f19f00af90a31c6817c00efcaf9c15652736a772a5bf3193ac"
+      },
+      {
+        "path": "data/draft-v4.3",
+        "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e"
+      }
+    ],
+    "orbits_shared_with_source": 0,
+    "sentence_pairs_shared_with_source": 0,
+    "new_orbits": 2000
+  },
+  "derived_from": {
+    "version": "draft-v4.4",
+    "dataset_hash": "488d8f22a4dfe1f19f00af90a31c6817c00efcaf9c15652736a772a5bf3193ac",
+    "files": {
+      "train.jsonl": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+      "dev_a.jsonl": "86bfa8dd8c3aaa877d9fb6c2ebf441ac646e25f8242a9716ce5eb7f49a383656",
+      "dev_b.jsonl": "bb0d409c927d17007d9de183784cb99662f6f12f1d185ff3ddfb770c829c6e21",
+      "test.jsonl": "e590cd9ebff1f426027129be18402c35841d82de7934d9d0f76cc1fcba04680f"
+    },
+    "training_split_identical": true,
+    "dev_splits_identical": true,
+    "replaced_split": "test"
+  },
+  "dataset_hash": "727ca4be1372c77a70580adb4f064b3aef15065460088d2a0217fec6ed75efa9"
+}

@@ -174,8 +174,9 @@ def build(data: Path, output: Path, rng: secrets.SystemRandom | None = None):
             write_csv(folder / f"items-{code}.csv", ITEM_FIELDS, rows)
             write_csv(folder / f"noun-forms-{lang}.csv", ["language", "noun", "color", "size", "case", "count_index", "surface"],
                       [r for r in noun_forms if r["language"] == lang])
-            write_csv(folder / f"construction-examples-{lang}.csv", ["language", "split", "task", "verb", "neg", "sentence_a", "sentence_b"],
-                      [r for r in constructions if r["language"] == lang])  # label column intentionally omitted
+            construction_fields = [k for k in constructions[0].keys() if k != "label"]  # label column intentionally omitted
+            write_csv(folder / f"construction-examples-{lang}.csv", construction_fields,
+                      [r for r in constructions if r["language"] == lang])
             shutil.copyfile(inventory_path, folder / "template-inventory.json")
             write_csv(folder / f"template-checklist-{code}.csv", ["area", "language", "family", "split", "task", "checked", "issue", "comment"],
                       checklist_rows(lang))

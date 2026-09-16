@@ -21,13 +21,20 @@ with (root/'noun-forms.csv').open('w',encoding='utf-8-sig',newline='') as f:
                     for count in range(7):
                         w.writerow([lang,n,c,s,'plural',count,noun_phrase((n,c,s),lang,count=count)])
 with (root/'construction-examples.csv').open('w',encoding='utf-8-sig',newline='') as f:
-    w=csv.writer(f); w.writerow(['language','split','task','verb','neg','label','sentence_a','sentence_b'])
+    # Two renderings per held-out item since draft-v4.4: the primary (training-frame) sentences and the
+    # auxiliary outer-frame family owned by the split. Training rows have the primary rendering only.
+    w=csv.writer(f); w.writerow(['language','split','rendering','family','task','verb','neg','label','sentence_a','sentence_b'])
     used=set()
     for split in SPLITS:
         for r in load_rows(root,split):
-            key=(r['language'],split,r['task'],r['scene']['verb'],r['scene']['neg'],r['label'])
-            if key not in used:
-                used.add(key); w.writerow([*key,r['sentence_a'],r['sentence_b']])
-write_json(root/'review-catalog.json',{'status':'awaiting_human_review',
+            views=[('primary',r['template_family'],r['sentence_a'],r['sentence_b'])]
+            if 'auxiliary' in r:
+                views.append(('auxiliary',r['auxiliary']['template_family'],r['auxiliary']['sentence_a'],r['auxiliary']['sentence_b']))
+            for rendering,family,a,b in views:
+                key=(r['language'],split,rendering,family,r['task'],r['scene']['verb'],r['scene']['neg'],r['label'])
+                if key not in used:
+                    used.add(key); w.writerow([*key,a,b])
+write_json(root/'review-catalog.json',{'status':'awaiting_review',
     'files':{name:file_hash(root/name) for name in ('noun-forms.csv','construction-examples.csv','template-inventory.json')},
-    'note':'All noun surface forms plus construction examples; also inspect the renderer and verb table for full template review.'})
+    'note':'All noun surface forms plus construction examples for both renderings (primary training frame and auxiliary '
+           'outer frame); also inspect the renderer and verb table for full template review.'})

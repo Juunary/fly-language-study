@@ -1,0 +1,422 @@
+{
+  "gate": "G0",
+  "status": "passed",
+  "environment": {
+    "python": "3.12.4",
+    "system": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "torch": "2.5.1+cu121",
+    "torch_cuda": "12.1",
+    "nvcc": "/usr/local/cuda-12.1/bin/nvcc",
+    "cuda_devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3080 Ti",
+        "capability": [
+          8,
+          6
+        ],
+        "vram": 12622954496
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA GeForce RTX 3080 Ti",
+        "capability": [
+          8,
+          6
+        ],
+        "vram": 12622954496
+      }
+    ],
+    "code_hash": "11f83f67f968089d1e2aca6a2e60b23d21356f4700123a026492bf4504921306"
+  },
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "graph_condition": "real",
+  "checks": [
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 4,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 4,
+      "length": 13,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 4,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 4,
+      "length": 13,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 32,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 32,
+      "length": 13,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 32,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 32,
+      "length": 13,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 40,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 40,
+      "length": 13,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 40,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 16,
+      "batch": 40,
+      "length": 13,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 1,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 1,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 4,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 4,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 32,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 32,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 128,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 128,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 256,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 256,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 4,
+      "length": 128,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:0",
+      "neurons": 5000,
+      "batch": 4,
+      "length": 128,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 4,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 4,
+      "length": 13,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 4,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 4,
+      "length": 13,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 32,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 32,
+      "length": 13,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 32,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 32,
+      "length": 13,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 40,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 40,
+      "length": 13,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 40,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 16,
+      "batch": 40,
+      "length": 13,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 1,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 1,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 4,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 4,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 32,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 32,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 128,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 128,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 256,
+      "length": 7,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 256,
+      "length": 7,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 4,
+      "length": 128,
+      "microsteps": 2,
+      "output_and_all_gradients": true
+    },
+    {
+      "device": "cuda:1",
+      "neurons": 5000,
+      "batch": 4,
+      "length": 128,
+      "microsteps": 4,
+      "output_and_all_gradients": true
+    }
+  ],
+  "kernel_revision": "c6be4cfea8ca2210098ef52344b88e85c683fd5c",
+  "gpu_hours": 0.006809757595053977
+}
