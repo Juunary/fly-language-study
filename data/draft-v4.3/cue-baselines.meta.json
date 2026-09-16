@@ -1,0 +1,7 @@
+{
+  "data_files": {
+    "train": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+    "dev_a": "0c3e1d1e14b2c731ec924769ed9a22053a971778a6cb478a8f19ec27648a13f9"
+  },
+  "implementation_hash": "fad3489b0c23fff27d47fdd20b1f38f223fe821d7e0c3aa0785ebf255a736fcd"
+}

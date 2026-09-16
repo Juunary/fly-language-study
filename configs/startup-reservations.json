@@ -1,0 +1,6 @@
+[
+  {"run_id":"g0-server-1","category":"g0_g1","hours":4},
+  {"run_id":"g1-server-1","category":"g0_g1","hours":8},
+  {"run_id":"profile-cuda0-1","category":"g0_g1","hours":2},
+  {"run_id":"profile-cuda1-1","category":"g0_g1","hours":2}
+]

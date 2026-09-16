@@ -1,0 +1,21 @@
+{
+  "version": "draft-v4.3",
+  "seed": 1729,
+  "files": {
+    "train.jsonl": "6c88570099eb231461f0deebd489ddc65c4ed4d04dbda3037471c1c36f7f10d2",
+    "dev_a.jsonl": "0c3e1d1e14b2c731ec924769ed9a22053a971778a6cb478a8f19ec27648a13f9",
+    "dev_b.jsonl": "fcf8d983b0506fe511317420d792dfc299358ae7c86dab51034ac7c5f3888dd1",
+    "test.jsonl": "53f1675da68d0520cf09cd1974cad2af2513e3997c905ec00da9f4cc9a301aa2"
+  },
+  "train_per_task": 5000,
+  "panel_per_task": 1000,
+  "human_review": "pending",
+  "families": {
+    "train": "assertion",
+    "dev_a": "truth_question",
+    "dev_b": "reported_clause",
+    "test": "conditional"
+  },
+  "note": "Outer construction families are held out; embedded grammar rules are shared. Animal colors form a controlled fictional domain.",
+  "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e"
+}

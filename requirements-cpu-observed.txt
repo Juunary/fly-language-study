@@ -1,0 +1,9 @@
+# Observed local CPU versions, NOT a CUDA server installation recipe.
+numpy==2.5.3
+scipy==1.18.1
+torch==2.14.0
+tokenizers==0.23.2
+safetensors==0.8.0
+matplotlib==3.11.2
+threadpoolctl==3.7.0
+pytest==9.1.1

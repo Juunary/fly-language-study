@@ -1,0 +1,74 @@
+{
+  "en/roles": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "en/negation": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "en/space": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "en/quantity": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "de/roles": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "de/negation": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "de/space": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "de/quantity": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "ko/roles": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "ko/negation": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "ko/space": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  },
+  "ko/quantity": {
+    "accuracy": 0.5,
+    "audit_required": false,
+    "interpretation": "nuisance features only",
+    "optimizer_success": true
+  }
+}

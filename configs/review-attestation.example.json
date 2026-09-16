@@ -1,0 +1,7 @@
+{
+  "reviewers":{"en":["REAL_NAME_1","REAL_NAME_2"],"de":["REAL_NAME_3","REAL_NAME_4"],"ko":["REAL_NAME_5","REAL_NAME_6"]},
+  "all_templates_and_forms_checked":false,
+  "inventory_hash":"REPLACE_WITH_REVIEWED_TEMPLATE_INVENTORY_SHA256",
+  "resolved_items":{},
+  "note":"Example only. Human reviewers complete this after reviewing actual materials. Lists are sorted by reviewer name."
+}

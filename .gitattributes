@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.npz binary
+*.json -text whitespace=cr-at-eol
+*.jsonl -text whitespace=cr-at-eol
+*.csv -text whitespace=cr-at-eol
+*.xml -text whitespace=cr-at-eol
+*.txt -text whitespace=cr-at-eol

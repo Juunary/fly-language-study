@@ -1,0 +1,9 @@
+{
+  "quick": false,
+  "records": 3888,
+  "repetitions": 5000,
+  "complete": true,
+  "design_effect": 0.2,
+  "minimum_power": 0.8,
+  "mc_interval": "Wilson 95%"
+}

@@ -1,0 +1,10 @@
+{
+  "source": "QuixiAI/FlyGPT/init",
+  "revision": "68282fad45efa909eb95e445d5dfcef00a917ff4",
+  "condition": "real",
+  "upstream_code": "d8ce5e286b638167a0dcb51bd0e1defdbd510d37",
+  "source_file_hash": "b269cc0bb42081668e2ad8ebc47f543c3386c8baaa225d8dd339773a37d0dba4",
+  "pretrained_weights_loaded": false,
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "file_hash": "e26c22783ff6ae7db99f366ac6223b62736caa16f1d9f2996e678fbc5523fb54"
+}

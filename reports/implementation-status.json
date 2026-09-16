@@ -1,0 +1,90 @@
+{
+  "packaged_at_utc": "2026-09-16T08:13:04.191310+00:00",
+  "phase": "implementation_and_cpu_validation",
+  "code_hash": "c90ac7a731088e0994b155778baf9e8f88d6f0358bf3a02f7de0b1b9963e6d2c",
+  "dataset_version": "draft-v4.3",
+  "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e",
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "tokenizer_hash": "d30ef71c4d5222fe82cf2b4cafedde998145a3a58e440f862cdc988d46f70883",
+  "trainable_parameters": 674870,
+  "neurons": 5000,
+  "edges": 524324,
+  "examples": 96000,
+  "cpu_tests": {
+    "tests": 46,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "local_environment": {
+    "python": "3.12.10",
+    "system": "Windows-11-10.0.26200-SP0",
+    "torch": "2.14.0+cpu",
+    "torch_cuda": null,
+    "nvcc": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.3\\bin\\nvcc.EXE",
+    "cuda_devices": [],
+    "code_hash": "c90ac7a731088e0994b155778baf9e8f88d6f0358bf3a02f7de0b1b9963e6d2c"
+  },
+  "cuda_g0": "blocked_no_two_sm86_devices",
+  "human_review": "pending",
+  "g1": "not_run_on_cuda",
+  "g2": "not_run",
+  "g3": "not_run",
+  "sequential_pilots": "not_run",
+  "main": "not_started",
+  "power": {
+    "records": 3888,
+    "replications_per_scenario": [
+      5000
+    ],
+    "evaluated_design_replicates": 19440000,
+    "generated_max_n_datasets": 6480000,
+    "warning": "A scenario map, not achieved empirical study power. Values depend on the stated DGM.",
+    "by_n": {
+      "10": {
+        "null_fwer_range": [
+          0.0212,
+          0.0586
+        ],
+        "target_power_range": [
+          0.0672,
+          1.0
+        ],
+        "target_scenarios": 324,
+        "conservative_power_gate_passes": 114
+      },
+      "15": {
+        "null_fwer_range": [
+          0.0274,
+          0.0584
+        ],
+        "target_power_range": [
+          0.0996,
+          1.0
+        ],
+        "target_scenarios": 324,
+        "conservative_power_gate_passes": 171
+      },
+      "20": {
+        "null_fwer_range": [
+          0.035,
+          0.0584
+        ],
+        "target_power_range": [
+          0.1338,
+          1.0
+        ],
+        "target_scenarios": 324,
+        "conservative_power_gate_passes": 211
+      }
+    }
+  },
+  "observed_study_gpu_hours": 0,
+  "baseline_notes": "Nuisance 50% in all 12 cells; hypothesis-only roles 54.4%, other cells 50%; grammar roles 100%. These are corpus diagnostics, not FlyGPT performance.",
+  "limitations": [
+    "Draft corpus requires two human reviewers per language.",
+    "Whole-string BPE creates different train/evaluation lengths; metadata reports all language/task lengths.",
+    "Template holdout means outer construction families; embedded grammar is shared.",
+    "CUDA compatibility, learnability, power feasibility and wall time remain unmeasured."
+  ]
+}

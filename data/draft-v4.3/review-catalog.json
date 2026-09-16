@@ -1,0 +1,9 @@
+{
+  "status": "awaiting_human_review",
+  "files": {
+    "noun-forms.csv": "524b7d1d17e0d8ec84bcaacf708f9937f73a1e2aaef2b62e5dfd749482657b4c",
+    "construction-examples.csv": "a7875d8a9d2c895ae7846b592d755598426e66782e5f1422b7028a773e5f3c06",
+    "template-inventory.json": "6cfd9a2e7259fbe88c0a5174b3c81d64d8a724e4be5540a6c3d0acf59854aae2"
+  },
+  "note": "All noun surface forms plus construction examples; also inspect the renderer and verb table for full template review."
+}

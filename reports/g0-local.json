@@ -1,0 +1,17 @@
+{
+  "gate": "G0",
+  "status": "blocked",
+  "environment": {
+    "python": "3.12.10",
+    "system": "Windows-11-10.0.26200-SP0",
+    "torch": "2.14.0+cpu",
+    "torch_cuda": null,
+    "nvcc": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.3\\bin\\nvcc.EXE",
+    "cuda_devices": [],
+    "code_hash": "c90ac7a731088e0994b155778baf9e8f88d6f0358bf3a02f7de0b1b9963e6d2c"
+  },
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "graph_condition": "real",
+  "checks": [],
+  "reason": "RuntimeError: Two sm_86 CUDA GPUs required; missing hardware is BLOCKED, never PASS"
+}
