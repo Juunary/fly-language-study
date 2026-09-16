@@ -1,7 +1,7 @@
 {
   "packaged_at_utc": "2026-09-15T23:16:47.869317+00:00",
-  "phase": "cuda_validation_complete_awaiting_human_review",
-  "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4",
+  "phase": "ai_review_amendment_cuda_revalidated_awaiting_claude_evidence",
+  "code_hash": "6df7331008bb4b206dbd538e1389ac386656f5582103559adb8fbb8e3cf686a8",
   "dataset_version": "draft-v4.3",
   "dataset_hash": "9e73d77bf510c1f8fd5daef49650bd06dde8b158817c75b6dc9a71ec18aafe3e",
   "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
@@ -109,7 +109,7 @@
       }
     }
   },
-  "observed_study_gpu_hours": 0.02006085892641244,
+  "observed_study_gpu_hours": 0.03271836713331545,
   "baseline_notes": "Nuisance 50% in all 12 cells; hypothesis-only roles 54.4%, other cells 50%; grammar roles 100%. These are corpus diagnostics, not FlyGPT performance.",
   "limitations": [
     "Draft corpus requires two human reviewers per language.",
@@ -126,7 +126,7 @@
     "cuda_devices": [],
     "code_hash": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4"
   },
-  "server_updated_at_utc": "2026-09-16T09:24:42.540677+00:00",
+  "server_updated_at_utc": "2026-09-16T13:04:22.907524+00:00",
   "server_environment": {
     "python": "3.12.4",
     "torch": "2.5.1+cu121",
@@ -150,12 +150,11 @@
     "graph_file": true
   },
   "cpu_tests_server": {
-    "tests": 54,
+    "tests": 67,
     "failures": 0,
     "errors": 0,
     "skipped": 0,
-    "report": "reports/cpu-tests-server.xml",
-    "note": "46 delivered + 8 review-packaging tests"
+    "note": "46 delivered + 8 review packaging + 13 ai_review"
   },
   "cpu_smoke_server": "artifacts/server-cpu-smoke (synthetic graph; not study evidence)",
   "data_recheck_server": "audit-data/baselines/cue-baselines regenerated on a scratch copy: JSON identical to delivered files (delivered files have CRLF line endings; left unchanged)",
@@ -250,6 +249,30 @@
         "reserved": 1,
         "used": 0.006826591803368905,
         "status": "completed"
+      },
+      "g0-ai-server-1": {
+        "category": "g0_g1",
+        "reserved": 1,
+        "used": 0.006507152997785144,
+        "status": "completed"
+      },
+      "profile-ai-cuda0-1": {
+        "category": "g0_g1",
+        "reserved": 0.5,
+        "used": 0.0020717221208097826,
+        "status": "completed"
+      },
+      "profile-ai-cuda1-1": {
+        "category": "g0_g1",
+        "reserved": 0.5,
+        "used": 0.00205652609862025,
+        "status": "completed"
+      },
+      "g1-ai-server-1": {
+        "category": "g0_g1",
+        "reserved": 2,
+        "used": 0.002022106989687826,
+        "status": "completed"
       }
     }
   },
@@ -276,5 +299,68 @@
     "merge": "scripts/merge_review_submissions.py -> review/submissions/merged/reviewed-audit-sample.csv + attestation-draft.json (humans complete)",
     "judgments_prefilled": false,
     "tests": "tests/test_review_packaging.py (5) in reports/cpu-tests-server.xml: 51 passed"
+  },
+  "historical_code_hash_g0_g1": "1b0635deef9155c23be8052f03c501504b7bf0346d853ba4007cb0fcf68184c4",
+  "protocol_amendment": "v4-ai-review-1",
+  "review_mode": "claude_only",
+  "human_reviewed": false,
+  "cuda_g0_current": {
+    "status": "passed",
+    "checks": 48,
+    "code_hash": "6df7331008bb4b206dbd538e1389ac386656f5582103559adb8fbb8e3cf686a8",
+    "kernel_revision": "c6be4cfea8ca2210098ef52344b88e85c683fd5c",
+    "gpu_hours": 0.006507152997785144,
+    "report": "reports/g0-ai-server.json",
+    "note": "Re-run after src changed for the AI review amendment; historical reports/g0-server.json kept unchanged"
+  },
+  "g1_current": {
+    "status": "passed",
+    "passed_at_update": 60,
+    "final_scores": {
+      "roles": 1.0,
+      "negation": 1.0,
+      "space": 1.0,
+      "quantity": 1.0
+    },
+    "protocol": "configs/protocol-v4-ai.json",
+    "protocol_hash": "51e572e689be3758df54c384a4bde8dfa9deebef02170420e05e07a826f61743",
+    "gpu_hours": 0.0007246159250563425,
+    "report": "reports/g1-ai-server.json"
+  },
+  "throughput_current": {
+    "selected_microbatch": 256,
+    "seconds_per_256": {
+      "cuda:0": 0.04866923619993031,
+      "cuda:1": 0.04826404019258916
+    },
+    "reports": [
+      "reports/profile-ai-cuda0.json",
+      "reports/profile-ai-cuda1.json"
+    ]
+  },
+  "ai_review": {
+    "status": "evidence_incomplete",
+    "workspace": "review/ai/claude-v1 (gitignored)",
+    "linked": [
+      "EN-R1-SSJKF",
+      "EN-R2-G4A2V",
+      "DE-R1-EDV65",
+      "DE-R2-WKGG7"
+    ],
+    "pending_supplement": [
+      "KO-R1-9PNJS",
+      "KO-R2-Q73JV"
+    ],
+    "pending_operator_inputs": [
+      "per run: model_id, model_version, interface, session_id, executed_at_utc, settings, fresh_context, answer_key_exposed",
+      "per run: prompt-used.md (actual prompt used at the time) and transcript.txt (conversation export)",
+      "KO runs: complete items-response.csv and updated checklist-response.csv from the supplement exchange in the original sessions",
+      "adjudication entry if any judgment differs from the original label or fluent=no remains"
+    ],
+    "gates_not_run": [
+      "merge --review-mode claude_only",
+      "certify-ai-review",
+      "pilot-ready --review-mode claude_only"
+    ]
   }
 }
