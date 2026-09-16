@@ -39,7 +39,7 @@ def read_csv(path):
 
 def read_agent_transcript(path):
     """Assistant messages, tool uses, launcher text, model identity and timestamps from a Claude Code agent JSONL."""
-    session = dict(model_id="", model_version="", launcher="", started_at_utc="", finished_at_utc="", messages=[], tool_uses=[])
+    session = dict(model_id="", model_version="", launcher="", started_at_utc="", finished_at_utc="", messages=[], tool_uses=[], follow_ups=[])
     for raw in Path(path).read_text(encoding="utf-8").splitlines():
         if not raw.strip():
             continue
@@ -47,8 +47,11 @@ def read_agent_transcript(path):
         if d.get("type") == "attachment" and d.get("attachment", {}).get("type") == "model":
             identity = d["attachment"].get("identity", {})
             session["model_id"], session["model_version"] = identity.get("modelId", ""), identity.get("marketingName", "")
-        elif d.get("type") == "user" and isinstance(d.get("message", {}).get("content"), str) and not session["launcher"]:
-            session["launcher"], session["started_at_utc"] = d["message"]["content"], d.get("timestamp", "")
+        elif d.get("type") == "user" and isinstance(d.get("message", {}).get("content"), str):
+            if not session["launcher"]:
+                session["launcher"], session["started_at_utc"] = d["message"]["content"], d.get("timestamp", "")
+            else:  # later plain user messages: harness resume notices, coordinator requests for the rest of the output
+                session["follow_ups"].append(dict(uuid=d.get("uuid"), timestamp=d.get("timestamp", ""), text=d["message"]["content"]))
         elif d.get("type") == "assistant":
             message = d.get("message", {})
             for block in message.get("content", []):
@@ -73,9 +76,13 @@ def render_transcript(launcher, session):
         parts.append(f"=== tool use: {name} {json.dumps(tool['input'], ensure_ascii=False)} ===")
     if session.get("tool_uses"):
         parts.append("")
-    for k, m in enumerate(session["messages"], 1):
-        parts += [f"=== assistant message {k}/{len(session['messages'])} (uuid {m.get('uuid')}, timestamp {m.get('timestamp')}, "
-                  f"stop_reason {m.get('stop_reason')}, output_tokens {m.get('output_tokens')}) ===", m["text"], ""]
+    events = [("assistant", k, m) for k, m in enumerate(session["messages"], 1)] + [("user", k, f) for k, f in enumerate(session.get("follow_ups", []), 1)]
+    for kind, k, m in sorted(events, key=lambda e: e[2].get("timestamp") or ""):
+        if kind == "assistant":
+            parts += [f"=== assistant message {k}/{len(session['messages'])} (uuid {m.get('uuid')}, timestamp {m.get('timestamp')}, "
+                      f"stop_reason {m.get('stop_reason')}, output_tokens {m.get('output_tokens')}) ===", m["text"], ""]
+        else:
+            parts += [f"=== follow-up user message {k}/{len(session['follow_ups'])} (uuid {m.get('uuid')}, timestamp {m.get('timestamp')}) ===", m["text"], ""]
     return "\n".join(parts)
 
 
@@ -124,36 +131,44 @@ def compare_attempt(attempt_lines, final_lines, compare):
 def extract_csv(messages, name, compare=()):
     """Assemble the fenced blocks named ``name`` across the session's messages, in order, and report the assembly.
 
-    A block that was cut off at the output limit is either continued (the next block starts after the cut, without a
-    header) or restarted (the next block starts again with the header): a continuation is concatenated after dropping
-    the single partial row that the continuation re-supplies; a complete restart supersedes the cut-off attempt, which
-    is kept in the report together with the fields on which its complete rows disagree with the final block.
+    A block cut off at the output limit is either continued (a later header-less block; the single partial row is
+    dropped once some later block supplies that review_id again) or restarted (a later block that starts with the header
+    supersedes the cut-off attempt, which is kept in the report with the fields on which its complete rows disagree with
+    the final block). A header-less block after a complete one is also a continuation (a harness resume or a coordinator
+    request for the rest); rows repeated across continuations must be identical and are then skipped once.
     """
     found = [(k, body, terminated) for k, message in enumerate(messages) for n, body, terminated in fenced_blocks(message) if n == name]
     if not found:
         raise ValueError(f"No fenced block named {name}")
-    info = dict(blocks=len(found), unterminated=sum(not t for _, _, t in found), dropped_partial_rows=[], superseded_attempts=[])
-    attempts, lines, terminated, started_in = [], [], False, None
-    for message_index, body, block_terminated in found:
-        body = list(body)
+    info = dict(blocks=len(found), unterminated=sum(not t for _, _, t in found), dropped_partial_rows=[], superseded_attempts=[], duplicate_rows_skipped=[])
+    attempts, lines, terminated, started_in, partial = [], [], False, None, None
+    key = lambda l: l.split(",", 1)[0]
+    for index, (message_index, body, block_terminated) in enumerate(found):
+        body = [l for l in body if l.strip() != ""] if lines else list(body)
         header = lines[0] if lines else None
         if lines and body and body[0] == header:  # a restart: the earlier attempt is superseded
-            attempts.append((started_in, lines)); lines = []
-        elif lines and not terminated:  # a continuation of a cut-off block
-            partial = lines[-1]
-            partial_id = partial.split(",", 1)[0]
-            replacement = next((l for l in body if l.split(",", 1)[0] == partial_id), None)
+            attempts.append((started_in, lines)); lines, partial = [], None
+        elif lines and not terminated:  # the previous block was cut off: its last line is a partial row
+            partial = lines[-1]; lines = lines[:-1]
+            later = [l for _, b, _ in found[index:] for l in b]
+            replacement = next((l for l in later if key(l) == key(partial)), None)
             if replacement is None:
-                raise ValueError(f"unterminated {name} block: partial row {partial_id!r} is not re-supplied by the continuation")
+                raise ValueError(f"unterminated {name} block: partial row {key(partial)!r} is not re-supplied by any continuation")
             if partial != replacement[:len(partial)]:
-                raise ValueError(f"partial row {partial_id!r} conflicts with its continuation row")
-            info["dropped_partial_rows"].append(dict(review_id=partial_id, text=partial))
-            lines = lines[:-1]
-        elif lines and terminated:
-            raise ValueError(f"a second {name} block follows a complete one without restarting from the header")
+                raise ValueError(f"partial row {key(partial)!r} conflicts with its continuation row")
+            info["dropped_partial_rows"].append(dict(review_id=key(partial), text=partial))
         if not lines:
             started_in = message_index
-        lines += [l for l in body if l.strip() != ""] if lines else body
+            lines += body
+        else:
+            present = {key(l): l for l in lines[1:]}
+            for l in body:
+                if key(l) in present:
+                    if present[key(l)] != l:
+                        raise ValueError(f"row {key(l)!r} conflicts between continuations")
+                    info["duplicate_rows_skipped"].append(key(l))
+                else:
+                    lines.append(l); present[key(l)] = l
         terminated = block_terminated
     if not terminated:
         raise ValueError(f"unterminated {name} block without a continuation")
@@ -232,7 +247,7 @@ def main():
         model_id, model_version = session["model_id"] or a.model_id or "", session["model_version"] or a.model_version or "not_exposed"
         executed_at, started_at = session["finished_at_utc"], session["started_at_utc"]
         settings.update(stop_reasons=[m["stop_reason"] for m in session["messages"]], output_tokens=[m["output_tokens"] for m in session["messages"]],
-                        tool_uses=[t["name"] for t in session["tool_uses"]], sampling="not_exposed")
+                        tool_uses=[t["name"] for t in session["tool_uses"]], follow_up_messages=[f["text"] for f in session["follow_ups"]], sampling="not_exposed")
         session_copy = folder/"session-transcript.jsonl"
         shutil.copyfile(a.agent_transcript, session_copy)
     else:

@@ -62,14 +62,14 @@ def test_continuation_block_is_reassembled_and_partial_row_dropped(tmp_path):
     first, second = truncated_pair(ROWS[1][:40])
     text, info = rec.extract_csv([first, second], "items-response.csv")
     assert text == HEADER + "\n" + "\n".join(ROWS) + "\n"
-    assert info == dict(blocks=2, unterminated=1, dropped_partial_rows=[dict(review_id="bbbb000002", text=ROWS[1][:40])], superseded_attempts=[])
+    assert info == dict(blocks=2, unterminated=1, dropped_partial_rows=[dict(review_id="bbbb000002", text=ROWS[1][:40])], superseded_attempts=[], duplicate_rows_skipped=[])
 
 
 def test_single_terminated_block_has_no_assembly(tmp_path):
     whole = "```csv items-response.csv\n" + HEADER + "\n" + "\n".join(ROWS) + "\n```\n"
     text, info = rec.extract_csv([whole], "items-response.csv")
     assert text == HEADER + "\n" + "\n".join(ROWS) + "\n"
-    assert info == dict(blocks=1, unterminated=0, dropped_partial_rows=[], superseded_attempts=[])
+    assert info == dict(blocks=1, unterminated=0, dropped_partial_rows=[], superseded_attempts=[], duplicate_rows_skipped=[])
 
 
 def test_partial_row_with_a_conflicting_judgment_is_refused():
@@ -91,7 +91,7 @@ def test_complete_restart_supersedes_a_truncated_attempt_and_is_compared_to_it()
     first, second = restart_pair(draft, ROWS)
     text, info = rec.extract_csv([first, second], "items-response.csv", compare=("judged_label", "fluent"))
     assert text == HEADER + "\n" + "\n".join(ROWS) + "\n"
-    assert info == dict(blocks=2, unterminated=1, dropped_partial_rows=[],
+    assert info == dict(blocks=2, unterminated=1, dropped_partial_rows=[], duplicate_rows_skipped=[],
                         superseded_attempts=[dict(message=0, rows=3, complete_rows=2, disagreements={"judged_label": ["bbbb000002"], "fluent": []})])
 
 
@@ -145,11 +145,67 @@ def test_main_records_session_from_agent_transcript(tmp_path, monkeypatch, capsy
     assert run["session_started_at_utc"] == "2026-09-16T22:25:10.803Z"
     assert run["fresh_context"] is True and run["answer_key_exposed"] is False and run["session_id"] == "review-" + CODE
     assert run["settings"]["stop_reasons"] == ["tool_use", "max_tokens", "end_turn"]
-    assert run["response_assembly"]["items-response.csv"] == dict(blocks=2, unterminated=1, dropped_partial_rows=[dict(review_id="bbbb000002", text=ROWS[1][:40])], superseded_attempts=[])
-    assert run["response_assembly"]["checklist-response.csv"] == dict(blocks=1, unterminated=0, dropped_partial_rows=[], superseded_attempts=[])
+    assert run["response_assembly"]["items-response.csv"] == dict(blocks=2, unterminated=1, dropped_partial_rows=[dict(review_id="bbbb000002", text=ROWS[1][:40])], superseded_attempts=[], duplicate_rows_skipped=[])
+    assert run["response_assembly"]["checklist-response.csv"] == dict(blocks=1, unterminated=0, dropped_partial_rows=[], superseded_attempts=[], duplicate_rows_skipped=[])
     assert run["transcript"]["sha256"] and run["items_response"]["sha256"] and run["session_transcript"]["path"] == f"{CODE}/session-transcript.jsonl"
     assert run["prior_artifacts"][0]["path"] == f"{CODE}/prompt.md"
     out = json.loads(capsys.readouterr().out)
     assert out["items"] == 3 and out["fluent_no"] == 1 and out["checklist_rows"] == 2
     with pytest.raises(FileExistsError):
         rec.main()
+
+
+def transcript_with_follow_up(tmp_path):
+    """First message cut at the limit; the harness resumes it; a coordinator asks for the rest; the last row was cut and is
+    supplied only in the final message."""
+    first = "```csv items-response.csv\n" + HEADER + "\n" + ROWS[0] + "\n" + ROWS[1][:40]          # cut inside row 2
+    second = "```csv items-response.csv (continued)\n" + ROWS[2] + "\n```\n\nContinuing in the next message."  # skips the cut row
+    third = ("```csv items-response.csv (continued)\n" + ROWS[1] + "\n```\n\n```csv checklist-response.csv\n" + CHECK_HEADER + "\n" + "\n".join(CHECKS) + "\n```")
+    rows = [line("attachment", attachment=dict(type="model", identity=dict(modelId="claude-opus-5[1m]", marketingName="Opus 5 (1M context)"))),
+            line("user", uuid="u1", timestamp="2026-09-17T00:00:00.000Z", message=dict(role="user", content="LAUNCH TEXT")),
+            line("assistant", uuid="a1", timestamp="2026-09-17T00:10:00.000Z", message=dict(role="assistant", stop_reason="max_tokens", usage=dict(output_tokens=64000), content=[dict(type="text", text=first)])),
+            line("user", uuid="u2", timestamp="2026-09-17T00:10:01.000Z", message=dict(role="user", content="Output token limit hit. Resume directly.")),
+            line("assistant", uuid="a2", timestamp="2026-09-17T00:12:00.000Z", message=dict(role="assistant", stop_reason="end_turn", usage=dict(output_tokens=900), content=[dict(type="text", text=second)])),
+            line("user", uuid="u3", timestamp="2026-09-17T00:15:00.000Z", message=dict(role="user", content="Please return the missing row and the checklist.")),
+            line("assistant", uuid="a3", timestamp="2026-09-17T00:16:00.000Z", message=dict(role="assistant", stop_reason="end_turn", usage=dict(output_tokens=700), content=[dict(type="text", text=third)]))]
+    path = tmp_path/"agent.jsonl"; path.write_text("\n".join(rows) + "\n", encoding="utf-8")
+    return path, first, second, third
+
+
+def test_follow_up_user_messages_are_kept_in_the_transcript_record(tmp_path):
+    path, first, second, third = transcript_with_follow_up(tmp_path)
+    session = rec.read_agent_transcript(path)
+    assert session["launcher"] == "LAUNCH TEXT"
+    assert [(f["timestamp"], f["text"]) for f in session["follow_ups"]] == [("2026-09-17T00:10:01.000Z", "Output token limit hit. Resume directly."),
+                                                                            ("2026-09-17T00:15:00.000Z", "Please return the missing row and the checklist.")]
+    rendered = rec.render_transcript("LAUNCH TEXT", session)
+    assert rendered.index("Output token limit hit") < rendered.index(second) < rendered.index("Please return the missing row") < rendered.index(third)
+
+
+def test_headerless_block_after_a_complete_block_continues_it_and_a_cut_row_may_arrive_later(tmp_path):
+    path, first, second, third = transcript_with_follow_up(tmp_path)
+    text, info = rec.extract_csv([first, second, third], "items-response.csv")
+    assert rec.read_csv_text(text) == rec.read_csv_text(HEADER + "\n" + ROWS[0] + "\n" + ROWS[2] + "\n" + ROWS[1] + "\n")
+    assert info["blocks"] == 3 and info["unterminated"] == 1 and info["dropped_partial_rows"] == [dict(review_id="bbbb000002", text=ROWS[1][:40])]
+
+
+def test_duplicate_rows_across_continuations_must_be_identical():
+    first = "```csv items-response.csv\n" + HEADER + "\n" + ROWS[0] + "\n" + ROWS[1] + "\n```"
+    same = "```csv items-response.csv (continued)\n" + ROWS[1] + "\n" + ROWS[2] + "\n```"
+    text, info = rec.extract_csv([first, same], "items-response.csv")
+    assert rec.read_csv_text(text) == rec.read_csv_text(HEADER + "\n" + "\n".join(ROWS) + "\n") and info["duplicate_rows_skipped"] == ["bbbb000002"]
+    changed = "```csv items-response.csv (continued)\n" + ROWS[1].replace(f"{CODE},0,yes", f"{CODE},1,yes") + "\n" + ROWS[2] + "\n```"
+    with pytest.raises(ValueError, match="conflict"):
+        rec.extract_csv([first, changed], "items-response.csv")
+
+
+def test_main_records_follow_up_messages_in_settings(tmp_path, monkeypatch, capsys):
+    ws = workspace(tmp_path)
+    path, first, second, third = transcript_with_follow_up(tmp_path)
+    monkeypatch.setattr(sys, "argv", ["rec", "--workspace", str(ws), "--code", CODE, "--agent-transcript", str(path),
+                                      "--launcher", str(ws/CODE/"launcher-text.md"), "--session-id", "review-" + CODE,
+                                      "--submissions", str(tmp_path/"inbox")])
+    rec.main()
+    run = json.loads((ws/"evidence.json").read_text(encoding="utf-8"))["runs"][0]
+    assert run["settings"]["follow_up_messages"] == ["Output token limit hit. Resume directly.", "Please return the missing row and the checklist."]
+    assert json.loads(capsys.readouterr().out)["items"] == 3

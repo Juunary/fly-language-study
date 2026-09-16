@@ -1,0 +1,458 @@
+{
+ "review": "v6 (data/draft-v4.6, protocol v5.1, v4-ai-review-1)",
+ "merged": "review/v6/submissions/merged-ai-v6",
+ "merge_receipt": {
+  "merged_at_utc": "2026-09-16T23:28:10.056927+00:00",
+  "submissions": {
+   "DE-R1-42K4J": {
+    "file": "review/v6/submissions/raw/DE-R1-42K4J/items-response.csv",
+    "sha256": "e29c1932def60951db1f44cd9e2cf6e3d78ac72f8ee7d04ed1dfe070c9899313",
+    "rows": 200,
+    "language": "de"
+   },
+   "DE-R2-W4WG9": {
+    "file": "review/v6/submissions/raw/DE-R2-W4WG9/items-response.csv",
+    "sha256": "1d95ca73d8d26c32f168b42bed3cb240e2a488f885c5028de6dd08ef218fcee3",
+    "rows": 200,
+    "language": "de"
+   },
+   "EN-R1-N5N88": {
+    "file": "review/v6/submissions/raw/EN-R1-N5N88/items-response.csv",
+    "sha256": "b3f3e43adbe9df10d5fe2dffdd751b977863e82c247ec18f78a2ad5c6887beba",
+    "rows": 200,
+    "language": "en"
+   },
+   "EN-R2-M6L2C": {
+    "file": "review/v6/submissions/raw/EN-R2-M6L2C/items-response.csv",
+    "sha256": "0b7b94ff8ed24b773d64b6ed239c4a8c4cb72412e4a404292c8ffd9f4082d8e0",
+    "rows": 200,
+    "language": "en"
+   },
+   "KO-R1-96N3A": {
+    "file": "review/v6/submissions/raw/KO-R1-96N3A/items-response.csv",
+    "sha256": "0c44cdec0007a4259435b0c843e315a33c41ffc04ca995872ba813c1bcacb134",
+    "rows": 200,
+    "language": "ko"
+   },
+   "KO-R2-98YHE": {
+    "file": "review/v6/submissions/raw/KO-R2-98YHE/items-response.csv",
+    "sha256": "4fec3412664da24dea306a3faa7ca949e5396803c519e4b1322375dcd7241edd",
+    "rows": 200,
+    "language": "ko"
+   }
+  },
+  "items": 600,
+  "merged_rows": 1200,
+  "unresolved_items": 0,
+  "agreement_by_language": {
+   "de": {
+    "items": 200,
+    "raw_agreement": 1.0,
+    "kappa": 1.0,
+    "fluent_no": 0,
+    "differs_from_original": 0
+   },
+   "en": {
+    "items": 200,
+    "raw_agreement": 1.0,
+    "kappa": 1.0,
+    "fluent_no": 0,
+    "differs_from_original": 0
+   },
+   "ko": {
+    "items": 200,
+    "raw_agreement": 1.0,
+    "kappa": 1.0,
+    "fluent_no": 0,
+    "differs_from_original": 0
+   }
+  },
+  "certify_thresholds": {
+   "items_per_language": 200,
+   "min_agreement": 0.95,
+   "min_kappa": 0.8
+  },
+  "outputs": {
+   "reviewed-audit-sample.csv": "a6aeb6120221ef9ad4ad89f5480dfb33cd90d2256c7a0b29ee8bbae9f9334df5",
+   "disagreements.csv": "6d1b5f4ce658133698ea03003938786c795969423ac936c315e18f3c97d73c0c",
+   "attestation-draft.json": "6aeee5642a18af7c2a17830da96044e4b4a4b44e63817ba973c9d75cfd5ef884"
+  }
+ },
+ "sessions": [
+  {
+   "reviewer": "DE-R1-42K4J",
+   "language": "de",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-a5697ef82f06ecc70",
+   "started": "2026-09-16T23:05:04.428Z",
+   "finished": "2026-09-16T23:17:27.346Z",
+   "stop_reasons": [
+    null,
+    "max_tokens",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    64000,
+    11195
+   ],
+   "follow_up_messages": 2,
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 1,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 2,
+     "unterminated": 1,
+     "dropped_partial_rows": [
+      {
+       "review_id": "f6cd6f0a98",
+       "text": "f6cd6f0a98,de,dev_a,roles,Der große blaue Fuchs verfolgt den alten blauen Löwen"
+      }
+     ],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    }
+   },
+   "prior_attempts": []
+  },
+  {
+   "reviewer": "DE-R2-W4WG9",
+   "language": "de",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-ac921299340952fb9",
+   "started": "2026-09-16T23:05:10.098Z",
+   "finished": "2026-09-16T23:19:40.927Z",
+   "stop_reasons": [
+    null,
+    null,
+    null,
+    "max_tokens",
+    "end_turn",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    1,
+    4,
+    64000,
+    7905,
+    10291
+   ],
+   "follow_up_messages": 3,
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 0,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 3,
+     "unterminated": 1,
+     "dropped_partial_rows": [
+      {
+       "review_id": "b20db6e1a4",
+       "text": "b20db6e1a4,de,train,space,Der alte rote Hund ist links von der großen grünen Ente und das junge schwarze Kaninchen ist rechts von dem alten blauen Schaf.,Die große grüne Ente ist links von dem alten roten Hund und das alte blaue Schaf ist rechts von dem jungen schwarzen Kaninchen.,DE-R2-W"
+      }
+     ],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    }
+   },
+   "prior_attempts": []
+  },
+  {
+   "reviewer": "EN-R1-N5N88",
+   "language": "en",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-a1be444a14d45abd0",
+   "started": "2026-09-16T23:04:51.305Z",
+   "finished": "2026-09-16T23:14:21.962Z",
+   "stop_reasons": [
+    null,
+    null,
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    1,
+    56368
+   ],
+   "follow_up_messages": 1,
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 0,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    }
+   },
+   "prior_attempts": []
+  },
+  {
+   "reviewer": "EN-R2-M6L2C",
+   "language": "en",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-aa754acf104c1b00d",
+   "started": "2026-09-16T23:15:02.539Z",
+   "finished": "2026-09-16T23:25:32.579Z",
+   "stop_reasons": [
+    null,
+    null,
+    "max_tokens",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    7,
+    64000,
+    859
+   ],
+   "follow_up_messages": 2,
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 4,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    },
+    "checklist-response.csv": {
+     "blocks": 2,
+     "unterminated": 1,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [
+      {
+       "message": 2,
+       "rows": 3,
+       "complete_rows": 2,
+       "disagreements": {
+        "checked": [],
+        "issue": []
+       }
+      }
+     ],
+     "duplicate_rows_skipped": []
+    }
+   },
+   "prior_attempts": [
+    "EN-R2-M6L2C/attempt-1-af411ca1351d54aac/session-transcript.jsonl",
+    "EN-R2-M6L2C/attempt-1-af411ca1351d54aac/transcript.txt",
+    "EN-R2-M6L2C/attempt-1-af411ca1351d54aac/NOTE.md"
+   ]
+  },
+  {
+   "reviewer": "KO-R1-96N3A",
+   "language": "ko",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-ab6e368bc8a042afb",
+   "started": "2026-09-16T23:05:15.430Z",
+   "finished": "2026-09-16T23:20:42.875Z",
+   "stop_reasons": [
+    null,
+    "max_tokens",
+    "end_turn",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    64000,
+    11378,
+    239
+   ],
+   "follow_up_messages": 3,
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 0,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 3,
+     "unterminated": 1,
+     "dropped_partial_rows": [
+      {
+       "review_id": "9a17e21f29",
+       "text": "9a17e21f29,ko,dev_a,space,큰 하얀색 토끼가 작은 검은색 곰의 왼쪽에 있다는 것과 늙은 파란색 쥐가 어린 파란색 오리의 오른쪽에 있다는 것이 모두 사실이다.,작은 검은색 곰이 큰 하얀색 토끼의 오른쪽에 있다는 것과 어린 파란색 오리가 늙은 파란색 쥐의 왼쪽에 있다는 것이 모두 사실이다.,KO-R1-96N3A,1,yes,Arguments swapped and relation inverted"
+      }
+     ],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    }
+   },
+   "prior_attempts": []
+  },
+  {
+   "reviewer": "KO-R2-98YHE",
+   "language": "ko",
+   "model_id": "claude-opus-5[1m]",
+   "session_id": "agent-a5101238aba72a72f",
+   "started": "2026-09-16T23:05:24.284Z",
+   "finished": "2026-09-16T23:18:06.466Z",
+   "stop_reasons": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    "max_tokens",
+    "end_turn"
+   ],
+   "output_tokens": [
+    1,
+    1,
+    2,
+    3,
+    4,
+    64000,
+    13858
+   ],
+   "follow_up_messages": 2,
+   "items": 200,
+   "fluent_no": 0,
+   "checklist_rows": 21,
+   "checklist_issue_rows": 4,
+   "response_assembly": {
+    "items-response.csv": {
+     "blocks": 2,
+     "unterminated": 1,
+     "dropped_partial_rows": [
+      {
+       "review_id": "7737da4a76",
+       "text": "7737da4a76,ko,test,quantity,작"
+      }
+     ],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    },
+    "checklist-response.csv": {
+     "blocks": 1,
+     "unterminated": 0,
+     "dropped_partial_rows": [],
+     "superseded_attempts": [],
+     "duplicate_rows_skipped": []
+    }
+   },
+   "prior_attempts": []
+  }
+ ],
+ "certification": {
+  "status": "not_certifiable",
+  "reason": "All 600 item judgments agree with each other and with the reference (agreement 1.0, kappa 1.0, 0 fluent=no, 0 unresolved items), so no adjudication was needed. Certification is blocked only by the checklist: 9 rows carry issue=yes, each raised by a single session and not by the other session of the same language (DE-R1: 'verfolgt' = pursue rather than neutral follow; KO-R2: left/right and front/behind are reference-frame ambiguous; EN-R2: the auxiliary reported-clause frame 'Someone says that' is an opaque context, so equivalence of the embedded clauses does not guarantee equivalence of the reports). flystudy.ai_review.validate_ai_evidence rejects any issue=yes row ('revise data and review the new version'); the attestation was left unsigned."
+ },
+ "checklist_issue_rows": [
+  {
+   "reviewer": "DE-R1-42K4J",
+   "area": "vocabulary",
+   "family": "",
+   "split": "",
+   "task": "template-inventory.json",
+   "comment": "verfolgt means pursues not neutral follows; genders and plurals otherwise correct"
+  },
+  {
+   "reviewer": "EN-R2-M6L2C",
+   "area": "construction",
+   "family": "reported_clause",
+   "split": "dev_b",
+   "task": "roles",
+   "comment": "grammatical but says-that context is opaque; equivalence not guaranteed"
+  },
+  {
+   "reviewer": "EN-R2-M6L2C",
+   "area": "construction",
+   "family": "reported_clause",
+   "split": "dev_b",
+   "task": "negation",
+   "comment": "same opacity caveat; negation itself correctly placed"
+  },
+  {
+   "reviewer": "EN-R2-M6L2C",
+   "area": "construction",
+   "family": "reported_clause",
+   "split": "dev_b",
+   "task": "space",
+   "comment": "same opacity caveat; prepositional phrases themselves correct"
+  },
+  {
+   "reviewer": "EN-R2-M6L2C",
+   "area": "construction",
+   "family": "reported_clause",
+   "split": "dev_b",
+   "task": "quantity",
+   "comment": "same opacity caveat; existential clause embeds correctly"
+  },
+  {
+   "reviewer": "KO-R2-98YHE",
+   "area": "construction",
+   "family": "assertion",
+   "split": "train",
+   "task": "space",
+   "comment": "왼쪽/오른쪽 and 앞/뒤 frame-ambiguous; state viewer perspective explicitly"
+  },
+  {
+   "reviewer": "KO-R2-98YHE",
+   "area": "construction",
+   "family": "truth_question",
+   "split": "dev_a",
+   "task": "space",
+   "comment": "same 왼쪽/오른쪽 앞/뒤 ambiguity; fix reference frame"
+  },
+  {
+   "reviewer": "KO-R2-98YHE",
+   "area": "construction",
+   "family": "reported_clause",
+   "split": "dev_b",
+   "task": "space",
+   "comment": "spatial terms frame-ambiguous; specify viewer-relative reading"
+  },
+  {
+   "reviewer": "KO-R2-98YHE",
+   "area": "construction",
+   "family": "conditional",
+   "split": "test",
+   "task": "space",
+   "comment": "앞/뒤 and 왼쪽/오른쪽 frame-ambiguous; pin reference frame"
+  }
+ ],
+ "round_comparison": {
+  "v5_issue_rows": 24,
+  "v6_issue_rows": 9,
+  "v6_sessions_with_zero_issues": 3
+ }
+}
