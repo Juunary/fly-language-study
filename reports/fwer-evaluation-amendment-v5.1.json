@@ -1,0 +1,140 @@
+{
+  "amendment": "FWER approval evaluation: Monte Carlo precision",
+  "design_version": "v5.1-extended-N-2",
+  "supersedes_for_fwer_evaluation": "v5.1-extended-N-1",
+  "recorded_at_utc": "2026-09-17T15:51:18Z",
+  "adopted_by": "operator instruction of 2026-09-18 (KST)",
+  "timing": "Adopted AFTER the 5,000-repetition extended decision was blocked and AFTER the unofficial 50,000-repetition diagnostic had been seen, and BEFORE any main-study run. It is a procedural amendment made with knowledge of those results, not a rule that was pre-registered from the start; it is not applied retroactively and the earlier reports stay as they are.",
+  "reason": "With 5,000 repetitions the Wilson 95% upper bound of a true 0.05 rate is about 0.056, and the decision takes the maximum over 34 null rows per N, so a bound of 0.06 is exceeded by Monte Carlo noise alone with probability about 0.99 (plan section 7.5). The criterion then measures simulation noise rather than Type I error. Raising the repetitions to 50,000 (Wilson half-width about 0.002) lets the unchanged 0.06 bound test the error rate itself.",
+  "unchanged": [
+    "FWER approval bound 0.06 (maximum Wilson 95% upper bound over every null row of the decision envelope)",
+    "test: two planned contrasts, two-sided paired t, Holm at 0.05; conservative power = raw p < .025 at a 20% effect",
+    "power criterion >= 0.80 (Wilson lower bound, minimum over the envelope), power rows reused from the 5,000-repetition grid",
+    "decision envelope (latent rho 0, both families, censoring up to the grid ceiling, CVs up to the grid edge at the pilot bound)",
+    "evaluation interval 5,120, mastery threshold 0.8, caps 200,000 / 900,000",
+    "N selection and budget rule (flystudy.budget.choose_design: largest passing N within 1.25 x GPU and calendar hours; auxiliary release order)"
+  ],
+  "changed": [
+    "FWER evaluation repetitions fixed at 50,000 per null scenario (was 5,000)",
+    "null rows come from one official CPU run: scripts/fwer_official_verification.py, 108 scenarios (9 CVs x 3 censoring x 2 families x 2 targets, rho 0, effect 0), N 20..100, seeds 29401 + scenario index, no retry with other seeds or repetitions"
+  ],
+  "known_before_adoption": {
+    "blocked_extended_decision": {
+      "path": "reports/design-extended-v5.1.json",
+      "sha256": "35e1429b9abc41003aae86a12ed29fd4d10d82f68c7f89491bc764a28ad3ddf3",
+      "by_n": {
+        "20": {
+          "power_lower": 0.3042,
+          "null_fwer_upper_5000": 0.064
+        },
+        "30": {
+          "power_lower": 0.4857,
+          "null_fwer_upper_5000": 0.0642
+        },
+        "40": {
+          "power_lower": 0.6387,
+          "null_fwer_upper_5000": 0.0623
+        },
+        "50": {
+          "power_lower": 0.749,
+          "null_fwer_upper_5000": 0.0627
+        },
+        "60": {
+          "power_lower": 0.8322,
+          "null_fwer_upper_5000": 0.0636
+        },
+        "70": {
+          "power_lower": 0.8872,
+          "null_fwer_upper_5000": 0.0604
+        },
+        "80": {
+          "power_lower": 0.9291,
+          "null_fwer_upper_5000": 0.0636
+        },
+        "90": {
+          "power_lower": 0.9578,
+          "null_fwer_upper_5000": 0.0623
+        },
+        "100": {
+          "power_lower": 0.9738,
+          "null_fwer_upper_5000": 0.0625
+        }
+      }
+    },
+    "blocked_original_decision": {
+      "path": "reports/assess-design-v5.1-15blocks.json",
+      "sha256": "14de9abb0da232a70a726965de68968c61a99752a6eb8860d6a567fe3af693f7"
+    },
+    "unofficial_diagnostic_50000": {
+      "path": "reports/fwer-highrep-diagnostic-v5.1.json",
+      "sha256": "b59b503c6bcc1e78492848dac1e921b31ebe34158c989816ab7c7aa037a1c608",
+      "seeds": "19401+",
+      "targets": "0 only",
+      "by_n": {
+        "20": {
+          "max_rate": 0.05202,
+          "max_wilson_upper": 0.054,
+          "all_rows_max_rate": 0.05246
+        },
+        "30": {
+          "max_rate": 0.05152,
+          "max_wilson_upper": 0.0535,
+          "all_rows_max_rate": 0.05356
+        },
+        "40": {
+          "max_rate": 0.05254,
+          "max_wilson_upper": 0.0545,
+          "all_rows_max_rate": 0.05254
+        },
+        "50": {
+          "max_rate": 0.05078,
+          "max_wilson_upper": 0.0527,
+          "all_rows_max_rate": 0.05132
+        },
+        "60": {
+          "max_rate": 0.05134,
+          "max_wilson_upper": 0.0533,
+          "all_rows_max_rate": 0.05146
+        },
+        "70": {
+          "max_rate": 0.05104,
+          "max_wilson_upper": 0.053,
+          "all_rows_max_rate": 0.05164
+        },
+        "80": {
+          "max_rate": 0.05214,
+          "max_wilson_upper": 0.0541,
+          "all_rows_max_rate": 0.05214
+        },
+        "90": {
+          "max_rate": 0.05192,
+          "max_wilson_upper": 0.0539,
+          "all_rows_max_rate": 0.05192
+        },
+        "100": {
+          "max_rate": 0.05158,
+          "max_wilson_upper": 0.0536,
+          "all_rows_max_rate": 0.05158
+        }
+      }
+    },
+    "expectation_stated_by_operator": "N = 80 (800 runs) is expected but not imposed; the rule selects N"
+  },
+  "scenario_correspondence": {
+    "path": "reports/fwer-scenario-correspondence-v5.1.json",
+    "sha256": "f42438f3e4bd1a4b01be13e5a9c5deea003a792f3c24270be0a91cfdd1bef3b7"
+  },
+  "fixed_before_the_official_run": {
+    "script": "scripts/fwer_official_verification.py",
+    "script_sha256": "98f12e9f59dc55e936929242cd77f4ea8008e5d0a002f4ebaa378715c924fbac",
+    "decision_script": "scripts/extended_design_decision.py",
+    "decision_script_sha256": "ba94042de6bb12f407e745e8b3a8b308a4bf06e8580cd3027c40c3b8ebd219d3",
+    "repetitions": 50000,
+    "simulation_seed_base": 29401,
+    "scenarios": 108,
+    "output": "artifacts/power/fwer-official-v5.1.jsonl",
+    "decision_output": "reports/design-extended-v5.1-N2.json"
+  },
+  "if_passed": "select N by the existing rule, write configs/protocol-v5.1-main-N<N>.json (main_seeds 30001.. only), freeze, reserve, run the main campaign",
+  "if_failed": "report the concrete blocking rows and stop; no further review, no GPU pilots, no re-run with other seeds or repetitions"
+}

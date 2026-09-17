@@ -21,6 +21,9 @@ artifacts/power/*
 !artifacts/power/final-grid.meta.json
 !artifacts/power/extended-grid-v5.1.jsonl
 !artifacts/power/extended-grid-v5.1.meta.json
+!artifacts/power/fwer-official-v5.1.jsonl
+!artifacts/power/fwer-official-v5.1.meta.json
+!artifacts/power/fwer-official-v5.1.jsonl.started
 !artifacts/tokenizer-v4.3.json
 !artifacts/tokenizer-v4.3.meta.json
 !artifacts/tokenizer-v4.4.json

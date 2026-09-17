@@ -46,20 +46,53 @@ def envelope(grid, n, ceiling, cv_bound, rho):
     return kept, None
 
 
-def power_table(grid, ns, ceiling, cv_bound, rho):
+def null_key(r):
+    return (r["n"], r["family"], round(r["censoring"], 6), round(r["cv"], 6), r["target"])
+
+
+def load_official_fwer(path):
+    """Official 50,000-repetition null rows (design version v5.1-extended-N-2), indexed like the grid's null rows."""
+    meta = read(Path(path).with_suffix(".meta.json"))
+    if meta.get("design_version") != "v5.1-extended-N-2" or not meta.get("complete"):
+        raise ValueError("The official FWER verification must be complete and of design version v5.1-extended-N-2")
+    if meta.get("repetitions") != 50000:
+        raise ValueError("The official FWER verification uses exactly 50,000 repetitions per scenario")
+    rows = [json.loads(l) for l in Path(path).read_text(encoding="utf-8").splitlines()]
+    if any(r["repetitions"] != 50000 or r["effect"] != 0 or r["latent_rho"] != 0 for r in rows):
+        raise ValueError("Official FWER rows must be rho-0 null scenarios with 50,000 repetitions")
+    index = {null_key(r): r for r in rows}
+    if len(index) != len(rows):
+        raise ValueError("Duplicate official FWER rows")
+    return index, meta
+
+
+def power_table(grid, ns, ceiling, cv_bound, rho, official=None):
+    """Power from the grid; the null bound from the grid, or from the official report when one is given (every envelope
+    null row must then have its official counterpart - no deduplication, no exclusion)."""
     table = {}
     for n in ns:
         rows, reason = envelope(grid, n, ceiling, cv_bound, rho)
         if rows is None:
             table[n] = dict(outside_grid=reason); continue
         power = [r["conservative_power_ci"][0] for r in rows if r["effect"] == .2]
-        errors = [r["mc_ci"][1] for r in rows if r["effect"] == 0]
+        null_rows = [r for r in rows if r["effect"] == 0]
+        errors = [r["mc_ci"][1] for r in null_rows]
         table[n] = dict(power_lower=min(power) if power else None, null_fwer_upper=max(errors) if errors else None, rows=len(rows))
+        if official is not None:
+            missing = [null_key(r) for r in null_rows if null_key(r) not in official]
+            if missing:
+                raise ValueError(f"missing official FWER rows for N={n}: {missing[:3]}")
+            matched = [official[null_key(r)] for r in null_rows]
+            worst = max(matched, key=lambda r: r["mc_ci"][1])
+            table[n].update(null_fwer_upper=max(r["mc_ci"][1] for r in matched), grid_null_fwer_upper=max(errors) if errors else None,
+                            null_rows=len(null_rows), official_rows=len(matched), official_max_rate=max(r["rate"] for r in matched),
+                            official_worst=dict(family=worst["family"], censoring=worst["censoring"], cv=worst["cv"], target=worst["target"],
+                                                rate=worst["rate"], wilson_upper=worst["mc_ci"][1]))
     return table
 
 
 def decide(grid_path, pilot_path, cost_path, resolution_path, dispersion_path, prereg_path, ledger_path, output,
-           assess_path=None):
+           assess_path=None, fwer_report=None, amendment_path=None):
     meta = read(Path(grid_path).with_suffix(".meta.json"))
     if not meta.get("complete") or meta.get("quick") or meta.get("repetitions", 0) < 5000 or meta.get("interval") != INTERVAL:
         raise ValueError("A complete 5,000-repetition extended grid at interval 5,120 is required")
@@ -78,7 +111,12 @@ def decide(grid_path, pilot_path, cost_path, resolution_path, dispersion_path, p
         evidence[str(Path(assess_path).resolve())] = file_hash(assess_path)
     evidence.update(nested)
     existing = read(assess_path) if assess_path and Path(assess_path).exists() else None
-    result = dict(design_version="v5.1-extended-N-1", status="blocked", reason=None, selection_uses_observed_effect=False,
+    official, official_meta = load_official_fwer(fwer_report) if fwer_report else (None, None)
+    if fwer_report:
+        for extra in (fwer_report, Path(fwer_report).with_suffix(".meta.json"), amendment_path):
+            if extra and Path(extra).exists():
+                evidence[str(Path(extra).resolve())] = file_hash(extra)
+    result = dict(design_version="v5.1-extended-N-2" if fwer_report else "v5.1-extended-N-1", status="blocked", reason=None, selection_uses_observed_effect=False,
                   preregistration=str(prereg_path), candidate_ns=ns, eval_interval=INTERVAL,
                   existing_assess_design=None if existing is None else dict(path=str(assess_path), status=existing.get("status"), reason=existing.get("reason")),
                   pilot_status=pilot.get("status"), pilot_censor_upper=censor_upper, dispersion_bound=cv_bound,
@@ -101,13 +139,22 @@ def decide(grid_path, pilot_path, cost_path, resolution_path, dispersion_path, p
         result["reason"] = "Pilot censoring upper bound exceeds the simulated grid"
         write_json(output, result); return result
     ceiling = ceilings[0]
-    primary = power_table(grid, ns, ceiling, cv_bound, 0.)
+    primary = power_table(grid, ns, ceiling, cv_bound, 0., official)
     result["primary_power_table"] = {str(n): v for n, v in primary.items()}
+    if official is not None:
+        result["fwer_evaluation"] = dict(
+            rule="FWER approval bound 0.06 unchanged; null scenarios evaluated with 50,000 repetitions each (amendment recorded after the "
+                 "5,000-repetition block and the unofficial 50,000-repetition diagnostic were known, before the main study)",
+            amendment=None if amendment_path is None else str(amendment_path), report=str(fwer_report), repetitions=official_meta["repetitions"],
+            simulation_seed_base=official_meta.get("simulation_seed_base"), power_rows="reused from the 5,000-repetition extended grid",
+            grid_null_bound_not_used={str(n): v.get("grid_null_fwer_upper") for n, v in primary.items() if "outside_grid" not in v},
+            envelope_null_rows_per_n={str(n): v.get("null_rows") for n, v in primary.items() if "outside_grid" not in v},
+            official_rows_matched_per_n={str(n): v.get("official_rows") for n, v in primary.items() if "outside_grid" not in v})
     rho_lower = dispersion["correlation"]["sequential_orders"]["mean_offdiagonal_bootstrap_95"][0]
     grid_rhos = sorted({r["latent_rho"] for r in grid})
     rho_sens = max([x for x in grid_rhos if x <= max(0., rho_lower or 0.) + 1e-9], default=0.)
     result["sensitivity_correlation_informed"] = dict(latent_rho=rho_sens, basis="largest grid rho <= lower 2.5% bootstrap bound of the mean inter-order correlation",
-                                                     power_table={str(n): v for n, v in power_table(grid, ns, ceiling, cv_bound, rho_sens).items()},
+                                                     power_table={str(n): v for n, v in power_table(grid, ns, ceiling, cv_bound, rho_sens, official if rho_sens == 0 else None).items()},
                                                      decisive=False)
     result["analytic_contrast_cross_check"] = {k: v["analytic_required_n_20pct"] for k, v in dispersion["contrasts"].items()}
     passing = [n for n in ns if "outside_grid" not in primary[n] and primary[n]["power_lower"] is not None
@@ -160,8 +207,11 @@ def main():
     for arg in ("grid", "pilots", "costs", "resolution", "dispersion", "preregistration", "ledger", "output"):
         p.add_argument("--" + arg, required=True)
     p.add_argument("--assess-design")
+    p.add_argument("--fwer-report", help="official 50,000-repetition null verification (design version v5.1-extended-N-2)")
+    p.add_argument("--amendment", help="amendment document recorded as evidence with --fwer-report")
     a = p.parse_args()
-    r = decide(a.grid, a.pilots, a.costs, a.resolution, a.dispersion, a.preregistration, a.ledger, a.output, a.assess_design)
+    r = decide(a.grid, a.pilots, a.costs, a.resolution, a.dispersion, a.preregistration, a.ledger, a.output, a.assess_design,
+               a.fwer_report, a.amendment)
     print(json.dumps({k: r.get(k) for k in ("status", "reason", "minimum_passing_n", "chosen", "auxiliary_release_required_hours")}, indent=1, default=str))
 
 
