@@ -1,0 +1,39 @@
+{
+  "intervals": {
+    "5120": {
+      "status": "passed",
+      "maximum_paired_distortion": 0.0,
+      "actual_sequence_pilot": false,
+      "n_calibration_seeds": 2
+    },
+    "10240": {
+      "status": "passed",
+      "maximum_paired_distortion": 0.0309079201545396,
+      "actual_sequence_pilot": false,
+      "n_calibration_seeds": 2
+    },
+    "20480": {
+      "status": "failed",
+      "maximum_paired_distortion": 0.0927237604636188,
+      "actual_sequence_pilot": false,
+      "n_calibration_seeds": 2
+    }
+  },
+  "evidence_files": {
+    "/mnt/nas4/kjune/fly-language-study/reports/pilot-report-v5.1.json": "fb1ab59c08b02fe3e70440b25a1ae5a220018213673fc9c284139e64a325da83",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/en-30101/calibration-meta.json": "7ec45226340a05fa0dc2adf1325c24fa31dc2329ecdbed17322a5e6225dc9bfe",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/en-30101/calibration.jsonl": "d3df4553688729af62e11dd9ade3bebdc6d77c1edcb2022b7f5c7f448c8e6b7c",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/en-30102/calibration-meta.json": "47d06ec8db153231c6d74a70b83269df4902cd94d3d9a091aca85fb91cb19f8b",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/en-30102/calibration.jsonl": "bcee14394bf0e514dd9931733b0e6c9b2dd5c86e9642960f308d0217487299a6",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/de-30101/calibration-meta.json": "5f9d5875c7dc805de4915151368ce2fda647bdbbdbb65e606a6f18f6c79887a0",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/de-30101/calibration.jsonl": "a14360c78063fc26f9a6c59551367f68e9e0a859a5792caa790356e63602cfed",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/de-30102/calibration-meta.json": "37aeee23d53aca8d6f8a88eb8b4227f4a9f1c4e56c149340024694666d77ddda",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/de-30102/calibration.jsonl": "c6edd682a94d8afd0b986e2f3d53bc0da8b5d78e8f95c91b5698add065258a81",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/ko-30101/calibration-meta.json": "be0e6fbb87e176a53b7a09b26f474fe306bc3372953c758c47bd746977ab4ff8",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/ko-30101/calibration.jsonl": "b7309522aadf58634fbbe086754e6d01596c0aa0c2e2c1714928da6766d8f0e0",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/ko-30102/calibration-meta.json": "b7ef478f35cd620fb669885c079624ba2c9eab917a350436ef5ef525efd08ba0",
+    "/mnt/nas4/kjune/fly-language-study/runs/calibrations-v5.1/ko-30102/calibration.jsonl": "2e68617009cec6d40ba4189fea405489c4a844d0e5eded204554213e6b436d50"
+  },
+  "threshold": 0.05,
+  "interpretation": "Monolingual measurement resolution only; sequential policies require actual pilots."
+}
