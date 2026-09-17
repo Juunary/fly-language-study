@@ -1,0 +1,47 @@
+{
+ "started_at_utc": "2026-09-17T15:52:20.432549+00:00",
+ "design_version": "v5.1-extended-N-2",
+ "repetitions": 50000,
+ "simulation_seed_base": 29401,
+ "scenarios": 108,
+ "ns": [
+  20,
+  30,
+  40,
+  50,
+  60,
+  70,
+  80,
+  90,
+  100
+ ],
+ "cvs": [
+  0.25,
+  0.375,
+  0.5,
+  0.625,
+  0.75,
+  1.0,
+  1.25,
+  1.5,
+  2.0
+ ],
+ "censoring": [
+  0.1,
+  0.3,
+  0.5
+ ],
+ "families": [
+  "lognormal",
+  "weibull"
+ ],
+ "targets": [
+  0,
+  1
+ ],
+ "latent_rho": 0.0,
+ "interval": 5120,
+ "effect": 0.0,
+ "code_hash": "232041e79d4a08d75a1a18cf13d1f38647cb683af1b010fc3faa09dffc9d81c8",
+ "script_hash": "98f12e9f59dc55e936929242cd77f4ea8008e5d0a002f4ebaa378715c924fbac"
+}
