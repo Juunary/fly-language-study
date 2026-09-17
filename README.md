@@ -1,39 +1,38 @@
 # Fly Language Study
 
-### 초파리의 뇌 배선으로 알아보는 언어 난이도
+### Mapping language difficulty by tracing the neural wiring of fruit flies
 
-## 무엇을 알아보나요?
+## What do we explore?
 
-- **학습 속도** — 어느 언어가 같은 성능 기준에 더 빨리 도달할까?
-- **학습 순서** — 먼저 배운 언어가 다음 언어의 학습을 도울까?
-- **기억과 망각** — 새 언어를 배우면 이전 언어를 얼마나 잊고, 복습으로 얼마나 회복할까?
+- **Learning speed** — Which language reaches the same performance level faster?
+- **Learning order** — Does the first language learned help or hinder the next?
+- **Memory and forgetting** — How much of a new language is forgotten after learning it, and how much can be recovered through review?
 
-**영어 · 독일어 · 한국어 — 세 언어, 여섯 학습 순서.**
+**The study compares three languages — English, German, and Korean — across six learning orders.**
 
-실제 초파리의 신경 연결 지도(커넥톰)를 바탕으로 만든 컴퓨터 모델에서,
-언어별 학습 속도와 학습 순서에 따른 차이를 탐구합니다.
+Using a computer model built from the actual neural connectivity map (connectome) of a fruit fly’s brain, we investigate differences in language learning speed and learning order effects.
 
-**5,000개 뉴런 · 524,324개 연결 · 같은 모델에서 비교**
+**5,000 neurons • 524,324 connections • compared in the same model**
 
 https://github.com/user-attachments/assets/4acea28c-f871-4d88-9dc4-52d10b3214bc
 
 
-모델은 두 문장이 같은 뜻인지 판단합니다. **역할 관계·부정·공간·수량**의 네 과제를
-단일 언어, 여섯 순서의 순차 학습, 세 언어 혼합 학습으로 비교합니다.
+The model decides whether two sentences have the same meaning. We compare four tasks: role relations, negation, spatial relations, and quantity — across:
 
-## 지금까지
+single-language learning
+sequential learning in six orders
+mixed-language learning across three languages
 
-초기 두 시드의 순서 탐색에서는 **한국어를 먼저 배우는 순서가 가장 빨랐습니다.**
-이전 언어의 성능이 떨어졌다가 복습으로 회복되는 모습도 관찰됐습니다.
-현재는 반복 파일럿으로 본실험 규모를 결정하고 있으며, 최종 결론은 아직 확정하지 않았습니다.
+## So far
 
-[탐색 결과 보기 →](reports/EXPLORATORY_V5_WORDBOUND_ORDER.md)
+n the initial exploration of the first two random seeds, the order in which Korean was learned first was the fastest. We also observed a pattern in which performance in the previously learned language temporarily dropped and then recovered through review. We are currently running repeated pilot studies to determine the scale of the final experiment, and the final conclusion has not yet been finalized.
 
-## 더 알아보기
+[View exploratory results →](reports/EXPLORATORY_V5_WORDBOUND_ORDER.md)
 
-[연구 설계](docs/PROTOCOL_V5.md) · [진행 기록](reports/MAIN_STUDY_PLAN_V5.md) · [코드](src/flystudy) · [연구 배경](docs/SOURCE_AUDIT.md)
+## Learn more
+
+[Study design](docs/PROTOCOL_V5.md) · [Progress log](reports/MAIN_STUDY_PLAN_V5.md) · [Code](src/flystudy) · [background](docs/SOURCE_AUDIT.md)
 
 ---
 
-언어 학습 난이도와 순서 효과에 **보편적인 경향이 있는지 탐색하는 연구**입니다.
-그 첫 단계로 이 모델·과제·입력 표현에서의 학습 효율을 측정하며, 보편성은 후속 연구에서 검증합니다.
+This is a research project exploring whether there are general trends in language learning difficulty and order effects. As a first step, we measure learning efficiency in this model, task setup, and input representation, and the broader generality will be tested in follow-up studies.
