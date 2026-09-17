@@ -1,0 +1,157 @@
+{
+  "note": "Diagnostic only; not part of the pre-registered decision.",
+  "by_n": {
+    "20": {
+      "null_rows": 34,
+      "mean_rate": 0.05003529411764706,
+      "max_rate": 0.0572,
+      "max_upper": 0.063983253674742,
+      "rows_upper_gt_06": 4,
+      "pooled_max_upper": 0.05933025363954662,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "weibull",
+        "censoring": 0.1,
+        "cv": 0.375,
+        "ref_cv": 0.342,
+        "rate": 0.0572
+      }
+    },
+    "30": {
+      "null_rows": 34,
+      "mean_rate": 0.049758823529411765,
+      "max_rate": 0.0574,
+      "max_upper": 0.06419363270609933,
+      "rows_upper_gt_06": 4,
+      "pooled_max_upper": 0.059641619151361236,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "lognormal",
+        "censoring": 0.1,
+        "cv": 0.375,
+        "ref_cv": 0.308,
+        "rate": 0.0574
+      }
+    },
+    "40": {
+      "null_rows": 34,
+      "mean_rate": 0.049664705882352944,
+      "max_rate": 0.0556,
+      "max_upper": 0.06229941963395749,
+      "rows_upper_gt_06": 2,
+      "pooled_max_upper": 0.05652624514156195,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "weibull",
+        "censoring": 0.1,
+        "cv": 0.375,
+        "ref_cv": 0.342,
+        "rate": 0.0556
+      }
+    },
+    "50": {
+      "null_rows": 34,
+      "mean_rate": 0.04995294117647059,
+      "max_rate": 0.056,
+      "max_upper": 0.06272051333240064,
+      "rows_upper_gt_06": 6,
+      "pooled_max_upper": 0.05683795810177102,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "weibull",
+        "censoring": 0.1,
+        "cv": 0.25,
+        "ref_cv": 0.232,
+        "rate": 0.056
+      }
+    },
+    "60": {
+      "null_rows": 34,
+      "mean_rate": 0.04936470588235294,
+      "max_rate": 0.0568,
+      "max_upper": 0.06356242945750314,
+      "rows_upper_gt_06": 2,
+      "pooled_max_upper": 0.05881122786149492,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "lognormal",
+        "censoring": 0.3,
+        "cv": 0.25,
+        "ref_cv": 0.166,
+        "rate": 0.0568
+      }
+    },
+    "70": {
+      "null_rows": 34,
+      "mean_rate": 0.049405882352941174,
+      "max_rate": 0.0538,
+      "max_upper": 0.06040335023187689,
+      "rows_upper_gt_06": 1,
+      "pooled_max_upper": 0.05756513392906473,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "lognormal",
+        "censoring": 0.3,
+        "cv": 1.0,
+        "ref_cv": 0.468,
+        "rate": 0.0538
+      }
+    },
+    "80": {
+      "null_rows": 34,
+      "mean_rate": 0.04992941176470589,
+      "max_rate": 0.0568,
+      "max_upper": 0.06356242945750314,
+      "rows_upper_gt_06": 2,
+      "pooled_max_upper": 0.060990444439907913,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "lognormal",
+        "censoring": 0.3,
+        "cv": 1.0,
+        "ref_cv": 0.468,
+        "rate": 0.0568
+      }
+    },
+    "90": {
+      "null_rows": 34,
+      "mean_rate": 0.0504235294117647,
+      "max_rate": 0.0556,
+      "max_upper": 0.06229941963395749,
+      "rows_upper_gt_06": 6,
+      "pooled_max_upper": 0.0576689987160565,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "lognormal",
+        "censoring": 0.3,
+        "cv": 0.25,
+        "ref_cv": 0.166,
+        "rate": 0.0556
+      }
+    },
+    "100": {
+      "null_rows": 34,
+      "mean_rate": 0.0494235294117647,
+      "max_rate": 0.0558,
+      "max_upper": 0.06250997788086914,
+      "rows_upper_gt_06": 3,
+      "pooled_max_upper": 0.05756513392906473,
+      "pooled_scenarios": 17,
+      "worst": {
+        "family": "lognormal",
+        "censoring": 0.3,
+        "cv": 0.25,
+        "ref_cv": 0.166,
+        "rate": 0.0558
+      }
+    }
+  },
+  "single_row_fail_threshold": 0.0536,
+  "p_any_row_fails_at_true_005": 0.9907279805499595,
+  "null_rows_per_n": 34,
+  "actual_block_gpu_hours": {
+    "mean": 1.2571477762093828,
+    "max": 1.5789274312427084,
+    "n_blocks": 15
+  }
+}

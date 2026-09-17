@@ -1944,8 +1944,9 @@
     "pilot-real-30118-seq-en-de-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.2463909134955611,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30118-seq-en-ko-de": {
       "category": "order_pilot",
@@ -1957,452 +1958,527 @@
     "pilot-real-30118-seq-de-en-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.15431951598251342,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30118-seq-de-ko-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.2887237739810694,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30118-seq-ko-en-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.06129050159471161,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30118-seq-ko-de-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.055339027607761736,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30118-mixed": {
       "category": "g3",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.13767435877551584,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-mono-en": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.03582692092504456,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-mono-de": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.08127079132808528,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-mono-ko": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.034897253347509025,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-seq-en-de-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.0830195079105518,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-seq-en-ko-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.22412487193832123,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-seq-de-en-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.13297249279217793,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-seq-de-ko-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.13298777071946663,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-seq-ko-en-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.21636625071554186,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-seq-ko-de-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.07769990289195751,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30119-mixed": {
       "category": "g3",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.15811332386278082,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-mono-en": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.03827517772921257,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-mono-de": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.04975064443443747,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-mono-ko": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.025137017553853284,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-seq-en-de-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.2533602427494609,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-seq-en-ko-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.0929990152594918,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-seq-de-en-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.10052612740837504,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-seq-de-ko-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.10785582391079515,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-seq-ko-en-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.227092536868036,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-seq-ko-de-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.08704105001803125,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30120-mixed": {
       "category": "g3",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.17834795366946815,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-mono-en": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.03998109403810102,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-mono-de": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.05306544664859151,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-mono-ko": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.036001684198078386,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-seq-en-de-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.2721444464439345,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-seq-en-ko-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.09818301752248469,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-seq-de-en-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.08347361497690953,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-seq-de-ko-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.08305096407278648,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-seq-ko-en-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.32167129504474967,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-seq-ko-de-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.11721803289611772,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30121-mixed": {
       "category": "g3",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.14557307358139143,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-mono-en": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.03779244738999599,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-mono-de": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.07214703340193308,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-mono-ko": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.035966957778049015,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-seq-en-de-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.22085673576363155,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-seq-en-ko-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.09006007057310651,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-seq-de-en-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.11326506315445942,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-seq-de-ko-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.10234004817029926,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-seq-ko-en-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.24770429866304364,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-seq-ko-de-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.09643891461361717,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30122-mixed": {
       "category": "g3",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.13992287710140874,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-mono-en": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.03512899193550564,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-mono-de": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.05359038829111443,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-mono-ko": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.03409810653163327,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-seq-en-de-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.23538956281806653,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-seq-en-ko-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.08038380486806596,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-seq-de-en-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.13942917791861367,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-seq-de-ko-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.2850703928708228,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-seq-ko-en-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.07317233539082937,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-seq-ko-de-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.07647707210523852,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30123-mixed": {
       "category": "g3",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.18185394218469608,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-mono-en": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.04335690791220663,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-mono-de": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.059422136781116325,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-mono-ko": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.02358293485776004,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-seq-en-de-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.32484536925945173,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-seq-en-ko-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.10609855985838092,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-seq-de-en-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.09282984897610731,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-seq-de-ko-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.10332784109496666,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-seq-ko-en-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.06438659438501215,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-seq-ko-de-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.17192488336858028,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30124-mixed": {
       "category": "g3",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.1127636527266845,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-mono-en": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.043225283822782026,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-mono-de": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.08963535653446646,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-mono-ko": {
       "category": "g2",
       "reserved": 0.25,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.036014903336698705,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-seq-en-de-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.16809285971859936,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-seq-en-ko-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.3593259055160969,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-seq-de-en-ko": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.1657390176052771,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-seq-de-ko-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.11933555175750775,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-seq-ko-en-de": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.28648252765389365,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-seq-ko-de-en": {
       "category": "order_pilot",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.10692796205299802,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "pilot-real-30125-mixed": {
       "category": "g3",
       "reserved": 0.625,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.20414806324438864,
+      "status": "completed",
+      "exceeded_reservation": false
     }
   },
   "transfers": [
