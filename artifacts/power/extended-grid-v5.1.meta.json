@@ -1,0 +1,64 @@
+{
+  "design_version": "v5.1-extended-N-1",
+  "complete": true,
+  "quick": false,
+  "records": 19440,
+  "scenarios": 2160,
+  "repetitions": 5000,
+  "ns": [
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+  ],
+  "cvs": [
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    1.0,
+    1.25,
+    1.5,
+    2.0
+  ],
+  "latent_rhos": [
+    0.0,
+    0.25,
+    0.5,
+    0.65,
+    0.8
+  ],
+  "censoring": [
+    0.1,
+    0.3,
+    0.5
+  ],
+  "families": [
+    "lognormal",
+    "weibull"
+  ],
+  "interval": 5120,
+  "targets": [
+    0,
+    1
+  ],
+  "effects": [
+    0.0,
+    0.1,
+    0.2,
+    0.3
+  ],
+  "simulation_seed_base": 9401,
+  "design_effect": 0.2,
+  "minimum_power": 0.8,
+  "mc_interval": "Wilson 95%",
+  "code_hash": "232041e79d4a08d75a1a18cf13d1f38647cb683af1b010fc3faa09dffc9d81c8",
+  "script_hash": "5b3d8e1d1f9d6f54e93748afbc73fa959c95c49b73561700ad35a32615aad0c2",
+  "dgm": "flystudy.statistics.simulate (correlated event times, monotone crossing, two-check confirmation); not neural dynamics"
+}
