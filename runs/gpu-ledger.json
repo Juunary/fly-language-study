@@ -7379,6 +7379,13 @@
     "main-real-30009-seq-de-ko-en-retry1": {
       "category": "main",
       "reserved": 0.773661980108382,
+      "used": 0.002517863745581255,
+      "status": "technical_failure",
+      "exceeded_reservation": false
+    },
+    "main-real-30009-seq-de-ko-en-retry2": {
+      "category": "main",
+      "reserved": 0.773661980108382,
       "used": 0.0,
       "status": "reserved"
     }
