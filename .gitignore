@@ -19,6 +19,8 @@ artifacts/graphs/*
 artifacts/power/*
 !artifacts/power/final-grid.jsonl
 !artifacts/power/final-grid.meta.json
+!artifacts/power/extended-grid-v5.1.jsonl
+!artifacts/power/extended-grid-v5.1.meta.json
 !artifacts/tokenizer-v4.3.json
 !artifacts/tokenizer-v4.3.meta.json
 !artifacts/tokenizer-v4.4.json

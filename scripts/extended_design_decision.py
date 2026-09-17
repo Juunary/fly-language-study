@@ -1,0 +1,169 @@
+"""Design decision over the extended-N grid (design version v5.1-extended-N-1); rules fixed in docs/EXTENDED_DESIGN_V5.1.md.
+
+Primary rule = the existing conservative rule of flystudy.workflow.design_decision, applied to more candidate N:
+evaluation interval 5,120; latent pairing correlation 0; both families; grid censoring up to the smallest grid value at
+or above the pilot's sequential censoring upper bound; per family and censoring level, every grid CV up to the smallest
+grid reference restricted CV at or above the pilot dispersion bound (a bound above the grid is outside the simulation
+range and blocks); power = lowest Wilson lower bound of the raw p < .025 rate at a 20% effect over both targets;
+false-positive rate = highest Wilson upper bound at no effect. Selection = flystudy.budget.choose_design (resolution
+passed with an actual sequence pilot, power >= .8, FWER <= .06, 1.25 x GPU and calendar hours within budget; largest N).
+Auxiliary allocations are released to the main study (review -> shuffle -> tokenizer) only if no candidate fits the main
+allocation alone. The correlation-informed envelope and the analytic contrast cross-check are reported, never decisive.
+Observed contrast means are not read.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+from flystudy.budget import choose_design
+from flystudy.protocol import ORDERS, file_hash, write_json
+from flystudy.workflow import verified_evidence
+
+INTERVAL = 5120
+CONDITIONS = {"mono-en", "mono-de", "mono-ko", "mixed"} | {"seq-" + "-".join(o) for o in ORDERS}
+
+
+def read(path):
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def envelope(grid, n, ceiling, cv_bound, rho):
+    """Rows of one N inside the stress envelope, or (None, reason) when the bound lies outside the grid."""
+    rows = [r for r in grid if r["n"] == n and r["interval"] == INTERVAL and r["censoring"] <= ceiling + 1e-9 and abs(r["latent_rho"] - rho) < 1e-9]
+    if cv_bound is None:
+        return rows, None
+    kept = []
+    for family in ("lognormal", "weibull"):
+        for censoring in sorted({r["censoring"] for r in rows}):
+            group = [r for r in rows if r["family"] == family and abs(r["censoring"] - censoring) < 1e-9]
+            above = [r["reference_restricted_cv"] for r in group if r["reference_restricted_cv"] >= cv_bound]
+            if not above:
+                return None, f"dispersion bound {cv_bound:.3f} exceeds the grid for {family}, censoring {censoring}"
+            edge = min(above)
+            kept.extend(r for r in group if r["reference_restricted_cv"] <= edge + 1e-9)
+    return kept, None
+
+
+def power_table(grid, ns, ceiling, cv_bound, rho):
+    table = {}
+    for n in ns:
+        rows, reason = envelope(grid, n, ceiling, cv_bound, rho)
+        if rows is None:
+            table[n] = dict(outside_grid=reason); continue
+        power = [r["conservative_power_ci"][0] for r in rows if r["effect"] == .2]
+        errors = [r["mc_ci"][1] for r in rows if r["effect"] == 0]
+        table[n] = dict(power_lower=min(power) if power else None, null_fwer_upper=max(errors) if errors else None, rows=len(rows))
+    return table
+
+
+def decide(grid_path, pilot_path, cost_path, resolution_path, dispersion_path, prereg_path, ledger_path, output,
+           assess_path=None):
+    meta = read(Path(grid_path).with_suffix(".meta.json"))
+    if not meta.get("complete") or meta.get("quick") or meta.get("repetitions", 0) < 5000 or meta.get("interval") != INTERVAL:
+        raise ValueError("A complete 5,000-repetition extended grid at interval 5,120 is required")
+    pilot, costs, resolution, dispersion, ledger = map(read, (pilot_path, cost_path, resolution_path, dispersion_path, ledger_path))
+    nested = verified_evidence(pilot, costs, resolution, dispersion)
+    grid = [json.loads(l) for l in Path(grid_path).read_text(encoding="utf-8").splitlines()]
+    ns = sorted({r["n"] for r in grid})
+    seq = [g for k, g in pilot["groups"].items() if k.startswith("sequential/")]
+    censor_upper = max(g["censor_upper_95"] for g in seq)
+    grid_censoring = sorted({r["censoring"] for r in grid})
+    ceilings = [c for c in grid_censoring if c >= censor_upper]
+    cv_bound = pilot.get("dispersion_uncertainty", {}).get("restricted_cv_upper")
+    evidence = {str(Path(p).resolve()): file_hash(p) for p in (grid_path, Path(grid_path).with_suffix(".meta.json"), pilot_path,
+                                                             cost_path, resolution_path, dispersion_path, prereg_path)}
+    if assess_path and Path(assess_path).exists():
+        evidence[str(Path(assess_path).resolve())] = file_hash(assess_path)
+    evidence.update(nested)
+    existing = read(assess_path) if assess_path and Path(assess_path).exists() else None
+    result = dict(design_version="v5.1-extended-N-1", status="blocked", reason=None, selection_uses_observed_effect=False,
+                  preregistration=str(prereg_path), candidate_ns=ns, eval_interval=INTERVAL,
+                  existing_assess_design=None if existing is None else dict(path=str(assess_path), status=existing.get("status"), reason=existing.get("reason")),
+                  pilot_status=pilot.get("status"), pilot_censor_upper=censor_upper, dispersion_bound=cv_bound,
+                  stress_envelope="rho=0; both families; censoring up to the grid ceiling; CVs up to the grid edge at the pilot bound",
+                  candidates=[], evidence_files=evidence)
+    measurement = resolution.get("intervals", {}).get(str(INTERVAL), {})
+    measured = costs.get("intervals", {}).get(str(INTERVAL))
+    if not measured or set(measured["per_run_upper_hours"]) != CONDITIONS:
+        raise ValueError("Cost evidence must cover every primary condition at interval 5,120")
+    per_run = measured["per_run_upper_hours"]
+    block_hours = sum(per_run.values())
+    allocations = ledger["allocations"]
+    releasable = sum(allocations[c] for c in ("review", "shuffle", "tokenizer")
+                     if not any(r["category"] == c for r in ledger["runs"].values()))
+    result["cost"] = dict(per_run_upper_hours=per_run, seed_block_upper_hours=block_hours, main_allocation=allocations["main"],
+                          releasable_auxiliary_hours=releasable, serial_overhead_hours=costs["serial_overhead_hours"],
+                          remaining_calendar_hours=costs["remaining_calendar_hours"],
+                          method=costs.get("method"))
+    if not ceilings:
+        result["reason"] = "Pilot censoring upper bound exceeds the simulated grid"
+        write_json(output, result); return result
+    ceiling = ceilings[0]
+    primary = power_table(grid, ns, ceiling, cv_bound, 0.)
+    result["primary_power_table"] = {str(n): v for n, v in primary.items()}
+    rho_lower = dispersion["correlation"]["sequential_orders"]["mean_offdiagonal_bootstrap_95"][0]
+    grid_rhos = sorted({r["latent_rho"] for r in grid})
+    rho_sens = max([x for x in grid_rhos if x <= max(0., rho_lower or 0.) + 1e-9], default=0.)
+    result["sensitivity_correlation_informed"] = dict(latent_rho=rho_sens, basis="largest grid rho <= lower 2.5% bootstrap bound of the mean inter-order correlation",
+                                                     power_table={str(n): v for n, v in power_table(grid, ns, ceiling, cv_bound, rho_sens).items()},
+                                                     decisive=False)
+    result["analytic_contrast_cross_check"] = {k: v["analytic_required_n_20pct"] for k, v in dispersion["contrasts"].items()}
+    passing = [n for n in ns if "outside_grid" not in primary[n] and primary[n]["power_lower"] is not None
+               and primary[n]["power_lower"] >= .8 and primary[n]["null_fwer_upper"] <= .06]
+    result["minimum_passing_n"] = min(passing) if passing else None
+
+    def candidates(available):
+        out = []
+        for n in ns:
+            row = primary[n]
+            if "outside_grid" in row:
+                continue
+            hours = n * block_hours
+            out.append(dict(n=n, eval_interval=INTERVAL,
+                            measurement_passed=measurement.get("status") == "passed" and measurement.get("actual_sequence_pilot") is True,
+                            power_lower=row["power_lower"], null_fwer_upper=row["null_fwer_upper"], gpu_hours=hours,
+                            available_main_hours=available, calendar_hours=hours / 2 + costs["serial_overhead_hours"],
+                            available_calendar_hours=costs["remaining_calendar_hours"], per_run_upper_hours=per_run))
+        return out
+    result["candidates"] = candidates(allocations["main"])
+    if pilot.get("status") != "passed":
+        result["reason"] = "Learnability pilot evidence is incomplete (pilot-report status is not passed)"
+        write_json(output, result); return result
+    chosen = choose_design(result["candidates"])
+    release = 0.
+    if chosen is None and releasable:
+        widened = candidates(allocations["main"] + releasable)
+        chosen = choose_design(widened)
+        if chosen is not None:
+            result["candidates"] = widened
+            release = max(0., 1.25 * chosen["gpu_hours"] - allocations["main"])
+    if chosen is None:
+        blocking = []
+        if not passing:
+            blocking.append("no candidate N meets power >= .8 and FWER <= .06 in the conservative envelope")
+        if not (measurement.get("status") == "passed" and measurement.get("actual_sequence_pilot") is True):
+            blocking.append("evaluation-resolution evidence at 5,120 is not passed with an actual sequence pilot")
+        if passing and min(passing) * block_hours * 1.25 > allocations["main"] + releasable:
+            blocking.append("the smallest passing N exceeds the main and releasable auxiliary GPU budget")
+        result["reason"] = "; ".join(blocking) or "no candidate meets the selection criteria"
+    else:
+        result.update(status="passed", chosen=chosen, auxiliary_release_required_hours=release,
+                      main_seeds=list(range(30001, 30001 + chosen["n"])))
+    write_json(output, result)
+    return result
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    for arg in ("grid", "pilots", "costs", "resolution", "dispersion", "preregistration", "ledger", "output"):
+        p.add_argument("--" + arg, required=True)
+    p.add_argument("--assess-design")
+    a = p.parse_args()
+    r = decide(a.grid, a.pilots, a.costs, a.resolution, a.dispersion, a.preregistration, a.ledger, a.output, a.assess_design)
+    print(json.dumps({k: r.get(k) for k in ("status", "reason", "minimum_passing_n", "chosen", "auxiliary_release_required_hours")}, indent=1, default=str))
+
+
+if __name__ == "__main__":
+    main()
