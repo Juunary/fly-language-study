@@ -284,3 +284,18 @@ en-30101 168,960 / ko-30101 128,000 / ko-30102 189,440; en-30102·de-30101은 �
 - 실행: `python -m flystudy campaign --protocol configs/protocol-v5.1-main-N80.json … --manifest/--matrix reports/launch-manifest-v5.1-N80.json --output runs/main-v5.1
   --devices cuda:0 cuda:1 --microbatch 256`. 시드 블록 단위로 두 GPU에 번갈아 배정되며, 장치 배정·실패·재시도는 런 메타데이터와 장부에서 집계해 결과 보고에 적는다.
   선택적 중단 없이 800런 전체를 실행한다.
+
+## 8. 본실험 실행 기록 (프로토콜 v5.1, N=80, 800런)
+
+### 8.1 시작과 첫 기술 실패 (2026-09-17)
+
+- 15:56 UTC `python -m flystudy campaign …`으로 시작. 시드 30001 블록 10런 완료(숙달 8, 단일 언어 상한 2), 시드 30002의 mono-en 완료.
+- **기술 실패 1건**: `main-real-30002-mono-de`가 시작 3초 만에 종료했다(학습 없음, 장부 0.0009 h, `technical_failure`).
+  원인은 시드 블록 시작 때 두 런이 같은 순간에 자료 감사를 하며 `data/draft-v4.6/audit.json.partial`을 함께 쓰고 이름을 바꾸다 한쪽이
+  `No such file or directory`로 실패한 경합이다. 자료·증거 파일은 변하지 않았다(동결 증거 445개 해시 일치). 캠페인은 규칙대로 새 런 배정을 멈추고 종료했다.
+  실패 기록은 `runs/main-v5.1-failed-attempts/main-real-30002-mono-de-attempt1/`에 보존했다.
+- **복구**: 동결된 패키지 코드는 바꾸지 않는다(코드 해시가 동결 조건). 같은 명령으로 런을 띄우되 앞서 띄운 런이 시작 단계(`metadata.json` 기록)를 지나야
+  다음 런을 띄우는 실행 래퍼 `scripts/main_campaign_staggered.py`(블록 단위·두 GPU·완료 런 건너뛰기·실패 시 중단 규칙은 `flystudy.campaign`과 동일,
+  `tests/test_main_campaign_staggered.py`)로 이어서 실행한다. 실패한 런은 같은 시드·설정으로 처음부터 다시 실행하며(체크포인트가 생기기 전 실패),
+  새 예약 `main-real-30002-mono-de-retry1`(`configs/main-v5.1-retry-reservations-1.json`, `configs/main-v5.1-retries.json`)을 써서 실패 시도의 장부 기록을 보존한다.
+  선택적 중단이나 블록 제외는 없다.

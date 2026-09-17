@@ -2483,74 +2483,86 @@
     "main-real-30001-mono-en": {
       "category": "main",
       "reserved": 0.05533170352744713,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.0444593600419143,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-mono-de": {
       "category": "main",
       "reserved": 0.11204419566808309,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.041580880707737786,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-mono-ko": {
       "category": "main",
       "reserved": 0.06358545225448324,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.03998498903141202,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-seq-en-de-ko": {
       "category": "main",
       "reserved": 0.8444776140961906,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.09959092225633664,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-seq-en-ko-de": {
       "category": "main",
       "reserved": 0.8553517765944975,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.2345579027886399,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-seq-de-en-ko": {
       "category": "main",
       "reserved": 0.297475568368557,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.1579957637716628,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-seq-de-ko-en": {
       "category": "main",
       "reserved": 0.773661980108382,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.10935263048501737,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-seq-ko-en-de": {
       "category": "main",
       "reserved": 0.8175538574618074,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.20053245879858472,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-seq-ko-de-en": {
       "category": "main",
       "reserved": 0.8189416008388083,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.07175490812029844,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30001-mixed": {
       "category": "main",
       "reserved": 0.4769041009896522,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.18747113513721464,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30002-mono-en": {
       "category": "main",
       "reserved": 0.05533170352744713,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.0437318914091318,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30002-mono-de": {
       "category": "main",
       "reserved": 0.11204419566808309,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.0008783690197419168,
+      "status": "technical_failure",
+      "exceeded_reservation": false
     },
     "main-real-30002-mono-ko": {
       "category": "main",
@@ -7277,6 +7289,12 @@
     "main-real-30080-mixed": {
       "category": "main",
       "reserved": 0.4769041009896522,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "main-real-30002-mono-de-retry1": {
+      "category": "main",
+      "reserved": 0.11204419566808309,
       "used": 0.0,
       "status": "reserved"
     }
