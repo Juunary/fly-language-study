@@ -26,7 +26,7 @@ def entity_matcher(lang):
 def verb_matcher(lang):
     variants={}
     for i,v in enumerate(VERBS):
-        words=v[:3] if lang=="en" else v[3:5] if lang=="de" else (v[5],("보지","반기지","쫓지")[i])
+        words=v[:3] if lang=="en" else v[3:5] if lang=="de" else (v[5],("보지","반기지","뒤따르지")[i])
         variants.update({word.casefold():i for word in words})
     pattern="|".join(re.escape(s) for s in sorted(variants,key=len,reverse=True))
     if lang!="ko": pattern=r"\b(?:"+pattern+r")\b"

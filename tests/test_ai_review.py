@@ -185,3 +185,174 @@ def test_separate_claude_models_are_recorded_not_rejected(evidence):
     attest["all_templates_and_forms_checked"] = "false"
     with pytest.raises(ValueError, match="attestation is incomplete"):
         validate_ai_evidence(data, merged, attest, path)
+
+
+# ---- rule amendment v5.1-ai-review-2: checklist flags are adjudicated per issue, never auto-dismissed ----
+from flystudy.ai_review import AMENDMENT, BLOCKING_CATEGORIES, NON_BLOCKING_CATEGORIES
+
+
+def flag_row(path, run_index=0, row_index=0, comment="synthetic concern"):
+    manifest = json.loads(path.read_text())
+    run = manifest["runs"][run_index]
+    ref = run["checklist_response"]; target = path.parent / ref["path"]
+    records = rows(target); records[row_index].update(issue="yes", comment=comment)
+    csv_write(target, records); ref["sha256"] = file_hash(target); write_json(path, manifest)
+    r = records[row_index]
+    return dict(reviewer=run["reviewer"], area=r["area"], language=r["language"], family=r["family"], split=r["split"], task=r["task"])
+
+
+def add_adjudication(path, attest, issue_id, covers, blocking=False, category="auxiliary_only", scope=("auxiliary_evaluation",),
+                     hashes_ok=True, with_amendment=True):
+    manifest = json.loads(path.read_text())
+    folder = path.parent / "checklist-adjudication" / issue_id; folder.mkdir(parents=True, exist_ok=True)
+    (folder / "inputs.csv").write_text("synthetic input\n"); (folder / "prompt.md").write_text("synthetic prompt\n")
+    (folder / "transcript.txt").write_text("synthetic transcript\n")
+    verdict = dict(issue_id=issue_id, reviewed_input_hashes=[file_hash(folder / "inputs.csv") if hashes_ok else "0" * 64],
+                   scope=list(scope), applies_to_languages=["en"], concrete_error_or_counterexample="synthetic: none found",
+                   blocking=blocking, category=category, rationale="synthetic rationale", minimal_fix_or_interpretation_scope="synthetic scope")
+    write_json(folder / "response.json", verdict)
+    rel = lambda name: dict(path=f"checklist-adjudication/{issue_id}/{name}", sha256=file_hash(folder / name))
+    manifest.setdefault("checklist_adjudications", []).append(dict(
+        issue_id=issue_id, covers=covers, provider="anthropic", model_id="claude-test-fixture", model_version="fixture", interface="claude_code",
+        session_id=f"synthetic-adjudication-{issue_id}", executed_at_utc="2026-09-17T00:00:00Z", settings={"availability": "not_exposed"},
+        fresh_context=True, answer_key_exposed=False, inputs=[rel("inputs.csv")], prompt=rel("prompt.md"), transcript=rel("transcript.txt"),
+        response=rel("response.json")))
+    if with_amendment:
+        manifest["rule_amendment"] = dict(id=AMENDMENT, adopted_at_utc="2026-09-17T00:00:00Z", adopted_after="synthetic round results",
+                                          reason="synthetic fixture")
+    write_json(path, manifest)
+    attest.setdefault("checklist_adjudications", {})[issue_id] = dict(blocking=blocking, category=category, scope=sorted(scope))
+    return manifest
+
+
+def test_flag_without_adjudication_is_rejected_not_dismissed(evidence):
+    data, merged, attest, path = evidence
+    flag_row(path)
+    with pytest.raises(ValueError, match="requires a recorded checklist adjudication"):
+        validate_ai_evidence(data, merged, attest, path)
+
+
+def test_non_blocking_adjudication_certifies_with_recorded_limitation(evidence):
+    data, merged, attest, path = evidence
+    covers = [flag_row(path)]
+    add_adjudication(path, attest, "issue-A", covers)
+    report = validate_ai_evidence(data, merged, attest, path)
+    assert report["protocol_amendment"] == AMENDMENT and report["rule_amendment"]["id"] == AMENDMENT
+    assert len(report["ai_runs"]) == 7 and report["checklist_flags"][0]["comment"] == "synthetic concern"
+    assert report["checklist_adjudications"][0]["covers"] == covers and report["checklist_adjudications"][0]["blocking"] is False
+    assert any("Auxiliary-evaluation limitation" in l and "issue-A" in l for l in report["limitations"])
+    assert review_provenance(dict(report, gate="ai_review", status="passed"), "claude_only")
+
+
+def test_blocking_adjudication_fails_certification(evidence):
+    data, merged, attest, path = evidence
+    covers = [flag_row(path)]
+    add_adjudication(path, attest, "issue-B", covers, blocking=True, category=BLOCKING_CATEGORIES[0], scope=("primary_evaluation",))
+    with pytest.raises(ValueError, match="Blocking template/form issue confirmed"):
+        validate_ai_evidence(data, merged, attest, path)
+
+
+@pytest.mark.parametrize("change,match", [
+    ("no_amendment", "rule amendment"), ("bad_hashes", "exact input hashes"), ("uncovered", "without a recorded adjudication"),
+    ("unflagged_cover", "was not flagged"), ("ack_mismatch", "acknowledgment differs"), ("category_mismatch", "non-blocking category"),
+])
+def test_adjudication_record_defects_are_rejected(evidence, change, match):
+    data, merged, attest, path = evidence
+    first = flag_row(path)
+    second = flag_row(path, run_index=1, row_index=1)
+    covers = [first, second]
+    if change == "uncovered":
+        covers = [first]
+    if change == "unflagged_cover":
+        covers = [first, dict(second, task="not-a-flagged-task")]
+    add_adjudication(path, attest, "issue-C", covers, hashes_ok=change != "bad_hashes", with_amendment=change != "no_amendment")
+    if change == "ack_mismatch":
+        attest["checklist_adjudications"]["issue-C"]["category"] = "stylistic_preference"
+    if change == "category_mismatch":
+        manifest = json.loads(path.read_text())
+        response = path.parent / manifest["checklist_adjudications"][0]["response"]["path"]
+        verdict = json.loads(response.read_text()); verdict["category"] = BLOCKING_CATEGORIES[1]
+        write_json(response, verdict); manifest["checklist_adjudications"][0]["response"]["sha256"] = file_hash(response); write_json(path, manifest)
+    with pytest.raises(ValueError, match=match):
+        validate_ai_evidence(data, merged, attest, path)
+
+
+def test_flagged_rows_must_be_covered_exactly_once(evidence):
+    data, merged, attest, path = evidence
+    flag = flag_row(path)
+    add_adjudication(path, attest, "issue-D", [flag])
+    add_adjudication(path, attest, "issue-E", [flag])
+    with pytest.raises(ValueError, match="already covered"):
+        validate_ai_evidence(data, merged, attest, path)
+
+
+def test_categories_are_disjoint_and_named():
+    assert not set(BLOCKING_CATEGORIES) & set(NON_BLOCKING_CATEGORIES)
+    assert "answer_changing_ambiguity" in BLOCKING_CATEGORIES and "auxiliary_only" in NON_BLOCKING_CATEGORIES
+
+
+# ---- a blocking adjudication can be lifted only by a recorded revision plus a targeted re-review ----
+def add_resolution(path, attest, issue_id, data, languages=("en",), tasks=("space",), disagree=False, include_doc=True, drop_language=False):
+    manifest = json.loads(path.read_text())
+    entry = next(e for e in manifest["checklist_adjudications"] if e["issue_id"] == issue_id)
+    verdict_path = path.parent / entry["response"]["path"]
+    verdict = json.loads(verdict_path.read_text()); verdict["applies_to_languages"] = list(languages); write_json(verdict_path, verdict)
+    entry["response"]["sha256"] = file_hash(verdict_path)
+    folder = path.parent / "checklist-adjudication" / issue_id / "resolution"; folder.mkdir(parents=True, exist_ok=True)
+    (folder / "definition.md").write_text("synthetic revised definition\n")
+    originals = rows(data / "audit-sample.csv")
+    reviews = []
+    for i, lang in enumerate(languages):
+        if drop_language and i == 0:
+            continue
+        sub = folder / lang; sub.mkdir(exist_ok=True)
+        items = [dict(review_id=f"rid{k}", language=r["language"], split=r["split"], task=r["task"], sentence_a=r["sentence_a"], sentence_b=r["sentence_b"])
+                 for k, r in enumerate({r["id"]: r for r in originals}.values()) if r["language"] == lang and r["task"] in tasks]
+        csv_write(sub / "items.csv", items)
+        (sub / "prompt.md").write_text("synthetic prompt\n"); (sub / "transcript.txt").write_text("synthetic transcript\n")
+        labels = {r["id"]: r["label"] for r in originals}
+        by_text = {text_key(r): r for r in originals}
+        judged = {it["review_id"]: dict(label=labels[by_text[text_key(it)]["id"]], fluent=True, comment="synthetic") for it in items}
+        if disagree:
+            first = next(iter(judged)); judged[first]["label"] = "1" if judged[first]["label"] == "0" else "0"
+        inputs = [sub / "items.csv"] + ([folder / "definition.md"] if include_doc else [])
+        response = dict(issue_id=f"{issue_id}-resolution", reviewed_input_hashes=[file_hash(p) for p in inputs], language=lang,
+                        template_rows={}, items=judged, blocking=False, category="interpretation_outside_task_definition",
+                        rationale="synthetic", minimal_fix_or_interpretation_scope="synthetic")
+        write_json(sub / "response.json", response)
+        rel = lambda p: dict(path=str(p.relative_to(path.parent)), sha256=file_hash(p))
+        reviews.append(dict(language=lang, provider="anthropic", model_id="claude-test-fixture", model_version="fixture", interface="claude_code",
+                            session_id=f"synthetic-resolution-{issue_id}-{lang}", executed_at_utc="2026-09-17T01:00:00Z", settings={"availability": "not_exposed"},
+                            fresh_context=True, answer_key_exposed=False, inputs=[rel(p) for p in inputs], items_input=rel(sub / "items.csv"),
+                            prompt=rel(sub / "prompt.md"), transcript=rel(sub / "transcript.txt"), response=rel(sub / "response.json")))
+    entry["resolution"] = dict(kind="task_definition_revision", affected_tasks=list(tasks),
+                               revision=dict(id="synthetic-revision-1", adopted_at_utc="2026-09-17T00:30:00Z", description="synthetic stipulation",
+                                             documents=[dict(path=str((folder / "definition.md").relative_to(path.parent)), sha256=file_hash(folder / "definition.md"))]),
+                               reviews=reviews)
+    write_json(path, manifest)
+    attest["checklist_adjudications"][issue_id]["resolved"] = True
+
+
+def test_blocking_adjudication_is_lifted_by_recorded_revision_and_targeted_rereview(evidence):
+    data, merged, attest, path = evidence
+    covers = [flag_row(path)]
+    add_adjudication(path, attest, "issue-R", covers, blocking=True, category=BLOCKING_CATEGORIES[3], scope=("primary_evaluation",))
+    add_resolution(path, attest, "issue-R", data)
+    report = validate_ai_evidence(data, merged, attest, path)
+    adj = report["checklist_adjudications"][0]
+    assert adj["blocking"] is True and adj["resolution"]["revision"]["id"] == "synthetic-revision-1"
+    assert adj["resolution"]["reviews"][0]["language"] == "en" and adj["resolution"]["reviews"][0]["items"] > 0
+    assert any("resolved by synthetic-revision-1" in l for l in report["limitations"])
+    assert len(report["ai_runs"]) == 8  # six primary + adjudication + one targeted re-review
+
+
+@pytest.mark.parametrize("defect,match", [("disagree", "disagrees with the reference"), ("no_doc", "did not receive the revised document"),
+                                          ("missing_language", "exactly the languages")])
+def test_incomplete_resolution_keeps_the_block(evidence, defect, match):
+    data, merged, attest, path = evidence
+    covers = [flag_row(path)]
+    add_adjudication(path, attest, "issue-S", covers, blocking=True, category=BLOCKING_CATEGORIES[3], scope=("primary_evaluation",))
+    add_resolution(path, attest, "issue-S", data, languages=("en", "de"), disagree=defect == "disagree", include_doc=defect != "no_doc",
+                   drop_language=defect == "missing_language")
+    with pytest.raises(ValueError, match=match):
+        validate_ai_evidence(data, merged, attest, path)

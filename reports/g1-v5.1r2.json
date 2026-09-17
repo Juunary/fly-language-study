@@ -1,0 +1,123 @@
+{
+  "gate": "G1",
+  "status": "passed",
+  "history": [
+    {
+      "update": 10,
+      "scores": {
+        "roles": 0.5,
+        "negation": 0.5,
+        "space": 0.5,
+        "quantity": 0.5
+      },
+      "overall": 0.5
+    },
+    {
+      "update": 20,
+      "scores": {
+        "roles": 0.625,
+        "negation": 0.53125,
+        "space": 0.6875,
+        "quantity": 0.75
+      },
+      "overall": 0.6484375
+    },
+    {
+      "update": 30,
+      "scores": {
+        "roles": 0.53125,
+        "negation": 0.53125,
+        "space": 0.65625,
+        "quantity": 0.71875
+      },
+      "overall": 0.609375
+    },
+    {
+      "update": 40,
+      "scores": {
+        "roles": 0.5625,
+        "negation": 0.53125,
+        "space": 0.625,
+        "quantity": 0.78125
+      },
+      "overall": 0.625
+    },
+    {
+      "update": 50,
+      "scores": {
+        "roles": 0.5,
+        "negation": 0.5625,
+        "space": 0.6875,
+        "quantity": 0.75
+      },
+      "overall": 0.625
+    },
+    {
+      "update": 60,
+      "scores": {
+        "roles": 0.6875,
+        "negation": 0.6875,
+        "space": 0.6875,
+        "quantity": 0.78125
+      },
+      "overall": 0.7109375
+    },
+    {
+      "update": 70,
+      "scores": {
+        "roles": 0.75,
+        "negation": 0.78125,
+        "space": 0.75,
+        "quantity": 0.8125
+      },
+      "overall": 0.7734375
+    },
+    {
+      "update": 80,
+      "scores": {
+        "roles": 0.96875,
+        "negation": 1.0,
+        "space": 0.875,
+        "quantity": 0.84375
+      },
+      "overall": 0.921875
+    },
+    {
+      "update": 90,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 0.96875,
+        "quantity": 0.875
+      },
+      "overall": 0.9609375
+    },
+    {
+      "update": 100,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 0.875
+      },
+      "overall": 0.96875
+    },
+    {
+      "update": 110,
+      "scores": {
+        "roles": 1.0,
+        "negation": 1.0,
+        "space": 1.0,
+        "quantity": 1.0
+      },
+      "overall": 1.0
+    }
+  ],
+  "seed": 9001,
+  "graph_hash": "04da699665813da82680186a25240c8b3106f8144cb46f51e3eb7ae2524d8d5e",
+  "tokenizer_hash": "ea6e992cb22dc8d2ffd878abf995dd4c9ea2e3f19906519f7ce7ee68d78eaa9c",
+  "protocol_hash": "b0ef8c795747088cbef28a4af48e2822d307d3e089a2113c2dd3e6660082f2ba",
+  "training_hash": "ddb59cd152d1d6bf221dffc8c696c6719b9f9e77bbcdf501a275db287e2e9fbe",
+  "code_hash": "232041e79d4a08d75a1a18cf13d1f38647cb683af1b010fc3faa09dffc9d81c8",
+  "gpu_hours": 0.003542633610842232
+}

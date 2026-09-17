@@ -8,6 +8,7 @@ import math
 
 from .budget import Ledger, choose_design
 from .data import audit
+from .ai_review import AMENDMENTS
 from .gates import code_hash
 from .protocol import LANGUAGES, ORDERS, Protocol, file_hash, run_matrix, write_json
 
@@ -31,7 +32,7 @@ def review_provenance(review, review_mode):
     if not expected_gate or review.get("gate") != expected_gate or review.get("review_mode") != review_mode:
         raise ValueError("Review mode does not match the requested certification")
     if review_mode == "claude_only" and (review.get("human_reviewed") is not False or
-            review.get("protocol_amendment") != "v4-ai-review-1" or not review.get("ai_runs") or
+            review.get("protocol_amendment") not in AMENDMENTS or not review.get("ai_runs") or
             not review.get("limitations") or not review.get("evidence_files")):
         raise ValueError("Claude review provenance is incomplete")
     return verified_evidence(review)

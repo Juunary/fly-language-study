@@ -1,0 +1,88 @@
+{
+  "issue_id": "v6-A-verfolgt",
+  "title": "Third verb correspondence follows / verfolgt / 뒤따른다",
+  "question": "Session DE-R1 marked the vocabulary table with issue=yes: 'verfolgt means pursues not neutral follows'. The other five sessions marked the same table issue=no (their rows are attached as data). Question: in the controlled roles and negation tasks of this corpus, does the correspondence follows / verfolgt / 뒤따른다 actually damage the meaning correspondence between the three languages, or change any reference label? Consider the active, passive (is followed by / wird ... verfolgt / …를 …가 뒤따른다는 것) and negated forms (does not follow / verfolgt ... nicht / 뒤따르지 않는다) in the attached examples, and how a label is determined there. Give a concrete counterexample if one exists; otherwise say 'none found' and why.",
+  "flags": [
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "vocabulary",
+      "language": "de",
+      "family": "",
+      "split": "",
+      "task": "template-inventory.json",
+      "issue": "yes",
+      "comment": "verfolgt means pursues not neutral follows; genders and plurals otherwise correct"
+    }
+  ],
+  "peer_rows": [
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "vocabulary",
+      "language": "de",
+      "family": "",
+      "split": "",
+      "task": "template-inventory.json",
+      "issue": "no",
+      "comment": "Genders plurals and participles correct; verfolgt is both present and participle"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "vocabulary",
+      "language": "en",
+      "family": "",
+      "split": "",
+      "task": "template-inventory.json",
+      "issue": "no",
+      "comment": "English nouns colours sizes ages and verb forms all accurate"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "vocabulary",
+      "language": "en",
+      "family": "",
+      "split": "",
+      "task": "template-inventory.json",
+      "issue": "no",
+      "comment": "English lemmas plurals and participles correct; implausible colors look intentional"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "vocabulary",
+      "language": "ko",
+      "family": "",
+      "split": "",
+      "task": "template-inventory.json",
+      "issue": "no",
+      "comment": "Korean lexemes consistent; 반긴다 and 뒤따른다 are apt transitives"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "vocabulary",
+      "language": "ko",
+      "family": "",
+      "split": "",
+      "task": "template-inventory.json",
+      "issue": "no",
+      "comment": "noun colour size age and verb glosses all accurate"
+    }
+  ],
+  "include": {
+    "tasks": [
+      "roles",
+      "negation"
+    ],
+    "languages": [
+      "en",
+      "de",
+      "ko"
+    ],
+    "renderings": [
+      "primary",
+      "auxiliary"
+    ],
+    "splits": [],
+    "inventory_keys": [
+      "verbs"
+    ]
+  }
+}

@@ -2,7 +2,14 @@
 all three languages (DE-R1 flagged 'verfolgt' as pursue rather than neutral follow) and the two horizontal spatial axes
 use cardinal directions, whose converses are frame-independent (KO-R2 flagged left/right and front/behind as ambiguous
 between viewer-relative and intrinsic readings). Semantic content and the generation contract are untouched."""
+import pytest
+
 from flystudy.data import VERBS, coordinate_ko, render
+
+# Candidate v4.7 / protocol v5.2 (commit 5b955e4) is preserved but NOT adopted (operator decision 2026-09-17):
+# the study runs on data v4.6 / protocol v5.1, whose renderer is the default. These checks apply only when the
+# candidate renderer is active, so they are skipped rather than deleted.
+pytestmark = pytest.mark.skipif(VERBS[2][0] != "chases", reason="candidate v4.7 renderer not adopted; default renderer is v4.6 (protocol v5.1)")
 
 DOG, CAT, COW, DUCK = (0, 0, 0), (1, 1, 1), (2, 2, 2), (3, 3, 3)
 

@@ -1,0 +1,938 @@
+{
+  "gate": "ai_review",
+  "status": "passed",
+  "dataset_hash": "47368f15d5496aa14ba0d972ae716ecd348048cbba2de83da04029dcdf1afae9",
+  "reviewers": {
+    "en": [
+      "EN-R1-N5N88",
+      "EN-R2-M6L2C"
+    ],
+    "de": [
+      "DE-R1-42K4J",
+      "DE-R2-W4WG9"
+    ],
+    "ko": [
+      "KO-R1-96N3A",
+      "KO-R2-98YHE"
+    ]
+  },
+  "sample_items": 600,
+  "agreement_by_language": {
+    "en": {
+      "items": 200,
+      "agreement": 1.0,
+      "kappa": 1.0
+    },
+    "de": {
+      "items": 200,
+      "agreement": 1.0,
+      "kappa": 1.0
+    },
+    "ko": {
+      "items": 200,
+      "agreement": 1.0,
+      "kappa": 1.0
+    }
+  },
+  "reviewed_csv_hash": "a6aeb6120221ef9ad4ad89f5480dfb33cd90d2256c7a0b29ee8bbae9f9334df5",
+  "attestation_hash": "95589dd341a7ac35c4782f8da0fe8651c13da33ef1d1fd994cef1b415a532310",
+  "review_mode": "claude_only",
+  "protocol_amendment": "v5.1-ai-review-2",
+  "rule_amendment": {
+    "id": "v5.1-ai-review-2",
+    "adopted_at_utc": "2026-09-16T23:47:47.223438Z",
+    "adopted_by": "operator decision (option (b) of reports/MAIN_STUDY_PLAN_V5.md 3.4), executed on the server",
+    "adopted_after": "Claude review round 2 on data/draft-v4.6 (review/v6, reports/ai-review-v6-outcome.json) had been completed and its results seen: 600/600 item judgments consistent, 9 checklist rows issue=yes from single sessions. No pilot, calibration or main run had been started.",
+    "not_retroactive": "Rounds 1 (review/v5) and 2 (review/v6) were certified/refused under v4-ai-review-1; their outcomes and files are unchanged. This amendment applies from its adoption time onward.",
+    "reason": "Under v4-ai-review-1 any single issue=yes row forced a data revision and a full six-session re-review. Round 1 -> round 2 reduced 24 flags to 9, all of them single-session, meaning-level or design-level flags rather than grammatical errors; repeating full rounds does not converge because each round yields new single-session flags. The amended rule keeps every flag on record and requires a recorded, independent issue-level adjudication per flag instead of automatic revision.",
+    "rule": {
+      "blocking_categories": [
+        "primary_item_answer_error",
+        "meaning_damaging_grammar_or_lexical_error",
+        "cross_language_meaning_mismatch",
+        "answer_changing_ambiguity",
+        "leakage_tampering_or_missing_review"
+      ],
+      "non_blocking_categories": [
+        "stylistic_preference",
+        "interpretation_outside_task_definition",
+        "auxiliary_only"
+      ],
+      "procedure": [
+        "every issue=yes row must be covered by exactly one recorded fresh Claude session that judges that issue only (compact package: flagged rows, peer rows, task definition, relevant examples, vocabulary rows)",
+        "the session returns a structured verdict: issue_id, reviewed input hashes, scope (primary/auxiliary/documentation), concrete error or counterexample, blocking with rationale, minimal fix or interpretation scope",
+        "a blocking verdict fails certification and requires a data revision of the affected part only; unchanged evidence is reused by hash and scope",
+        "a non-blocking verdict is carried into the certification report as a recorded limitation; auxiliary-only limits restrict how auxiliary scores may be interpreted",
+        "single flags are never dismissed for being single; a peer session's silence never passes a flag; original flags are never edited",
+        "item-level rules (200 items per language, agreement >= .95, kappa >= .8, fluent=no and label disagreements adjudicated, labels never changed) are unchanged"
+      ]
+    },
+    "known_flags_at_adoption": [
+      {
+        "reviewer": "DE-R1-42K4J",
+        "area": "vocabulary",
+        "language": "de",
+        "family": "",
+        "split": "",
+        "task": "template-inventory.json",
+        "comment": "verfolgt means pursues not neutral follows; genders and plurals otherwise correct"
+      },
+      {
+        "reviewer": "EN-R2-M6L2C",
+        "area": "construction",
+        "language": "en",
+        "family": "reported_clause",
+        "split": "dev_b",
+        "task": "roles",
+        "comment": "grammatical but says-that context is opaque; equivalence not guaranteed"
+      },
+      {
+        "reviewer": "EN-R2-M6L2C",
+        "area": "construction",
+        "language": "en",
+        "family": "reported_clause",
+        "split": "dev_b",
+        "task": "negation",
+        "comment": "same opacity caveat; negation itself correctly placed"
+      },
+      {
+        "reviewer": "EN-R2-M6L2C",
+        "area": "construction",
+        "language": "en",
+        "family": "reported_clause",
+        "split": "dev_b",
+        "task": "space",
+        "comment": "same opacity caveat; prepositional phrases themselves correct"
+      },
+      {
+        "reviewer": "EN-R2-M6L2C",
+        "area": "construction",
+        "language": "en",
+        "family": "reported_clause",
+        "split": "dev_b",
+        "task": "quantity",
+        "comment": "same opacity caveat; existential clause embeds correctly"
+      },
+      {
+        "reviewer": "KO-R2-98YHE",
+        "area": "construction",
+        "language": "ko",
+        "family": "assertion",
+        "split": "train",
+        "task": "space",
+        "comment": "왼쪽/오른쪽 and 앞/뒤 frame-ambiguous; state viewer perspective explicitly"
+      },
+      {
+        "reviewer": "KO-R2-98YHE",
+        "area": "construction",
+        "language": "ko",
+        "family": "truth_question",
+        "split": "dev_a",
+        "task": "space",
+        "comment": "same 왼쪽/오른쪽 앞/뒤 ambiguity; fix reference frame"
+      },
+      {
+        "reviewer": "KO-R2-98YHE",
+        "area": "construction",
+        "language": "ko",
+        "family": "reported_clause",
+        "split": "dev_b",
+        "task": "space",
+        "comment": "spatial terms frame-ambiguous; specify viewer-relative reading"
+      },
+      {
+        "reviewer": "KO-R2-98YHE",
+        "area": "construction",
+        "language": "ko",
+        "family": "conditional",
+        "split": "test",
+        "task": "space",
+        "comment": "앞/뒤 and 왼쪽/오른쪽 frame-ambiguous; pin reference frame"
+      }
+    ],
+    "issues_to_adjudicate": {
+      "A": "verfolgt / follows / 뒤따른다 correspondence (DE-R1 vocabulary flag)",
+      "B": "left/right and front/behind reference frame (KO-R2, four space families); same criterion applied to EN/DE/KO",
+      "C": "reported-clause outer frame 'Someone says that' opacity (EN-R2, dev_b, four tasks) versus the stated embedded-statement task definition"
+    },
+    "interpretation_of_agreement": "Perfect item agreement across sessions is evidence of judgment consistency, not a guarantee of correctness."
+  },
+  "human_reviewed": false,
+  "ai_runs": [
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5[1m]",
+      "model_version": "Opus 5 (1M context)",
+      "interface": "claude_code",
+      "session_id": "agent-a5697ef82f06ecc70",
+      "executed_at_utc": "2026-09-16T23:17:27.346Z",
+      "settings": {
+        "stop_reasons": [
+          null,
+          "max_tokens",
+          "end_turn"
+        ],
+        "output_tokens": [
+          1,
+          64000,
+          11195
+        ],
+        "tool_uses": [
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read"
+        ],
+        "follow_up_messages": [
+          "<system-reminder>\nOther agents active in this session, addressable via SendMessage({to: name, message}): main, review-DE-R1-DPJFH, review-DE-R2-4X2W5, review-DE-R2-4X2W5-b, review-EN-R1-W6SFQ, review-EN-R2-PJZZQ, review-KO-R1-5SU99, review-KO-R2-37XFZ, review-v6-EN-R1-N5N88, review-v6-EN-R2-M6L2C.\n</system-reminder>",
+          "Output token limit hit. Resume directly — no apology, no recap of what you were doing. Pick up mid-thought if that is where the cut happened. Break remaining work into smaller pieces."
+        ],
+        "sampling": "not_exposed"
+      },
+      "prompt_hash": "2f7b87797bee23b1b3c02af3d3c5662bc58bb5bde0355eee1ffff6ab9f0e237a",
+      "transcript_hash": "b540cac125be4f105a907031d622bf5ecb30e28ee4dcb6f732e02ef5b1f41d99"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5[1m]",
+      "model_version": "Opus 5 (1M context)",
+      "interface": "claude_code",
+      "session_id": "agent-ac921299340952fb9",
+      "executed_at_utc": "2026-09-16T23:19:40.927Z",
+      "settings": {
+        "stop_reasons": [
+          null,
+          null,
+          null,
+          "max_tokens",
+          "end_turn",
+          "end_turn"
+        ],
+        "output_tokens": [
+          1,
+          1,
+          4,
+          64000,
+          7905,
+          10291
+        ],
+        "tool_uses": [
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read"
+        ],
+        "follow_up_messages": [
+          "<system-reminder>\nOther agents active in this session, addressable via SendMessage({to: name, message}): main, review-DE-R1-DPJFH, review-DE-R2-4X2W5, review-DE-R2-4X2W5-b, review-EN-R1-W6SFQ, review-EN-R2-PJZZQ, review-KO-R1-5SU99, review-KO-R2-37XFZ, review-v6-DE-R1-42K4J, review-v6-EN-R1-N5N88, review-v6-EN-R2-M6L2C.\n</system-reminder>",
+          "Output token limit hit. Resume directly — no apology, no recap of what you were doing. Pick up mid-thought if that is where the cut happened. Break remaining work into smaller pieces.",
+          "The coordinator sent a message while you were working:\nPlease continue exactly as your instructions specify: return the remaining item rows (continuing from the row after 6bd4ca51a3, without repeating rows already returned) in a fenced block named items-response.csv, and then the complete checklist-response.csv block with all 21 rows. Do not read any other file and do not change any judgment already returned.\n\nAddress this before completing your current task."
+        ],
+        "sampling": "not_exposed"
+      },
+      "prompt_hash": "1d079c6c3a4c2b2bf106d078aca5effa041bef9f862ad0c9373a38c672256dc2",
+      "transcript_hash": "1611c512fec022e362c8347336c3f6ff554a16ad92ce1f4c8f38046e5127bdf4"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5[1m]",
+      "model_version": "Opus 5 (1M context)",
+      "interface": "claude_code",
+      "session_id": "agent-a1be444a14d45abd0",
+      "executed_at_utc": "2026-09-16T23:14:21.962Z",
+      "settings": {
+        "stop_reasons": [
+          null,
+          null,
+          "end_turn"
+        ],
+        "output_tokens": [
+          1,
+          1,
+          56368
+        ],
+        "tool_uses": [
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read"
+        ],
+        "follow_up_messages": [
+          "<system-reminder>\nOther agents active in this session, addressable via SendMessage({to: name, message}): main, review-DE-R1-DPJFH, review-DE-R2-4X2W5, review-DE-R2-4X2W5-b, review-EN-R1-W6SFQ, review-EN-R2-PJZZQ, review-KO-R1-5SU99, review-KO-R2-37XFZ.\n</system-reminder>"
+        ],
+        "sampling": "not_exposed"
+      },
+      "prompt_hash": "8263bd72214074de9a457966780e65ea69c4c10d3abc55dcffb7b17e60b3341c",
+      "transcript_hash": "57e6516f4bc5edc749599efafcf4e8452393c48797758658f8a2fa5bda7cb660"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5[1m]",
+      "model_version": "Opus 5 (1M context)",
+      "interface": "claude_code",
+      "session_id": "agent-aa754acf104c1b00d",
+      "executed_at_utc": "2026-09-16T23:25:32.579Z",
+      "settings": {
+        "stop_reasons": [
+          null,
+          null,
+          "max_tokens",
+          "end_turn"
+        ],
+        "output_tokens": [
+          1,
+          7,
+          64000,
+          859
+        ],
+        "tool_uses": [
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read"
+        ],
+        "follow_up_messages": [
+          "<system-reminder>\nOther agents active in this session, addressable via SendMessage({to: name, message}): main, review-DE-R1-DPJFH, review-DE-R2-4X2W5, review-DE-R2-4X2W5-b, review-EN-R1-W6SFQ, review-EN-R2-PJZZQ, review-KO-R1-5SU99, review-KO-R2-37XFZ, review-v6-DE-R1-42K4J, review-v6-DE-R2-W4WG9, review-v6-EN-R1-N5N88, review-v6-EN-R2-M6L2C, review-v6-KO-R1-96N3A, review-v6-KO-R2-98YHE.\n</system-reminder>",
+          "Output token limit hit. Resume directly — no apology, no recap of what you were doing. Pick up mid-thought if that is where the cut happened. Break remaining work into smaller pieces."
+        ],
+        "sampling": "not_exposed"
+      },
+      "prompt_hash": "6bfc2669985563056445c5bbdbb218360204ef95caf1be8c088fcf29236ffb39",
+      "transcript_hash": "930ff0c42b63fce55076f0a4e07608a28e74b6488e28507a2adb7ad0fd82faae"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5[1m]",
+      "model_version": "Opus 5 (1M context)",
+      "interface": "claude_code",
+      "session_id": "agent-ab6e368bc8a042afb",
+      "executed_at_utc": "2026-09-16T23:20:42.875Z",
+      "settings": {
+        "stop_reasons": [
+          null,
+          "max_tokens",
+          "end_turn",
+          "end_turn"
+        ],
+        "output_tokens": [
+          1,
+          64000,
+          11378,
+          239
+        ],
+        "tool_uses": [
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read"
+        ],
+        "follow_up_messages": [
+          "<system-reminder>\nOther agents active in this session, addressable via SendMessage({to: name, message}): main, review-DE-R1-DPJFH, review-DE-R2-4X2W5, review-DE-R2-4X2W5-b, review-EN-R1-W6SFQ, review-EN-R2-PJZZQ, review-KO-R1-5SU99, review-KO-R2-37XFZ, review-v6-DE-R1-42K4J, review-v6-DE-R2-W4WG9, review-v6-EN-R1-N5N88, review-v6-EN-R2-M6L2C.\n</system-reminder>",
+          "Output token limit hit. Resume directly — no apology, no recap of what you were doing. Pick up mid-thought if that is where the cut happened. Break remaining work into smaller pieces.",
+          "The coordinator sent a message while you were working:\nOne item row was cut off by the output limit and never returned: review_id 9a17e21f29 (your first message ended in the middle of that row, and your continuation started with the row after it). Please return that single row, judged exactly as your instructions specify, in one fenced block named items-response.csv (that one data row only, no header), and nothing else. Do not read any other file and do not change any judgment already returned.\n\nAddress this before completing your current task."
+        ],
+        "sampling": "not_exposed"
+      },
+      "prompt_hash": "a333301fad123c37f53426b92bc4d9efec944b808c737c02ed8a8486dceef39b",
+      "transcript_hash": "17bb6b840a499137e702bbb1e1ab357692d3f2d9699e49eb7c23d0bfe963c9be"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5[1m]",
+      "model_version": "Opus 5 (1M context)",
+      "interface": "claude_code",
+      "session_id": "agent-a5101238aba72a72f",
+      "executed_at_utc": "2026-09-16T23:18:06.466Z",
+      "settings": {
+        "stop_reasons": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "max_tokens",
+          "end_turn"
+        ],
+        "output_tokens": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          64000,
+          13858
+        ],
+        "tool_uses": [
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read",
+          "Read"
+        ],
+        "follow_up_messages": [
+          "<system-reminder>\nOther agents active in this session, addressable via SendMessage({to: name, message}): main, review-DE-R1-DPJFH, review-DE-R2-4X2W5, review-DE-R2-4X2W5-b, review-EN-R1-W6SFQ, review-EN-R2-PJZZQ, review-KO-R1-5SU99, review-KO-R2-37XFZ, review-v6-DE-R1-42K4J, review-v6-DE-R2-W4WG9, review-v6-EN-R1-N5N88, review-v6-EN-R2-M6L2C, review-v6-KO-R1-96N3A.\n</system-reminder>",
+          "Output token limit hit. Resume directly — no apology, no recap of what you were doing. Pick up mid-thought if that is where the cut happened. Break remaining work into smaller pieces."
+        ],
+        "sampling": "not_exposed"
+      },
+      "prompt_hash": "6ec9c913d8a16d9c96e72eb7277cef10614120647b774d1baabeb6c3befecd99",
+      "transcript_hash": "cc1f57a2ed14d57f92e620aeceb330a0d0a7149f548022fef722d09745adf4bc"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5",
+      "model_version": "not_exposed",
+      "interface": "claude_code",
+      "session_id": "f0e363df-896b-4a6a-8cc6-87381e565bd8",
+      "executed_at_utc": "2026-09-16T23:51:28.240100Z",
+      "settings": {
+        "sampling": "not_exposed",
+        "stop_reason": "end_turn",
+        "num_turns": 1,
+        "output_tokens": 2122,
+        "tool_uses": 0,
+        "cost_usd": 0.6979924999999999
+      },
+      "prompt_hash": "e3f3b1dadee39363e70bde744fa763f0e09c0f3cd31f297ae9700ea50f3ad7c0",
+      "transcript_hash": "19772d2e7ead522590fbe40dcc5bbbaf28552bb3b87784f93d2dfda2a32bf7eb"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5",
+      "model_version": "not_exposed",
+      "interface": "claude_code",
+      "session_id": "214c7c88-4603-4fec-a7cf-2e91410fd0ed",
+      "executed_at_utc": "2026-09-16T23:50:14.046729Z",
+      "settings": {
+        "sampling": "not_exposed",
+        "stop_reason": "end_turn",
+        "num_turns": 1,
+        "output_tokens": 3186,
+        "tool_uses": 0,
+        "cost_usd": 0.560854
+      },
+      "prompt_hash": "fc9e223cb36b1ef5a0bfe6c40b64c7fe96cbed074ec952cd0a31d2cc189ba515",
+      "transcript_hash": "180616041ed0763346b19030c2ef18142f2016f9cfe8e6651078ebd515fab80d"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5",
+      "model_version": "not_exposed",
+      "interface": "claude_code",
+      "session_id": "77c37abc-6d9b-4359-8ff6-4d4c37d0333b",
+      "executed_at_utc": "2026-09-16T23:58:53.570409Z",
+      "settings": {
+        "sampling": "not_exposed",
+        "stop_reason": "end_turn",
+        "num_turns": 1,
+        "output_tokens": 8111,
+        "tool_uses": 0,
+        "cost_usd": 0.4539665
+      },
+      "prompt_hash": "8e167475a6a643d551e5da993b3709c7a35a2e178c4d172acc002726fcfa936c",
+      "transcript_hash": "9869ebe860d33dafd1193dc154ea91dbf4d60557c3871d46d889b9d9de18fe43"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5",
+      "model_version": "not_exposed",
+      "interface": "claude_code",
+      "session_id": "cb984d9c-b33e-40ac-ab0a-4b1ae4f1d0ff",
+      "executed_at_utc": "2026-09-16T23:57:46.776563Z",
+      "settings": {
+        "sampling": "not_exposed",
+        "stop_reason": "end_turn",
+        "num_turns": 1,
+        "output_tokens": 5661,
+        "tool_uses": 0,
+        "cost_usd": 0.32422850000000003
+      },
+      "prompt_hash": "759baeca19aaaade4fad73e0ea59d7e4402e0547784c68ded9b08a38a02fbb43",
+      "transcript_hash": "e8c1389a14c6c4a853954501c99510b2e5488d5a67a5c0d212a718f7006dcb20"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5",
+      "model_version": "not_exposed",
+      "interface": "claude_code",
+      "session_id": "5d1033a5-b77c-4281-937c-c7a3b9e24dd1",
+      "executed_at_utc": "2026-09-17T00:00:16.173642Z",
+      "settings": {
+        "sampling": "not_exposed",
+        "stop_reason": "end_turn",
+        "num_turns": 1,
+        "output_tokens": 9906,
+        "tool_uses": 0,
+        "cost_usd": 0.5697695
+      },
+      "prompt_hash": "95a9729313118f5e58679aec5fd5ad566db84facf877039d35cf163b30075c04",
+      "transcript_hash": "62a0e965547502ffa4b7dca4a1091409fc52f775a15f91f193c02615e10addf6"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-5",
+      "model_version": "not_exposed",
+      "interface": "claude_code",
+      "session_id": "81c5d54f-e2d4-49b6-bc33-1085eecc45fe",
+      "executed_at_utc": "2026-09-16T23:50:39.568902Z",
+      "settings": {
+        "sampling": "not_exposed",
+        "stop_reason": "end_turn",
+        "num_turns": 1,
+        "output_tokens": 1966,
+        "tool_uses": 0,
+        "cost_usd": 0.49711999999999995
+      },
+      "prompt_hash": "121a173f4927556a5d45e7c1bf4dc18fa6683016b61653f27b3d17aeaa0b4181",
+      "transcript_hash": "299edb8b8e9542b55588fec932199567eeecc62a70f2dbddbd7d235a005ebc46"
+    }
+  ],
+  "limitations": [
+    "No human language review was performed.",
+    "Separate Claude sessions are repeated AI assessments, not independent human raters.",
+    "Agreement does not establish correctness; model errors may be correlated across languages and sessions.",
+    "Archived records and hashes do not authenticate the provider or prove absence of prior answer exposure.",
+    "Conclusions are conditional on an AI-reviewed generated corpus, not universal language difficulty.",
+    "Auxiliary-evaluation limitation from checklist adjudication v6-A-verfolgt (interpretation_outside_task_definition): No data change. Record that verb 2 is a near-equivalent asymmetric relation across languages (de 'verfolgt' ≈ pursue), not an exact synonym. Results must not be used for claims about lexical meaning equivalence of this verb across languages; role and negation claims are unaffected.",
+    "Blocking checklist flag v6-B-spatial-frame (answer_changing_ambiguity) resolved by v5.1.1-task-definition (task_definition_revision): Task definition revision v5.1.1: the two sentences of a pair describe one scene seen by one fixed external viewer; left/right and front/behind are viewer-relative, above/below gravitational (docs/TASK_DEFINITION_V5.1.1.md). No sentence, label, template, tokenizer or setting changed.",
+    "Auxiliary-evaluation limitation from checklist adjudication v6-C-reported-clause (interpretation_outside_task_definition): No data change. Record in the documentation that auxiliary reported_clause labels (dev_b, all three languages) score equivalence of the embedded propositions, not of the speech reports under an opaque reading. Also record that outer-frame transfer results for this frame should be interpreted with that limit."
+  ],
+  "checklist_flags": [
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "vocabulary",
+      "language": "de",
+      "family": "",
+      "split": "",
+      "task": "template-inventory.json",
+      "comment": "verfolgt means pursues not neutral follows; genders and plurals otherwise correct"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "negation",
+      "comment": "same opacity caveat; negation itself correctly placed"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "quantity",
+      "comment": "same opacity caveat; existential clause embeds correctly"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "roles",
+      "comment": "grammatical but says-that context is opaque; equivalence not guaranteed"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "comment": "same opacity caveat; prepositional phrases themselves correct"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "assertion",
+      "split": "train",
+      "task": "space",
+      "comment": "왼쪽/오른쪽 and 앞/뒤 frame-ambiguous; state viewer perspective explicitly"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "conditional",
+      "split": "test",
+      "task": "space",
+      "comment": "앞/뒤 and 왼쪽/오른쪽 frame-ambiguous; pin reference frame"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "comment": "spatial terms frame-ambiguous; specify viewer-relative reading"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "truth_question",
+      "split": "dev_a",
+      "task": "space",
+      "comment": "same 왼쪽/오른쪽 앞/뒤 ambiguity; fix reference frame"
+    }
+  ],
+  "checklist_adjudications": [
+    {
+      "issue_id": "v6-A-verfolgt",
+      "covers": [
+        {
+          "reviewer": "DE-R1-42K4J",
+          "area": "vocabulary",
+          "language": "de",
+          "family": "",
+          "split": "",
+          "task": "template-inventory.json"
+        }
+      ],
+      "scope": [
+        "auxiliary_evaluation",
+        "documentation",
+        "primary_evaluation"
+      ],
+      "applies_to_languages": [
+        "de",
+        "en",
+        "ko"
+      ],
+      "blocking": false,
+      "category": "interpretation_outside_task_definition",
+      "concrete_error_or_counterexample": "none found. Every pair uses the same verb in A and B, and the label depends only on the agent/patient assignment and the negation position for that verb. The German forms map consistently. 'X wird von Y verfolgt' = 'Y verfolgt X' and 'wird nicht von Y verfolgt' = 'Y verfolgt X nicht', parallel to 'is (not) followed by' and '…를 …가 뒤따른다/뒤따르지 않는다'. Example: dev_b negation verb 2, neg=True, label 1 holds identically in all three languages.",
+      "rationale": "verfolgen (pursue/chase) is narrower than follow and 뒤따르다 (follow behind). That is a real lexical nuance, but all three verbs are asymmetric transitive relations. No item pairs verb 2 with a different verb or relies on its lexical content, such as an inference from chase to follow. Mutual entailment is therefore decided the same way in every language, and no reference label changes. The present-tense and participle forms of verfolgt are identical, but the 'wird … verfolgt' passive leaves no ambiguity. The concern matters only if one requires exact cross-lingual synonymy, which the task definition does not ask for.",
+      "minimal_fix_or_interpretation_scope": "No data change. Record that verb 2 is a near-equivalent asymmetric relation across languages (de 'verfolgt' ≈ pursue), not an exact synonym. Results must not be used for claims about lexical meaning equivalence of this verb across languages; role and negation claims are unaffected.",
+      "session_id": "f0e363df-896b-4a6a-8cc6-87381e565bd8",
+      "model_id": "claude-opus-5",
+      "executed_at_utc": "2026-09-16T23:51:28.240100Z",
+      "resolution": null
+    },
+    {
+      "issue_id": "v6-B-spatial-frame",
+      "covers": [
+        {
+          "reviewer": "KO-R2-98YHE",
+          "area": "construction",
+          "language": "ko",
+          "family": "assertion",
+          "split": "train",
+          "task": "space"
+        },
+        {
+          "reviewer": "KO-R2-98YHE",
+          "area": "construction",
+          "language": "ko",
+          "family": "truth_question",
+          "split": "dev_a",
+          "task": "space"
+        },
+        {
+          "reviewer": "KO-R2-98YHE",
+          "area": "construction",
+          "language": "ko",
+          "family": "reported_clause",
+          "split": "dev_b",
+          "task": "space"
+        },
+        {
+          "reviewer": "KO-R2-98YHE",
+          "area": "construction",
+          "language": "ko",
+          "family": "conditional",
+          "split": "test",
+          "task": "space"
+        }
+      ],
+      "scope": [
+        "auxiliary_evaluation",
+        "documentation",
+        "primary_evaluation"
+      ],
+      "applies_to_languages": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "blocking": true,
+      "category": "answer_changing_ambiguity",
+      "concrete_error_or_counterexample": "Take the en/train label-1 pair 'The young black cat is in front of the young white bear ...' / 'The young white bear is behind the young black cat ...' (same in de 'vor/hinter', ko '앞/뒤'). Read each sentence in the intrinsic frame of its ground animal, and let the cat and bear face each other. The cat is at the bear's front, so A is true. The bear is at the cat's front, not its back, so B is false. Label 1 then fails. Left/right fails the same way when the two animals face opposite directions: A is at B's left, and B is also at A's left, so 'B is to the right of A' is false. Label-0 pairs stay 0 under every frame.",
+      "rationale": "The converse equivalence only holds when both sentences use one shared relative or absolute frame, such as a single external viewer. The task definition says to assess spatial relations but never fixes a frame. The grounds are animals, which have their own fronts and sides, so an intrinsic reading is admissible for all six horizontal terms in EN, DE and KO alike. Under that reading the label-1 converse pairs are not mutual entailments, so the reference answer changes. The problem therefore lies in the task definition and affects all three languages, not just Korean. Above/below differ: they default to the gravitational frame, where the converse holds, so vertical items are unaffected.",
+      "minimal_fix_or_interpretation_scope": "No label or sentence changes are needed; the labels are internally consistent under a shared viewer frame. The fix is to amend the task definition and review instructions for all three languages. They should state that left/right and front/behind are read from one fixed external viewer, shared by both sentences of a pair, and that vertical terms are gravitational. The spatial label-1 items should then be re-certified under that stated frame. If a stipulation is not acceptable, the fallback is to render horizontal relations with an explicit viewer phrase in all three languages.",
+      "session_id": "214c7c88-4603-4fec-a7cf-2e91410fd0ed",
+      "model_id": "claude-opus-5",
+      "executed_at_utc": "2026-09-16T23:50:14.046729Z",
+      "resolution": {
+        "kind": "task_definition_revision",
+        "revision": {
+          "id": "v5.1.1-task-definition",
+          "adopted_at_utc": "2026-09-17T00:01:20.969212Z",
+          "description": "Task definition revision v5.1.1: the two sentences of a pair describe one scene seen by one fixed external viewer; left/right and front/behind are viewer-relative, above/below gravitational (docs/TASK_DEFINITION_V5.1.1.md). No sentence, label, template, tokenizer or setting changed."
+        },
+        "revised_documents": [
+          {
+            "path": "checklist-adjudication/v6-B-spatial-frame/resolution/TASK_DEFINITION_V5.1.1.md",
+            "sha256": "0a8481d7d3e9fb3f56d8dbf8d7e1d7123a1169dbbe77f4d71bb2a27337a7d023",
+            "source": "docs/TASK_DEFINITION_V5.1.1.md"
+          }
+        ],
+        "affected_tasks": [
+          "space"
+        ],
+        "reviews": [
+          {
+            "language": "de",
+            "session_id": "77c37abc-6d9b-4359-8ff6-4d4c37d0333b",
+            "model_id": "claude-opus-5",
+            "executed_at_utc": "2026-09-16T23:58:53.570409Z",
+            "items": 50
+          },
+          {
+            "language": "en",
+            "session_id": "cb984d9c-b33e-40ac-ab0a-4b1ae4f1d0ff",
+            "model_id": "claude-opus-5",
+            "executed_at_utc": "2026-09-16T23:57:46.776563Z",
+            "items": 50
+          },
+          {
+            "language": "ko",
+            "session_id": "5d1033a5-b77c-4281-937c-c7a3b9e24dd1",
+            "model_id": "claude-opus-5",
+            "executed_at_utc": "2026-09-17T00:00:16.173642Z",
+            "items": 50
+          }
+        ]
+      }
+    },
+    {
+      "issue_id": "v6-C-reported-clause",
+      "covers": [
+        {
+          "reviewer": "EN-R2-M6L2C",
+          "area": "construction",
+          "language": "en",
+          "family": "reported_clause",
+          "split": "dev_b",
+          "task": "roles"
+        },
+        {
+          "reviewer": "EN-R2-M6L2C",
+          "area": "construction",
+          "language": "en",
+          "family": "reported_clause",
+          "split": "dev_b",
+          "task": "negation"
+        },
+        {
+          "reviewer": "EN-R2-M6L2C",
+          "area": "construction",
+          "language": "en",
+          "family": "reported_clause",
+          "split": "dev_b",
+          "task": "space"
+        },
+        {
+          "reviewer": "EN-R2-M6L2C",
+          "area": "construction",
+          "language": "en",
+          "family": "reported_clause",
+          "split": "dev_b",
+          "task": "quantity"
+        }
+      ],
+      "scope": [
+        "auxiliary_evaluation",
+        "documentation"
+      ],
+      "applies_to_languages": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "blocking": false,
+      "category": "interpretation_outside_task_definition",
+      "concrete_error_or_counterexample": "None found under the stated definition. I checked the reported_clause pairs for roles, negation, space and quantity in all three languages. Each auxiliary label equals the label of its primary pair. Each label is correct for the embedded propositions: voice alternations and converse relations (above/below, left/right, in front of/behind) with correct argument swaps give 1, and conjunct reordering gives 1. Role, negation or count swaps give 0 (e.g., en roles verb=1 label 0: 'fox greets dog' vs. 'dog follows fox' differs). The opacity counterexample exists only for the whole speech reports. If the speaker uttered only the active sentence, 'Someone says that the young green dog is greeted by the old red fox…' may be false on a strict de dicto or quotational reading. The definition does not ask about that.",
+      "rationale": "The definition asks whether the pair's INTERNAL propositions express the same content. Opacity of 'says that' / 'sagt, dass' / '-라고 말한다' affects only whether the two whole speech reports entail each other. That reading is not part of the task. The flag's own comments say negation placement, prepositional phrases and existential embedding are correct, so no grammar or meaning error is alleged. The frame exists only in the dev_b auxiliary rendering, which is never used for mastery or the confirmatory test. No primary label is affected. The same frame appears in en, de and ko, so the caveat is not specific to English and creates no cross-language mismatch.",
+      "minimal_fix_or_interpretation_scope": "No data change. Record in the documentation that auxiliary reported_clause labels (dev_b, all three languages) score equivalence of the embedded propositions, not of the speech reports under an opaque reading. Also record that outer-frame transfer results for this frame should be interpreted with that limit.",
+      "session_id": "81c5d54f-e2d4-49b6-bc33-1085eecc45fe",
+      "model_id": "claude-opus-5",
+      "executed_at_utc": "2026-09-16T23:50:39.568902Z",
+      "resolution": null
+    }
+  ],
+  "evidence_files": {
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/evidence-r2.sealed.json": "ba150ea83be5bc11345b141f4c6e7fce2e382294731d7216d86ae7158d0e0e5f",
+    "/mnt/nas4/kjune/fly-language-study/data/draft-v4.6/audit-sample.csv": "a25fc74f4074fe4b4953d64c3ed6c2d7732532a375040ae0daab5715a38be58a",
+    "/mnt/nas4/kjune/fly-language-study/data/draft-v4.6/noun-forms.csv": "9167b6d7009535bd4073eaa643a3468affd6de77c2c3b9da315afb162be80503",
+    "/mnt/nas4/kjune/fly-language-study/data/draft-v4.6/construction-examples.csv": "66c547771cfdbde4a9a625b9c361fabcf2b0644d07416e37e5c0117f6037068a",
+    "/mnt/nas4/kjune/fly-language-study/data/draft-v4.6/template-inventory.json": "12fa7e452e47247609288c6930bd2564d19ca9b89c2620833dfffb05ef1028b6",
+    "/mnt/nas4/kjune/fly-language-study/data/draft-v4.6/manifest.json": "f656ce907173d71c6750f65127c9f6647f2764ef7af99558a3f4eb37b10f8734",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/prompt-sent.md": "2f7b87797bee23b1b3c02af3d3c5662bc58bb5bde0355eee1ffff6ab9f0e237a",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/transcript.txt": "b540cac125be4f105a907031d622bf5ecb30e28ee4dcb6f732e02ef5b1f41d99",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/prompt.md": "238f8dcfee7a332cf61c8e453112c1a053f8ac48f0cd2690d4e47165bebc9c4a",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/items-DE-R1-42K4J.csv": "83f4ace6e064330680485d6143bfcf933acb80be2e104b0e1dbfb71d33706e11",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/template-checklist-DE-R1-42K4J.csv": "ebf750c5e42b154d90c0b31aab9e5fc93bf4520103d30666c228ab9cf8dd2683",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/noun-forms-de.csv": "eed944c2daf6677ffbf39c35a10486db64faabed0dbc8c27b2b31e91a6bc3662",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/construction-examples-de.csv": "c4634384e972130bb68aad5a0c83fdad1beaa57abd92bec09eaaf2e325e26bfe",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/template-inventory.json": "12fa7e452e47247609288c6930bd2564d19ca9b89c2620833dfffb05ef1028b6",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/items-response.csv": "e29c1932def60951db1f44cd9e2cf6e3d78ac72f8ee7d04ed1dfe070c9899313",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R1-42K4J/checklist-response.csv": "a374cf1776cfcfd91c592b17e7daa0f2c6185afa815edd530f7034c88c612a14",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/prompt-sent.md": "1d079c6c3a4c2b2bf106d078aca5effa041bef9f862ad0c9373a38c672256dc2",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/transcript.txt": "1611c512fec022e362c8347336c3f6ff554a16ad92ce1f4c8f38046e5127bdf4",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/prompt.md": "238f8dcfee7a332cf61c8e453112c1a053f8ac48f0cd2690d4e47165bebc9c4a",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/items-DE-R2-W4WG9.csv": "97a2dc212801f559ab0810d15fc615ef6809a9ba9141e7414fe1328973eb6126",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/template-checklist-DE-R2-W4WG9.csv": "ebf750c5e42b154d90c0b31aab9e5fc93bf4520103d30666c228ab9cf8dd2683",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/noun-forms-de.csv": "eed944c2daf6677ffbf39c35a10486db64faabed0dbc8c27b2b31e91a6bc3662",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/construction-examples-de.csv": "c4634384e972130bb68aad5a0c83fdad1beaa57abd92bec09eaaf2e325e26bfe",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/template-inventory.json": "12fa7e452e47247609288c6930bd2564d19ca9b89c2620833dfffb05ef1028b6",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/items-response.csv": "1d95ca73d8d26c32f168b42bed3cb240e2a488f885c5028de6dd08ef218fcee3",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/DE-R2-W4WG9/checklist-response.csv": "e054ea3a7eb0d835b27f7cb50cc2bb3e7435214be3addc6ab0008b1bb065e017",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/prompt-sent.md": "8263bd72214074de9a457966780e65ea69c4c10d3abc55dcffb7b17e60b3341c",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/transcript.txt": "57e6516f4bc5edc749599efafcf4e8452393c48797758658f8a2fa5bda7cb660",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/prompt.md": "238f8dcfee7a332cf61c8e453112c1a053f8ac48f0cd2690d4e47165bebc9c4a",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/items-EN-R1-N5N88.csv": "2d339c30fd84a35a846fe6cc026c32420e32e628e3ffa7d172c48f06e602b9f3",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/template-checklist-EN-R1-N5N88.csv": "63563876e1e3df2803bf9a5e0714ae97c1d27643a4495c03acc6a6201d91e208",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/noun-forms-en.csv": "e5740237ce875cacf5dae3925d8226a0fb85ab691daf36f71e85e9ce78a439cd",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/construction-examples-en.csv": "6770c57cf250a6acc09c8af6f414a30cd40759aae17c4d85ae8d112b8ab344cf",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/template-inventory.json": "12fa7e452e47247609288c6930bd2564d19ca9b89c2620833dfffb05ef1028b6",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/items-response.csv": "b3f3e43adbe9df10d5fe2dffdd751b977863e82c247ec18f78a2ad5c6887beba",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R1-N5N88/checklist-response.csv": "f3390e35d586c020536b828ad8a01bd7ab50ae1e8a274c2b6bb9064e5ada3a2b",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/prompt-sent.md": "6bfc2669985563056445c5bbdbb218360204ef95caf1be8c088fcf29236ffb39",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/transcript.txt": "930ff0c42b63fce55076f0a4e07608a28e74b6488e28507a2adb7ad0fd82faae",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/prompt.md": "238f8dcfee7a332cf61c8e453112c1a053f8ac48f0cd2690d4e47165bebc9c4a",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/attempt-1-af411ca1351d54aac/session-transcript.jsonl": "d9460913257508a28a1e936c82156e0cda42ccbf0638b142d2883540dc65bcec",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/attempt-1-af411ca1351d54aac/transcript.txt": "da5e9ea978d42cd60474100c5a2ef65799931bf8645ffad3ee710ea6f6b99c10",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/attempt-1-af411ca1351d54aac/NOTE.md": "bcd9c2bfbce19b5e6a3e9ed51782d403d49f572a6ebcfe2bb12197faa01c5d20",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/items-EN-R2-M6L2C.csv": "20e8354359700568eac28b9d1cce62d6f687b6a019ddb2c06d795228ddfba055",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/template-checklist-EN-R2-M6L2C.csv": "63563876e1e3df2803bf9a5e0714ae97c1d27643a4495c03acc6a6201d91e208",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/noun-forms-en.csv": "e5740237ce875cacf5dae3925d8226a0fb85ab691daf36f71e85e9ce78a439cd",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/construction-examples-en.csv": "6770c57cf250a6acc09c8af6f414a30cd40759aae17c4d85ae8d112b8ab344cf",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/template-inventory.json": "12fa7e452e47247609288c6930bd2564d19ca9b89c2620833dfffb05ef1028b6",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/items-response.csv": "0b7b94ff8ed24b773d64b6ed239c4a8c4cb72412e4a404292c8ffd9f4082d8e0",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/EN-R2-M6L2C/checklist-response.csv": "5c082b1792fa94aaf92dd693be9575ae8d01dab36bc6e598cb56f99ad7a25f17",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/prompt-sent.md": "a333301fad123c37f53426b92bc4d9efec944b808c737c02ed8a8486dceef39b",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/transcript.txt": "17bb6b840a499137e702bbb1e1ab357692d3f2d9699e49eb7c23d0bfe963c9be",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/prompt.md": "238f8dcfee7a332cf61c8e453112c1a053f8ac48f0cd2690d4e47165bebc9c4a",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/items-KO-R1-96N3A.csv": "6f3c5f72ea37a28caab03815f15f92e0c6accc135e75b0f7ac7e84a241fd9130",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/template-checklist-KO-R1-96N3A.csv": "dd2a4e00a9dcc40c23b623e1c6db1ee6b3ef26b377a1bd4eb82b3226acabbb44",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/noun-forms-ko.csv": "f057538408f0ef8290c92951cb12e703efeb2d17b493910ed24e87c8455809e0",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/construction-examples-ko.csv": "de437a50902c26c3f5ab22f1140248d8437065e382697bad4a86983e39c665e1",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/template-inventory.json": "12fa7e452e47247609288c6930bd2564d19ca9b89c2620833dfffb05ef1028b6",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/items-response.csv": "0c44cdec0007a4259435b0c843e315a33c41ffc04ca995872ba813c1bcacb134",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R1-96N3A/checklist-response.csv": "db330eb5b94784a839510fb2da853de1a324f6444bfae15e95456832a9d0fc28",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/prompt-sent.md": "6ec9c913d8a16d9c96e72eb7277cef10614120647b774d1baabeb6c3befecd99",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/transcript.txt": "cc1f57a2ed14d57f92e620aeceb330a0d0a7149f548022fef722d09745adf4bc",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/prompt.md": "238f8dcfee7a332cf61c8e453112c1a053f8ac48f0cd2690d4e47165bebc9c4a",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/items-KO-R2-98YHE.csv": "359a28b57bab91d14d656e288192fcd6f0a1a4c64d6ca2f71bb5dc4fabe3935e",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/template-checklist-KO-R2-98YHE.csv": "dd2a4e00a9dcc40c23b623e1c6db1ee6b3ef26b377a1bd4eb82b3226acabbb44",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/noun-forms-ko.csv": "f057538408f0ef8290c92951cb12e703efeb2d17b493910ed24e87c8455809e0",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/construction-examples-ko.csv": "de437a50902c26c3f5ab22f1140248d8437065e382697bad4a86983e39c665e1",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/template-inventory.json": "12fa7e452e47247609288c6930bd2564d19ca9b89c2620833dfffb05ef1028b6",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/items-response.csv": "4fec3412664da24dea306a3faa7ca949e5396803c519e4b1322375dcd7241edd",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/KO-R2-98YHE/checklist-response.csv": "b404326562965c13ed6f7f4dceaf43aebcac30ae7b0f68d2f2e6f19443dc176e",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-A-verfolgt/prompt-sent.md": "e3f3b1dadee39363e70bde744fa763f0e09c0f3cd31f297ae9700ea50f3ad7c0",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-A-verfolgt/session-transcript.jsonl": "19772d2e7ead522590fbe40dcc5bbbaf28552bb3b87784f93d2dfda2a32bf7eb",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-A-verfolgt/inputs/construction-examples.csv": "23cda702c7d5c1a771dc1c0aef86aa2b00d50178482865bbdc3f442e1900b1a8",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-A-verfolgt/inputs/flagged-rows.csv": "bc1721f58dd760b9d7f466bb965327909a507b71b9a54a0c4d8fed8e56695dea",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-A-verfolgt/inputs/peer-rows.csv": "17c11eaf7524181982372ce2b922476c2f98ce3873effd99d233f0b6f17904b6",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-A-verfolgt/inputs/task-definition.md": "13719e2ddfc63d13bc41a6277c61d71f1b598c17034ae3c4d3e7074eb52a6d5f",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-A-verfolgt/inputs/vocabulary.json": "c90568343db64df6e2ebbf706b9cd3382cf2ea233c5fd5acaa1dea894540dd78",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-A-verfolgt/response.json": "fdb786e9188a606a2ed6721215dbcfd5af66f0d52f9dd41be0d9af20b701467b",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/prompt-sent.md": "fc9e223cb36b1ef5a0bfe6c40b64c7fe96cbed074ec952cd0a31d2cc189ba515",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/session-transcript.jsonl": "180616041ed0763346b19030c2ef18142f2016f9cfe8e6651078ebd515fab80d",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/inputs/construction-examples.csv": "8dba504350abb9326c3e170bbd3f44fe360d4c58fc1b705e4576af50bebb49f8",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/inputs/flagged-rows.csv": "16e9c1a44422f8f5ed3b88064c4b7e473c5a683d560ad5cad79e8da207e2ea07",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/inputs/peer-rows.csv": "ec5bb9595f9e230f37087883688db46a69e84659de2e5a4fa28eb6299e3d4f06",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/inputs/task-definition.md": "13719e2ddfc63d13bc41a6277c61d71f1b598c17034ae3c4d3e7074eb52a6d5f",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/response.json": "95b0109e6100956b15393108f95eec5dc4a89ba611c4d2b176c3b6ea8d49dc40",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/TASK_DEFINITION_V5.1.1.md": "0a8481d7d3e9fb3f56d8dbf8d7e1d7123a1169dbbe77f4d71bb2a27337a7d023",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/de/prompt-sent.md": "8e167475a6a643d551e5da993b3709c7a35a2e178c4d172acc002726fcfa936c",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/de/session-transcript.jsonl": "9869ebe860d33dafd1193dc154ea91dbf4d60557c3871d46d889b9d9de18fe43",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/de/inputs/TASK_DEFINITION_V5.1.1.md": "0a8481d7d3e9fb3f56d8dbf8d7e1d7123a1169dbbe77f4d71bb2a27337a7d023",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/de/inputs/construction-examples-affected.csv": "2ff924324ea9aff3f633f5523f1071dc94b84b584cbf4cf22bb54b9332f4bc2a",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/de/inputs/items-affected.csv": "4c960208098786f8ca2f67e458d86661d4745da4d61c0af907afe8d85edf376c",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/de/response.json": "b7c82e147cbc4c2782c4407a98ea9169c94dbfd6f63886f03c2c01eccdf03888",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/en/prompt-sent.md": "759baeca19aaaade4fad73e0ea59d7e4402e0547784c68ded9b08a38a02fbb43",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/en/session-transcript.jsonl": "e8c1389a14c6c4a853954501c99510b2e5488d5a67a5c0d212a718f7006dcb20",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/en/inputs/TASK_DEFINITION_V5.1.1.md": "0a8481d7d3e9fb3f56d8dbf8d7e1d7123a1169dbbe77f4d71bb2a27337a7d023",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/en/inputs/construction-examples-affected.csv": "43bf97eb297fd41cdc7814dca79b189ecf5d78b412a8b194b67b2970e7fa5651",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/en/inputs/items-affected.csv": "76e8dcef2708febafdc9dd538f285822c1816a0c789610819acce7bfafa653f5",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/en/response.json": "bb47f135491de71b08b4f912cb34127bd8442594d9db620f1580df0eb341eba1",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/ko/prompt-sent.md": "95a9729313118f5e58679aec5fd5ad566db84facf877039d35cf163b30075c04",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/ko/session-transcript.jsonl": "62a0e965547502ffa4b7dca4a1091409fc52f775a15f91f193c02615e10addf6",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/ko/inputs/TASK_DEFINITION_V5.1.1.md": "0a8481d7d3e9fb3f56d8dbf8d7e1d7123a1169dbbe77f4d71bb2a27337a7d023",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/ko/inputs/construction-examples-affected.csv": "0583a4930743ee0d90ea7f53b64e5c05611534dc7726a7d8fb9bca392e43e8a3",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/ko/inputs/items-affected.csv": "459e139787654b8b59045a6d7c10423f4b68c73ff72167443d6a70689135b558",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-B-spatial-frame/resolution/ko/response.json": "792bc4c07904fbc90fa70e49324152e8e33c5ac55aefb02334451090064e420c",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-C-reported-clause/prompt-sent.md": "121a173f4927556a5d45e7c1bf4dc18fa6683016b61653f27b3d17aeaa0b4181",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-C-reported-clause/session-transcript.jsonl": "299edb8b8e9542b55588fec932199567eeecc62a70f2dbddbd7d235a005ebc46",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-C-reported-clause/inputs/construction-examples.csv": "4e46dd53c6a0b7abc0992025949922c7adcf1f4c835e958ab022812673264f63",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-C-reported-clause/inputs/flagged-rows.csv": "864026b3cdd5c0d9e9137dae1a617c332b10311b0786e4657c1a0430b0df2dc3",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-C-reported-clause/inputs/peer-rows.csv": "41f9e20c0502d3fd08624bdc48967ef5073ec81bc3200482a7eb3bedf9a8ed90",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-C-reported-clause/inputs/task-definition.md": "13719e2ddfc63d13bc41a6277c61d71f1b598c17034ae3c4d3e7074eb52a6d5f",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/ai/claude-v6/checklist-adjudication/v6-C-reported-clause/response.json": "774904920888c1f03df2b7aa38d3584c8a69cee6e83a2037826379d067839a24",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/submissions/merged-ai-v6/reviewed-audit-sample.csv": "a6aeb6120221ef9ad4ad89f5480dfb33cd90d2256c7a0b29ee8bbae9f9334df5",
+    "/mnt/nas4/kjune/fly-language-study/review/v6/submissions/merged-ai-v6/attestation-r2.json": "95589dd341a7ac35c4782f8da0fe8651c13da33ef1d1fd994cef1b415a532310"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "id": "v5.1-ai-review-2",
+  "adopted_at_utc": "2026-09-16T23:47:47.223438Z",
+  "adopted_by": "operator decision (option (b) of reports/MAIN_STUDY_PLAN_V5.md 3.4), executed on the server",
+  "adopted_after": "Claude review round 2 on data/draft-v4.6 (review/v6, reports/ai-review-v6-outcome.json) had been completed and its results seen: 600/600 item judgments consistent, 9 checklist rows issue=yes from single sessions. No pilot, calibration or main run had been started.",
+  "not_retroactive": "Rounds 1 (review/v5) and 2 (review/v6) were certified/refused under v4-ai-review-1; their outcomes and files are unchanged. This amendment applies from its adoption time onward.",
+  "reason": "Under v4-ai-review-1 any single issue=yes row forced a data revision and a full six-session re-review. Round 1 -> round 2 reduced 24 flags to 9, all of them single-session, meaning-level or design-level flags rather than grammatical errors; repeating full rounds does not converge because each round yields new single-session flags. The amended rule keeps every flag on record and requires a recorded, independent issue-level adjudication per flag instead of automatic revision.",
+  "rule": {
+    "blocking_categories": [
+      "primary_item_answer_error",
+      "meaning_damaging_grammar_or_lexical_error",
+      "cross_language_meaning_mismatch",
+      "answer_changing_ambiguity",
+      "leakage_tampering_or_missing_review"
+    ],
+    "non_blocking_categories": [
+      "stylistic_preference",
+      "interpretation_outside_task_definition",
+      "auxiliary_only"
+    ],
+    "procedure": [
+      "every issue=yes row must be covered by exactly one recorded fresh Claude session that judges that issue only (compact package: flagged rows, peer rows, task definition, relevant examples, vocabulary rows)",
+      "the session returns a structured verdict: issue_id, reviewed input hashes, scope (primary/auxiliary/documentation), concrete error or counterexample, blocking with rationale, minimal fix or interpretation scope",
+      "a blocking verdict fails certification and requires a data revision of the affected part only; unchanged evidence is reused by hash and scope",
+      "a non-blocking verdict is carried into the certification report as a recorded limitation; auxiliary-only limits restrict how auxiliary scores may be interpreted",
+      "single flags are never dismissed for being single; a peer session's silence never passes a flag; original flags are never edited",
+      "item-level rules (200 items per language, agreement >= .95, kappa >= .8, fluent=no and label disagreements adjudicated, labels never changed) are unchanged"
+    ]
+  },
+  "known_flags_at_adoption": [
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "vocabulary",
+      "language": "de",
+      "family": "",
+      "split": "",
+      "task": "template-inventory.json",
+      "comment": "verfolgt means pursues not neutral follows; genders and plurals otherwise correct"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "roles",
+      "comment": "grammatical but says-that context is opaque; equivalence not guaranteed"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "negation",
+      "comment": "same opacity caveat; negation itself correctly placed"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "comment": "same opacity caveat; prepositional phrases themselves correct"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "quantity",
+      "comment": "same opacity caveat; existential clause embeds correctly"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "assertion",
+      "split": "train",
+      "task": "space",
+      "comment": "왼쪽/오른쪽 and 앞/뒤 frame-ambiguous; state viewer perspective explicitly"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "truth_question",
+      "split": "dev_a",
+      "task": "space",
+      "comment": "same 왼쪽/오른쪽 앞/뒤 ambiguity; fix reference frame"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "comment": "spatial terms frame-ambiguous; specify viewer-relative reading"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "conditional",
+      "split": "test",
+      "task": "space",
+      "comment": "앞/뒤 and 왼쪽/오른쪽 frame-ambiguous; pin reference frame"
+    }
+  ],
+  "issues_to_adjudicate": {
+    "A": "verfolgt / follows / 뒤따른다 correspondence (DE-R1 vocabulary flag)",
+    "B": "left/right and front/behind reference frame (KO-R2, four space families); same criterion applied to EN/DE/KO",
+    "C": "reported-clause outer frame 'Someone says that' opacity (EN-R2, dev_b, four tasks) versus the stated embedded-statement task definition"
+  },
+  "interpretation_of_agreement": "Perfect item agreement across sessions is evidence of judgment consistency, not a guarantee of correctness."
+}

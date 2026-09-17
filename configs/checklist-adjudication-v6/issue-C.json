@@ -1,0 +1,260 @@
+{
+  "issue_id": "v6-C-reported-clause",
+  "title": "Reported-clause outer frame and the embedded-statement task definition",
+  "question": "Session EN-R2 marked the four reported_clause rows (dev_b; roles, negation, space, quantity) with issue=yes: 'grammatical but says-that context is opaque; equivalence not guaranteed'. The other sessions' rows for the same constructions in all three languages are attached as data. The stated task definition asks whether the INTERNAL propositions of the two sentences express the same content; the reported-clause frame ('Someone says that …' / 'Jemand sagt, dass …' / '…라고 누군가 말한다') is the auxiliary outer frame owned by split dev_b. Question: compare the flag with that definition. Does the opacity concern change any reference label under the definition as stated, or does it concern the equivalence of the whole speech reports, which the definition does not ask about? Determine the scope (primary evaluation, auxiliary outer-frame rendering, documentation) and the languages affected. Give a concrete counterexample if one exists.",
+  "flags": [
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "roles",
+      "issue": "yes",
+      "comment": "grammatical but says-that context is opaque; equivalence not guaranteed"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "negation",
+      "issue": "yes",
+      "comment": "same opacity caveat; negation itself correctly placed"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "yes",
+      "comment": "same opacity caveat; prepositional phrases themselves correct"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "quantity",
+      "issue": "yes",
+      "comment": "same opacity caveat; existential clause embeds correctly"
+    }
+  ],
+  "peer_rows": [
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "roles",
+      "issue": "no",
+      "comment": "Jemand sagt dass verb-final correct; indicative acceptable for Konjunktiv I"
+    },
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "negation",
+      "issue": "no",
+      "comment": "negation and verb-final order correct in the dass-clause"
+    },
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "no",
+      "comment": "dative prepositions and clause-final ist both correct"
+    },
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "quantity",
+      "issue": "no",
+      "comment": "gibt correctly clause-final after the coordinated noun phrases"
+    },
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "roles",
+      "issue": "no",
+      "comment": "Jemand sagt dass verb-final order correct; indicative acceptable here"
+    },
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "negation",
+      "issue": "no",
+      "comment": "Negation scope preserved correctly under the reported dass-clause"
+    },
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial datives correct and ist correctly clause-final under dass"
+    },
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "quantity",
+      "issue": "no",
+      "comment": "dass es ... gibt embedding correct with accusative plural counts"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "roles",
+      "issue": "no",
+      "comment": "Someone says that complement is natural; tense consistent"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "negation",
+      "issue": "no",
+      "comment": "Negation stays inside the complement; no scope ambiguity"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial clauses embed cleanly under the that-complement"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "quantity",
+      "issue": "no",
+      "comment": "Existential complement well formed after says that"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "roles",
+      "issue": "no",
+      "comment": "Quotative 이라고 누군가 말한다 attaches correctly to 사실"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "negation",
+      "issue": "no",
+      "comment": "Negation remains inside the reported clause; scope correct"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial propositions embed correctly under the quotative frame"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "quantity",
+      "issue": "no",
+      "comment": "Existential uses 있다고 누군가 말한다; quotative form correct"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "roles",
+      "issue": "no",
+      "comment": "-라고 누군가 말한다 complement well-formed"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "negation",
+      "issue": "no",
+      "comment": "negation stays inside the reported complement"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "quantity",
+      "issue": "no",
+      "comment": "-다고 누군가 말한다 correctly attached after 있다"
+    }
+  ],
+  "include": {
+    "tasks": [
+      "roles",
+      "negation",
+      "space",
+      "quantity"
+    ],
+    "languages": [
+      "en",
+      "de",
+      "ko"
+    ],
+    "renderings": [
+      "primary",
+      "auxiliary"
+    ],
+    "splits": [
+      "dev_b"
+    ],
+    "inventory_keys": []
+  }
+}

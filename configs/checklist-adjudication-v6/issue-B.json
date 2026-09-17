@@ -1,0 +1,255 @@
+{
+  "issue_id": "v6-B-spatial-frame",
+  "title": "Reference frame of left/right and front/behind",
+  "question": "Session KO-R2 marked the four space construction rows (assertion/train, truth_question/dev_a, reported_clause/dev_b, conditional/test) with issue=yes: '왼쪽/오른쪽 and 앞/뒤 frame-ambiguous; state viewer perspective explicitly'. The other sessions' rows for the same constructions in all three languages are attached as data (EN 'to the left of'/'in front of', DE 'links von'/'vor', KO '왼쪽에'/'앞에' are the corresponding terms). Question: under the stated task definition, are the two sentences of a pair read in one common reference frame, so that the converse relation (A left of B <=> B right of A; A in front of B <=> B behind A) holds and the reference labels are determined? Is there an admissible interpretation under which a reference label changes? Apply exactly the same criterion to English, German and Korean, and state whether the vertical axis (above/below) differs. Give a concrete counterexample if one exists.",
+  "flags": [
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "assertion",
+      "split": "train",
+      "task": "space",
+      "issue": "yes",
+      "comment": "왼쪽/오른쪽 and 앞/뒤 frame-ambiguous; state viewer perspective explicitly"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "truth_question",
+      "split": "dev_a",
+      "task": "space",
+      "issue": "yes",
+      "comment": "same 왼쪽/오른쪽 앞/뒤 ambiguity; fix reference frame"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "yes",
+      "comment": "spatial terms frame-ambiguous; specify viewer-relative reading"
+    },
+    {
+      "reviewer": "KO-R2-98YHE",
+      "area": "construction",
+      "language": "ko",
+      "family": "conditional",
+      "split": "test",
+      "task": "space",
+      "issue": "yes",
+      "comment": "앞/뒤 and 왼쪽/오른쪽 frame-ambiguous; pin reference frame"
+    }
+  ],
+  "peer_rows": [
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "construction",
+      "language": "de",
+      "family": "assertion",
+      "split": "train",
+      "task": "space",
+      "issue": "no",
+      "comment": "links/rechts/über/unter/vor/hinter all take correct dative"
+    },
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "construction",
+      "language": "de",
+      "family": "truth_question",
+      "split": "dev_a",
+      "task": "space",
+      "issue": "no",
+      "comment": "dass-clause correctly ends in ist; dative preserved"
+    },
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "no",
+      "comment": "dative prepositions and clause-final ist both correct"
+    },
+    {
+      "reviewer": "DE-R1-42K4J",
+      "area": "construction",
+      "language": "de",
+      "family": "conditional",
+      "split": "test",
+      "task": "space",
+      "issue": "no",
+      "comment": "Wenn-clause ends in ist; klingelt eine Glocke correctly inverted"
+    },
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "construction",
+      "language": "de",
+      "family": "assertion",
+      "split": "train",
+      "task": "space",
+      "issue": "no",
+      "comment": "Dative after links/rechts von and über/unter/vor/hinter is correct"
+    },
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "construction",
+      "language": "de",
+      "family": "truth_question",
+      "split": "dev_a",
+      "task": "space",
+      "issue": "no",
+      "comment": "Copula ist correctly clause-final in each embedded spatial clause"
+    },
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "construction",
+      "language": "de",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial datives correct and ist correctly clause-final under dass"
+    },
+    {
+      "reviewer": "DE-R2-W4WG9",
+      "area": "construction",
+      "language": "de",
+      "family": "conditional",
+      "split": "test",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial wenn-clauses end in ist with correct dative marking"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "construction",
+      "language": "en",
+      "family": "assertion",
+      "split": "train",
+      "task": "space",
+      "issue": "no",
+      "comment": "left/right above/below front/behind used as proper converses"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "construction",
+      "language": "en",
+      "family": "truth_question",
+      "split": "dev_a",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial predicates embed unchanged; question punctuation correct"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "construction",
+      "language": "en",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial clauses embed cleanly under the that-complement"
+    },
+    {
+      "reviewer": "EN-R1-N5N88",
+      "area": "construction",
+      "language": "en",
+      "family": "conditional",
+      "split": "test",
+      "task": "space",
+      "issue": "no",
+      "comment": "Coordinated spatial antecedent reads naturally before the consequent"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "assertion",
+      "split": "train",
+      "task": "space",
+      "issue": "no",
+      "comment": "converse prepositions used correctly; phrasing reads naturally"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "truth_question",
+      "split": "dev_a",
+      "task": "space",
+      "issue": "no",
+      "comment": "spatial phrases remain well formed under question framing"
+    },
+    {
+      "reviewer": "EN-R2-M6L2C",
+      "area": "construction",
+      "language": "en",
+      "family": "conditional",
+      "split": "test",
+      "task": "space",
+      "issue": "no",
+      "comment": "spatial antecedents well formed under the conditional frame"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "construction",
+      "language": "ko",
+      "family": "assertion",
+      "split": "train",
+      "task": "space",
+      "issue": "no",
+      "comment": "Genitive 의 with 왼쪽/오른쪽/앞/뒤/위/아래 에 있다 well formed"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "construction",
+      "language": "ko",
+      "family": "truth_question",
+      "split": "dev_a",
+      "task": "space",
+      "issue": "no",
+      "comment": "Locative clauses embed correctly under the question frame"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "construction",
+      "language": "ko",
+      "family": "reported_clause",
+      "split": "dev_b",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial propositions embed correctly under the quotative frame"
+    },
+    {
+      "reviewer": "KO-R1-96N3A",
+      "area": "construction",
+      "language": "ko",
+      "family": "conditional",
+      "split": "test",
+      "task": "space",
+      "issue": "no",
+      "comment": "Spatial antecedents well formed under 만약 … 이라면"
+    }
+  ],
+  "include": {
+    "tasks": [
+      "space"
+    ],
+    "languages": [
+      "en",
+      "de",
+      "ko"
+    ],
+    "renderings": [
+      "primary",
+      "auxiliary"
+    ],
+    "splits": [],
+    "inventory_keys": []
+  }
+}
