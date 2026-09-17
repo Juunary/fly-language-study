@@ -3,12 +3,12 @@
     "g0_g1": 16,
     "g2": 48,
     "g3": 32,
-    "order_pilot": 32,
+    "order_pilot": 49.0,
     "main": 448,
     "tokenizer": 24,
     "shuffle": 24,
     "review": 16,
-    "reserve": 32
+    "reserve": 15.0
   },
   "runs": {
     "g0-server-1": {
@@ -878,7 +878,1519 @@
       "used": 0.1561518477777847,
       "status": "completed",
       "exceeded_reservation": false
+    },
+    "pilot-real-30106-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.043194607148050436,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.04235610730836116,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.04991400800528936,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.09951624251721013,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.2918629150485827,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.12815607425608,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.14839292842532611,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.22469588110281621,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0763498559100036,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30106-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.16958274588609734,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.043621640796902485,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.058732275903328426,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.02613172523166415,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.24726819267250702,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.09893268226335446,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.11792857425533132,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.1220890183774625,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.22482208968638184,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.06990165144670754,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30107-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.14931442781746027,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.04342153367308331,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.052482487112219034,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.03612854977222418,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.33349846118640725,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.11031267617227665,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.1366611757514248,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.1236344213619466,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.22704736622360847,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.08877681244966677,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30108-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.2218111994341921,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30109-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.043540933284417,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30109-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.049903336070840146,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30109-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.03489617681667571,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30109-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.2889,
+      "status": "technical_failure",
+      "exceeded_reservation": false,
+      "recovery": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "cause": "forced termination: the Claude Code session that ran the campaign ended (harness teardown); no summary written",
+        "evidence": "metadata.json mtime 05:48:10Z to last file write 06:05:30Z (2026-09-17 UTC); last seen exposure 424960; latest.pt present",
+        "usage_basis": "lower bound from server file timestamps"
+      }
+    },
+    "pilot-real-30109-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.09672957169331817,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30109-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.16062538097696638,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "pilot-real-30109-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0007,
+      "status": "technical_failure",
+      "exceeded_reservation": false,
+      "recovery": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "cause": "forced termination: the Claude Code session that ran the campaign ended (harness teardown); no summary written",
+        "evidence": "metadata.json mtime 06:05:28Z to last file write 06:05:30Z (2026-09-17 UTC); last seen exposure 5120; none",
+        "usage_basis": "lower bound from server file timestamps"
+      }
+    },
+    "pilot-real-30109-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30109-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30109-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30110-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30111-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30112-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30113-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30114-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30115-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "cancelled_not_started",
+      "cancellation": {
+        "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+        "reason": "batch-2 config changed the protocol 'version' label, which is part of training_hash; runs cannot be pooled with batch 1 or frozen. Excluded batch; replaced by seeds 30116-30125 under the unchanged v5.1 training hash."
+      }
+    },
+    "pilot-real-30116-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30116-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30117-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30118-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30119-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30120-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30121-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30122-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30123-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30124-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-mono-en": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-mono-de": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-mono-ko": {
+      "category": "g2",
+      "reserved": 0.25,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-seq-en-de-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-seq-en-ko-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-seq-de-en-ko": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-seq-de-ko-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-seq-ko-en-de": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-seq-ko-de-en": {
+      "category": "order_pilot",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
+    },
+    "pilot-real-30125-mixed": {
+      "category": "g3",
+      "reserved": 0.625,
+      "used": 0.0,
+      "status": "reserved"
     }
   },
-  "transfers": []
+  "transfers": [
+    {
+      "source": "reserve",
+      "destination": "order_pilot",
+      "hours": 11.0
+    },
+    {
+      "source": "reserve",
+      "destination": "order_pilot",
+      "hours": 6.0
+    }
+  ]
 }

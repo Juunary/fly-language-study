@@ -1,0 +1,1146 @@
+{
+  "status": "pilot_matrix",
+  "runs": [
+    {
+      "run_id": "pilot-real-30106-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30106-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30106,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30107-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30107,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30108-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30108,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30109-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30109,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30110-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30110,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30111-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30111,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30112-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30112,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30113-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30113,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30114-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30114,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-mono-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "mono",
+      "order": [
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-mono-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "mono",
+      "order": [
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-mono-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "mono",
+      "order": [
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-seq-en-de-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-seq-en-ko-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-seq-de-en-ko",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-seq-de-ko-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-seq-ko-en-de",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-seq-ko-de-en",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ]
+    },
+    {
+      "run_id": "pilot-real-30115-mixed",
+      "cohort": "pilot",
+      "topology": "real",
+      "seed": 30115,
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ]
+    }
+  ],
+  "protocol_hash": "39a0b757c0ba9b50c70c5793eaf2a8b439b33d1f10d3f62c96002a2db2e8c36e"
+}

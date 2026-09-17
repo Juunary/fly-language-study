@@ -1,0 +1,492 @@
+{
+  "recorded_at_utc": "2026-09-17T07:48:10.046738Z",
+  "config": "configs/protocol-v5.1-pilot-batch2.json",
+  "matrix": "reports/pilot-matrix-v5.1-batch2.json",
+  "defect": "The config set version='v5.1-wordbound+pilot-batch2'. Protocol.training_hash includes 'version', so every run carries training_hash b62e76c3... instead of ddb59cd1... (batch 1, G1, readiness). summarize_pilot refuses to pool incompatible training hashes and freeze requires the pilot training hash to equal the frozen protocol's. Training settings are otherwise identical.",
+  "exclusion_rule": "All runs of this config are excluded from pilot gates regardless of outcome (outcome-independent provenance rule, decided and committed before any replacement run). Outcomes are preserved here and reported.",
+  "replacement": "configs/protocol-v5.1-pilot-batch3.json: protocol-v5.1.json with pilot_seeds 30116-30125 only; version and all training fields unchanged.",
+  "archive": "runs/pilots-v5.1-batch2-excluded",
+  "runs_started": 37,
+  "runs_cancelled_not_started": 63,
+  "complete_seed_blocks": [
+    30106,
+    30107,
+    30108
+  ],
+  "outcome_summary": {
+    "mono": {
+      "de/administrative_cap": 4,
+      "en/administrative_cap": 3,
+      "en/mastered": 1,
+      "ko/administrative_cap": 1,
+      "ko/mastered": 3
+    },
+    "sequential": {
+      "mastered": 20,
+      "forced_termination_no_summary": 2
+    },
+    "mixed": {
+      "mastered": 3
+    },
+    "gpu_hours": 4.4816
+  },
+  "runs": [
+    {
+      "run_id": "pilot-real-30106-mono-en",
+      "mode": "mono",
+      "order": [
+        "en"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 200000,
+      "gpu_hours": 0.0432
+    },
+    {
+      "run_id": "pilot-real-30106-mono-de",
+      "mode": "mono",
+      "order": [
+        "de"
+      ],
+      "seed": 30106,
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "gpu_hours": 0.0424
+    },
+    {
+      "run_id": "pilot-real-30106-mono-ko",
+      "mode": "mono",
+      "order": [
+        "ko"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 168960,
+      "gpu_hours": 0.0499
+    },
+    {
+      "run_id": "pilot-real-30106-seq-en-de-ko",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 384000,
+      "gpu_hours": 0.0995
+    },
+    {
+      "run_id": "pilot-real-30106-seq-en-ko-de",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 409600,
+      "gpu_hours": 0.2919
+    },
+    {
+      "run_id": "pilot-real-30106-seq-de-en-ko",
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 506880,
+      "gpu_hours": 0.1282
+    },
+    {
+      "run_id": "pilot-real-30106-seq-de-ko-en",
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 593920,
+      "gpu_hours": 0.1484
+    },
+    {
+      "run_id": "pilot-real-30106-seq-ko-en-de",
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 322560,
+      "gpu_hours": 0.2247
+    },
+    {
+      "run_id": "pilot-real-30106-seq-ko-de-en",
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 302080,
+      "gpu_hours": 0.0763
+    },
+    {
+      "run_id": "pilot-real-30106-mixed",
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 30106,
+      "stop_reason": "mastered",
+      "seen": 634880,
+      "gpu_hours": 0.1696
+    },
+    {
+      "run_id": "pilot-real-30107-mono-en",
+      "mode": "mono",
+      "order": [
+        "en"
+      ],
+      "seed": 30107,
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "gpu_hours": 0.0436
+    },
+    {
+      "run_id": "pilot-real-30107-mono-de",
+      "mode": "mono",
+      "order": [
+        "de"
+      ],
+      "seed": 30107,
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "gpu_hours": 0.0587
+    },
+    {
+      "run_id": "pilot-real-30107-mono-ko",
+      "mode": "mono",
+      "order": [
+        "ko"
+      ],
+      "seed": 30107,
+      "stop_reason": "mastered",
+      "seen": 138240,
+      "gpu_hours": 0.0261
+    },
+    {
+      "run_id": "pilot-real-30107-seq-en-de-ko",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 30107,
+      "stop_reason": "mastered",
+      "seen": 343040,
+      "gpu_hours": 0.2473
+    },
+    {
+      "run_id": "pilot-real-30107-seq-en-ko-de",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ],
+      "seed": 30107,
+      "stop_reason": "mastered",
+      "seen": 384000,
+      "gpu_hours": 0.0989
+    },
+    {
+      "run_id": "pilot-real-30107-seq-de-en-ko",
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ],
+      "seed": 30107,
+      "stop_reason": "mastered",
+      "seen": 460800,
+      "gpu_hours": 0.1179
+    },
+    {
+      "run_id": "pilot-real-30107-seq-de-ko-en",
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ],
+      "seed": 30107,
+      "stop_reason": "mastered",
+      "seen": 491520,
+      "gpu_hours": 0.1221
+    },
+    {
+      "run_id": "pilot-real-30107-seq-ko-en-de",
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ],
+      "seed": 30107,
+      "stop_reason": "mastered",
+      "seen": 312320,
+      "gpu_hours": 0.2248
+    },
+    {
+      "run_id": "pilot-real-30107-seq-ko-de-en",
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ],
+      "seed": 30107,
+      "stop_reason": "mastered",
+      "seen": 271360,
+      "gpu_hours": 0.0699
+    },
+    {
+      "run_id": "pilot-real-30107-mixed",
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 30107,
+      "stop_reason": "mastered",
+      "seen": 558080,
+      "gpu_hours": 0.1493
+    },
+    {
+      "run_id": "pilot-real-30108-mono-en",
+      "mode": "mono",
+      "order": [
+        "en"
+      ],
+      "seed": 30108,
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "gpu_hours": 0.0434
+    },
+    {
+      "run_id": "pilot-real-30108-mono-de",
+      "mode": "mono",
+      "order": [
+        "de"
+      ],
+      "seed": 30108,
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "gpu_hours": 0.0525
+    },
+    {
+      "run_id": "pilot-real-30108-mono-ko",
+      "mode": "mono",
+      "order": [
+        "ko"
+      ],
+      "seed": 30108,
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "gpu_hours": 0.0361
+    },
+    {
+      "run_id": "pilot-real-30108-seq-en-de-ko",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 30108,
+      "stop_reason": "mastered",
+      "seen": 455680,
+      "gpu_hours": 0.3335
+    },
+    {
+      "run_id": "pilot-real-30108-seq-en-ko-de",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ],
+      "seed": 30108,
+      "stop_reason": "mastered",
+      "seen": 430080,
+      "gpu_hours": 0.1103
+    },
+    {
+      "run_id": "pilot-real-30108-seq-de-en-ko",
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ],
+      "seed": 30108,
+      "stop_reason": "mastered",
+      "seen": 537600,
+      "gpu_hours": 0.1367
+    },
+    {
+      "run_id": "pilot-real-30108-seq-de-ko-en",
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ],
+      "seed": 30108,
+      "stop_reason": "mastered",
+      "seen": 501760,
+      "gpu_hours": 0.1236
+    },
+    {
+      "run_id": "pilot-real-30108-seq-ko-en-de",
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "en",
+        "de"
+      ],
+      "seed": 30108,
+      "stop_reason": "mastered",
+      "seen": 317440,
+      "gpu_hours": 0.227
+    },
+    {
+      "run_id": "pilot-real-30108-seq-ko-de-en",
+      "mode": "sequential",
+      "order": [
+        "ko",
+        "de",
+        "en"
+      ],
+      "seed": 30108,
+      "stop_reason": "mastered",
+      "seen": 353280,
+      "gpu_hours": 0.0888
+    },
+    {
+      "run_id": "pilot-real-30108-mixed",
+      "mode": "mixed",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 30108,
+      "stop_reason": "mastered",
+      "seen": 839680,
+      "gpu_hours": 0.2218
+    },
+    {
+      "run_id": "pilot-real-30109-mono-en",
+      "mode": "mono",
+      "order": [
+        "en"
+      ],
+      "seed": 30109,
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "gpu_hours": 0.0435
+    },
+    {
+      "run_id": "pilot-real-30109-mono-de",
+      "mode": "mono",
+      "order": [
+        "de"
+      ],
+      "seed": 30109,
+      "stop_reason": "administrative_cap",
+      "seen": 200000,
+      "gpu_hours": 0.0499
+    },
+    {
+      "run_id": "pilot-real-30109-mono-ko",
+      "mode": "mono",
+      "order": [
+        "ko"
+      ],
+      "seed": 30109,
+      "stop_reason": "mastered",
+      "seen": 194560,
+      "gpu_hours": 0.0349
+    },
+    {
+      "run_id": "pilot-real-30109-seq-en-de-ko",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "de",
+        "ko"
+      ],
+      "seed": 30109,
+      "stop_reason": "forced_termination_no_summary",
+      "seen": 424960,
+      "gpu_hours": 0.2889
+    },
+    {
+      "run_id": "pilot-real-30109-seq-en-ko-de",
+      "mode": "sequential",
+      "order": [
+        "en",
+        "ko",
+        "de"
+      ],
+      "seed": 30109,
+      "stop_reason": "mastered",
+      "seen": 368640,
+      "gpu_hours": 0.0967
+    },
+    {
+      "run_id": "pilot-real-30109-seq-de-en-ko",
+      "mode": "sequential",
+      "order": [
+        "de",
+        "en",
+        "ko"
+      ],
+      "seed": 30109,
+      "stop_reason": "mastered",
+      "seen": 640000,
+      "gpu_hours": 0.1606
+    },
+    {
+      "run_id": "pilot-real-30109-seq-de-ko-en",
+      "mode": "sequential",
+      "order": [
+        "de",
+        "ko",
+        "en"
+      ],
+      "seed": 30109,
+      "stop_reason": "forced_termination_no_summary",
+      "seen": 5120,
+      "gpu_hours": 0.0007
+    }
+  ]
+}
