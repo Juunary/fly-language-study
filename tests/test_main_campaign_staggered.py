@@ -79,3 +79,24 @@ def test_failure_stops_the_campaign_after_active_runs_finish_and_retries_pass_a_
 def test_incomplete_seed_blocks_are_refused(tmp_path):
     with pytest.raises(ValueError, match="10-condition"):
         mod.campaign(block(1)[:9], EXPECTED, tmp_path, ["cuda:0", "cuda:1"], lambda *a: None, poll=.01)
+
+
+def test_a_single_device_is_allowed_when_the_other_gpu_is_lost(tmp_path):
+    log = []
+    launch = lambda run, device, folder, extra: (log.append(device), FakeProcess(folder, run["run_id"], [], .01, .03))[1]
+    result = mod.campaign(block(1), EXPECTED, tmp_path, ["cuda:0"], launch, poll=.005)
+    assert result["launched"] == 10 and set(log) == {"cuda:0"}
+    for bad in ([], ["cuda:0", "cuda:0"], ["cuda:0", "cuda:1", "cuda:2"]):
+        with pytest.raises(ValueError, match="one or two distinct"):
+            mod.campaign(block(1), EXPECTED, tmp_path / "x", bad, launch, poll=.005)
+
+
+def test_a_retry_can_resume_from_the_failed_attempts_checkpoint(tmp_path):
+    extras = {}
+    def launch(run, device, folder, extra):
+        extras[run["run_id"]] = extra
+        return FakeProcess(folder, run["run_id"], [], .01, .03)
+    retries = {"main-real-1-seq-a": dict(reservation_id="main-real-1-seq-a-retry1", resume="runs/x/latest.pt"), "main-real-1-mono-de": "main-real-1-mono-de-retry1"}
+    mod.campaign(block(1), EXPECTED, tmp_path, ["cuda:0"], launch, poll=.005, retries=retries)
+    assert extras["main-real-1-seq-a"] == ["--reservation-id", "main-real-1-seq-a-retry1", "--resume", "runs/x/latest.pt"]
+    assert extras["main-real-1-mono-de"] == ["--reservation-id", "main-real-1-mono-de-retry1"] and extras["main-real-1-mixed"] == []

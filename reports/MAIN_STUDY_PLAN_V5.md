@@ -299,3 +299,20 @@ en-30101 168,960 / ko-30101 128,000 / ko-30102 189,440; en-30102·de-30101은 �
   `tests/test_main_campaign_staggered.py`)로 이어서 실행한다. 실패한 런은 같은 시드·설정으로 처음부터 다시 실행하며(체크포인트가 생기기 전 실패),
   새 예약 `main-real-30002-mono-de-retry1`(`configs/main-v5.1-retry-reservations-1.json`, `configs/main-v5.1-retries.json`)을 써서 실패 시도의 장부 기록을 보존한다.
   선택적 중단이나 블록 제외는 없다.
+
+### 8.2 GPU 1 하드웨어 장애와 단일 GPU 속행 (2026-09-17T22:00:50Z)
+
+- 87런 완료 시점에 `main-real-30009-seq-de-ko-en`(cuda:1, 238,336문항 진행 중)이 `CUDA error: unspecified launch failure`로 종료했다.
+  커널 로그: `NVRM: Xid (PCI:0000:0a:00): 79 … GPU has fallen off the bus`와 연쇄 Xid 13. 이후 `nvidia-smi`가 GPU 1을 읽지 못한다(장치 1개만 인식).
+  코드·자료 문제가 아닌 하드웨어 장애이며 GPU 1 복구에는 관리자 권한의 재설정 또는 서버 재부팅이 필요하다(운영자 결정).
+  콘솔에 함께 찍힌 `UnboundLocalError: tests`는 실패 처리 경로에서 요약을 쓰다 난 2차 예외로, `failure.json`·시도 기록·장부 청구(0.160 h, `technical_failure`)는
+  정상 기록됐다. 동결 코드는 바꾸지 않는다.
+- 체크포인트 `latest.pt`는 235,520문항 시점(단계 1, 평가 46회)으로 온전하다(모델·옵티마이저·표집기·난수 상태 포함). 실패 기록 사본과 커널 로그는
+  `runs/main-v5.1-failed-attempts/main-real-30009-seq-de-ko-en-attempt1/`.
+- **복구**: 새 예약 `main-real-30009-seq-de-ko-en-retry1`(`configs/main-v5.1-retry-reservations-2.json`)로 체크포인트에서 재개한다
+  (`--resume`; 재개 시 이벤트 로그는 체크포인트 이후가 잘린다). 실행 래퍼는 장치 1개도 허용하도록 고쳤고(`tests/test_main_campaign_staggered.py`),
+  남은 런은 **cuda:0 단독**으로 이어 간다. 장치는 프로토콜·학습 설정에 속하지 않으며 런별 `metadata.json`에 기록된다. 장치 배정 불균형(장애 이후 전부 cuda:0)은
+  결과 보고에 그대로 적는다. 예상 벽시계는 두 GPU 기준의 약 두 배(남은 약 710런 × 7–8분 ≈ 90시간)이며 남은 달력 336시간 안이다. 블록 제외·선택적 중단은 없다.
+- 장애 직후 상태: 장애 순간 CUDA 문맥을 갖고 있던 두 런 프로세스(실패한 cuda:1 런과, 요약까지 정상 기록하고 끝난 cuda:0의 `seq-ko-de-en`)가 종료 과정에서
+  커널 드라이버 안에 걸려 CPU를 돌며 남았다(SIGKILL 불가, 재부팅 전까지 잔류, 결과 파일에는 영향 없음). 실행 래퍼는 이 자식들을 기다리며 멈춰 있어 종료시켰다(학습 중인 런 없음, 88런 완료).
+  새 프로세스는 cuda:0에서 정상 시작·종료함을 확인했다(장치 목록에는 cuda:0만 남음). 재개되는 `seq-de-ko-en`은 0–235,520문항을 cuda:1에서, 이후를 cuda:0에서 학습한다(같은 GPU 기종).

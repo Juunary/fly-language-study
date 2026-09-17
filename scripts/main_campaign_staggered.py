@@ -18,9 +18,20 @@ import time
 from pathlib import Path
 
 
+def retry_arguments(entry):
+    """No entry: a first attempt. A string: repeat from scratch under that reservation id (failure before any checkpoint).
+    A mapping with 'resume': continue from the failed attempt's checkpoint under the new reservation id."""
+    if entry is None:
+        return []
+    if isinstance(entry, str):
+        return ["--reservation-id", entry]
+    return ["--reservation-id", entry["reservation_id"], *(["--resume", entry["resume"]] if entry.get("resume") else [])]
+
+
 def campaign(runs, expected, output, devices, launch, poll=.2, retries=None, startup_timeout=600.):
-    if len(devices) != 2 or len(set(devices)) != 2:
-        raise ValueError("Specify two distinct CUDA devices")
+    # One device is allowed: on 2026-09-17 GPU 1 fell off the bus (Xid 79) and the study continues on the remaining GPU.
+    if len(devices) not in (1, 2) or len(set(devices)) != len(devices):
+        raise ValueError("Specify one or two distinct CUDA devices")
     output, retries = Path(output), dict(retries or {})
     output.mkdir(parents=True, exist_ok=True)
     launched = skipped = 0
@@ -45,7 +56,7 @@ def campaign(runs, expected, output, devices, launch, poll=.2, retries=None, sta
                         skipped += 1
                         continue
                     raise RuntimeError(f"Explicit failure recovery required for {run['run_id']}")
-                extra = ["--reservation-id", retries[run["run_id"]]] if run["run_id"] in retries else []
+                extra = retry_arguments(retries.get(run["run_id"]))
                 active[device] = (launch(run, device, folder, extra), run["run_id"], folder, time.time()); launched += 1
             for device, (process, rid, folder, t0) in list(active.items()):
                 code = process.poll()
@@ -66,8 +77,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     for arg in ("protocol", "graph", "data", "tokenizer", "manifest", "matrix", "ledger", "output"):
         p.add_argument("--" + arg, required=True)
-    p.add_argument("--devices", nargs=2, default=["cuda:0", "cuda:1"]); p.add_argument("--microbatch", type=int, default=32)
-    p.add_argument("--retries", help="JSON file {run_id: new reservation id} for explicitly recovered technical failures")
+    p.add_argument("--devices", nargs="+", default=["cuda:0", "cuda:1"]); p.add_argument("--microbatch", type=int, default=32)
+    p.add_argument("--retries", help="JSON file {run_id: new reservation id | {reservation_id, resume}} for explicitly recovered technical failures")
     a = p.parse_args()
     runs = json.loads(Path(a.matrix).read_text())["runs"]
     expected = dict(protocol_hash=Protocol.load(a.protocol).hash, graph_hash=Graph.load(a.graph).hash, tokenizer_hash=file_hash(a.tokenizer),
