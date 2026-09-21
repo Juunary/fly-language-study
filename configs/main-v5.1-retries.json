@@ -1,4 +1,8 @@
 {
   "main-real-30002-mono-de": "main-real-30002-mono-de-retry1",
-  "main-real-30009-seq-de-ko-en": "main-real-30009-seq-de-ko-en-retry2"
+  "main-real-30009-seq-de-ko-en": "main-real-30009-seq-de-ko-en-retry2",
+  "main-real-30046-mono-de": {
+    "reservation_id": "main-real-30046-mono-de-retry1",
+    "resume": "runs/main-v5.1/main-real-30046-mono-de/latest.pt"
+  }
 }
