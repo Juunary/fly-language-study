@@ -333,3 +333,16 @@ en-30101 168,960 / ko-30101 128,000 / ko-30102 189,440; en-30102·de-30101은 �
   `main-real-30046-mono-de-retry1`(`configs/main-v5.1-retry-reservations-4.json`)로 재개했다(`--resume`). 실패 기록 사본은
   `runs/main-v5.1-failed-attempts/main-real-30046-mono-de-attempt1/`. 재개 직후 학습이 정상 진행됨을 확인했다(179,712문항, 손실 0.70).
 - 누적 기술 실패 4건(장부): 시작 경합 1, GPU 1 장애 1, 그 재개 시도 실패 1, cuda:0 일시 오류 1. 블록 제외·선택적 중단 없음. 남은 런은 cuda:0 단독.
+
+## 9. 무인 완료 절차와 인계 (2026-09-21)
+
+- 운영 세션을 마치면서 `scripts/finish_main_v5_1.sh`를 세션과 분리해 띄웠다(`runs/main-v5.1-finish.pid`, 로그 `runs/main-v5.1-finish.log`).
+  런처가 끝나면 800런 요약이 모두 있을 때만 사전 등록 분석(`python -m flystudy analyze --runs runs/main-v5.1 --output reports/main-v5.1-analysis`:
+  두 계획 대비의 대응 t·Holm, RMST 구간, 순서별 사건 수, 혼합·단일 언어 비용, 런별 곡선·망각 기록)과 실행 기록(`reports/main-v5.1-run-record.json`:
+  장치 배정, 종료 사유, 장부 실패, GPU시간)을 만들고, `analysis.json`·실행 기록·장부만 소유자 명의로 커밋·푸시한다(런별 그림 800장은 저장소 밖).
+  기술 실패로 런처가 멈추면 `runs/main-v5.1-campaign.stopped`만 쓰고 끝난다. 자동 재시작은 하지 않는다.
+- 멈춘 경우의 복구(8.1–8.3절과 동일): 실패 런의 장부 예약 시간으로 새 예약(`…-retryN`)을 `reserve`하고 `configs/main-v5.1-retries.json`에
+  (체크포인트가 있으면 `resume` 경로와 함께) 적은 뒤, 같은 인자로 `scripts/main_campaign_staggered.py`를 다시 실행하고 `finish_main_v5_1.sh`를 다시 띄운다.
+- 결과 해석은 사전 등록 범위(두 대비, Holm, RMST 구간; 15개 쌍 비교 없음; 보편적 언어 난이도·초파리 배선 고유 효과 주장 없음)로 제한하며,
+  대비 결과는 800런 완료 전에 읽지 않았다.
+- 하드웨어: GPU 1은 2026-09-17T22:00Z 이후 인식 불가(Xid 79). 복구에는 재부팅이 필요하며 실행 중에는 하지 않는다. 장애 이후 모든 런은 cuda:0.

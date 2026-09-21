@@ -57,3 +57,7 @@ review/ai/
 review/v5/
 review/v6/
 review/v7/
+
+# Main-study analysis: only analysis.json is published; 800 per-run figures and forgetting records stay local.
+reports/main-v5.1-analysis/*
+!reports/main-v5.1-analysis/analysis.json
