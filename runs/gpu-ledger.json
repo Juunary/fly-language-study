@@ -7229,14 +7229,16 @@
     "main-real-30068-seq-ko-de-en": {
       "category": "main",
       "reserved": 0.8189416008388083,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.10829764047749955,
+      "status": "completed",
+      "exceeded_reservation": false
     },
     "main-real-30068-mixed": {
       "category": "main",
       "reserved": 0.4769041009896522,
-      "used": 0.0,
-      "status": "reserved"
+      "used": 0.19385627400777797,
+      "status": "technical_failure",
+      "exceeded_reservation": false
     },
     "main-real-30069-mono-en": {
       "category": "main",
@@ -7989,6 +7991,13 @@
     "main-real-30068-seq-ko-en-de-retry1": {
       "category": "main",
       "reserved": 0.8175538574618074,
+      "used": 0.09017792817166588,
+      "status": "completed",
+      "exceeded_reservation": false
+    },
+    "main-real-30068-mixed-retry1": {
+      "category": "main",
+      "reserved": 0.4769041009896522,
       "used": 0.0,
       "status": "reserved"
     }
