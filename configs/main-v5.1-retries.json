@@ -4,5 +4,9 @@
   "main-real-30046-mono-de": {
     "reservation_id": "main-real-30046-mono-de-retry1",
     "resume": "runs/main-v5.1/main-real-30046-mono-de/latest.pt"
+  },
+  "main-real-30068-seq-ko-en-de": {
+    "reservation_id": "main-real-30068-seq-ko-en-de-retry1",
+    "resume": "runs/main-v5.1/main-real-30068-seq-ko-en-de/latest.pt"
   }
 }
