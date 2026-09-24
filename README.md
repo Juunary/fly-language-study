@@ -29,6 +29,13 @@ n the initial exploration of the first two random seeds, the order in which Kore
 
 [View exploratory results →](reports/EXPLORATORY_V5_WORDBOUND_ORDER.md)
 
+## License
+
+- **Code** (`src/`, `scripts/`, `tests/`, `configs/`): [MIT License](LICENSE).
+- **Data, protocols, reports and analysis outputs** (`data/`, `docs/`, `reports/`, `artifacts/power/`, tokenizers, GPU ledger): [CC BY 4.0](LICENSE-DATA).
+- **Connectome graph** (`artifacts/graphs/`): derived from the initialisation data of [QuixiAI/FlyGPT](https://github.com/QuixiAI/FlyGPT) at a pinned revision; the upstream terms apply and it is not relicensed here. Architecture attribution is in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+- The sentence data were generated from templates and certified by a Claude-only review (no native-speaker review); see the certification limits in the protocol before reusing them.
+
 ## Learn more
 
 [Study design](docs/PROTOCOL_V5.md) · [Progress log](reports/MAIN_STUDY_PLAN_V5.md) · [Code](src/flystudy) · [background](docs/SOURCE_AUDIT.md)

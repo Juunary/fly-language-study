@@ -1,11 +1,6 @@
-# FlyGPT architecture attribution
-
-The scalar-neuron recurrence and adapter layout in `model.py` follow
-QuixiAI/FlyGPT commit d8ce5e286b638167a0dcb51bd0e1defdbd510d37.
-
 MIT License
 
-Copyright (c) 2026 Eric Hartford
+Copyright (c) 2026 June woo Kang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-Connectome kernels are a separately installed, revision-pinned dependency;
-their upstream license remains applicable. Downloaded graph provenance is
-stored alongside the graph. No pretrained parameter values enter training.
-
-# Repository licenses
-
-Code in this repository is under the MIT License (LICENSE). Generated data,
-protocols, reports and analysis outputs are under CC BY 4.0 (LICENSE-DATA).
-The connectome graph files in artifacts/graphs/ are excluded from both and
-remain under the terms of their upstream source.

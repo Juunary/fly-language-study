@@ -7,6 +7,8 @@ name = "fly-language-study"
 version = "0.1.0"
 description = "Reproducible three-language connectome learning study, protocol v4"
 requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "LICENSE-DATA", "THIRD_PARTY_NOTICES.md"]
 dependencies = ["numpy>=1.26", "scipy>=1.12", "torch>=2.3", "tokenizers>=0.20", "safetensors>=0.4", "matplotlib>=3.8", "threadpoolctl>=3"]
 
 [project.optional-dependencies]
