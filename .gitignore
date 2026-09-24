@@ -61,3 +61,6 @@ review/v7/
 # Main-study analysis: only analysis.json is published; 800 per-run figures and forgetting records stay local.
 reports/main-v5.1-analysis/*
 !reports/main-v5.1-analysis/analysis.json
+
+# Hugging Face upload bundles are assembled locally by scripts/build_hf_bundles.py; only the cards in hf/ are versioned.
+hf-upload/
